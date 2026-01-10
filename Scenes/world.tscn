@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm48vayfgjkp"]
+
+[ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("PhysicalSkyMaterial_a02cp")
+
+[sub_resource type="Environment" id="Environment_a02cp"]
+background_mode = 2
+sky = SubResource("Sky_go701")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 30, 0, -0.25, 0)
+use_collision = true
+
+[node name="Cabin" type="CSGBox3D" parent="Map"]
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 2.26, 0)
+use_collision = true
+
+[node name="RoomCut" type="CSGBox3D" parent="Map/Cabin"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+operation = 2
+
+[node name="Door" type="CSGBox3D" parent="Map/Cabin"]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, -0.00068359374, -0.15409827, -0.467)
+operation = 2
+size = Vector3(2.7753906, 1.4805908, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_a02cp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.4909794, 0.094547756, 0, 0.18909548, 0.9819587, -0.50000006, 0.85040116, -0.16376148, 0, 9.435643, -15.294653)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_a02cp")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -9.882353)
