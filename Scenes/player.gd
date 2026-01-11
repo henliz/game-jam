@@ -13,16 +13,15 @@ var t_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
-@export var jumping = false
-@export var last_floor : bool
+var jumping = false
+var last_floor : bool
+var vl : Vector3
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var interact_ray: RayCast3D = $Head/Camera3D/InteractRay
 @onready var item_inspector: ItemInspector = $ItemInspector
 @onready var interact_prompt: Label = $UI/InteractPrompt
-
-@export var vl : Vector3
 
 var inspecting: bool = false
 var current_interactable: Interactable = null
@@ -34,9 +33,7 @@ func _ready() -> void:
 	item_inspector.closed.connect(_on_inspection_closed)
 	Inventory.change_slot.connect(func(slot_index: int):
 		var item = Inventory.hotbar[slot_index]
-		if item:
-			held_item = item 
-			print(held_item.name)
+		held_item = item
 	)
 
 func _unhandled_input(event):
@@ -110,10 +107,6 @@ func _handle_interaction():
 		_start_inspection(current_interactable)
 	if Input.is_action_just_pressed("pickup") and current_interactable:
 		current_interactable.pickup()
-
-func _inspect_held():
-	if !held_item or current_interactable:
-		return
 
 func _start_inspection(item: Interactable):
 	inspecting = true

@@ -6,6 +6,10 @@ extends StaticBody3D
 
 signal picked_up(item: Interactable)
 
+func _ready():
+	name = item.name
+	spawn_instance(item.mesh_scene)	
+
 func pickup():
 	if Inventory.add_item(item):
 		call_deferred("queue_free")
@@ -29,3 +33,10 @@ func _find_mesh_instance(node: Node) -> MeshInstance3D:
 
 func interact():
 	picked_up.emit(self)
+	
+func spawn_instance(scene) -> Node3D:
+	var inst = scene.instantiate()
+	var mesh_instance = _find_mesh_instance(inst)
+	if mesh_instance and mesh_instance.mesh:
+		self.add_child(inst)
+	return inst
