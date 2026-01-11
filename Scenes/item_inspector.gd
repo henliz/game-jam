@@ -98,8 +98,8 @@ func _input(event):
 			is_dragging = event.pressed
 
 	if event is InputEventMouseMotion and is_dragging:
-		inspected_node.rotate_y(-event.relative.x * rotation_sensitivity)
-		inspected_node.rotate_x(-event.relative.y * rotation_sensitivity)
+		inspected_node.rotate_y(event.relative.x * rotation_sensitivity)
+		inspected_node.rotate_x(event.relative.y * rotation_sensitivity)
 
 	if event.is_action_pressed("interact"):
 		close()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuqr7erdlouqh"]
 
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
-[ext_resource type="PackedScene" uid="uid://c2m8n7k4p9qr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
+[ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kyqiw"]
 
@@ -9,6 +9,9 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rpqav")
+jumping = null
+last_floor = null
+vl = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -43,6 +46,6 @@ offset_right = 50.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "[E] Interact"
+text = "[E] Interact   [F] Pickup"
 horizontal_alignment = 1
 vertical_alignment = 1

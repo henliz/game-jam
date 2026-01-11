@@ -1,11 +1,17 @@
 class_name Interactable
 extends StaticBody3D
 
-@export var item_name: String = "Item"
 @export var inspect_scale: float = 1.0
+@export var item : Item
 
 signal picked_up(item: Interactable)
 
+func pickup():
+	if Inventory.add_item(item):
+		call_deferred("queue_free")
+	else:
+		print("inventory is full")
+	
 func get_inspection_mesh() -> Mesh:
 	var mesh_instance = _find_mesh_instance(self)
 	if mesh_instance:

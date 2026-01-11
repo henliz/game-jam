@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwochm7ec6xj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pouvr"]
+bg_color = Color(0.11764706, 0.105882354, 0.08235294, 0.4509804)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12591082, 0.12591085, 0.12591073, 1)
+
+[node name="ItemSlot" type="TextureButton"]
+custom_minimum_size = Vector2(80, 80)
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pouvr")

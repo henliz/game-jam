@@ -26,11 +26,18 @@ const FOV_CHANGE = 1.5
 
 var inspecting: bool = false
 var current_interactable: Interactable = null
+var held_item: Item = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
 	item_inspector.closed.connect(_on_inspection_closed)
+	Inventory.change_slot.connect(func(slot_index: int):
+		var item = Inventory.hotbar[slot_index]
+		if item:
+			held_item = item 
+			print(held_item.name)
+	)
 
 func _unhandled_input(event):
 	if inspecting:
@@ -101,6 +108,12 @@ func _handle_interaction():
 		return
 	if Input.is_action_just_pressed("interact") and current_interactable:
 		_start_inspection(current_interactable)
+	if Input.is_action_just_pressed("pickup") and current_interactable:
+		current_interactable.pickup()
+
+func _inspect_held():
+	if !held_item or current_interactable:
+		return
 
 func _start_inspection(item: Interactable):
 	inspecting = true

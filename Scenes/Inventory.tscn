@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=3 uid="uid://bkh7hy1rbn5vc"]
+
+[ext_resource type="PackedScene" uid="uid://cwochm7ec6xj" path="res://Scenes/item_slot.tscn" id="1_ersrd"]
+[ext_resource type="Script" uid="uid://dv6q88e1up2c7" path="res://Scenes/inventory.gd" id="1_jbd0o"]
+[ext_resource type="Script" uid="uid://de1sjd4foawml" path="res://Scenes/hot_bar.gd" id="2_4v8qb"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4v8qb"]
+device = -1
+keycode = 49
+unicode = 38
+
+[sub_resource type="Shortcut" id="Shortcut_4v8qb"]
+events = [SubResource("InputEventKey_4v8qb")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_1pi3o"]
+device = -1
+keycode = 50
+unicode = 233
+
+[sub_resource type="Shortcut" id="Shortcut_2hjaa"]
+events = [SubResource("InputEventKey_1pi3o")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2hjaa"]
+device = -1
+keycode = 51
+unicode = 34
+
+[sub_resource type="Shortcut" id="Shortcut_4ne0y"]
+events = [SubResource("InputEventKey_2hjaa")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_f1uin"]
+device = -1
+keycode = 52
+unicode = 39
+
+[sub_resource type="Shortcut" id="Shortcut_yeyjc"]
+events = [SubResource("InputEventKey_f1uin")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4ne0y"]
+device = -1
+keycode = 53
+unicode = 40
+
+[sub_resource type="Shortcut" id="Shortcut_fih0l"]
+events = [SubResource("InputEventKey_4ne0y")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tqkc6"]
+device = -1
+keycode = 54
+unicode = 45
+
+[sub_resource type="Shortcut" id="Shortcut_f1uin"]
+events = [SubResource("InputEventKey_tqkc6")]
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_jbd0o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HotBar" type="HBoxContainer" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -232.0
+offset_right = 250.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_4v8qb")
+
+[node name="ItemSlot" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_4v8qb")
+
+[node name="ItemSlot2" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_2hjaa")
+
+[node name="ItemSlot3" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_4ne0y")
+
+[node name="ItemSlot4" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_yeyjc")
+
+[node name="ItemSlot5" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_fih0l")
+
+[node name="ItemSlot6" parent="CanvasLayer/HotBar" instance=ExtResource("1_ersrd")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_f1uin")
+
+[node name="HotBarFadeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
