@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=6 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
+[ext_resource type="PackedScene" uid="uid://dj3kqm7f8yl2a" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -44,3 +45,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -9.882353)
+
+[node name="WizardTome" parent="." instance=ExtResource("2_tome")]
+transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 2.280965, 0.24576733, 0.42064905)
+inspect_scale = 1.0

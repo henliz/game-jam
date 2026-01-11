@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2m8n7k4qaqr1"]
+
+[ext_resource type="Script" uid="uid://d1k3m8n2p7qr5" path="res://Scenes/item_inspector.gd" id="1_inspector"]
+
+[node name="ItemInspector" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_inspector")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
