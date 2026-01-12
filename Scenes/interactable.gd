@@ -4,7 +4,7 @@ extends StaticBody3D
 @export var inspect_scale: float = 1.0
 @export var item : Item
 
-const DIRT_OVERLAY = preload("uid://byjiqbqg774uc")
+#const DIRT_OVERLAY = preload("uid://byjiqbqg774uc")
 
 signal picked_up(item: Interactable)
 
@@ -40,6 +40,6 @@ func spawn_instance(scene) -> Node3D:
 	var inst = scene.instantiate()
 	var mesh_instance = _find_mesh_instance(inst)
 	if mesh_instance and mesh_instance.mesh:
-		mesh_instance.material_overlay = DIRT_OVERLAY
+		#mesh_instance.material_overlay = DIRT_OVERLAY
 		self.add_child(inst)
 	return inst

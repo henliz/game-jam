@@ -1,7 +1,7 @@
 extends TextureRect
 
 var open = false
-var lerp_speed = 0.2
+var lerp_speed = 0.1
 
 var opened_position = 500.0
 var closed_position = 1200.0

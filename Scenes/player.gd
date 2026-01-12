@@ -28,7 +28,7 @@ var current_interactable: Interactable = null
 var held_item: Item = null
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
 	item_inspector.closed.connect(_on_inspection_closed)
 	Inventory.change_slot.connect(func(slot_index: int):
@@ -39,10 +39,10 @@ func _ready() -> void:
 func _unhandled_input(event):
 	if inspecting:
 		return
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(75))
+	#if event is InputEventMouseMotion:
+	#	rotate_y(-event.relative.x * SENSITIVITY)
+	#	camera.rotate_x(-event.relative.y * SENSITIVITY)
+	#	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(75))
 		
 func _physics_process(delta: float) -> void:
 	_check_interactable()

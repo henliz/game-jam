@@ -1,10 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=6 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dj3kqm7f8yl2a" path="res://Scenes/Items/Interactable.tscn" id="2_tome"]
-[ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
-[ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
-[ext_resource type="Script" uid="uid://d2mk5jnxmwri8" path="res://Scenes/Items/mesh_instance_3d.gd" id="5_o06y3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -16,23 +13,6 @@ background_mode = 2
 sky = SubResource("Sky_go701")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_k7acu"]
-
-[sub_resource type="Gradient" id="Gradient_5v1tr"]
-colors = PackedColorArray(0.33333334, 0.14509805, 0, 1, 0.33333334, 0.14509805, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h8jpk"]
-gradient = SubResource("Gradient_5v1tr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fj1v"]
-render_priority = 0
-shader = ExtResource("3_fo5ed")
-shader_parameter/clean_texture = ExtResource("4_fo5ed")
-shader_parameter/dirty_texture = SubResource("GradientTexture2D_h8jpk")
-shader_parameter/dirt_strength = 0.800000038
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fo5ed"]
 
 [node name="World" type="Node3D"]
 
@@ -58,6 +38,10 @@ size = Vector3(2.7753906, 1.4805908, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_a02cp")
 
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 0.8555812, 0.5176687, 0, -0.5176687, 0.8555812, -5.844812, 2.3695574, -1.4639664)
+size = Vector3(1, 1, 10.038818)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.4909794, 0.094547756, 0, 0.18909548, 0.9819587, -0.50000006, 0.85040116, -0.16376148, 0, 9.435643, -15.294653)
 light_energy = 2.0
@@ -73,16 +57,3 @@ inspect_scale = 1.0
 [node name="WizardTome2" parent="." instance=ExtResource("2_tome")]
 transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 1.5479045, 0.24576733, 1.0509439)
 inspect_scale = 1.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.71666485, -0.10356971, -0.4038649, -0.041771144, 0.18579894, -0.66702056, 0.50680995, -0.1311414, -0.62606895, -0.02092433, 1.4348934, -8.516451)
-mesh = SubResource("BoxMesh_k7acu")
-surface_material_override/0 = SubResource("ShaderMaterial_0fj1v")
-script = ExtResource("5_o06y3")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_fo5ed")
