@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpilbru3gb6n3"]
+
+[ext_resource type="Texture2D" uid="uid://exgmyyuuv5ol" path="res://resource/PNG-Single Sheet.png" id="1_2n7ty"]
+
+[sub_resource type="GDScript" id="GDScript_2n7ty"]
+script/source = "extends Control
+
+var lerp_speed = 0.2
+
+var closed_anchor = Vector2(1,1.5)
+var target_anchor = closed_anchor
+
+func _ready() -> void:
+	pass 
+
+
+func _process(delta: float) -> void:
+	anchor_top = target_anchor.x
+	anchor_bottom = target_anchor.y
+"
+
+[node name="Journal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_2n7ty")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1398.0
+offset_top = 417.0
+offset_right = 1758.0
+offset_bottom = 885.0
+texture = ExtResource("1_2n7ty")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1214.0
+offset_top = 444.0
+offset_right = 1254.0
+offset_bottom = 484.0
