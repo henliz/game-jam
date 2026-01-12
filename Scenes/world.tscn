@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=18 format=3 uid="uid://bm48vayfgjkp"]
 
+[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dj3kqm7f8yl2a" path="res://Scenes/Items/Interactable.tscn" id="2_tome"]
 [ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
@@ -16,6 +18,12 @@ background_mode = 2
 sky = SubResource("Sky_go701")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
+size = Vector3(1, 0.6879883, 0.3630371)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o06y3"]
+viewport_path = NodePath("Map/portal2/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_k7acu"]
 
@@ -43,20 +51,70 @@ transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 30, 0, -0.25, 0)
 use_collision = true
 
 [node name="Cabin" type="CSGBox3D" parent="Map"]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 2.26, 0)
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 2.26, -1.8212891)
 use_collision = true
+size = Vector3(1, 1, 1.3642578)
 
 [node name="RoomCut" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0.005479425)
 operation = 2
+size = Vector3(1, 1, 1.4118958)
+
+[node name="StairCut" type="CSGBox3D" parent="Map/Cabin"]
+transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, -0.30137712, 0.64672494, 0.14451142)
+operation = 2
+size = Vector3(0.32954788, 0.6997986, 0.56609726)
 
 [node name="Door" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, -0.00068359374, -0.15409827, -0.467)
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
 operation = 2
 size = Vector3(2.7753906, 1.4805908, 1)
 
+[node name="Cabin2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 7.254099, -1.8206787)
+use_collision = true
+size = Vector3(1, 1, 1.3641357)
+
+[node name="RoomCut" type="CSGBox3D" parent="Map/Cabin2"]
+transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, -0.30080566, -0.19814396, 0.27100867)
+operation = 2
+size = Vector3(0.33154297, 0.6999397, 0.84648895)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_a02cp")
+
+[node name="Stair" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 0.7664818, 0.64226604, 0, -0.64226604, 0.7664818, -3.0318222, 2.0070264, -0.36358058)
+use_collision = true
+size = Vector3(3.001709, 1, 7.447233)
+
+[node name="portal" type="Area3D" parent="Map" node_paths=PackedStringArray("connect_portal")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.7754126, 5.3263593, 0.7475873)
+script = ExtResource("1_5ukr8")
+connect_portal = NodePath("../portal2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15600586, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+
+[node name="Sprite3D" type="Sprite3D" parent="Map/portal"]
+transform = Transform3D(-0.20000002, -1.8947814e-15, -6.516828e-08, -1.894781e-15, 0.20000002, -2.1377068e-15, 6.516828e-08, -2.137706e-15, -0.20000002, -0.06897181, 0.31138134, 0.50944066)
+texture = SubResource("ViewportTexture_o06y3")
+
+[node name="portal2" type="Area3D" parent="Map"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.5537097, 0.57335246, -7.503555)
+script = ExtResource("2_o06y3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/portal2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32313967)
+shape = SubResource("BoxShape3D_5ukr8")
+
+[node name="SubViewport" type="SubViewport" parent="Map/portal2"]
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Map/portal2/SubViewport"]
+transform = Transform3D(-1, 4.440892e-16, 8.7422784e-08, -3.6203645e-08, 0.9102216, -0.41412142, -7.957409e-08, -0.41412142, -0.9102216, 2.5544097, 1.460728, -7.9246407)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.4909794, 0.094547756, 0, 0.18909548, 0.9819587, -0.50000006, 0.85040116, -0.16376148, 0, 9.435643, -15.294653)
@@ -64,7 +122,7 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -9.882353)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.5537097, 0, -9.882353)
 
 [node name="WizardTome" parent="." instance=ExtResource("2_tome")]
 transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 2.280965, 0.24576733, 0.42064905)
@@ -75,7 +133,7 @@ transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08,
 inspect_scale = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.71666485, -0.10356971, -0.4038649, -0.041771144, 0.18579894, -0.66702056, 0.50680995, -0.1311414, -0.62606895, -0.02092433, 1.4348934, -8.516451)
+transform = Transform3D(-0.71666485, -0.10356971, -0.4038649, -0.041771144, 0.18579894, -0.66702056, 0.50680995, -0.1311414, -0.62606895, 6.4998007, 0.6886574, -9.756733)
 mesh = SubResource("BoxMesh_k7acu")
 surface_material_override/0 = SubResource("ShaderMaterial_0fj1v")
 script = ExtResource("5_o06y3")
@@ -86,3 +144,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_fo5ed")
+
+[connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
+[connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
+[connection signal="body_entered" from="Map/portal2" to="Map/portal2" method="_on_body_entered"]
