@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=32 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
 [ext_resource type="Script" uid="uid://d2mk5jnxmwri8" path="res://Scenes/Items/mesh_instance_3d.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
+[ext_resource type="PackedScene" uid="uid://cgwglm4xyx3jy" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -112,7 +113,6 @@ size = Vector3(0.32954788, 0.6997986, 0.56609726)
 
 [node name="Door" type="CSGBox3D" parent="Map/Cabin"]
 transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
-visible = false
 operation = 2
 size = Vector3(2.7753906, 1.4805908, 1)
 
@@ -329,6 +329,9 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CylinderShape3D_7yui6")
+
+[node name="FloorPlan" parent="." instance=ExtResource("9_5v1tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.746777)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
