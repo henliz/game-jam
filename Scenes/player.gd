@@ -101,7 +101,7 @@ func _check_interactable():
 			current_interactable = collider
 			interact_prompt.visible = not inspecting
 			return
-		if collider.is_in_group("puzzleplate"):
+		if collider and collider.is_in_group("puzzleplate"):
 			current_rotatable = collider
 			rotate_prompt.visible = true
 			return
