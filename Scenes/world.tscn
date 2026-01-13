@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=31 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
 [ext_resource type="Script" uid="uid://d2mk5jnxmwri8" path="res://Scenes/Items/mesh_instance_3d.gd" id="5_o06y3"]
+[ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -42,6 +43,50 @@ shader_parameter/dirt_strength = 0.800000038
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fo5ed"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_o06y3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o06y3"]
+albedo_color = Color(0.7309034, 0, 0.089955576, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_k7acu"]
+material = SubResource("StandardMaterial3D_o06y3")
+text = "1"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
+albedo_color = Color(0.7294118, 0, 0.09019608, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_5v1tr"]
+material = SubResource("StandardMaterial3D_k7acu")
+text = "2"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v1tr"]
+albedo_color = Color(0.7294118, 0, 0.09019608, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_0fj1v"]
+material = SubResource("StandardMaterial3D_5v1tr")
+text = "3
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k7acu"]
+height = 0.2
+radius = 0.55
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5v1tr"]
+height = 0.2
+radius = 0.6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0fj1v"]
+height = 0.2
+radius = 0.65
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ikia7"]
+height = 0.2
+radius = 0.6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7yui6"]
+height = 0.2
+radius = 0.55
+
 [node name="World" type="Node3D"]
 
 [node name="Map" type="Node3D" parent="."]
@@ -67,6 +112,7 @@ size = Vector3(0.32954788, 0.6997986, 0.56609726)
 
 [node name="Door" type="CSGBox3D" parent="Map/Cabin"]
 transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
+visible = false
 operation = 2
 size = Vector3(2.7753906, 1.4805908, 1)
 
@@ -117,12 +163,12 @@ render_target_update_mode = 4
 transform = Transform3D(-1, 4.440892e-16, 8.7422784e-08, -3.6203645e-08, 0.9102216, -0.41412142, -7.957409e-08, -0.41412142, -0.9102216, 2.5544097, 1.460728, -7.9246407)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.4909794, 0.094547756, 0, 0.18909548, 0.9819587, -0.50000006, 0.85040116, -0.16376148, 0, 9.435643, -15.294653)
+transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.8415107, -0.50000006, 0.7287697, -0.46786177, 0, 9.435643, -15.294653)
 light_energy = 2.0
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.5537097, 0, -9.882353)
+transform = Transform3D(-0.82276946, 0, 0.56837523, 0, 1, 0, -0.56837523, 0, -0.82276946, 4.1665277, 0, -12.107364)
 
 [node name="WizardTome" parent="." instance=ExtResource("2_tome")]
 transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 2.280965, 0.24576733, 0.42064905)
@@ -145,6 +191,146 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0,
 transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_fo5ed")
 
+[node name="SpherePuzzle" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
+script = ExtResource("8_k7acu")
+
+[node name="Plate1" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]
+transform = Transform3D(1.0000001, 0, 1.39090695e-08, 0, 1, 0, -1.39090695e-08, 0, 1.0000001, 0, 0, 0)
+
+[node name="Plate" type="MeshInstance3D" parent="SpherePuzzle/Plate1"]
+transform = Transform3D(1.0999998, 0, 0, 0, 0.10000002, 0, 0, 0, 1.0999998, 0, 0.49999988, 0)
+mesh = SubResource("CylinderMesh_o06y3")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="SpherePuzzle/Plate1/Plate"]
+transform = Transform3D(-9.139654e-08, 4.37114e-08, 0.09090909, -4.808253e-07, 11, -4.3711434e-08, -1, -4.37114e-08, -5.1658912e-08, 0.5036433, 0.076351166, 0)
+rotation_edit_mode = 2
+mesh = SubResource("TextMesh_k7acu")
+
+[node name="2" type="MeshInstance3D" parent="SpherePuzzle/Plate1/Plate"]
+transform = Transform3D(-0.64282435, 0, 0.64282435, 0, 10, 0, -0.64282435, 0, -0.64282435, 0.35626268, 0.079805374, -0.33486462)
+mesh = SubResource("TextMesh_5v1tr")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="SpherePuzzle/Plate1/Plate"]
+transform = Transform3D(-0.90909094, 0, 7.9475264e-08, 0, 10, 0, -7.9475264e-08, 0, -0.90909094, 0.003893137, 0.0571537, -0.4900055)
+mesh = SubResource("TextMesh_0fj1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49999988, 0)
+shape = SubResource("CylinderShape3D_k7acu")
+
+[node name="Plate2" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]
+
+[node name="Plate" type="MeshInstance3D" parent="SpherePuzzle/Plate2"]
+transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 1.2, -0.0020000935, 0.29999995, 0)
+mesh = SubResource("CylinderMesh_o06y3")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="SpherePuzzle/Plate2/Plate"]
+transform = Transform3D(-8.378016e-08, 4.0068777e-08, 0.083333336, -4.808253e-07, 11, -4.3711434e-08, -0.9166667, -4.0068777e-08, -4.7354e-08, 0.50238657, 0.09069538, 0)
+rotation_edit_mode = 2
+mesh = SubResource("TextMesh_k7acu")
+skeleton = NodePath("../../../Plate1/Plate")
+
+[node name="2" type="MeshInstance3D" parent="SpherePuzzle/Plate2/Plate"]
+transform = Transform3D(-0.5892557, 0, 0.5892557, 0, 10, 0, -0.5892557, 0, -0.5892557, 0.35284996, -0.07400322, -0.32856083)
+mesh = SubResource("TextMesh_5v1tr")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="SpherePuzzle/Plate2/Plate"]
+transform = Transform3D(-0.8333333, 0, 7.285232e-08, 0, 10, 0, -7.285232e-08, 0, -0.8333333, 0.0052354336, -0.0280056, -0.4902563)
+mesh = SubResource("TextMesh_0fj1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("CylinderShape3D_5v1tr")
+
+[node name="Plate3" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]
+
+[node name="Plate" type="MeshInstance3D" parent="SpherePuzzle/Plate3"]
+transform = Transform3D(1.3, 0, 0, 0, 0.1, 0, 0, 0, 1.3, 0, 0.100000024, 0)
+mesh = SubResource("CylinderMesh_o06y3")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="SpherePuzzle/Plate3/Plate"]
+transform = Transform3D(-7.7335535e-08, 3.6986577e-08, 0.076923095, -4.808253e-07, 11, -4.3711434e-08, -0.8461542, -3.6986577e-08, -4.3711392e-08, 0.5011265, -0.06207657, 0)
+rotation_edit_mode = 2
+mesh = SubResource("TextMesh_k7acu")
+skeleton = NodePath("../../../Plate1/Plate")
+
+[node name="2" type="MeshInstance3D" parent="SpherePuzzle/Plate3/Plate"]
+transform = Transform3D(-0.54392844, 0, 0.54392844, 0, 10, 0, -0.54392844, 0, -0.54392844, 0.35380793, 0.04088211, -0.3361225)
+mesh = SubResource("TextMesh_5v1tr")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="SpherePuzzle/Plate3/Plate"]
+transform = Transform3D(-0.76923084, 0, 6.7248315e-08, 0, 10, 0, -6.7248315e-08, 0, -0.76923084, 0.0032942295, -0.04478264, -0.49042034)
+mesh = SubResource("TextMesh_0fj1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_0fj1v")
+
+[node name="Plate4" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]
+
+[node name="Plate" type="MeshInstance3D" parent="SpherePuzzle/Plate4"]
+transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, -0.100000024, 0)
+mesh = SubResource("CylinderMesh_o06y3")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="SpherePuzzle/Plate4/Plate"]
+transform = Transform3D(-8.378016e-08, 4.006878e-08, 0.083333336, -4.808253e-07, 11, -4.3711434e-08, -0.9166667, -4.006878e-08, -4.7354e-08, 0.5054436, -0.005739212, 0)
+rotation_edit_mode = 2
+mesh = SubResource("TextMesh_k7acu")
+skeleton = NodePath("../../../Plate1/Plate")
+
+[node name="2" type="MeshInstance3D" parent="SpherePuzzle/Plate4/Plate"]
+transform = Transform3D(-0.5892557, 0, 0.5892557, 0, 10, 0, -0.5892557, 0, -0.5892557, 0.35206962, 0.0018377304, -0.34451294)
+mesh = SubResource("TextMesh_5v1tr")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="SpherePuzzle/Plate4/Plate"]
+transform = Transform3D(-0.8333333, 0, 7.285232e-08, 0, 10, 0, -7.285232e-08, 0, -0.8333333, 0.0035686493, 0.036417007, -0.50228786)
+mesh = SubResource("TextMesh_0fj1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("CylinderShape3D_ikia7")
+
+[node name="Plate5" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]
+
+[node name="Plate" type="MeshInstance3D" parent="SpherePuzzle/Plate5"]
+transform = Transform3D(1.0999997, 0, 0, 0, 0.09999999, 0, 0, 0, 1.0999997, 0, -0.30000007, 0)
+mesh = SubResource("CylinderMesh_o06y3")
+skeleton = NodePath("../..")
+
+[node name="1" type="MeshInstance3D" parent="SpherePuzzle/Plate5/Plate"]
+transform = Transform3D(-9.139654e-08, 4.3711413e-08, 0.09090909, -4.808253e-07, 11, -4.3711434e-08, -1, -4.3711413e-08, -5.1658912e-08, 0.503741, -0.004963398, 0)
+rotation_edit_mode = 2
+mesh = SubResource("TextMesh_k7acu")
+skeleton = NodePath("../../../Plate1/Plate")
+
+[node name="2" type="MeshInstance3D" parent="SpherePuzzle/Plate5/Plate"]
+transform = Transform3D(-0.6428245, 0, 0.6428245, 0, 10, 0, -0.6428245, 0, -0.6428245, 0.35626268, 0.05262661, -0.33486462)
+mesh = SubResource("TextMesh_5v1tr")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="SpherePuzzle/Plate5/Plate"]
+transform = Transform3D(-0.90909094, 0, 7.9475264e-08, 0, 10, 0, -7.9475264e-08, 0, -0.90909094, 0.003893137, 0.025078773, -0.4904976)
+mesh = SubResource("TextMesh_0fj1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+shape = SubResource("CylinderShape3D_7yui6")
+
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal2" method="_on_body_entered"]
+[connection signal="rotate" from="Player" to="SpherePuzzle" method="_on_player_rotate"]
