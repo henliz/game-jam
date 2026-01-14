@@ -1,0 +1,84 @@
+{
+	"entries": [
+		{
+			"id": "intro_welcome",
+			"speaker": "Narrator",
+			"text": "The ancient tower stands before you, its astral lens dim and cold.",
+			"audio_path": "res://Audio/Dialogue/intro_welcome.ogg",
+			"type": "dialogue",
+			"subtype": null
+		},
+		{
+			"id": "keeper_first_artifact",
+			"speaker": "Narrator",
+			"text": "Ah, you've found your first artifact. Clean it well, and its light shall return.",
+			"audio_path": "res://Audio/Dialogue/keeper_first_artifact.ogg",
+			"type": "dialogue",
+			"subtype": null
+		},
+		{
+			"id": "context_surprised_01",
+			"speaker": "Player",
+			"text": "What was that?",
+			"audio_path": "res://Audio/Context/surprised_01.ogg",
+			"type": "context",
+			"subtype": "surprised"
+		},
+		{
+			"id": "context_surprised_02",
+			"speaker": "Player",
+			"text": "Whoa!",
+			"audio_path": "res://Audio/Context/surprised_02.ogg",
+			"type": "context",
+			"subtype": "surprised"
+		},
+		{
+			"id": "context_success_01",
+			"speaker": "Player",
+			"text": "That did it!",
+			"audio_path": "res://Audio/Context/success_01.ogg",
+			"type": "context",
+			"subtype": "success"
+		},
+		{
+			"id": "context_success_02",
+			"speaker": "Player",
+			"text": "Perfect.",
+			"audio_path": "res://Audio/Context/success_02.ogg",
+			"type": "context",
+			"subtype": "success"
+		},
+		{
+			"id": "context_confused_01",
+			"speaker": "Player",
+			"text": "Hmm, that doesn't seem right...",
+			"audio_path": "res://Audio/Context/confused_01.ogg",
+			"type": "context",
+			"subtype": "confused"
+		},
+		{
+			"id": "context_confused_02",
+			"speaker": "Player",
+			"text": "What am I missing?",
+			"audio_path": "res://Audio/Context/confused_02.ogg",
+			"type": "context",
+			"subtype": "confused"
+		},
+		{
+			"id": "context_effort_01",
+			"speaker": "Player",
+			"text": "Almost there...",
+			"audio_path": "res://Audio/Context/effort_01.ogg",
+			"type": "context",
+			"subtype": "effort"
+		},
+		{
+			"id": "context_discovery_01",
+			"speaker": "Player",
+			"text": "Interesting...",
+			"audio_path": "res://Audio/Context/discovery_01.ogg",
+			"type": "context",
+			"subtype": "discovery"
+		}
+	]
+}
