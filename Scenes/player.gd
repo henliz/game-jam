@@ -26,7 +26,6 @@ var vl : Vector3
 
 var inspecting: bool = false
 var current_interactable: Interactable = null
-var held_item: Item = null
 var current_rotatable: StaticBody3D = null
 
 signal rotate(direction,plate)
@@ -35,10 +34,6 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
 	item_inspector.closed.connect(_on_inspection_closed)
-	Inventory.change_slot.connect(func(slot_index: int):
-		var item = Inventory.hotbar[slot_index]
-		held_item = item
-	)
 
 func _unhandled_input(event):
 	if inspecting:
@@ -115,13 +110,11 @@ func _handle_interaction():
 		return
 	if Input.is_action_just_pressed("interact") and current_interactable:
 		_start_inspection(current_interactable)
-	if Input.is_action_just_pressed("pickup") and current_interactable:
-		current_interactable.pickup()
 	if Input.is_action_just_pressed("rotate_left") and current_rotatable:
 		rotate.emit("left",current_rotatable)
 	if Input.is_action_just_pressed("rotate_right") and current_rotatable:
 		rotate.emit("right",current_rotatable)
-
+		
 func _start_inspection(item: Interactable):
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

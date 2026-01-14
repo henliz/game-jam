@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dumbylc7bmwel"]
+
+[ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_tome"]
+[ext_resource type="PackedScene" uid="uid://cxwotleatrb6m" path="res://tome_brown.glb" id="2_wp8xu"]
+[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tome"]
+size = Vector3(0.35649413, 0.4, 0.090068355)
+
+[node name="WizardTome" type="StaticBody3D"]
+script = ExtResource("1_tome")
+item_name = "Wizard's Tome"
+
+[node name="tome_brown" parent="." instance=ExtResource("2_wp8xu")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012726605, 0, -0.0023291036)
+shape = SubResource("BoxShape3D_tome")
+
+[node name="Cleanable" type="Node" parent="."]
+script = ExtResource("3_cleanable")
+brush_size = 48.0
+brush_softness = 0.6

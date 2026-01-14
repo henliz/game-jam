@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq8vwnx4hfclk"]
+
+[ext_resource type="Script" path="res://Scenes/dialogue_caption.gd" id="1_caption"]
+
+[node name="DialogueCaption" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_caption")
+
+[node name="CaptionContainer" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -120.0
+offset_right = 400.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBox" type="VBoxContainer" parent="CaptionContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SpeakerLabel" type="Label" parent="CaptionContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Speaker"
+horizontal_alignment = 1
+
+[node name="TextLabel" type="Label" parent="CaptionContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Dialogue text goes here..."
+horizontal_alignment = 1
+autowrap_mode = 2
