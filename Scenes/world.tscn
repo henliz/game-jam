@@ -1,13 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=25 format=3 uid="uid://bm48vayfgjkp"]
 
-[ext_resource type="Script" path="res://Scenes/portal.gd" id="1_5ukr8"]
+[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
-[ext_resource type="Script" path="res://Scenes/portal_2.gd" id="2_o06y3"]
+[ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
-[ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
-[ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
+[ext_resource type="PackedScene" uid="uid://cgwglm4xyx3jy" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -25,23 +24,6 @@ size = Vector3(1, 0.6879883, 0.3630371)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_o06y3"]
 viewport_path = NodePath("Map/portal2/SubViewport")
-
-[sub_resource type="BoxMesh" id="BoxMesh_k7acu"]
-
-[sub_resource type="Gradient" id="Gradient_5v1tr"]
-colors = PackedColorArray(0.33333334, 0.14509805, 0, 1, 0.33333334, 0.14509805, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h8jpk"]
-gradient = SubResource("Gradient_5v1tr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fj1v"]
-render_priority = 0
-shader = ExtResource("3_fo5ed")
-shader_parameter/clean_texture = ExtResource("4_fo5ed")
-shader_parameter/dirty_texture = SubResource("GradientTexture2D_h8jpk")
-shader_parameter/dirt_strength = 0.800000038
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fo5ed"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o06y3"]
 
@@ -113,7 +95,6 @@ size = Vector3(0.32954788, 0.6997986, 0.56609726)
 
 [node name="Door" type="CSGBox3D" parent="Map/Cabin"]
 transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
-visible = false
 operation = 2
 size = Vector3(2.7753906, 1.4805908, 1)
 
@@ -170,18 +151,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
 transform = Transform3D(-0.82276946, 0, 0.56837523, 0, 1, 0, -0.56837523, 0, -0.82276946, 4.1665277, 0, -12.107364)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.71666485, -0.10356971, -0.4038649, -0.041771144, 0.18579894, -0.66702056, 0.50680995, -0.1311414, -0.62606895, 6.4998007, 0.6886574, -9.756733)
-mesh = SubResource("BoxMesh_k7acu")
-surface_material_override/0 = SubResource("ShaderMaterial_0fj1v")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000004, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_fo5ed")
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -323,7 +292,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CylinderShape3D_7yui6")
 
 [node name="WizardTome" parent="." instance=ExtResource("2_tome")]
-transform = Transform3D(0.18535185, 0.61082464, 0.9060721, -0.086026564, 1.3832102, -0.39972338, -1.4579586, -0.0039612427, 0.13877547, 7.749296, 1, -11)
+transform = Transform3D(0.1259005, 0.40396255, 0.9060703, -0.058433656, 0.9147718, -0.39972255, -0.99032044, -0.0026197284, 0.13877523, 7.749296, 1, -11)
+
+[node name="FloorPlan" parent="." instance=ExtResource("9_5v1tr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.188679)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
