@@ -68,6 +68,80 @@ func _setup_dirt_overlay() -> void:
 func _calculate_initial_state() -> void:
 	total_pixels = mask_resolution * mask_resolution
 	clean_pixels = 0
+	_build_uv_coverage_mask()
+
+var uv_coverage_mask: Image
+
+func _build_uv_coverage_mask() -> void:
+	# Create a mask of which pixels are actually covered by UV2
+	uv_coverage_mask = Image.create(mask_resolution, mask_resolution, false, Image.FORMAT_L8)
+	uv_coverage_mask.fill(Color.BLACK)
+
+	if not mesh_instance or not mesh_instance.mesh:
+		uv_coverage_mask.fill(Color.WHITE)
+		return
+
+	var mesh: Mesh = mesh_instance.mesh
+	for surface_idx in range(mesh.get_surface_count()):
+		var arrays = mesh.surface_get_arrays(surface_idx)
+		if arrays.is_empty():
+			continue
+
+		var indices = arrays[Mesh.ARRAY_INDEX]
+		var uv2_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
+			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
+		if uv2_array.is_empty() and arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv2_array = arrays[Mesh.ARRAY_TEX_UV]
+		if uv2_array.is_empty():
+			continue
+
+		# Rasterize each triangle into the coverage mask
+		var tri_count = indices.size() / 3 if indices.size() > 0 else uv2_array.size() / 3
+		for tri in range(tri_count):
+			var i0: int
+			var i1: int
+			var i2: int
+			if indices.size() > 0:
+				i0 = indices[tri * 3]
+				i1 = indices[tri * 3 + 1]
+				i2 = indices[tri * 3 + 2]
+			else:
+				i0 = tri * 3
+				i1 = tri * 3 + 1
+				i2 = tri * 3 + 2
+
+			var uv0 = uv2_array[i0]
+			var uv1 = uv2_array[i1]
+			var uv2 = uv2_array[i2]
+			_rasterize_triangle(uv0, uv1, uv2)
+
+	# Count covered pixels
+	var covered = 0
+	for y in range(mask_resolution):
+		for x in range(mask_resolution):
+			if uv_coverage_mask.get_pixel(x, y).r > 0.5:
+				covered += 1
+	print("Cleanable: UV coverage ", covered, "/", total_pixels, " pixels (", float(covered) / float(total_pixels) * 100, "%)")
+
+func _rasterize_triangle(uv0: Vector2, uv1: Vector2, uv2: Vector2) -> void:
+	# Convert UV to pixel coords
+	var p0 = Vector2(uv0.x * mask_resolution, uv0.y * mask_resolution)
+	var p1 = Vector2(uv1.x * mask_resolution, uv1.y * mask_resolution)
+	var p2 = Vector2(uv2.x * mask_resolution, uv2.y * mask_resolution)
+
+	# Get bounding box
+	var min_x = int(max(0, min(p0.x, min(p1.x, p2.x))))
+	var max_x = int(min(mask_resolution - 1, max(p0.x, max(p1.x, p2.x))))
+	var min_y = int(max(0, min(p0.y, min(p1.y, p2.y))))
+	var max_y = int(min(mask_resolution - 1, max(p0.y, max(p1.y, p2.y))))
+
+	# Rasterize with edge function
+	for y in range(min_y, max_y + 1):
+		for x in range(min_x, max_x + 1):
+			var p = Vector2(x + 0.5, y + 0.5)
+			if _point_in_triangle(p, p0, p1, p2):
+				uv_coverage_mask.set_pixel(x, y, Color.WHITE)
 
 func clean_at_uv(uv: Vector2) -> void:
 	if is_complete:
@@ -76,7 +150,6 @@ func clean_at_uv(uv: Vector2) -> void:
 	var px = int(uv.x * mask_resolution)
 	var py = int(uv.y * mask_resolution)
 	var brush_radius = int(brush_size / 2.0)
-	var pixels_cleaned = 0
 
 	for x in range(-brush_radius, brush_radius + 1):
 		for y in range(-brush_radius, brush_radius + 1):
@@ -99,23 +172,43 @@ func clean_at_uv(uv: Vector2) -> void:
 			var clean_amount = clamp(falloff, 0.0, 1.0)
 			var new_value = max(current - clean_amount, 0.0)
 
-			if current > 0.01 and new_value < 0.01:
-				pixels_cleaned += 1
-
 			mask_image.set_pixel(dx, dy, Color(new_value, new_value, new_value))
 
-	clean_pixels += pixels_cleaned
 	dirt_mask_texture.update(mask_image)
 
-	var progress = float(clean_pixels) / float(total_pixels)
+	# Calculate actual progress by measuring remaining dirt
+	var progress = _calculate_clean_progress()
 	cleaning_progress_changed.emit(progress)
 
 	if progress >= 0.95 and not is_complete:
 		is_complete = true
 		cleaning_complete.emit()
 
+func _point_in_triangle(p: Vector2, a: Vector2, b: Vector2, c: Vector2) -> bool:
+	var d1 = _sign(p, a, b)
+	var d2 = _sign(p, b, c)
+	var d3 = _sign(p, c, a)
+	var has_neg = (d1 < 0) or (d2 < 0) or (d3 < 0)
+	var has_pos = (d1 > 0) or (d2 > 0) or (d3 > 0)
+	return not (has_neg and has_pos)
+
+func _sign(p1: Vector2, p2: Vector2, p3: Vector2) -> float:
+	return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y)
+
+func _calculate_clean_progress() -> float:
+	var total_dirt: float = 0.0
+	var covered_pixels: int = 0
+	for y in range(mask_resolution):
+		for x in range(mask_resolution):
+			if uv_coverage_mask and uv_coverage_mask.get_pixel(x, y).r > 0.5:
+				covered_pixels += 1
+				total_dirt += mask_image.get_pixel(x, y).r
+	if covered_pixels == 0:
+		return 0.0
+	return 1.0 - (total_dirt / float(covered_pixels))
+
 func get_cleaning_progress() -> float:
-	return float(clean_pixels) / float(total_pixels)
+	return _calculate_clean_progress()
 
 func _find_mesh_instance(node: Node) -> MeshInstance3D:
 	if node is MeshInstance3D:

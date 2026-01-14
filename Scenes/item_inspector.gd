@@ -141,23 +141,108 @@ func _try_clean_at_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_origin = camera.project_ray_origin(mouse_pos)
 	var ray_dir = camera.project_ray_normal(mouse_pos)
-	var ray_end = ray_origin + ray_dir * 10.0
 
-	var space_state = camera.get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-	query.collide_with_bodies = true
-
-	var result = space_state.intersect_ray(query)
-	if result.is_empty():
-		return
-
-	if result.collider != inspected_node:
-		return
-
-	# Get UV from raycast - requires mesh to have collision shape matching mesh
-	var uv = _get_uv_at_point(result.position, result.normal)
+	# Try direct mesh ray intersection first (more accurate for thin geometry)
+	var uv = _raycast_mesh_for_uv(ray_origin, ray_dir)
 	if uv != Vector2(-1, -1):
 		cleanable.clean_at_uv(uv)
+
+func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
+	var mesh_instance = cleanable.mesh_instance
+	if not mesh_instance or not mesh_instance.mesh:
+		return Vector2(-1, -1)
+
+	# Transform ray to mesh local space
+	var inv_transform = mesh_instance.global_transform.affine_inverse()
+	var local_origin = inv_transform * ray_origin
+	var local_dir = (inv_transform.basis * ray_dir).normalized()
+
+	var mesh: Mesh = mesh_instance.mesh
+	var best_uv = Vector2(-1, -1)
+	var best_t = 999999.0
+
+	for surface_idx in range(mesh.get_surface_count()):
+		var arrays = mesh.surface_get_arrays(surface_idx)
+		if arrays.is_empty():
+			continue
+
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var indices = arrays[Mesh.ARRAY_INDEX]
+
+		var uv2_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
+			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
+		if uv2_array.is_empty() and arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv2_array = arrays[Mesh.ARRAY_TEX_UV]
+
+		if vertices.is_empty() or uv2_array.is_empty():
+			continue
+
+		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
+		for tri in range(tri_count):
+			var i0: int
+			var i1: int
+			var i2: int
+			if indices.size() > 0:
+				i0 = indices[tri * 3]
+				i1 = indices[tri * 3 + 1]
+				i2 = indices[tri * 3 + 2]
+			else:
+				i0 = tri * 3
+				i1 = tri * 3 + 1
+				i2 = tri * 3 + 2
+
+			var v0 = vertices[i0]
+			var v1 = vertices[i1]
+			var v2 = vertices[i2]
+
+			# Ray-triangle intersection (Möller–Trumbore)
+			var result = _ray_triangle_intersect(local_origin, local_dir, v0, v1, v2)
+			if result.x >= 0.0 and result.x < best_t:
+				best_t = result.x
+				# result.y and result.z are barycentric u,v coords
+				var u = result.y
+				var v = result.z
+				var w = 1.0 - u - v
+				var uv0 = uv2_array[i0]
+				var uv1 = uv2_array[i1]
+				var uv2_coord = uv2_array[i2]
+				best_uv = uv0 * w + uv1 * u + uv2_coord * v
+				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
+
+	return best_uv
+
+func _ray_triangle_intersect(ray_origin: Vector3, ray_dir: Vector3, v0: Vector3, v1: Vector3, v2: Vector3) -> Vector3:
+	# Returns Vector3(t, u, v) where t is distance along ray, u/v are barycentric coords
+	# Returns Vector3(-1, 0, 0) if no intersection
+	var edge1 = v1 - v0
+	var edge2 = v2 - v0
+	var h = ray_dir.cross(edge2)
+	var a = edge1.dot(h)
+
+	# Check if ray is parallel to triangle (use small epsilon for thin triangles)
+	if abs(a) < 0.0000001:
+		return Vector3(-1, 0, 0)
+
+	var f = 1.0 / a
+	var s = ray_origin - v0
+	var u = f * s.dot(h)
+
+	if u < 0.0 or u > 1.0:
+		return Vector3(-1, 0, 0)
+
+	var q = s.cross(edge1)
+	var v = f * ray_dir.dot(q)
+
+	if v < 0.0 or u + v > 1.0:
+		return Vector3(-1, 0, 0)
+
+	var t = f * edge2.dot(q)
+
+	if t > 0.0001:  # Ray intersection (not behind origin)
+		return Vector3(t, u, v)
+
+	return Vector3(-1, 0, 0)
 
 func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 	var mesh_instance = cleanable.mesh_instance
@@ -195,7 +280,7 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 			print("UV lookup: Surface ", surface_idx, " missing data - verts:", vertices.size(), " uvs:", uv2_array.size())
 			continue
 
-		# Check each triangle - find the closest one
+		# Check each triangle - find the closest one by actual distance to triangle
 		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
 		for tri in range(tri_count):
 			var i0: int
@@ -214,24 +299,73 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 			var v1 = vertices[i1]
 			var v2 = vertices[i2]
 
-			# Calculate distance to triangle center
-			var tri_center = (v0 + v1 + v2) / 3.0
-			var dist = local_point.distance_to(tri_center)
+			# Get closest point on triangle and distance
+			var closest = _closest_point_on_triangle(local_point, v0, v1, v2)
+			var dist = local_point.distance_to(closest)
 
 			if dist < best_dist:
-				var bary = _get_barycentric(local_point, v0, v1, v2)
-				# More lenient check - just needs to be roughly on the triangle
-				if bary.x >= -0.5 and bary.y >= -0.5 and bary.z >= -0.5 and bary.x + bary.y + bary.z > 0.5:
-					best_dist = dist
-					var uv0 = uv2_array[i0]
-					var uv1 = uv2_array[i1]
-					var uv2_coord = uv2_array[i2]
-					best_uv = uv0 * bary.x + uv1 * bary.y + uv2_coord * bary.z
-					best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
+				best_dist = dist
+				# Calculate barycentric coords for the closest point to interpolate UVs
+				var bary = _get_barycentric(closest, v0, v1, v2)
+				var uv0 = uv2_array[i0]
+				var uv1 = uv2_array[i1]
+				var uv2_coord = uv2_array[i2]
+				best_uv = uv0 * bary.x + uv1 * bary.y + uv2_coord * bary.z
+				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
 
 	if best_uv != Vector2(-1, -1):
 		print("UV lookup: Found UV ", best_uv, " at dist ", best_dist)
 	return best_uv
+
+func _closest_point_on_triangle(p: Vector3, a: Vector3, b: Vector3, c: Vector3) -> Vector3:
+	# Edge vectors
+	var ab = b - a
+	var ac = c - a
+	var ap = p - a
+
+	# Check if P is in vertex region outside A
+	var d1 = ab.dot(ap)
+	var d2 = ac.dot(ap)
+	if d1 <= 0.0 and d2 <= 0.0:
+		return a  # Barycentric coordinates (1,0,0)
+
+	# Check if P is in vertex region outside B
+	var bp = p - b
+	var d3 = ab.dot(bp)
+	var d4 = ac.dot(bp)
+	if d3 >= 0.0 and d4 <= d3:
+		return b  # Barycentric coordinates (0,1,0)
+
+	# Check if P is in edge region of AB
+	var vc = d1 * d4 - d3 * d2
+	if vc <= 0.0 and d1 >= 0.0 and d3 <= 0.0:
+		var v = d1 / (d1 - d3)
+		return a + ab * v  # Barycentric coordinates (1-v,v,0)
+
+	# Check if P is in vertex region outside C
+	var cp = p - c
+	var d5 = ab.dot(cp)
+	var d6 = ac.dot(cp)
+	if d6 >= 0.0 and d5 <= d6:
+		return c  # Barycentric coordinates (0,0,1)
+
+	# Check if P is in edge region of AC
+	var vb = d5 * d2 - d1 * d6
+	if vb <= 0.0 and d2 >= 0.0 and d6 <= 0.0:
+		var w = d2 / (d2 - d6)
+		return a + ac * w  # Barycentric coordinates (1-w,0,w)
+
+	# Check if P is in edge region of BC
+	var va = d3 * d6 - d5 * d4
+	if va <= 0.0 and (d4 - d3) >= 0.0 and (d5 - d6) >= 0.0:
+		var w = (d4 - d3) / ((d4 - d3) + (d5 - d6))
+		return b + (c - b) * w  # Barycentric coordinates (0,1-w,w)
+
+	# P is inside face region - project onto triangle plane
+	var denom = 1.0 / (va + vb + vc)
+	var v_coord = vb * denom
+	var w_coord = vc * denom
+	return a + ab * v_coord + ac * w_coord
 
 func _get_barycentric(p: Vector3, a: Vector3, b: Vector3, c: Vector3) -> Vector3:
 	var v0 = b - a
