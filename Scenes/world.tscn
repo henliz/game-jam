@@ -1,9 +1,9 @@
 [gd_scene load_steps=31 format=3 uid="uid://bm48vayfgjkp"]
 
-[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
+[ext_resource type="Script" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
-[ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
-[ext_resource type="PackedScene" uid="uid://dj3kqm7f8yl2a" path="res://Scenes/Items/Interactable.tscn" id="2_tome"]
+[ext_resource type="Script" path="res://Scenes/portal_2.gd" id="2_o06y3"]
+[ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
 [ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
 [ext_resource type="Script" uid="uid://d2mk5jnxmwri8" path="res://Scenes/Items/mesh_instance_3d.gd" id="5_o06y3"]
@@ -170,19 +170,10 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
 transform = Transform3D(-0.82276946, 0, 0.56837523, 0, 1, 0, -0.56837523, 0, -0.82276946, 4.1665277, 0, -12.107364)
 
-[node name="WizardTome" parent="." instance=ExtResource("2_tome")]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 2.280965, 0.24576733, 0.42064905)
-inspect_scale = 1.0
-
-[node name="WizardTome2" parent="." instance=ExtResource("2_tome")]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 1.5479045, 0.24576733, 1.0509439)
-inspect_scale = 1.0
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.71666485, -0.10356971, -0.4038649, -0.041771144, 0.18579894, -0.66702056, 0.50680995, -0.1311414, -0.62606895, 6.4998007, 0.6886574, -9.756733)
 mesh = SubResource("BoxMesh_k7acu")
 surface_material_override/0 = SubResource("ShaderMaterial_0fj1v")
-script = ExtResource("5_o06y3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
@@ -329,6 +320,9 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpherePuzzle/Plate5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CylinderShape3D_7yui6")
+
+[node name="WizardTome" parent="." instance=ExtResource("2_tome")]
+transform = Transform3D(0.18535185, 0.61082464, 0.9060721, -0.086026564, 1.3832102, -0.39972338, -1.4579586, -0.0039612427, 0.13877547, 7.749296, 1, -11)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
