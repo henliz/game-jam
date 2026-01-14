@@ -4,7 +4,7 @@
 			"id": "intro_welcome",
 			"speaker": "Narrator",
 			"text": "The ancient tower stands before you, its astral lens dim and cold.",
-			"audio_path": "res://Audio/Dialogue/intro_welcome.ogg",
+			"audio_path": "res://Audio/Dialogue/file_example.ogg",
 			"type": "dialogue",
 			"subtype": null
 		},

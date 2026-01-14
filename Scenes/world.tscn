@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="Script" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
 [ext_resource type="Shader" uid="uid://bf424up33cmgn" path="res://resource/dirt_clean_shader.gdshader" id="3_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="4_fo5ed"]
-[ext_resource type="Script" uid="uid://d2mk5jnxmwri8" path="res://Scenes/Items/mesh_instance_3d.gd" id="5_o06y3"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
@@ -88,6 +88,7 @@ height = 0.2
 radius = 0.55
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_world")
 
 [node name="Map" type="Node3D" parent="."]
 

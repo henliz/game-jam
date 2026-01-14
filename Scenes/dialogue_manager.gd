@@ -14,7 +14,7 @@ var audio_player: AudioStreamPlayer
 var current_entry: Dictionary = {}
 var is_playing: bool = false
 
-@onready var caption_ui: Control
+var caption_ui: DialogueCaption
 
 
 func _ready() -> void:
@@ -137,7 +137,7 @@ func _play_entry(entry: Dictionary) -> bool:
 
 func _start_text_timer(entry: Dictionary) -> void:
 	var text: String = entry.get("text", "")
-	var duration := max(2.0, text.length() * 0.05)
+	var duration: float = max(2.0, text.length() * 0.05)
 	get_tree().create_timer(duration).timeout.connect(_on_audio_finished)
 
 

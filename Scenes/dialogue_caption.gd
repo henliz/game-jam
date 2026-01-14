@@ -6,7 +6,7 @@ class_name DialogueCaption
 @onready var text_label: Label = $CaptionContainer/VBox/TextLabel
 
 var tween: Tween
-var is_visible: bool = false
+var caption_visible: bool = false
 
 
 func _ready() -> void:
@@ -29,7 +29,7 @@ func show_caption(speaker: String, text: String) -> void:
 
 	tween = create_tween()
 	tween.tween_property(container, "modulate:a", 1.0, 0.2)
-	is_visible = true
+	caption_visible = true
 
 
 func hide_caption() -> void:
@@ -39,4 +39,4 @@ func hide_caption() -> void:
 	tween = create_tween()
 	tween.tween_property(container, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(func(): container.visible = false)
-	is_visible = false
+	caption_visible = false
