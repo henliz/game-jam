@@ -28,7 +28,8 @@ var inspecting: bool = false
 var current_interactable: Interactable = null
 var current_rotatable: StaticBody3D = null
 
-signal rotate(direction,plate)
+signal rotate_plate(direction,plate)
+signal rotate_pipe(direction,pipe)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -96,7 +97,7 @@ func _check_interactable():
 			current_interactable = collider
 			interact_prompt.visible = not inspecting
 			return
-		if collider and collider.is_in_group("puzzleplate"):
+		if collider and (collider.is_in_group("puzzleplate") or collider.is_in_group("puzzlepipe")):
 			current_rotatable = collider
 			rotate_prompt.visible = true
 			return
@@ -110,10 +111,17 @@ func _handle_interaction():
 		return
 	if Input.is_action_just_pressed("interact") and current_interactable:
 		_start_inspection(current_interactable)
-	if Input.is_action_just_pressed("rotate_left") and current_rotatable:
-		rotate.emit("left",current_rotatable)
-	if Input.is_action_just_pressed("rotate_right") and current_rotatable:
-		rotate.emit("right",current_rotatable)
+	if current_rotatable:
+		if current_rotatable.is_in_group("puzzleplate"):
+			if Input.is_action_just_pressed("rotate_left"):
+				rotate_plate.emit("left",current_rotatable)
+			if Input.is_action_just_pressed("rotate_right"):
+				rotate_plate.emit("right",current_rotatable)
+		if current_rotatable.is_in_group("puzzlepipe"):
+			if Input.is_action_just_pressed("rotate_left"):
+				rotate_pipe.emit("left",current_rotatable)
+			if Input.is_action_just_pressed("rotate_right"):
+				rotate_pipe.emit("right",current_rotatable)
 		
 func _start_inspection(item: Interactable):
 	inspecting = true

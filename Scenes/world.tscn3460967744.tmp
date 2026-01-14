@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=27 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
-[ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 [ext_resource type="PackedScene" uid="uid://cgwglm4xyx3jy" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 
@@ -70,11 +69,9 @@ radius = 0.6
 height = 0.2
 radius = 0.55
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_k7acu"]
+[sub_resource type="BoxMesh" id="BoxMesh_o06y3"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_c5t2i"]
-height = 0.39886475
-radius = 0.1
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7acu"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_world")
@@ -104,11 +101,6 @@ size = Vector3(0.32954788, 0.6997986, 0.56609726)
 transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
 operation = 2
 size = Vector3(2.7753906, 1.4805908, 1)
-
-[node name="AlchemyCut" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.20151357, -0.15491915, 0.62438595)
-operation = 2
-size = Vector3(1.9912109, 0.52049255, 1)
 
 [node name="Cabin2" type="CSGBox3D" parent="Map"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 7.254099, -1.8206787)
@@ -162,7 +154,7 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-0.82276946, 0, 0.56837523, 0, 1, 0, -0.56837523, 0, -0.82276946, 2.921622, 0, -11.80215)
+transform = Transform3D(-0.82276946, 0, 0.56837523, 0, 1, 0, -0.56837523, 0, -0.82276946, 2.921622, 0, -1.1732502)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -304,63 +296,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("CylinderShape3D_7yui6")
 
 [node name="AlchemyPuzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.131348, 1.3947718, 4.7457404)
-script = ExtResource("6_k7acu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6230707, 0.52295864, 3.6560102)
 
-[node name="Pipe1" type="StaticBody3D" parent="AlchemyPuzzle" groups=["puzzlepipe"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6794622, 0.08028495, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="AlchemyPuzzle"]
+transform = Transform3D(2.759956, 0, 0, 0, 1, 0, 0, 0, 1, -1.0678406, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/Pipe1"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("CylinderMesh_k7acu")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/StaticBody3D"]
+mesh = SubResource("BoxMesh_o06y3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/Pipe1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
-shape = SubResource("CylinderShape3D_c5t2i")
-
-[node name="Pipe2" type="StaticBody3D" parent="AlchemyPuzzle" groups=["puzzlepipe"]]
-transform = Transform3D(0, -1.0000001, 0, 1.0000001, 0, 0, 0, 0, 1, 0.28200006, 0.08000004, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/Pipe2"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("CylinderMesh_k7acu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/Pipe2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
-shape = SubResource("CylinderShape3D_c5t2i")
-
-[node name="Pipe3" type="StaticBody3D" parent="AlchemyPuzzle" groups=["puzzlepipe"]]
-transform = Transform3D(1, -1.7484555e-07, 0, 1.7484555e-07, 1, 0, 0, 0, 1, -0.11803603, 0.08028495, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/Pipe3"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("CylinderMesh_k7acu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/Pipe3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
-shape = SubResource("CylinderShape3D_c5t2i")
-
-[node name="Pipe4" type="StaticBody3D" parent="AlchemyPuzzle" groups=["puzzlepipe"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.516248, 0.08028495, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/Pipe4"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("CylinderMesh_k7acu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/Pipe4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
-shape = SubResource("CylinderShape3D_c5t2i")
-
-[node name="Pipe5" type="StaticBody3D" parent="AlchemyPuzzle" groups=["puzzlepipe"]]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.91474223, 0.08028495, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AlchemyPuzzle/Pipe5"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = SubResource("CylinderMesh_k7acu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/Pipe5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
-shape = SubResource("CylinderShape3D_c5t2i")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlchemyPuzzle/StaticBody3D"]
+shape = SubResource("BoxShape3D_k7acu")
 
 [node name="WizardTome" parent="." instance=ExtResource("2_tome")]
 transform = Transform3D(0.1259005, 0.40396255, 0.9060703, -0.058433656, 0.9147718, -0.39972255, -0.99032044, -0.0026197284, 0.13877523, 7.749296, 1, -11)
@@ -371,5 +316,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.188679)
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal2" method="_on_body_entered"]
-[connection signal="rotate_pipe" from="Player" to="AlchemyPuzzle" method="_on_player_rotate"]
-[connection signal="rotate_plate" from="Player" to="SpherePuzzle" method="_on_player_rotate"]
+[connection signal="rotate" from="Player" to="SpherePuzzle" method="_on_player_rotate"]
