@@ -4,7 +4,7 @@ extends CanvasLayer
 signal opened(item: Node3D)
 signal closed
 signal cleaning_progress_updated(progress: float)
-signal item_cleaned
+signal item_cleaned(cleaned_item: Cleanable)
 
 const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
 
@@ -412,7 +412,7 @@ func _on_cleaning_complete() -> void:
 	progress_label.text = "Cleaned!"
 	if cleanable:
 		cleanable.mark_cleaned_in_save()
-	item_cleaned.emit()
+	item_cleaned.emit(cleanable)
 
 func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)
