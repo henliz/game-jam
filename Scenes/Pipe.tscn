@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqh3otlw33et3"]
+
+[ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_8f5oa"]
+[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_yp7jp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nq301"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t5chl"]
+height = 0.39886475
+radius = 0.1
+
+[node name="Pipe" type="StaticBody3D"]
+script = ExtResource("1_8f5oa")
+metadata/_custom_type_script = "uid://dgku75f4jy8wp"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("CylinderMesh_nq301")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
+shape = SubResource("CylinderShape3D_t5chl")
+
+[node name="Cleanable" type="Node" parent="."]
+script = ExtResource("3_yp7jp")
+brush_size = 48.0
+brush_softness = 0.6
