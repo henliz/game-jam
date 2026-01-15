@@ -20,8 +20,17 @@ var dirt_mesh: MeshInstance3D
 var total_pixels: int = 0
 var clean_pixels: int = 0
 var is_complete: bool = false
+var item_id: String = ""
 
 func _ready() -> void:
+	_resolve_item_id()
+
+	# Check if already cleaned in GameState
+	if item_id and GameState.is_item_cleaned(item_id):
+		is_complete = true
+		print("Cleanable: ", item_id, " already cleaned, skipping dirt setup")
+		return
+
 	# Search from parent to find sibling MeshInstance3D nodes
 	var search_root = get_parent() if get_parent() else self
 	mesh_instance = _find_mesh_instance(search_root)
@@ -226,3 +235,18 @@ func set_dirt_texture(texture: Texture2D) -> void:
 func set_dirt_tint(color: Color) -> void:
 	if overlay_material:
 		overlay_material.set_shader_parameter("dirt_tint", color)
+
+
+func _resolve_item_id() -> void:
+	var parent = get_parent()
+	if parent and parent is Interactable:
+		item_id = parent.item_name
+	elif parent:
+		item_id = parent.name
+	print("Cleanable: Resolved item_id = ", item_id)
+
+
+func mark_cleaned_in_save() -> void:
+	if item_id:
+		GameState.set_item_cleaned(item_id, true)
+		GameState.save_game()

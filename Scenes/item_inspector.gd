@@ -1,6 +1,7 @@
 class_name ItemInspector
 extends CanvasLayer
 
+signal opened(item: Node3D)
 signal closed
 signal cleaning_progress_updated(progress: float)
 signal item_cleaned
@@ -38,8 +39,10 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	original_parent = item.get_parent()
 	original_transform = item.global_transform
 
+	opened.emit(item)
+
 	cleanable = _find_cleanable(item)
-	if cleanable:
+	if cleanable and not cleanable.is_complete:
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
 		cleanable.cleaning_complete.connect(_on_cleaning_complete)
 		cleaning_ui.visible = true
@@ -124,14 +127,14 @@ func _input(event):
 			is_dragging = event.pressed
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_cleaning = event.pressed
-			if is_cleaning and cleanable:
+			if is_cleaning and cleanable and not cleanable.is_complete:
 				_try_clean_at_mouse()
 
 	if event is InputEventMouseMotion:
 		if is_dragging:
 			inspected_node.rotate_y(event.relative.x * rotation_sensitivity)
 			inspected_node.rotate_x(event.relative.y * rotation_sensitivity)
-		elif is_cleaning and cleanable:
+		elif is_cleaning and cleanable and not cleanable.is_complete:
 			_try_clean_at_mouse()
 
 	if event.is_action_pressed("interact"):
@@ -404,6 +407,8 @@ func _on_cleaning_progress(progress: float) -> void:
 
 func _on_cleaning_complete() -> void:
 	progress_label.text = "Cleaned!"
+	if cleanable:
+		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit()
 
 func _update_progress_label(progress: float) -> void:
