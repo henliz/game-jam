@@ -38,12 +38,6 @@ func _on_inspector_opened(item: Node3D) -> void:
 
 
 func _on_inspector_closed() -> void:
-	# Check if the tome's cleanable is complete
-	if not wizard_tome:
-		return
-
-	var cleanable = wizard_tome.get_node_or_null("Cleanable") as Cleanable
-	if cleanable and not cleanable.is_complete:
-		# Item isn't fully cleaned yet, animate workstation back out
-		if workstation_animator and workstation_animator.is_animated_in:
-			workstation_animator.animate_out()
+	# Animate workstation out whenever inspector closes (if it's currently animated in)
+	if workstation_animator and workstation_animator.is_animated_in:
+		workstation_animator.animate_out()

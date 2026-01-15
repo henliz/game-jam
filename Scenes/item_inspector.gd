@@ -6,6 +6,8 @@ signal closed
 signal cleaning_progress_updated(progress: float)
 signal item_cleaned
 
+const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
+
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
@@ -40,6 +42,7 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	original_transform = item.global_transform
 
 	opened.emit(item)
+	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
 
 	cleanable = _find_cleanable(item)
 	if cleanable and not cleanable.is_complete:

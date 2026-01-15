@@ -9,10 +9,26 @@
 			"subtype": null
 		},
 		{
-			"id": "keeper_first_artifact",
+			"id": "first_artifact",
 			"speaker": "Narrator",
 			"text": "Ah, you've found your first artifact. Clean it well, and its light shall return.",
 			"audio_path": "res://Audio/Dialogue/keeper_first_artifact.ogg",
+			"type": "dialogue",
+			"subtype": null
+		},
+		{
+			"id": "journal_first_open",
+			"speaker": "Player",
+			"text": "I should probably jot this down in my journal...",
+			"audio_path": "res://Audio/Dialogue/FirstJournal.ogg",
+			"type": "dialogue",
+			"subtype": null
+		},
+		{
+			"id": "artifact_first_clean",
+			"speaker": "Player",
+			"text": "Feels much tidier already!",
+			"audio_path": "res://Audio/Dialogue/FirstClean.ogg",
 			"type": "dialogue",
 			"subtype": null
 		},

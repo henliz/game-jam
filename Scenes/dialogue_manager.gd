@@ -184,3 +184,15 @@ func get_all_subtypes(type: String) -> Array:
 
 func reload_dialogue_data() -> void:
 	_load_dialogue_data()
+
+
+func try_trigger_dialogue(trigger_id: String, dialogue_id: String) -> bool:
+	if GameState.has_dialogue_triggered(trigger_id):
+		return false
+
+	if not play(dialogue_id):
+		return false
+
+	GameState.mark_dialogue_triggered(trigger_id)
+	GameState.save_game()
+	return true

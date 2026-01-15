@@ -22,12 +22,25 @@ signal animation_completed
 
 @export var stagger_delay: float = 0.15
 
+@export_group("Audio")
+@export var fall_sounds: Array[AudioStream] = []
+@export var rise_sounds: Array[AudioStream] = []
+
 var is_animated_in: bool = false
 var target_positions: Dictionary = {}
+var audio_player: AudioStreamPlayer
+var current_sound_index: int = -1
 
 func _ready() -> void:
+	_setup_audio()
 	_store_target_positions()
 	_hide_elements()
+
+
+func _setup_audio() -> void:
+	audio_player = AudioStreamPlayer.new()
+	audio_player.bus = "SFX" if AudioServer.get_bus_index("SFX") != -1 else "Master"
+	add_child(audio_player)
 
 
 func _store_target_positions() -> void:
@@ -74,6 +87,8 @@ func animate_in() -> void:
 
 	is_animated_in = true
 	animation_started.emit()
+
+	_play_sound_forward()
 
 	var total_time: float = 0.0
 
@@ -139,6 +154,8 @@ func _tween_slide(node: Node3D, target_pos: Vector3, duration: float, delay: flo
 func animate_out() -> void:
 	if not is_animated_in:
 		return
+
+	_play_sound_rise()
 
 	var total_time: float = 0.0
 
@@ -210,3 +227,27 @@ func _on_animate_out_complete() -> void:
 func reset() -> void:
 	is_animated_in = false
 	_hide_elements()
+
+
+func _play_sound_forward() -> void:
+	if fall_sounds.is_empty():
+		return
+
+	current_sound_index = randi() % fall_sounds.size()
+	var sound = fall_sounds[current_sound_index]
+
+	audio_player.stream = sound
+	audio_player.pitch_scale = 1.0
+	audio_player.play()
+
+
+func _play_sound_rise() -> void:
+	if rise_sounds.is_empty() or current_sound_index < 0:
+		return
+
+	# Use the matching rise sound for the fall sound that was played
+	if current_sound_index < rise_sounds.size():
+		var sound = rise_sounds[current_sound_index]
+		audio_player.stream = sound
+		audio_player.pitch_scale = 1.0
+		audio_player.play()

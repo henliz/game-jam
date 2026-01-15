@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=36 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -15,7 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://d1mc37c78aiy7" path="res://resource/Workstation/Candle.glb" id="13_axeuq"]
 [ext_resource type="PackedScene" uid="uid://dgj4crcgiyemb" path="res://resource/Workstation/Skull Candle.glb" id="14_1cojt"]
 [ext_resource type="PackedScene" uid="uid://beapdo4qi7ttl" path="res://resource/Workstation/Mineral.glb" id="15_yq1aw"]
-[ext_resource type="Script" path="res://Scenes/workstation_animator.gd" id="16_wsanim"]
+[ext_resource type="Script" uid="uid://dy6xo6jisemoo" path="res://Scenes/workstation_animator.gd" id="16_wsanim"]
+[ext_resource type="AudioStream" path="res://Audio/SFX/Workbench/WorkbenchFall1.wav" id="17_fall1"]
+[ext_resource type="AudioStream" path="res://Audio/SFX/Workbench/WorkbenchFall2.wav" id="18_fall2"]
+[ext_resource type="AudioStream" path="res://Audio/SFX/Workbench/WorkbenchRise1.wav" id="19_rise1"]
+[ext_resource type="AudioStream" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="20_rise2"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_a02cp"]
 
@@ -385,6 +389,8 @@ walls_node = NodePath("../Walls")
 rug_node = NodePath("../Rug")
 table_node = NodePath("../Table")
 props = [NodePath("../Candle"), NodePath("../SkullCandle"), NodePath("../Mineral")]
+fall_sounds = [ExtResource("17_fall1"), ExtResource("18_fall2")]
+rise_sounds = [ExtResource("19_rise1"), ExtResource("20_rise2")]
 
 [node name="Rug" parent="Workbench" instance=ExtResource("9_kn0ld")]
 transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 7.6301126, 0.00086675724, -10.831082)

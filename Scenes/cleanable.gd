@@ -22,6 +22,8 @@ var clean_pixels: int = 0
 var is_complete: bool = false
 var item_id: String = ""
 
+const FIRST_CLEAN_DIALOGUE_ID := "artifact_first_clean"
+
 func _ready() -> void:
 	_resolve_item_id()
 
@@ -192,6 +194,7 @@ func clean_at_uv(uv: Vector2) -> void:
 	if progress >= 0.95 and not is_complete:
 		is_complete = true
 		cleaning_complete.emit()
+		DialogueManager.try_trigger_dialogue("item_first_clean", FIRST_CLEAN_DIALOGUE_ID)
 
 func _point_in_triangle(p: Vector2, a: Vector2, b: Vector2, c: Vector2) -> bool:
 	var d1 = _sign(p, a, b)

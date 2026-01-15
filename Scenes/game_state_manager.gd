@@ -39,10 +39,9 @@ var _default_state: Dictionary = {
 
 	# Cleanable items (store in puzzles above or here you can add keys by item_name, such as "Wizard's Tome")
 	 "cleaned_items": {},
-	
-	# Replace the above entry in order to test save state system
-	# "cleaned_items": {"Wizard's Tome": true},
-	
+
+	# Dialogue triggers that have already fired (trigger_id -> true)
+	"triggered_dialogues": {},
 }
 
 
@@ -130,6 +129,17 @@ func is_item_cleaned(item_id: String) -> bool:
 func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 	state.cleaned_items[item_id] = cleaned
 	state_changed.emit("cleaned_items", state.cleaned_items)
+
+
+# --- Dialogue Triggers ---
+
+func has_dialogue_triggered(trigger_id: String) -> bool:
+	return state.triggered_dialogues.get(trigger_id, false)
+
+
+func mark_dialogue_triggered(trigger_id: String) -> void:
+	state.triggered_dialogues[trigger_id] = true
+	state_changed.emit("triggered_dialogues", state.triggered_dialogues)
 
 
 # --- Save/Load ---
