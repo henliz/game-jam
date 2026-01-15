@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=53 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -20,6 +20,10 @@
 [ext_resource type="AudioStream" uid="uid://b6kydpnqksja2" path="res://Audio/SFX/Workbench/WorkbenchFall2.wav" id="18_fall2"]
 [ext_resource type="AudioStream" uid="uid://cooh7yg2v7b0b" path="res://Audio/SFX/Workbench/WorkbenchRise1.wav" id="19_rise1"]
 [ext_resource type="AudioStream" uid="uid://btjbmflr0rg5h" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="20_rise2"]
+[ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
+albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
 
 [sub_resource type="Gradient" id="Gradient_1cojt"]
 offsets = PackedFloat32Array(0, 0.14516129, 0.8548387, 0.9892473)
@@ -30,7 +34,7 @@ gradient = SubResource("Gradient_1cojt")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1cojt"]
 sky_top_color = Color(0.16504008, 0.37990576, 0.72235507, 1)
-sky_horizon_color = Color(0.8965559, 0.89945114, 0.90523154, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
 sky_energy_multiplier = 1.2
 
 [sub_resource type="Sky" id="Sky_go701"]
@@ -39,18 +43,19 @@ sky_material = SubResource("ProceduralSkyMaterial_1cojt")
 [sub_resource type="Environment" id="Environment_a02cp"]
 background_mode = 2
 sky = SubResource("Sky_go701")
-ambient_light_sky_contribution = 0.6
-reflected_light_source = 2
+ambient_light_source = 3
 tonemap_mode = 1
 glow_enabled = true
-glow_intensity = 0.5
+glow_intensity = 0.3
+glow_bloom = 0.1
+glow_hdr_scale = 4.0
 fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.37815937, 0.5099612, 0.68463117, 1)
+fog_light_color = Color(0.50624764, 0.6314242, 0.7977032, 1)
 fog_light_energy = 2.0
-fog_sun_scatter = 0.5
-fog_sky_affect = 0.1
+fog_sun_scatter = 0.2
+fog_density = 0.02
 fog_height = 3.0
+fog_height_density = 0.05
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
 
@@ -110,14 +115,66 @@ radius = 0.55
 height = 0.39886475
 radius = 0.1
 
+[sub_resource type="Gradient" id="Gradient_pyn1s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3254902)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_no8kt"]
+gradient = SubResource("Gradient_pyn1s")
+
+[sub_resource type="Curve" id="Curve_xbk3s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13297874, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.48314613), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i4fjy"]
+curve = SubResource("Curve_xbk3s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1cojt"]
+emission_shape = 3
+emission_box_extents = Vector3(32, 2, 32)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, -6, 0)
+radial_accel_min = -4.0000024
+radial_accel_max = 3.9999976
+tangential_accel_min = -8.000002
+tangential_accel_max = 7.9999976
+damping_max = 6.0000005
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_i4fjy")
+color = Color(0.9691369, 0.9691369, 0.9691368, 1)
+color_ramp = SubResource("GradientTexture1D_no8kt")
+
+[sub_resource type="Gradient" id="Gradient_yq1aw"]
+offsets = PackedFloat32Array(0.58433735, 0.6626506)
+colors = PackedColorArray(1, 1, 1, 1, 0.30323282, 0.30323285, 0.30323276, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pyn1s"]
+gradient = SubResource("Gradient_yq1aw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no8kt"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_pyn1s")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_xbk3s"]
+material = SubResource("StandardMaterial3D_no8kt")
+size = Vector2(0.6, 0.6)
+
 [node name="World" type="Node3D"]
 script = ExtResource("1_world")
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGBox3D" parent="Map"]
-transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 30, 0, -0.25, 0)
+transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0, -0.25, 0)
 use_collision = true
+material = SubResource("StandardMaterial3D_yq1aw")
 
 [node name="Cabin" type="CSGBox3D" parent="Map"]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 2.26, -1.8212891)
@@ -442,6 +499,18 @@ transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0,
 
 [node name="Mineral" parent="Workbench" instance=ExtResource("15_yq1aw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.872609, 2.026741, -11.131203)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+amount = 512
+lifetime = 3.5
+visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)
+process_material = SubResource("ParticleProcessMaterial_1cojt")
+draw_pass_1 = SubResource("QuadMesh_xbk3s")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("21_yq1aw")
+autoplay = true
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
