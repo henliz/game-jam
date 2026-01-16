@@ -287,7 +287,7 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 			continue
 
 		# Check each triangle - find the closest one by actual distance to triangle
-		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int

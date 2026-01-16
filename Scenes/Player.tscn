@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuqr7erdlouqh"]
+[gd_scene load_steps=8 format=3 uid="uid://cuqr7erdlouqh"]
 
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
 [ext_resource type="Texture2D" uid="uid://ddw6so5jr38ps" path="res://resource/book_1.png" id="3_dewec"]
 [ext_resource type="Script" uid="uid://csqdjp6m2522o" path="res://Scenes/journal.gd" id="4_5ixxa"]
+[ext_resource type="Script" uid="uid://c4j2eecr4gqp6" path="res://Scenes/repair_mode.gd" id="5_5ixxa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kyqiw"]
 
@@ -83,3 +84,6 @@ rotation = 0.07400946
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_dewec")
 script = ExtResource("4_5ixxa")
+
+[node name="RepairMode" type="Node3D" parent="."]
+script = ExtResource("5_5ixxa")

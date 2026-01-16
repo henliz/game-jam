@@ -64,7 +64,7 @@ adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
 size = Vector3(1, 0.6879883, 0.3630371)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_o06y3"]
-viewport_path = NodePath("Map/portal2/SubViewport")
+viewport_path = NodePath("Map/portal2/CameraViewport")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o06y3"]
 
@@ -245,12 +245,12 @@ script = ExtResource("2_o06y3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32313967)
 shape = SubResource("BoxShape3D_5ukr8")
 
-[node name="SubViewport" type="SubViewport" parent="Map/portal2"]
+[node name="CameraViewport" type="SubViewport" parent="Map/portal2"]
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="Map/portal2/SubViewport"]
-transform = Transform3D(-1, 4.440892e-16, 8.7422784e-08, -3.6203645e-08, 0.9102216, -0.41412142, -7.957409e-08, -0.41412142, -0.9102216, 2.5544097, 1.460728, -7.9246407)
+[node name="Camera3D" type="Camera3D" parent="Map/portal2/CameraViewport"]
+transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 2.5544097, 1.460728, -7.9246407)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.8415107, -0.50000006, 0.7287697, -0.46786177, 0, 9.435643, -15.294653)
@@ -465,7 +465,7 @@ inspect_scale = 0.8
 transform = Transform3D(0.9286347, -0.097137146, -0.35805297, -0.058433652, 0.9147718, -0.39972255, 0.36636466, 0.39211857, 0.84381276, -9.652586, 1.3483937, 0.7818527)
 inspect_scale = 0.8
 
-[node name="Pipe" parent="." instance=ExtResource("8_pyn1s")]
+[node name="Pipe" parent="." groups=["moveable"] instance=ExtResource("8_pyn1s")]
 transform = Transform3D(0.72752136, -0.6841421, -0.05159704, 0, 0.07520502, -0.99716806, 0.68608505, 0.72546107, 0.05471326, 0.7132021, 0.1261229, 2.3054996)
 
 [node name="FloorPlan" parent="." instance=ExtResource("9_5v1tr")]
