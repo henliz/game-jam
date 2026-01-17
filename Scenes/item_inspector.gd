@@ -69,6 +69,9 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	slide_progress = 0.0
 
 func close():
+	if inspected_node.is_in_group("repairable"):
+		inspected_node.find_child("CollisionShape3D",false,false).disabled = false
+
 	if not is_active:
 		return
 	is_active = false
@@ -77,7 +80,7 @@ func close():
 	animating_out = true
 	animating_in = false
 	slide_progress = 0.0
-
+		
 	if cleanable:
 		if cleanable.cleaning_progress_changed.is_connected(_on_cleaning_progress):
 			cleanable.cleaning_progress_changed.disconnect(_on_cleaning_progress)
@@ -184,7 +187,7 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 		if vertices.is_empty() or uv2_array.is_empty():
 			continue
 
-		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
