@@ -124,6 +124,9 @@ func _handle_interaction():
 				rotate_pipe.emit("right",current_rotatable)
 		
 func _start_inspection(item: Interactable):
+	if item.is_in_group("moveable"):
+		camera.rotation.x=0
+		rotation.y=0
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	item_inspector.open(item, camera, item.inspect_scale)

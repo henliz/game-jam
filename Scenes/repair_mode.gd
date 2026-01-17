@@ -3,18 +3,19 @@ extends Node3D
 
 @onready var camera_3d: Camera3D = %Camera3D
 
+@onready var player: CharacterBody3D = $".."
+
 var draggingCollider
 var mousePosition
 var dragging = false
 
 func _input(event):
+	if !player.inspecting: return
 	var intersect
 	
 	if event is InputEventMouse:
 		intersect = get_mouse_intersect(event.position)
-		if intersect: mousePosition = intersect.position 
-		#snap on collider
-		#if intersect: mousePosition = intersect.collider.global_position
+		if intersect: mousePosition = intersect.position
 		
 	if event is InputEventMouseButton:
 		var leftButtonPressed = event.button_index == MOUSE_BUTTON_LEFT && event.pressed
@@ -29,9 +30,11 @@ func _input(event):
 
 
 func _process(_delta):
+	if !player.inspecting: return
 	if draggingCollider:
-		print(draggingCollider)
-		draggingCollider.global_position = mousePosition
+		print(mousePosition)
+		draggingCollider.global_position.x = mousePosition.x
+		draggingCollider.global_position.y = mousePosition.y
 
 func drag_and_drop(intersect):
 	var canMove = intersect.collider in get_tree().get_nodes_in_group("moveable")
@@ -43,7 +46,7 @@ func drag_and_drop(intersect):
 func get_mouse_intersect(mouseEventPosition):
 	var params = PhysicsRayQueryParameters3D.new()
 	params.from = camera_3d.project_ray_origin(mouseEventPosition)
-	params.to = camera_3d.project_position(mouseEventPosition,10)
+	params.to = camera_3d.project_position(mouseEventPosition,3)
 	
 	var world = get_world_3d().direct_space_state
 	var result = world.intersect_ray(params)
