@@ -131,8 +131,12 @@ point_count = 3
 curve = SubResource("Curve_xbk3s")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1cojt"]
-emission_shape = 3
-emission_box_extents = Vector3(32, 2, 32)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 5.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 10.0
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, -1, 0)
 initial_velocity_min = 6.0
 initial_velocity_max = 12.0
@@ -989,8 +993,8 @@ transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0,
 [node name="Mineral" parent="Workbench" instance=ExtResource("15_yq1aw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.872609, 2.026741, -11.131203)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+[node name="snow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
 amount = 512
 lifetime = 3.5
 visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)
