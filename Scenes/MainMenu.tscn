@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://b130vqwiyxnn0"]
+
+[ext_resource type="Script" uid="uid://cxxy6hncg3cid" path="res://Scenes/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cebhxr17bjcew" path="res://resource/UI/Menu/ParallaxMenu_BG.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://brmutp6q6xnob" path="res://resource/UI/Menu/ParallaxMenu_TOWER.png" id="3_tower"]
+[ext_resource type="Texture2D" uid="uid://djrmnobhilucb" path="res://resource/UI/Menu/ParallaxMenu_FOREGROUND.png" id="4_fg"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_script")
+tower_max_offset = 5.0
+foreground_max_offset = 20.0
+background_max_offset = 20.0
+
+[node name="ParallaxLayers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 983.0
+offset_top = 554.0
+offset_right = 983.0
+offset_bottom = 554.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundLayer" type="TextureRect" parent="ParallaxLayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1010.0
+offset_top = -590.0
+offset_right = 1010.0
+offset_bottom = 590.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TowerLayer" type="TextureRect" parent="ParallaxLayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1385.0
+offset_top = -710.0
+offset_right = 1289.0
+offset_bottom = 703.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tower")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ForegroundLayer" type="TextureRect" parent="ParallaxLayers"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1019.0
+offset_top = -597.0
+offset_right = 1062.0
+offset_bottom = 602.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+offset_left = 122.0
+offset_top = 815.0
+offset_right = 496.0
+offset_bottom = 969.0
+
+[node name="NewGameButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "New Game"
+flat = true
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="MenuContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Quit to Desktop"
+flat = true
+alignment = 0
