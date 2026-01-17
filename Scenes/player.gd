@@ -125,8 +125,8 @@ func _handle_interaction():
 		
 func _start_inspection(item: Interactable):
 	if item.is_in_group("moveable"):
-		camera.rotation.x=0
-		rotation.y=0
+		camera.rotation.x = 0#lerp(camera.rotation.x,0.0,0.5)
+		rotation.y = 179#lerp(rotation.y,179.0,0.5)
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	item_inspector.open(item, camera, item.inspect_scale)
