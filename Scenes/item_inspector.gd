@@ -8,10 +8,21 @@ signal item_cleaned(cleaned_item: Cleanable)
 
 const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
 
+@export_group("Cursor Settings")
+@export var cloth_cursor_texture: Texture2D = preload("res://resource/UI/cloth_cursor.png")
+@export var grab_cursor_texture: Texture2D = preload("res://resource/UI/grab_cursor.png")
+@export var cloth_cursor_scale: float = 0.33 # 35% of original asset size
+@export var grab_cursor_scale: float = 0.15 # 15% of original asset size
+@export var cleaning_rotation_degrees: float = 345.0
+@export var cloth_cursor_offset: Vector2 = Vector2(-45, -20)
+
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
 @onready var progress_label: Label = $CleaningUI/ProgressContainer/Label
+
+var cursor_sprite: TextureRect
+var current_cursor_mode: int = 0  # 0=cloth, 1=cleaning, 2=grab
 
 var inspected_node: Node3D
 var original_parent: Node
@@ -34,6 +45,86 @@ func _ready():
 	visible = false
 	cleaning_ui.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_setup_cursor()
+
+
+func _setup_cursor() -> void:
+	cursor_sprite = TextureRect.new()
+	cursor_sprite.texture = cloth_cursor_texture
+	cursor_sprite.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	cursor_sprite.stretch_mode = TextureRect.STRETCH_SCALE
+	cursor_sprite.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cursor_sprite.visible = false
+	add_child(cursor_sprite)
+	_apply_cursor_scale()
+
+
+func _apply_cursor_scale() -> void:
+	if not cursor_sprite or not cursor_sprite.texture:
+		return
+	var tex_size = cursor_sprite.texture.get_size()
+	var scale = grab_cursor_scale if current_cursor_mode == 2 else cloth_cursor_scale
+	cursor_sprite.size = tex_size * scale
+	cursor_sprite.pivot_offset = Vector2.ZERO  # Origin at top-left
+
+
+func _update_cursor_position() -> void:
+	if not cursor_sprite or not cursor_sprite.visible:
+		return
+	var mouse_pos = get_viewport().get_mouse_position()
+	if current_cursor_mode == 2:
+		# Center the grab cursor on the mouse
+		cursor_sprite.position = mouse_pos - cursor_sprite.size / 2.0
+	else:
+		# Cloth cursor: offset so the tip aligns with the cursor
+		cursor_sprite.position = mouse_pos + cloth_cursor_offset * cloth_cursor_scale
+
+
+func _set_cursor_mode(mode: int) -> void:
+	if current_cursor_mode == mode:
+		return
+	current_cursor_mode = mode
+
+	match mode:
+		0:  # Cloth (idle)
+			cursor_sprite.texture = cloth_cursor_texture
+			cursor_sprite.rotation = 0
+		1:  # Cleaning (rotated cloth)
+			cursor_sprite.texture = cloth_cursor_texture
+			cursor_sprite.rotation = deg_to_rad(cleaning_rotation_degrees)
+		2:  # Grab
+			cursor_sprite.texture = grab_cursor_texture
+			cursor_sprite.rotation = 0
+
+	_apply_cursor_scale()
+
+
+func _show_custom_cursor() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	cursor_sprite.visible = true
+	_update_cursor_from_state()
+
+
+func _hide_custom_cursor() -> void:
+	cursor_sprite.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _update_cursor_from_state() -> void:
+	var item_is_clean = (cleanable == null) or cleanable.is_complete
+
+	if is_dragging:
+		cursor_sprite.visible = true
+		_set_cursor_mode(2)  # Grab
+	elif item_is_clean:
+		cursor_sprite.visible = false  # Hide cursor when item is clean and not rotating
+	elif is_cleaning:
+		cursor_sprite.visible = true
+		_set_cursor_mode(1)  # Cleaning (rotated cloth)
+	else:
+		cursor_sprite.visible = true
+		_set_cursor_mode(0)  # Cloth (idle)
+
 
 func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	camera = cam
@@ -67,6 +158,7 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	animating_in = true
 	animating_out = false
 	slide_progress = 0.0
+	_show_custom_cursor()
 
 func close():
 	if inspected_node.is_in_group("repairable"):
@@ -88,9 +180,13 @@ func close():
 			cleanable.cleaning_complete.disconnect(_on_cleaning_complete)
 		cleanable = null
 
+	_hide_custom_cursor()
+
 func _process(delta):
 	if not visible:
 		return
+
+	_update_cursor_position()
 
 	if animating_in:
 		slide_progress += delta / slide_duration
@@ -131,8 +227,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			is_dragging = event.pressed
+			_update_cursor_from_state()
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			is_cleaning = event.pressed
+			_update_cursor_from_state()
 			if is_cleaning and cleanable and not cleanable.is_complete:
 				_try_clean_at_mouse()
 
@@ -416,6 +514,7 @@ func _on_cleaning_complete() -> void:
 	if cleanable:
 		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit(cleanable)
+	_update_cursor_from_state()
 
 func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)

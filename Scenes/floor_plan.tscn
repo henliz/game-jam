@@ -1,5 +1,210 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgwglm4xyx3jy"]
+[gd_scene load_steps=22 format=3 uid="uid://rtjpbus10bx8"]
 
 [ext_resource type="PackedScene" uid="uid://dwqmldu8t730b" path="res://resource/FloorPlan.blend" id="1_mgd6y"]
+[ext_resource type="PackedScene" uid="uid://dq88fys1alg33" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Floors/Floor_Compass-4m.fbx" id="2_dc11j"]
+[ext_resource type="PackedScene" uid="uid://dymvhdg4lre27" path="res://resource/BlockoutAssets/Wall_HomeA-4WindowB-6m.fbx" id="2_g6puw"]
+[ext_resource type="PackedScene" uid="uid://c7t1oqnmt5a62" path="res://resource/BlockoutAssets/Wall_HomeA-4WindowBGlass.fbx" id="3_b65w2"]
+[ext_resource type="PackedScene" uid="uid://d3k6c78doooco" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Floors/Floor_HexTileA.fbx" id="3_dolm5"]
+[ext_resource type="PackedScene" uid="uid://d3n0gvbynxjbq" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Floors/HomeA_StairsL.fbx" id="6_dolm5"]
+[ext_resource type="PackedScene" uid="uid://chhp01sdw7f6" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Props/Prop_FirePlace.fbx" id="7_hetuq"]
+[ext_resource type="PackedScene" uid="uid://caqywcypnaawj" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Props/Prop_FirePlaceChimney.fbx" id="8_q7w7u"]
+[ext_resource type="PackedScene" uid="uid://bkyibgjc33l7p" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Ceiling/Ceiling_HomeA-VaultedA.fbx" id="9_5w8rx"]
+[ext_resource type="PackedScene" uid="uid://c8v1ijet0nbrg" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Ceiling/Ceiling_HomeA-CeilingArchEnd.fbx" id="10_iivu5"]
+[ext_resource type="PackedScene" uid="uid://5kilptbsg4qj" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_BenchA.fbx" id="11_pcmkn"]
+[ext_resource type="PackedScene" uid="uid://p1o3vvt1xa5o" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_CabinetA.fbx" id="13_d4v3r"]
+[ext_resource type="PackedScene" uid="uid://cb6mfwk1kyts3" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_ChairA.fbx" id="14_bnx7y"]
+[ext_resource type="PackedScene" uid="uid://cgwulu8qgfybo" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Walls/Wall_HomeA-PanelC-2m.fbx" id="15_32yim"]
+[ext_resource type="PackedScene" uid="uid://beg161qaxjk18" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Walls/Wall_HomeA-TrimA-6m.fbx" id="16_vkq0c"]
+[ext_resource type="PackedScene" uid="uid://ud2rc8bvl34f" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Walls/Wall_HomeA-TypeG-6m.fbx" id="17_8mf4d"]
+[ext_resource type="PackedScene" uid="uid://yycho0pwy0m8" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Prop_BookBunchC.fbx" id="18_suor3"]
+[ext_resource type="PackedScene" uid="uid://n74a1jaq53gq" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableBShort.fbx" id="19_e605r"]
+[ext_resource type="PackedScene" uid="uid://dplv1nl72eoxj" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Walls/Wall_HomeA-1stTo2ndFloorBuffer001.fbx" id="21_8r5xf"]
+[ext_resource type="PackedScene" uid="uid://b063e3ug3r8dw" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Ceiling/Ceiling_HomeA-BasicA.fbx" id="22_rymfu"]
+[ext_resource type="PackedScene" uid="uid://bis13kipi8obq" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/HomeA/Props/Prop_PaintingA.fbx" id="23_03jf1"]
 
 [node name="FloorPlan" instance=ExtResource("1_mgd6y")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Bool3" parent="." index="16"]
+visible = false
+
+[node name="Shelf_002" parent="." index="28"]
+visible = false
+
+[node name="Shelf_003" parent="." index="29"]
+visible = false
+
+[node name="Spot" parent="." index="48"]
+visible = false
+
+[node name="Point" parent="." index="49"]
+visible = false
+
+[node name="Level1" type="Node3D" parent="." index="50"]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, -0.10840416, 0, 0)
+
+[node name="Floor" type="Node3D" parent="Level1" index="0"]
+
+[node name="Floor_Compass-4m" parent="Level1/Floor" index="0" instance=ExtResource("2_dc11j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="Floor_HexTileA4" parent="Level1/Floor" index="1" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1.0000005)
+
+[node name="Floor_HexTileA5" parent="Level1/Floor" index="2" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1.0000005)
+
+[node name="Floor_HexTileA6" parent="Level1/Floor" index="3" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3.0000005)
+
+[node name="Floor_HexTileA7" parent="Level1/Floor" index="4" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 5.0000005)
+
+[node name="Floor_HexTileA8" parent="Level1/Floor" index="5" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7.0000005)
+
+[node name="Floor_HexTileA9" parent="Level1/Floor" index="6" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7.0000005)
+
+[node name="Floor_HexTileA14" parent="Level1/Floor" index="7" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7.0000005)
+
+[node name="Floor_HexTileA10" parent="Level1/Floor" index="8" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5.0000005)
+
+[node name="Floor_HexTileA13" parent="Level1/Floor" index="9" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5.0000005)
+
+[node name="Floor_HexTileA11" parent="Level1/Floor" index="10" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3.0000005)
+
+[node name="Floor_HexTileA15" parent="Level1/Floor" index="11" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.0000005)
+
+[node name="Floor_HexTileA12" parent="Level1/Floor" index="12" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.0000005)
+
+[node name="Floor_HexTileA16" parent="Level1/Floor" index="13" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.0000005)
+
+[node name="Floor_HexTileA3" parent="Level1/Floor" index="14" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1.0000005)
+
+[node name="Floor_HexTileA2" parent="Level1/Floor" index="15" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7.0000005)
+
+[node name="Floor_HexTileA" parent="Level1/Floor" index="16" instance=ExtResource("3_dolm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7.0000005)
+
+[node name="CurvedWallWithWindows4" type="Node3D" parent="Level1" index="1"]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 1, 0, 4)
+
+[node name="Wall_HomeA-4WindowB-6m" parent="Level1/CurvedWallWithWindows4" index="0" instance=ExtResource("2_g6puw")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -2.331426e-08, -0.0059775114, -0.26668406)
+
+[node name="Wall_HomeA-4WindowBGlass" parent="Level1/CurvedWallWithWindows4" index="1" instance=ExtResource("3_b65w2")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -2.331426e-08, 0, -0.26668406)
+
+[node name="CurvedWallWithWindows3" type="Node3D" parent="Level1" index="2"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.249318, 0, 4)
+
+[node name="Wall_HomeA-4WindowB-6m" parent="Level1/CurvedWallWithWindows3" index="0" instance=ExtResource("2_g6puw")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -1.3113416e-07, 0, -1.5)
+
+[node name="Wall_HomeA-4WindowBGlass" parent="Level1/CurvedWallWithWindows3" index="1" instance=ExtResource("3_b65w2")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -1.3113416e-07, 0, -1.5)
+
+[node name="CurvedWallWithWindows2" type="Node3D" parent="Level1" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="Wall_HomeA-4WindowBGlass" parent="Level1/CurvedWallWithWindows2" index="0" instance=ExtResource("3_b65w2")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, 9.1793913e-07, 0, 10.5)
+
+[node name="CurvedWallWithWindows" type="Node3D" parent="Level1" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Wall_HomeA-4WindowB-6m" parent="Level1/CurvedWallWithWindows" index="0" instance=ExtResource("2_g6puw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Wall_HomeA-4WindowBGlass" parent="Level1/CurvedWallWithWindows" index="1" instance=ExtResource("3_b65w2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="HomeA_StairsL" parent="Level1" index="5" instance=ExtResource("6_dolm5")]
+transform = Transform3D(1.5, 0, 2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -8.107042, 6.5238733, 12.774229)
+
+[node name="Prop_FirePlace" parent="Level1" index="6" instance=ExtResource("7_hetuq")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -4.006512, 0, 9.016676)
+
+[node name="Prop_FirePlaceChimney" parent="Level1" index="7" instance=ExtResource("8_q7w7u")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -3.9794304, 5.9105835, 9.077706)
+
+[node name="Ceiling_HomeA-VaultedA" parent="Level1" index="8" instance=ExtResource("9_5w8rx")]
+transform = Transform3D(-6.556708e-08, 0, 1.3603668, 0, 1.5, 0, -1.5, 0, -5.946352e-08, -3.5445585, -0.014518596, 0.65591955)
+
+[node name="Ceiling_HomeA-VaultedA2" parent="Level1" index="9" instance=ExtResource("9_5w8rx")]
+transform = Transform3D(-6.556708e-08, 0, 1.3603668, 0, 1.5, 0, -1.5, 0, -5.946352e-08, -3.5445583, -0.014518596, 3.6521356)
+
+[node name="Ceiling_HomeA-VaultedA3" parent="Level1" index="10" instance=ExtResource("9_5w8rx")]
+transform = Transform3D(-6.556708e-08, 0, 1.3603668, 0, 1.5, 0, -1.5, 0, -5.946352e-08, -3.544558, -0.014518596, 6.6507525)
+
+[node name="Ceiling_HomeA-VaultedA4" parent="Level1" index="11" instance=ExtResource("9_5w8rx")]
+transform = Transform3D(-6.556708e-08, 0, 1.3603668, 0, 1.5, 0, -1.5, 0, -5.946352e-08, -3.5445578, -0.014518596, 8.650177)
+
+[node name="Ceiling_HomeA-VaultedA5" parent="Level1" index="12" instance=ExtResource("9_5w8rx")]
+transform = Transform3D(-6.556708e-08, 0, 1.3603668, 0, 1.5, 0, -1.5, 0, -5.946352e-08, -3.5445576, -0.014518596, 11.650177)
+
+[node name="Ceiling_HomeA-CeilingArchEnd" parent="Level1" index="13" instance=ExtResource("10_iivu5")]
+transform = Transform3D(-6.556708e-08, 0, 1.36, 0, 1.5, 0, -1.5, 0, -5.9447487e-08, -3.4331455, -0.0407176, 0.14207217)
+
+[node name="Ceiling_HomeA-CeilingArchEnd2" parent="Level1" index="14" instance=ExtResource("10_iivu5")]
+transform = Transform3D(1.788732e-08, 0, -1.36, 0, 1.5, 0, 1.5, 0, 1.6217838e-08, -3.433145, -0.0407176, 9.75782)
+visible = false
+
+[node name="Furniture_BenchA" parent="Level1" index="15" instance=ExtResource("11_pcmkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1464856, 0, 3.7983336)
+
+[node name="Furniture_CabinetA" parent="Level1" index="16" instance=ExtResource("13_d4v3r")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, 1.0053501, -2.3841858e-07, 6.3425727)
+
+[node name="Furniture_ChairA" parent="Level1" index="17" instance=ExtResource("14_bnx7y")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -8.167359, -0.013161957, 2.2760715)
+
+[node name="Wall_HomeA-PanelC-2m" parent="Level1" index="18" instance=ExtResource("15_32yim")]
+transform = Transform3D(-1.6759642, 0, -2.2649371e-07, 0, 1.5, 0, 2.5306358e-07, 0, -1.5, -6.5164013, 0, 8.528)
+
+[node name="Wall_HomeA-TrimA-6m" parent="Level1" index="19" instance=ExtResource("16_vkq0c")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0.7484542, 0.0009253025, 12.992439)
+
+[node name="Wall_HomeA-TrimA-6m2" parent="Level1" index="20" instance=ExtResource("16_vkq0c")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -3.9108887, 0.0009253025, 13.75738)
+
+[node name="Wall_HomeA-TypeG-6m" parent="Level1" index="21" instance=ExtResource("17_8mf4d")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0.7415422, 1.2115662, 12.999728)
+
+[node name="Wall_HomeA-TypeG-6m3" parent="Level1" index="22" instance=ExtResource("17_8mf4d")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 0.7415422, 4.211566, 12.999728)
+
+[node name="Wall_HomeA-TypeG-6m2" parent="Level1" index="23" instance=ExtResource("17_8mf4d")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -3.9178004, 1.2115662, 13.764668)
+
+[node name="Wall_HomeA-TypeG-6m4" parent="Level1" index="24" instance=ExtResource("17_8mf4d")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -3.9178004, 4.211566, 13.764668)
+
+[node name="Prop_BookBunchC" parent="Level1" index="25" instance=ExtResource("18_suor3")]
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, -6.3408685, 1.8389809, 8.399733)
+
+[node name="Furniture_TableBShort" parent="Level1" index="26" instance=ExtResource("19_e605r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.068415, 0, 3.8476198)
+
+[node name="Wall_HomeA-1stTo2ndFloorBuffer001" parent="Level1" index="27" instance=ExtResource("21_8r5xf")]
+transform = Transform3D(-4.371139e-08, 0, 0.6525178, 0, 1.2861573, 0, -1, 0, -2.8522459e-08, -5.8462276, 1.124449, 8.935627)
+
+[node name="Ceiling_HomeA-BasicA" parent="Level1" index="28" instance=ExtResource("22_rymfu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5528585, 6.9366317, 11.117389)
+
+[node name="Prop_PaintingA" parent="Level1" index="29" instance=ExtResource("23_03jf1")]
+transform = Transform3D(-1.5, -7.7188345e-09, -2.2636215e-07, 0, 1.4991286, -0.05111953, 2.2649371e-07, -0.05111953, -1.4991286, -3.990745, 3.2417119, 7.823037)
+
+[node name="Blockout" type="Node" parent="." index="51"]
+
+[node name="Node" type="Node" parent="." index="52"]

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 91933109dcc5aab44898820067087f1c
+timeCreated: 1437663858
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42361
+  packageName: 'PolyWorld: Low Poly Fantasy Interiors'
+  packageVersion: 1.26
+  assetPath: Assets/Quantum Theory/Polyworld/Interiors A/Meshes/FX_DustMote.mat
+  uploadId: 388321

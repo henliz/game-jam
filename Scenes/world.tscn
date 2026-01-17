@@ -1,14 +1,20 @@
-[gd_scene load_steps=78 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=58 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
+[ext_resource type="PackedScene" uid="uid://colh0jn3rogl1" path="res://Scenes/FloorPlan2.tscn" id="2_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
+[ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
+[ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
+[ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="8_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://cgwglm4xyx3jy" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
+[ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
+[ext_resource type="PackedScene" uid="uid://rtjpbus10bx8" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://ed77x3hrdkef" path="res://resource/Workstation/Rug.glb" id="9_kn0ld"]
 [ext_resource type="PackedScene" uid="uid://dlgm8tlwyw4m7" path="res://resource/Workstation/SmallTable.glb" id="10_hgpy0"]
 [ext_resource type="PackedScene" uid="uid://ckofdqtbwnsb0" path="res://resource/Workstation/Wall with Shelves.glb" id="11_t2t4p"]
@@ -660,6 +666,9 @@ script = ExtResource("1_world")
 
 [node name="Map" type="Node3D" parent="."]
 
+[node name="FloorPlan2" parent="Map" instance=ExtResource("2_pyn1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.019047499, -28)
+
 [node name="Floor" type="CSGBox3D" parent="Map"]
 transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.026665688, -0.21108484, 0.006896019)
 use_collision = true
@@ -739,6 +748,146 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Map/portal2/CameraViewport"]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 2.5544097, 1.460728, -7.9246407)
+
+[node name="TreeClusters DEMO" type="Node3D" parent="Map"]
+
+[node name="Trees" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04559, 0.30611563, -24.886091)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31895432, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, -0.33164197, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.9039922, 1.6692722, 0.8564091)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.37424517, -1.3917141)
+
+[node name="Trees2" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(-0.17414664, 0, -0.98471975, 0, 1, 0, 0.98471975, 0, -0.17414664, -7.4361777, 0.30611563, -24.886091)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees2" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42748547, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees2" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, 0, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees2" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2.479261, 0.26454735)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees2" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
+
+[node name="Trees9" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(-0.26121995, 0, -1.4770796, 0, 1.5, 0, 1.4770796, 0, -0.26121995, -13.547365, 0.45917344, -25.3976)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees9" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42748547, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees9" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, 0, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees9" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2.479261, 0.26454735)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees9" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
+
+[node name="Trees3" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.788968, 0.30611563, -24.886091)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees3" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31895432, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees3" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, -0.33164197, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees3" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.9039922, 1.6692722, 0.8564091)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees3" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.37424517, -1.3917141)
+
+[node name="dead trees with snow2" parent="Map/TreeClusters DEMO/Trees3" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -6.0326557, -0.37424517, -1.3917141)
+
+[node name="Trees4" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(-0.17414664, 0, -0.98471975, 0, 1, 0, 0.98471975, 0, -0.17414664, -6.261841, 0.30611563, -31.526428)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees4" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42748547, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees4" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, 0, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees4" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2.479261, 0.26454735)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees4" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
+
+[node name="Trees5" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(0.66339093, 0, -0.748273, 0, 1, 0, 0.748273, 0, 0.66339093, -8.994438, 0.30611563, -19.612064)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees5" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31895432, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees5" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, -0.33164197, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees5" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.9039922, 1.6692722, 0.8564091)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees5" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.37424517, -1.3917141)
+
+[node name="Trees6" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(-0.85236657, 0, -0.5229449, 0, 1, 0, 0.5229449, 0, -0.85236657, -11.593645, 0.30611563, -31.662495)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees6" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42748547, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees6" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, 0, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees6" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2.479261, 0.26454735)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees6" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
+
+[node name="Trees7" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(0.66339093, 0, -0.748273, 0, 1, 0, 0.748273, 0, 0.66339093, -15.737817, 0.30611563, -19.612064)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees7" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.31895432, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees7" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, -0.33164197, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees7" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.9039922, 1.6692722, 0.8564091)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees7" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.37424517, -1.3917141)
+
+[node name="Trees8" type="Node3D" parent="Map/TreeClusters DEMO"]
+transform = Transform3D(-0.85236657, 0, -0.5229449, 0, 1, 0, 0.5229449, 0, -0.85236657, -10.419308, 0.30611563, -38.302834)
+
+[node name="Birch tree snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("5_pt3ps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42748547, 1.9113808)
+
+[node name="Pine tree with snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("6_hmc15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0424521, 0, 0)
+
+[node name="Tree - with snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("7_dt0r1")]
+transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2.479261, 0.26454735)
+
+[node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("8_qebug")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.8415107, -0.50000006, 0.7287697, -0.46786177, 0, 9.435643, -15.294653)
@@ -954,7 +1103,8 @@ transform = Transform3D(0.9286347, -0.097137146, -0.35805297, -0.058433652, 0.91
 inspect_scale = 0.8
 
 [node name="FloorPlan" parent="." instance=ExtResource("9_5v1tr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.188679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6545596, 0.046768665, -25.792892)
+visible = false
 
 [node name="Workbench" type="Node" parent="."]
 
@@ -1087,6 +1237,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WizardBust"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29014826, 0)
 shape = SubResource("CylinderShape3D_t5chl")
+[node name="Landscape" type="Node" parent="."]
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

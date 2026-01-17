@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77d3a7b572445cf41b8e0d69afdb53d0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 42361
+  packageName: 'PolyWorld: Low Poly Fantasy Interiors'
+  packageVersion: 1.26
+  assetPath: Assets/Quantum Theory/Polyworld/Interiors A/Meshes/Underground/Walls/Materials/PW_InteriorsFloorRef.mat
+  uploadId: 388321
