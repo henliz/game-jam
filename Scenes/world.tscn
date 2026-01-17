@@ -741,7 +741,7 @@ transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.841
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(1, 0, 6.3573026e-08, 0, 1, 0, -6.3573026e-08, 0, 1, -0.9421128, 0, 1.3544769)
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.9421128, 0, 1.3544769)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -1076,7 +1076,7 @@ transform = Transform3D(1.0000001, -4.2351647e-22, 0, -3.3087222e-22, 1.0000001,
 shape = SubResource("CylinderShape3D_i4fjy")
 
 [node name="wizard_bust_cell3" type="MeshInstance3D" parent="WizardBust/wizard_bust_fractured/head_side/CollisionShape3D"]
-transform = Transform3D(99.999985, 0, 0, 3.3087215e-20, -4.371138e-06, 99.99998, -9.094947e-13, -99.99999, -4.371138e-06, 0.13033772, -0.5062647, 0)
+transform = Transform3D(99.999985, 0, 0, 3.3087215e-20, -4.371138e-06, 99.99998, -9.094947e-13, -99.99999, -4.371138e-06, 0.1, -0.506, 0)
 mesh = SubResource("ArrayMesh_786o1")
 skeleton = NodePath("")
 

@@ -7,17 +7,24 @@ extends Node3D
 
 @onready var base: Node3D = $"../../WizardBust/wizard_bust_fractured/base"
 @onready var face: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/face"
+@onready var shoulder: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/shoulder"
+@onready var hat_point: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/hat_point"
+@onready var head_side: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/head_side"
+
+
 @onready var bust_click: AudioStreamPlayer3D = $"../../bust_click"
 
 var draggingCollider
 var mousePosition
 var dragging = false
 
+
 var correctPositions = {}
+var correctCount = 0
 
 
 func _ready() -> void:
-	correctPositions = {face:false}
+	correctPositions = {face:Vector2(0,0.455),shoulder:Vector2(0.139,0.255),hat_point:Vector2(0,0.696),head_side:Vector2(-0.1,0.506)}
 
 func _input(event):
 	if !player.inspecting: return
@@ -54,14 +61,14 @@ func drag_and_drop(intersect,isDropped):
 		draggingCollider = intersect.collider
 	elif draggingCollider:
 		draggingCollider = null
-	if isDropped:
-		if Vector2(intersect.collider.position.x,intersect.collider.position.y).distance_to(Vector2(0,0.450))<0.1:
+	if isDropped && correctPositions.get(intersect.collider):
+		if Vector2(intersect.collider.position.x,intersect.collider.position.y).distance_to(correctPositions.get(intersect.collider))<0.1:
 			intersect.collider.find_child("CollisionShape3D",false,false).disabled = true
 			intersect.collider.remove_from_group("moveable")
-			intersect.collider.position.x = 0
-			intersect.collider.position.y = 0.450
+			intersect.collider.position.x = correctPositions.get(intersect.collider).x
+			intersect.collider.position.y = correctPositions.get(intersect.collider).y
 			intersect.collider.position.z = 0
-			correctPositions.set(intersect.collider,true)
+			correctCount = correctCount+1
 			bust_click.play()
 
 func get_mouse_intersect(mouseEventPosition):
