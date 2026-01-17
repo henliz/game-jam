@@ -20,7 +20,7 @@ func _ready() -> void:
 func _play_intro() -> void:
 	return
 	#DialogueManager.play("intro_welcome")
-	#ScreenEffects.apply_cold_effect(1.0, 0.5)  # full intensity, 0.5s fade-in
+	ScreenEffects.apply_cold_effect(1.0, 0.5)  # full intensity, 0.5s fade-in
 
 
 func _on_inspector_opened(item: Node3D) -> void:
