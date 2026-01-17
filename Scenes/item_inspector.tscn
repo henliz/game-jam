@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2m8n7k4qaqr1"]
 
-[ext_resource type="Script" uid="uid://d1k3m8n2p7qr5" path="res://Scenes/item_inspector.gd" id="1_inspector"]
+[ext_resource type="Script" uid="uid://bnq70qd877ml5" path="res://Scenes/item_inspector.gd" id="1_inspector"]
 
 [node name="ItemInspector" type="CanvasLayer"]
 layer = 10
@@ -16,6 +16,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.7)
 
 [node name="CleaningUI" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProgressContainer" type="VBoxContainer" parent="CleaningUI"]
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -47,11 +48,10 @@ horizontal_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="CleaningUI/ProgressContainer"]
 layout_mode = 2
 max_value = 1.0
-step = 0.01
 show_percentage = false
 
 [node name="Hint" type="Label" parent="CleaningUI"]
-anchors_preset = 5
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
