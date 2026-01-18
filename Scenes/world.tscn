@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=73 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://vjo07661ngm4" path="res://Audio/SFX/Workbench/WorkbenchFall1.wav" id="17_fall1"]
 [ext_resource type="PackedScene" uid="uid://bdlw8shhtkm0f" path="res://resource/Floor1/ART_F1_Ceiling_Model.glb" id="17_w5giw"]
 [ext_resource type="AudioStream" uid="uid://b6kydpnqksja2" path="res://Audio/SFX/Workbench/WorkbenchFall2.wav" id="18_fall2"]
+[ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="18_lkcvt"]
 [ext_resource type="AudioStream" uid="uid://cooh7yg2v7b0b" path="res://Audio/SFX/Workbench/WorkbenchRise1.wav" id="19_rise1"]
 [ext_resource type="AudioStream" uid="uid://btjbmflr0rg5h" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="20_rise2"]
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
@@ -450,6 +451,9 @@ transform = Transform3D(0.07156715, 0, -0.9974358, 0, 1, 0, 0.9974358, 0, 0.0715
 
 [node name="ART_F1_Ceiling_Model" parent="Map" instance=ExtResource("17_w5giw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.059631, 0, -11.941266)
+
+[node name="ART_F1_MagicBillyBass_Model2" parent="Map" instance=ExtResource("18_lkcvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0292838, 0.9894624, -24.142248)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.8415107, -0.50000006, 0.7287697, -0.46786177, 0, 9.435643, -15.294653)
