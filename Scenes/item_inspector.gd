@@ -63,8 +63,8 @@ func _apply_cursor_scale() -> void:
 	if not cursor_sprite or not cursor_sprite.texture:
 		return
 	var tex_size = cursor_sprite.texture.get_size()
-	var scale = grab_cursor_scale if current_cursor_mode == 2 else cloth_cursor_scale
-	cursor_sprite.size = tex_size * scale
+	var cursor_scale = grab_cursor_scale if current_cursor_mode == 2 else cloth_cursor_scale
+	cursor_sprite.size = tex_size * cursor_scale
 	cursor_sprite.pivot_offset = Vector2.ZERO  # Origin at top-left
 
 

@@ -174,7 +174,7 @@ func animate_out() -> void:
 		var prop_index := 0
 		for prop in props:
 			if prop:
-				var start_pos = prop.global_position
+				var _start_pos = prop.global_position
 				var end_pos = target_positions[prop] + Vector3(0, props_drop_height, 0)
 				var delay := prop_index * stagger_delay * 0.5
 				_tween_rise(prop, end_pos, props_duration * 0.7, delay)

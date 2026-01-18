@@ -77,6 +77,13 @@ func _on_resume_pressed() -> void:
 
 func _on_new_game_pressed() -> void:
 	GameState.delete_save()
+
+	# Debug: Hold Shift to skip intro sequence entirely
+	if Input.is_key_pressed(KEY_SHIFT):
+		print("MainMenu: Shift held - skipping intro sequence")
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")
+		return
+
 	_start_intro_sequence()
 
 

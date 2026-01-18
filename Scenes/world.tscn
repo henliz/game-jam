@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
-[ext_resource type="PackedScene" uid="uid://cmalvk4704tpt" path="res://resource/Puzzles/Level01/L01_TeaKettle.glb" id="30_o2rbt"]
+[ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -1240,8 +1240,8 @@ shape = SubResource("CylinderShape3D_t5chl")
 [node name="GameStateManager" type="Node" parent="."]
 script = ExtResource("29_qebug")
 
-[node name="L01_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49915314, 0.7255654, -25.45326)
+[node name="L01_TeaKettle2" parent="." instance=ExtResource("30_o2rbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54717404, 0.6905836, -25.455069)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
