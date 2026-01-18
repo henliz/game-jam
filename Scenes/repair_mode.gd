@@ -11,7 +11,12 @@ signal repair_complete
 @onready var shoulder: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/shoulder"
 @onready var hat_point: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/hat_point"
 @onready var head_side: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/head_side"
+@onready var head_back: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/head_back"
+@onready var hat_front: StaticBody3D = $"../../WizardBust/wizard_bust_fractured/hat_front"
 
+@onready var complete_bust: MeshInstance3D = $"../../WizardBust/complete_bust"
+
+@onready var wizard_bust_fractured: Node3D = $"../../WizardBust/wizard_bust_fractured"
 
 @onready var bust_click: AudioStreamPlayer3D = $"../../bust_click"
 
@@ -25,7 +30,7 @@ var is_complete: bool = false
 
 
 func _ready() -> void:
-	correctPositions = {face:Vector2(0,0.455),shoulder:Vector2(0.139,0.255),hat_point:Vector2(0,0.696),head_side:Vector2(-0.1,0.506)}
+	correctPositions = {face:Vector2(0,0.455),shoulder:Vector2(0.139,0.255),hat_point:Vector2(0,0.696),head_side:Vector2(-0.1,0.506),head_back:Vector2(0.048,0.439),hat_front:Vector2(0.249,0.494)}
 
 func _input(event):
 	if !player.inspecting: return
@@ -65,7 +70,7 @@ func drag_and_drop(intersect,isDropped):
 	elif draggingCollider:
 		draggingCollider = null
 	if isDropped && correctPositions.get(intersect.collider):
-		if Vector2(intersect.collider.position.x,intersect.collider.position.y).distance_to(correctPositions.get(intersect.collider))<0.1:
+		if Vector2(intersect.collider.position.x,intersect.collider.position.y).distance_to(correctPositions.get(intersect.collider))<0.05:
 			intersect.collider.find_child("CollisionShape3D",false,false).disabled = true
 			intersect.collider.remove_from_group("moveable")
 			intersect.collider.position.x = correctPositions.get(intersect.collider).x
@@ -81,6 +86,10 @@ func _check_repair_complete() -> void:
 		return
 	if correctCount >= correctPositions.size():
 		is_complete = true
+		for node in wizard_bust_fractured.get_children():
+			node.queue_free()
+		complete_bust.reparent(wizard_bust_fractured)
+		complete_bust.visible = true
 		repair_complete.emit()
 		print("RepairMode: Repair complete!")
 
