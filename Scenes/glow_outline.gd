@@ -2,12 +2,10 @@ extends Node3D
 class_name GlowOutline
 
 @export var glow_color: Color = Color(0.4, 0.6, 1.0, 1.0)
-@export var glow_width: float = 8.0
+@export var glow_amount: float = 0.02
 @export var interaction_range: float = 1.0
-@export var use_shader: bool = true  # Toggle between shader and StandardMaterial3D
 
 var glow_overlay: MeshInstance3D
-var glow_material: ShaderMaterial
 var is_glowing: bool = false
 var mesh_instance: MeshInstance3D
 
@@ -42,29 +40,18 @@ func _setup_glow_overlay() -> void:
 	glow_overlay.visible = false
 	glow_overlay.name = "GlowOverlay"
 
-	if use_shader:
-		# Pixel-perfect outline shader approach
-		var shader = load("res://resource/Shaders/outline_glow.gdshader")
-		glow_material = ShaderMaterial.new()
-		glow_material.shader = shader
-		glow_material.set_shader_parameter("outline_color", glow_color)
-		glow_material.set_shader_parameter("outline_width", glow_width)
-		glow_overlay.material_override = glow_material
-	else:
-		# StandardMaterial3D fallback with grow/emission
-		var material = StandardMaterial3D.new()
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		material.albedo_color = glow_color
-		material.emission_enabled = true
-		material.emission = glow_color
-		material.emission_energy_multiplier = 2.0
-		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		material.albedo_color.a = 0.6
-		material.grow = true
-		material.grow_amount = 0.02
-		material.cull_mode = BaseMaterial3D.CULL_FRONT
-		glow_overlay.material_override = material
-		glow_material = null
+	var material = StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = glow_color
+	material.emission_enabled = true
+	material.emission = glow_color
+	material.emission_energy_multiplier = 2.0
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color.a = 0.6
+	material.grow = true
+	material.grow_amount = glow_amount
+	material.cull_mode = BaseMaterial3D.CULL_FRONT
+	glow_overlay.material_override = material
 
 	mesh_instance.add_child(glow_overlay)
 	glow_overlay.transform = Transform3D.IDENTITY

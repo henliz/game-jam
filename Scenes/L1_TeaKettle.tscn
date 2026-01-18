@@ -8,4 +8,4 @@
 [node name="teapot" parent="." index="0"]
 script = ExtResource("2_aijqp")
 glow_color = Color(0.96123165, 0.65959364, 0.18973055, 1)
-interaction_range = 2.0
+interaction_range = 2.5
