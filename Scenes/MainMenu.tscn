@@ -36,6 +36,7 @@ offset_right = 1010.0
 offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 5
@@ -53,6 +54,7 @@ offset_right = 1289.0
 offset_bottom = 703.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_tower")
 expand_mode = 1
 stretch_mode = 5
@@ -70,6 +72,7 @@ offset_right = 1062.0
 offset_bottom = 602.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_fg")
 expand_mode = 1
 stretch_mode = 5
@@ -79,13 +82,6 @@ offset_left = 122.0
 offset_top = 815.0
 offset_right = 496.0
 offset_bottom = 969.0
-
-[node name="NewGameButton" type="Button" parent="MenuContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "New Game"
-flat = true
-alignment = 0
 
 [node name="QuitButton" type="Button" parent="MenuContainer"]
 layout_mode = 2

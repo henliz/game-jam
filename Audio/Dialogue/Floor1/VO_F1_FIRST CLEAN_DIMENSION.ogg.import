@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://co4q837a1aa1f"
+path="res://.godot/imported/VO_F1_FIRST CLEAN_DIMENSION.ogg-113465a48a13252b4336840da605afcc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Dialogue/Floor1/VO_F1_FIRST CLEAN_DIMENSION.ogg"
+dest_files=["res://.godot/imported/VO_F1_FIRST CLEAN_DIMENSION.ogg-113465a48a13252b4336840da605afcc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

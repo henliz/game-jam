@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=84 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="8_pyn1s"]
-[ext_resource type="PackedScene" uid="uid://cgwglm4xyx3jy" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
 [ext_resource type="PackedScene" uid="uid://rtjpbus10bx8" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://ed77x3hrdkef" path="res://resource/Workstation/Rug.glb" id="9_kn0ld"]
@@ -29,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://btjbmflr0rg5h" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="20_rise2"]
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
+[ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -894,7 +894,7 @@ transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.841
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.9421128, 0, 1.3544769)
+transform = Transform3D(-0.8744505, 0, 0.48511478, 0, 1, 0, -0.48511478, 0, -0.8744505, 6.1324835, 0, -27.345747)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -1237,7 +1237,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WizardBust"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29014826, 0)
 shape = SubResource("CylinderShape3D_t5chl")
+
 [node name="Landscape" type="Node" parent="."]
+
+[node name="GameStateManager" type="Node" parent="."]
+script = ExtResource("29_qebug")
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

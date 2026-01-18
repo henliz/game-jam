@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scenes/intro_sequence.gd" id="1_script"]
+[ext_resource type="AudioStream" path="res://Audio/SFX/UI/click_new_game.wav" id="2_click"]
+[ext_resource type="AudioStream" path="res://Audio/INTRO.mp3" id="3_intro"]
+
+[node name="IntroSequence" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="BlackOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="IntroText" type="Label" parent="BlackOverlay"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -200.0
+offset_right = 600.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 24
+text = "Placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_click")
+volume_db = -5.0
+
+[node name="IntroAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_intro")
+volume_db = 0.0

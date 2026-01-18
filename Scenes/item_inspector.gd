@@ -111,19 +111,25 @@ func _hide_custom_cursor() -> void:
 
 
 func _update_cursor_from_state() -> void:
-	var item_is_clean = (cleanable == null) or cleanable.is_complete
+	var is_actively_cleanable = cleanable != null and not cleanable.is_complete
 
 	if is_dragging:
+		# Always show grab cursor when rotating
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		cursor_sprite.visible = true
 		_set_cursor_mode(2)  # Grab
-	elif item_is_clean:
-		cursor_sprite.visible = false  # Hide cursor when item is clean and not rotating
-	elif is_cleaning:
+	elif is_actively_cleanable:
+		# Item needs cleaning - use cloth cursors
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		cursor_sprite.visible = true
-		_set_cursor_mode(1)  # Cleaning (rotated cloth)
+		if is_cleaning:
+			_set_cursor_mode(1)  # Cleaning (rotated cloth)
+		else:
+			_set_cursor_mode(0)  # Cloth (idle)
 	else:
-		cursor_sprite.visible = true
-		_set_cursor_mode(0)  # Cloth (idle)
+		# Item doesn't need cleaning (repaired, already clean, or non-cleanable) - use system cursor
+		cursor_sprite.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):

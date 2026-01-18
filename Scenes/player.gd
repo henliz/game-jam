@@ -13,9 +13,13 @@ var t_bob = 0.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+const WALK_STEP_INTERVAL = 0.5
+const SPRINT_STEP_INTERVAL = 0.35
+
 var jumping = false
 var last_floor : bool
 var vl : Vector3
+var footstep_timer: float = 0.0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -23,8 +27,12 @@ var vl : Vector3
 @onready var item_inspector: ItemInspector = $ItemInspector
 @onready var interact_prompt: Label = $UI/InteractPrompt
 @onready var rotate_prompt: Label = $UI/RotatePrompt
+@onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
+@onready var jump_player: AudioStreamPlayer3D = $JumpPlayer
+@onready var land_player: AudioStreamPlayer3D = $LandPlayer
 
 var inspecting: bool = false
+var movement_enabled: bool = true
 var current_interactable: Interactable = null
 var current_rotatable: StaticBody3D = null
 
@@ -48,8 +56,9 @@ func _physics_process(delta: float) -> void:
 	_check_interactable()
 	_handle_interaction()
 
-	if inspecting:
+	if inspecting or not movement_enabled:
 		velocity = Vector3.ZERO
+		move_and_slide()
 		return
 
 	if not is_on_floor():
@@ -58,8 +67,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jumping = true
+		jump_player.play()
 	if is_on_floor() and not last_floor:
 		jumping = false
+		land_player.play()
 	last_floor = is_on_floor()
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
@@ -81,6 +92,8 @@ func _physics_process(delta: float) -> void:
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+
+	_handle_footsteps(delta)
 
 	move_and_slide()
 	
@@ -135,3 +148,21 @@ func _start_inspection(item: Interactable):
 func _on_inspection_closed():
 	inspecting = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _handle_footsteps(delta: float) -> void:
+	if not is_on_floor():
+		footstep_timer = 0.0
+		return
+
+	var horizontal_velocity = Vector2(velocity.x, velocity.z).length()
+	if horizontal_velocity < 0.5:
+		footstep_timer = 0.0
+		return
+
+	var step_interval = SPRINT_STEP_INTERVAL if speed == SPRINT_SPEED else WALK_STEP_INTERVAL
+	footstep_timer += delta
+
+	if footstep_timer >= step_interval:
+		footstep_timer = 0.0
+		footstep_player.play()

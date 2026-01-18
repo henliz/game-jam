@@ -1,5 +1,7 @@
 extends Node2D
 
+const IntroSequence = preload("res://Scenes/intro_sequence.tscn")
+
 @export_group("Parallax Settings")
 @export var tower_max_offset: float = 18.0
 @export var foreground_max_offset: float = 60.0
@@ -9,8 +11,12 @@ extends Node2D
 @onready var bg_layer: TextureRect = $ParallaxLayers/BackgroundLayer
 @onready var tower_layer: TextureRect = $ParallaxLayers/TowerLayer
 @onready var fg_layer: TextureRect = $ParallaxLayers/ForegroundLayer
-@onready var new_game_button: Button = $MenuContainer/NewGameButton
+@onready var menu_container: VBoxContainer = $MenuContainer
 @onready var quit_button: Button = $MenuContainer/QuitButton
+
+var resume_button: Button
+var new_game_button: Button
+var intro_instance: CanvasLayer = null
 
 var viewport_center: Vector2
 var bg_base_pos: Vector2
@@ -24,10 +30,31 @@ func _ready() -> void:
 	tower_base_pos = tower_layer.position
 	fg_base_pos = fg_layer.position
 
-	_update_menu_text()
-
-	new_game_button.pressed.connect(_on_new_game_pressed)
+	_setup_menu_buttons()
 	quit_button.pressed.connect(_on_quit_pressed)
+
+
+func _setup_menu_buttons() -> void:
+	var has_save = GameState.has_save_file()
+
+	if has_save:
+		resume_button = Button.new()
+		resume_button.text = "Resume"
+		resume_button.flat = true
+		resume_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		resume_button.add_theme_font_size_override("font_size", 48)
+		resume_button.pressed.connect(_on_resume_pressed)
+		menu_container.add_child(resume_button)
+		menu_container.move_child(resume_button, 0)
+
+	new_game_button = Button.new()
+	new_game_button.text = "New Game"
+	new_game_button.flat = true
+	new_game_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	new_game_button.add_theme_font_size_override("font_size", 48)
+	new_game_button.pressed.connect(_on_new_game_pressed)
+	menu_container.add_child(new_game_button)
+	menu_container.move_child(new_game_button, 1 if has_save else 0)
 
 
 func _process(delta: float) -> void:
@@ -43,17 +70,20 @@ func _process(delta: float) -> void:
 	bg_layer.position = bg_layer.position.lerp(bg_target, delta * parallax_smoothing)
 
 
-func _update_menu_text() -> void:
-	if GameState.has_save_file():
-		new_game_button.text = "Resume"
-	else:
-		new_game_button.text = "New Game"
+func _on_resume_pressed() -> void:
+	GameState.load_game()
+	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 
 func _on_new_game_pressed() -> void:
-	if GameState.has_save_file():
-		GameState.load_game()
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	GameState.delete_save()
+	_start_intro_sequence()
+
+
+func _start_intro_sequence() -> void:
+	intro_instance = IntroSequence.instantiate()
+	get_tree().root.add_child(intro_instance)
+	intro_instance.start_sequence()
 
 
 func _on_quit_pressed() -> void:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqb5wd35j5xfu"
+path="res://.godot/imported/VO_F1_FIRST CLEAN_DIMENSION.wav-d0b5b6a89d6207332819d9f806ac95cb.sample"
+
+[deps]
+
+source_file="res://Audio/Dialogue/Floor1/VO_F1_FIRST CLEAN_DIMENSION.wav"
+dest_files=["res://.godot/imported/VO_F1_FIRST CLEAN_DIMENSION.wav-d0b5b6a89d6207332819d9f806ac95cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
