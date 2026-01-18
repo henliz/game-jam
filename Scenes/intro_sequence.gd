@@ -19,11 +19,14 @@ const TEXT_HIDE_TIME := 45.0
 const SCENE_FADE_IN_TIME := 55.0
 const MOVEMENT_ENABLE_TIME := 65.0
 const INTRO_END_TIME := 83.0
+const SKIP_HOLD_TIME := 4.0
 
 @onready var black_overlay: ColorRect = $BlackOverlay
 @onready var intro_text: Label = $BlackOverlay/IntroText
 @onready var click_sound: AudioStreamPlayer = $ClickSound
 @onready var intro_audio: AudioStreamPlayer = $IntroAudio
+@onready var skip_container: HBoxContainer = $BlackOverlay/SkipContainer
+@onready var skip_gauge: Control = $BlackOverlay/SkipContainer/SkipGauge
 
 var sequence_running := false
 var elapsed_time := 0.0
@@ -31,6 +34,7 @@ var text_visible := false
 var scene_revealed := false
 var movement_returned := false
 var player: CharacterBody3D = null
+var skip_hold_progress := 0.0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -93,7 +97,7 @@ func _on_scene_loaded() -> void:
 	text_visible = true
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# If waiting for scene to load, check each frame
 	if _waiting_for_scene:
 		if _try_find_player():
@@ -102,6 +106,9 @@ func _process(_delta: float) -> void:
 
 	if not sequence_running:
 		return
+
+	# Handle skip input
+	_handle_skip_input(delta)
 
 	if intro_audio.playing:
 		elapsed_time = intro_audio.get_playback_position()
@@ -123,6 +130,34 @@ func _process(_delta: float) -> void:
 		if player:
 			player.movement_enabled = true
 		_mark_intro_complete()
+
+
+func _handle_skip_input(delta: float) -> void:
+	if Input.is_action_pressed("jump"):
+		skip_hold_progress += delta / SKIP_HOLD_TIME
+		skip_gauge.set_value(skip_hold_progress)
+
+		if skip_hold_progress >= 1.0:
+			_skip_intro()
+	else:
+		skip_hold_progress = maxf(0.0, skip_hold_progress - delta * 2.0)
+		skip_gauge.set_value(skip_hold_progress)
+
+
+func _skip_intro() -> void:
+	intro_audio.stop()
+	intro_text.modulate.a = 0.0
+	text_visible = false
+	skip_container.visible = false
+
+	if not scene_revealed:
+		scene_revealed = true
+		black_overlay.modulate.a = 0.0
+
+	movement_returned = true
+	if player:
+		player.movement_enabled = true
+	_mark_intro_complete()
 
 
 func _mark_intro_complete() -> void:

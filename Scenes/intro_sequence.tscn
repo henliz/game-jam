@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scenes/intro_sequence.gd" id="1_script"]
 [ext_resource type="AudioStream" path="res://Audio/SFX/UI/click_new_game.wav" id="2_click"]
 [ext_resource type="AudioStream" path="res://Audio/INTRO.mp3" id="3_intro"]
+
+[sub_resource type="GDScript" id="GDScript_skip_gauge"]
+script/source = "extends Control
+
+var value := 0.0
+
+func _draw() -> void:
+	var center = size / 2.0
+	var radius = min(size.x, size.y) / 2.0 - 2.0
+	var color = Color(0.6, 0.6, 0.6, 1.0)
+
+	# Draw background circle (outline)
+	draw_arc(center, radius, 0, TAU, 32, color, 2.0, true)
+
+	# Draw filled arc based on value
+	if value > 0:
+		var end_angle = -PI/2 + TAU * value
+		draw_arc(center, radius - 4, -PI/2, end_angle, 32, color, 4.0, true)
+
+func set_value(v: float) -> void:
+	value = v
+	queue_redraw()
+"
 
 [node name="IntroSequence" type="CanvasLayer"]
 layer = 100
@@ -34,6 +57,32 @@ text = "Placeholder"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="SkipContainer" type="HBoxContainer" parent="BlackOverlay"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="SkipLabel" type="Label" parent="BlackOverlay/SkipContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 16
+text = "Hold [SPACE] to skip"
+
+[node name="SkipGauge" type="Control" parent="BlackOverlay/SkipContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+script = SubResource("GDScript_skip_gauge")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_click")
