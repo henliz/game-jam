@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cuqr7erdlouqh"]
+[gd_scene load_steps=15 format=3 uid="uid://cuqr7erdlouqh"]
 
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
@@ -9,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://cxr0spfacpxb8" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_dry_punchy_interior_28.wav" id="6_walk2"]
 [ext_resource type="AudioStream" uid="uid://pjbsmnx57v16" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_running_dry_punchy_interior_10.wav" id="7_run1"]
 [ext_resource type="AudioStream" uid="uid://ddm7nftfhl3r7" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_running_dry_punchy_interior_30.wav" id="8_run2"]
-[ext_resource type="AudioStream" path="res://Audio/SFX/Player/JUMPING.wav" id="9_jump"]
-[ext_resource type="AudioStream" path="res://Audio/SFX/Player/LANDING.wav" id="10_land"]
+[ext_resource type="AudioStream" uid="uid://cl82foswcifid" path="res://Audio/SFX/Player/JUMPING.wav" id="9_jump"]
+[ext_resource type="AudioStream" uid="uid://dtvcm36jt6vnp" path="res://Audio/SFX/Player/LANDING.wav" id="10_land"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kyqiw"]
 
