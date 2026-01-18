@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=65 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://colh0jn3rogl1" path="res://Scenes/FloorPlan2.tscn" id="2_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
+[ext_resource type="Shader" uid="uid://nhm27mag0l25" path="res://Scenes/portal.gdshader" id="4_3ua1v"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
@@ -77,8 +78,14 @@ adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
 size = Vector3(1, 0.6879883, 0.3630371)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_o06y3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3ua1v"]
 viewport_path = NodePath("Map/portal2/CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ikl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_3ua1v")
+shader_parameter/texture_albedo = SubResource("ViewportTexture_3ua1v")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o06y3"]
 
@@ -251,12 +258,13 @@ script = ExtResource("1_5ukr8")
 connect_portal = NodePath("../portal2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/portal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15600586, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07416844, 0.32969418)
 shape = SubResource("BoxShape3D_5ukr8")
 
-[node name="Sprite3D" type="Sprite3D" parent="Map/portal"]
-transform = Transform3D(-0.20000002, -1.8947814e-15, -6.516828e-08, -1.894781e-15, 0.20000002, -2.1377068e-15, 6.516828e-08, -2.137706e-15, -0.20000002, -0.06897181, 0.31138134, 0.50944066)
-texture = SubResource("ViewportTexture_o06y3")
+[node name="PortalVisual" type="CSGBox3D" parent="Map/portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070596635, 0.33277917, 0.5469322)
+size = Vector3(1.0214844, 1.045044, 0.13427734)
+material = SubResource("ShaderMaterial_r0ikl")
 
 [node name="portal2" type="Area3D" parent="Map"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.5537097, 0.57335246, -7.503555)
@@ -272,6 +280,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Map/portal2/CameraViewport"]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 2.5544097, 1.460728, -7.9246407)
+fov = 100.0
 
 [node name="TreeClusters DEMO" type="Node3D" parent="Map"]
 
