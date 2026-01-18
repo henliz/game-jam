@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=76 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -41,46 +41,16 @@
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
+[ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="42_6mm6r"]
+[ext_resource type="ArrayMesh" uid="uid://cglotbwur6tgs" path="res://resource/Floor1/f1_wall_door.res" id="43_xcb5n"]
+[ext_resource type="ArrayMesh" uid="uid://cpcbsvoha8nj1" path="res://resource/Floor1/f1_wall_clear.res" id="44_te07t"]
+[ext_resource type="ArrayMesh" uid="uid://bvhp4ku42g0me" path="res://resource/Floor1/f1_wall_window_right.res" id="45_b4e6k"]
+[ext_resource type="ArrayMesh" uid="uid://7pflpalh7d7c" path="res://resource/Floor1/f1_wall_window_center.res" id="46_0sgyr"]
+[ext_resource type="ArrayMesh" uid="uid://dwvr2nl4a63xi" path="res://resource/BlockoutAssets/F1_stove_wip.obj" id="47_xcb5n"]
+[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="48_te07t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
-
-[sub_resource type="Gradient" id="Gradient_1cojt"]
-offsets = PackedFloat32Array(0, 0.14516129, 0.8548387, 0.9892473)
-colors = PackedColorArray(0, 0, 0, 1, 0.047058824, 0.05490196, 0.12156863, 1, 0.6735636, 0.7084251, 0.66179293, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yq1aw"]
-gradient = SubResource("Gradient_1cojt")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1cojt"]
-sky_top_color = Color(0.16504008, 0.37990576, 0.72235507, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_energy_multiplier = 1.2
-
-[sub_resource type="Sky" id="Sky_go701"]
-sky_material = SubResource("ProceduralSkyMaterial_1cojt")
-
-[sub_resource type="Environment" id="Environment_a02cp"]
-background_mode = 2
-sky = SubResource("Sky_go701")
-ambient_light_source = 3
-tonemap_mode = 1
-glow_enabled = true
-glow_intensity = 0.3
-glow_bloom = 0.1
-glow_hdr_scale = 4.0
-fog_enabled = true
-fog_light_color = Color(0.50624764, 0.6314242, 0.7977032, 1)
-fog_light_energy = 2.0
-fog_sun_scatter = 0.2
-fog_density = 0.02
-fog_height = 3.0
-fog_height_density = 0.05
-volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.39254782, 0.6401954, 0.9739296, 1)
-volumetric_fog_emission = Color(1, 1, 1, 1)
-adjustment_enabled = true
-adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
 size = Vector3(1, 0.6879883, 0.3630371)
@@ -251,9 +221,6 @@ transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, -0
 operation = 2
 size = Vector3(0.33154297, 0.6999397, 0.84648895)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
-environment = SubResource("Environment_a02cp")
-
 [node name="Stair" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 0.7664818, 0.64226604, 0, -0.64226604, 0.7664818, -3.0318222, 2.0070264, -0.36358058)
 use_collision = true
@@ -282,6 +249,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32313967)
 shape = SubResource("BoxShape3D_5ukr8")
 
 [node name="CameraViewport" type="SubViewport" parent="Map/portal2"]
+anisotropic_filtering_level = 2
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -461,10 +429,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0292838, 0.9894624, -24.142
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.42075545, 0.27012014, 0, 0.5402403, 0.8415107, -0.50000006, 0.7287697, -0.46786177, 0, 9.435643, -15.294653)
+visible = false
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-0.8744505, 0, 0.48511478, 0, 1, 0, -0.48511478, 0, -0.8744505, 6.1324835, 0, -27.345747)
+transform = Transform3D(-0.8744505, 0, 0.48511478, 0, 1, 0, -0.48511478, 0, -0.8744505, 39.928596, 0, -3.9843376)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -735,6 +704,116 @@ script = ExtResource("29_qebug")
 
 [node name="L01_TeaKettle2" parent="." instance=ExtResource("30_o2rbt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54717404, 0.6905836, -25.455069)
+
+[node name="Floor1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+
+[node name="Walls" type="Node3D" parent="Floor1"]
+
+[node name="F1WallDoor" type="MeshInstance3D" parent="Floor1/Walls"]
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("43_xcb5n")
+skeleton = NodePath("../../..")
+
+[node name="F1WallClear" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear2" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear3" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.5, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear4" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, -0.8660254, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear5" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear6" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, -0.8660254, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear7" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-0.5, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear8" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear9" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(0.86602545, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, 0.86602545, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("44_te07t")
+skeleton = NodePath("../..")
+
+[node name="F1WallWindowRight" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("45_b4e6k")
+
+[node name="F1WallWindowCenter" type="MeshInstance3D" parent="Floor1/Walls"]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
+material_override = ExtResource("42_6mm6r")
+mesh = ExtResource("46_0sgyr")
+
+[node name="F1StoveWip" type="MeshInstance3D" parent="Floor1/Walls"]
+mesh = ExtResource("47_xcb5n")
+skeleton = NodePath("../../..")
+
+[node name="ART_F1_Chair_Model2" parent="Floor1/Walls" instance=ExtResource("10_ochwf")]
+transform = Transform3D(0.45816872, 0, 0.88886523, 0, 1, 0, -0.88886523, 0, 0.45816872, -1.187706, 0.038916167, 0.05723524)
+
+[node name="ART_F1_Ceiling_Model" parent="Floor1" instance=ExtResource("17_w5giw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="ART_GLOBAL_CeilingBeams_Model_Horizontal" parent="Floor1" instance=ExtResource("14_lkcvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" parent="Floor1" instance=ExtResource("15_atqvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Lighting" type="Node3D" parent="Floor1"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Floor1/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4042015, 1.2272917, 0.8265902)
+light_color = Color(1, 0.72249997, 0.55, 1)
+light_energy = 1.5
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 1.5
+shadow_opacity = 0.9
+shadow_blur = 2.0
+omni_range = 7.0
+
+[node name="ART_F1_Sofa_Final" parent="Floor1" instance=ExtResource("14_04jkj")]
+transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, 3.9403915, 0.03891492, -3.8866901)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("48_te07t")
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

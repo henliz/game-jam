@@ -37,6 +37,54 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"meshes": {
+"ART_F1_Walls_f1_wall_clear": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/f1_wall_clear.res",
+"save_to_file/path": "uid://buob6naa08ux8"
+},
+"ART_F1_Walls_f1_wall_door": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/f1_wall_door.res",
+"save_to_file/path": "uid://ckljxb7cxwcv6"
+},
+"ART_F1_Walls_f1_wall_window_center": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/f1_wall_window_center.res",
+"save_to_file/path": "uid://b3a36yw77dkv5"
+},
+"ART_F1_Walls_f1_wall_window_left": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/f1_wall_window_left.res",
+"save_to_file/path": "uid://byi6wrqx0p0cr"
+},
+"ART_F1_Walls_f1_wall_window_right": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/f1_wall_window_right.res",
+"save_to_file/path": "uid://hbqx0kjrwor6"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
