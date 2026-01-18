@@ -9,6 +9,8 @@ const DIALOGUE_DATA_PATH := "res://Data/dialogue.json"
 var dialogue_data: Dictionary = {}
 var entries_by_id: Dictionary = {}
 var entries_by_type: Dictionary = {}
+var entries_by_voiceover_id: Dictionary = {}
+var entries_by_floor: Dictionary = {}
 
 var audio_player: AudioStreamPlayer
 var current_entry: Dictionary = {}
@@ -52,6 +54,8 @@ func _load_dialogue_data() -> void:
 func _index_entries() -> void:
 	entries_by_id.clear()
 	entries_by_type.clear()
+	entries_by_voiceover_id.clear()
+	entries_by_floor.clear()
 
 	if not dialogue_data.has("entries"):
 		push_warning("DialogueManager: No 'entries' array in dialogue data")
@@ -63,6 +67,18 @@ func _index_entries() -> void:
 			continue
 
 		entries_by_id[id] = entry
+
+		# Index by voiceover_id
+		var vo_id = entry.get("voiceover_id")
+		if vo_id != null and not str(vo_id).is_empty():
+			entries_by_voiceover_id[vo_id] = entry
+
+		# Index by floor
+		var floor_name = entry.get("floor")
+		if floor_name != null and not str(floor_name).is_empty():
+			if not entries_by_floor.has(floor_name):
+				entries_by_floor[floor_name] = []
+			entries_by_floor[floor_name].append(entry)
 
 		var type: String = entry.get("type", "dialogue")
 		var subtype = entry.get("subtype")
@@ -172,6 +188,14 @@ func _on_audio_finished() -> void:
 
 func get_entry(id: String) -> Dictionary:
 	return entries_by_id.get(id, {})
+
+
+func get_entry_by_voiceover_id(vo_id: String) -> Dictionary:
+	return entries_by_voiceover_id.get(vo_id, {})
+
+
+func get_entries_by_floor(floor_name: String) -> Array:
+	return entries_by_floor.get(floor_name, [])
 
 
 func get_all_subtypes(type: String) -> Array:

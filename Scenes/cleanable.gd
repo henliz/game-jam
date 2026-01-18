@@ -22,7 +22,7 @@ var clean_pixels: int = 0
 var is_complete: bool = false
 var item_id: String = ""
 
-const FIRST_CLEAN_DIALOGUE_ID := "artifact_first_clean"
+const FIRST_CLEAN_DIALOGUE_ID := "F1FirstItemCleaned"
 
 func _ready() -> void:
 

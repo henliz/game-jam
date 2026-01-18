@@ -21,6 +21,15 @@ const MOVEMENT_ENABLE_TIME := 65.0
 const INTRO_END_TIME := 83.0
 const SKIP_HOLD_TIME := 2.5
 
+# these are here because the Level 1 Entry voiceover is now contained inside the intro sequence audio, so instead of utilizing a normal dialogue trigger, I've opted
+# to simply hardcode the caption timings here. 
+const INTRO_CAPTIONS := [
+	{"time": 50.0, "text": "A short walk? I thought I was going to lose a finger out there."},
+	{"time": 55.0, "text": "At least this place is hard to miss."},
+	{"time": 60.0, "text": "The energy here feels… strange... Hello? Anyone home? Of course not."},
+	{"time": 69.0, "text": ""}  # Empty text signals hide caption
+]
+
 @onready var black_overlay: ColorRect = $BlackOverlay
 @onready var intro_text: Label = $BlackOverlay/IntroText
 @onready var click_sound: AudioStreamPlayer = $ClickSound
@@ -38,6 +47,7 @@ var skip_hold_progress := 0.0
 var skip_stage := 0  # 0 = skip to text hide, 1 = skip to end
 var skip_cooldown := 0.0
 const SKIP_STAGE_DELAY := 3.0
+var current_caption_index := 0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -129,6 +139,9 @@ func _process(delta: float) -> void:
 		if skip_cooldown <= 0 and skip_stage == 1 and not movement_returned:
 			skip_container.visible = true
 
+	# Handle timed captions
+	_update_captions()
+
 	if not scene_revealed and elapsed_time >= SCENE_FADE_IN_TIME:
 		scene_revealed = true
 		var reveal_tween = create_tween()
@@ -139,6 +152,20 @@ func _process(delta: float) -> void:
 		if player:
 			player.movement_enabled = true
 		_mark_intro_complete()
+
+
+func _update_captions() -> void:
+	if current_caption_index >= INTRO_CAPTIONS.size():
+		return
+
+	var caption = INTRO_CAPTIONS[current_caption_index]
+	if elapsed_time >= caption["time"]:
+		var caption_text: String = caption["text"]
+		if caption_text.is_empty():
+			DialogueManager.caption_ui.hide_caption()
+		else:
+			DialogueManager.caption_ui.show_caption("", caption_text)
+		current_caption_index += 1
 
 
 func _handle_skip_input(delta: float) -> void:
@@ -173,6 +200,8 @@ func _skip_intro() -> void:
 		# Stage 1: Skip to end
 		intro_audio.stop()
 		skip_container.visible = false
+		DialogueManager.caption_ui.hide_caption()
+		current_caption_index = INTRO_CAPTIONS.size()
 
 		if not scene_revealed:
 			scene_revealed = true
