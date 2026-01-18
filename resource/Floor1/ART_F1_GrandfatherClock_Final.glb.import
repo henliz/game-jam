@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://m4285rkjvcer"
-path="res://.godot/imported/ART_F1_Chair_Model.glb-f39bf33e67df0845fda8b4892b58d421.scn"
+uid="uid://crax3johqbxux"
+path="res://.godot/imported/ART_F1_GrandfatherClock_Final.glb-47001c457adc7e025ca0d280ed30df0b.scn"
 
 [deps]
 
-source_file="res://resource/Floor1/ART_F1_Chair_Model.glb"
-dest_files=["res://.godot/imported/ART_F1_Chair_Model.glb-f39bf33e67df0845fda8b4892b58d421.scn"]
+source_file="res://resource/Floor1/ART_F1_GrandfatherClock_Final.glb"
+dest_files=["res://.godot/imported/ART_F1_GrandfatherClock_Final.glb-47001c457adc7e025ca0d280ed30df0b.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"wood_03": {
-"use_external/enabled": false,
-"use_external/fallback_path": "res://resource/GraphicsCore/MAT_core_textured_glb_assets.material",
-"use_external/path": "uid://df35sod3nxos2"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

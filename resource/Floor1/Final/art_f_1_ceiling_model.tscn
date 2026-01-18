@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxqvvwf055oqw"]
+
+[ext_resource type="PackedScene" uid="uid://bdlw8shhtkm0f" path="res://resource/Floor1/ART_F1_Ceiling_Model.glb" id="1_sgbvk"]
+[ext_resource type="Texture2D" uid="uid://b7v0m02x8fxst" path="res://resource/Floor1/ART_F1_Ceiling_Model_Ceiling1BaseColor.png" id="2_jycps"]
+[ext_resource type="Texture2D" uid="uid://y5iddid2ysa7" path="res://resource/Floor1/ART_F1_Ceiling_Model_Ceiling1Normal.png" id="3_527g7"]
+[ext_resource type="Texture2D" uid="uid://e8jdw34sqqvm" path="res://resource/Floor1/ART_F1_Ceiling_Model_Ceiling1Rough.png" id="4_0nf1b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwqb8"]
+specular_mode = 1
+albedo_texture = ExtResource("2_jycps")
+roughness = 0.7
+roughness_texture = ExtResource("4_0nf1b")
+normal_enabled = true
+normal_texture = ExtResource("3_527g7")
+
+[node name="ART_F1_Ceiling_Model" instance=ExtResource("1_sgbvk")]
+
+[node name="Ceiling_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pwqb8")

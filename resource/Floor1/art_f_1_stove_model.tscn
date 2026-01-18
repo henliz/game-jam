@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://cb26liwye265d"]
+
+[ext_resource type="PackedScene" uid="uid://bv2mqtq7b78sj" path="res://resource/Floor1/ART_F1_Stove_Model.glb" id="1_c6hrs"]
+[ext_resource type="Texture2D" uid="uid://lebhh775dakb" path="res://resource/Floor1/ART_F1_Stove_Model_bricks_02_color_256.webp" id="2_jprqn"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_u46gs"]
+[ext_resource type="Shader" uid="uid://dxte4mukf8q68" path="res://resource/GraphicsCore/hue_rotate_triplanar.gdshader" id="4_6pdqf"]
+[ext_resource type="Texture2D" uid="uid://cmjb2i2eu3hpq" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength0_512.png" id="5_r23wc"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_1n4ln"]
+[ext_resource type="Texture2D" uid="uid://yvh4yec17n3g" path="res://resource/Floor1/ART_F1_Stove_Model_stove_hatches_color_512.webp" id="7_rtaai"]
+[ext_resource type="Texture2D" uid="uid://ckohnl3hci28x" path="res://resource/Floor1/ART_F1_Stove_Model_stove_pipe_01_color_512.webp" id="8_e6lv2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi4oi"]
+specular_mode = 1
+albedo_texture = ExtResource("2_jprqn")
+roughness = 0.8
+roughness_texture = ExtResource("3_u46gs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvpxp"]
+render_priority = 0
+shader = ExtResource("4_6pdqf")
+shader_parameter/albedo = Color(0.29426616, 0.11911703, 0.18998486, 1)
+shader_parameter/texture_hue_shift = ExtResource("5_r23wc")
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("6_1n4ln")
+shader_parameter/normal_scale = 0.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8phtl"]
+render_priority = 0
+shader = ExtResource("4_6pdqf")
+shader_parameter/albedo = Color(0.78039217, 0.6392157, 0.4745098, 1)
+shader_parameter/texture_hue_shift = ExtResource("5_r23wc")
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("6_1n4ln")
+shader_parameter/normal_scale = 0.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0noe"]
+transparency = 2
+alpha_scissor_threshold = 0.9
+alpha_antialiasing_mode = 0
+specular_mode = 1
+albedo_texture = ExtResource("7_rtaai")
+roughness = 0.5
+texture_repeat = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e50tu"]
+render_priority = 0
+shader = ExtResource("4_6pdqf")
+shader_parameter/albedo = Color(0.19665039, 0.2540648, 0.32112417, 1)
+shader_parameter/texture_hue_shift = ExtResource("5_r23wc")
+shader_parameter/roughness = 0.50000002375
+shader_parameter/texture_roughness = ExtResource("6_1n4ln")
+shader_parameter/normal_scale = 0.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 2, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqw7q"]
+cull_mode = 2
+specular_mode = 1
+albedo_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+albedo_texture = ExtResource("8_e6lv2")
+roughness = 0.8
+roughness_texture = ExtResource("6_1n4ln")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4neb"]
+render_priority = 0
+shader = ExtResource("4_6pdqf")
+shader_parameter/albedo = Color(0.36837912, 0.23676157, 0.19135585, 1)
+shader_parameter/texture_hue_shift = ExtResource("5_r23wc")
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("6_1n4ln")
+shader_parameter/normal_scale = 0.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Stove_Model" instance=ExtResource("1_c6hrs")]
+
+[node name="stove_main_body" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pi4oi")
+surface_material_override/1 = SubResource("ShaderMaterial_nvpxp")
+surface_material_override/2 = SubResource("ShaderMaterial_8phtl")
+
+[node name="stove_hatches" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_x0noe")
+
+[node name="stove_top" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_e50tu")
+
+[node name="stove_pipe" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oqw7q")
+
+[node name="stove_inner_wall" parent="." index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_j4neb")

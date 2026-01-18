@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://p3y4bpxoadox"]
+
+[ext_resource type="PackedScene" uid="uid://0i8620e7x4wc" path="res://resource/Floor1/ART_F1_StoneBrickFloor_Final.glb" id="1_1238b"]
+[ext_resource type="Texture2D" uid="uid://d0vjf85qjh3eh" path="res://resource/Floor1/ART_F1_StoneBrickFloor_Final_F1FloorBaseColor.png" id="2_sg5mg"]
+[ext_resource type="Texture2D" uid="uid://bl230ypdlbobp" path="res://resource/Floor1/ART_F1_StoneBrickFloor_Final_F1FloorRough.png" id="3_n2hwt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ufq"]
+specular_mode = 1
+albedo_texture = ExtResource("2_sg5mg")
+roughness_texture = ExtResource("3_n2hwt")
+
+[node name="ART_F1_StoneBrickFloor_Final" instance=ExtResource("1_1238b")]
+
+[node name="Plane_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_01ufq")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://52kdta4h0cy5"]
+
+[ext_resource type="PackedScene" uid="uid://cb1euuauahwjb" path="res://resource/Floor1/ART_F1_Sofa_Final.glb" id="1_w60qx"]
+[ext_resource type="Texture2D" uid="uid://wb7du6duyv44" path="res://resource/Floor1/ART_F1_Sofa_Final_SofaBaseColor.png" id="2_0n21n"]
+[ext_resource type="Texture2D" uid="uid://bv1ja0smnu0gp" path="res://resource/Floor1/ART_F1_Sofa_Final_SofaNormal.png" id="3_vh3hx"]
+[ext_resource type="Texture2D" uid="uid://bnouwwyotl5hs" path="res://resource/Floor1/ART_F1_Sofa_Final_SofaRough.png" id="4_m70ya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wi47"]
+specular_mode = 1
+albedo_texture = ExtResource("2_0n21n")
+roughness = 0.7
+roughness_texture = ExtResource("4_m70ya")
+normal_enabled = true
+normal_texture = ExtResource("3_vh3hx")
+
+[node name="ART_F1_Sofa_Final" instance=ExtResource("1_w60qx")]
+
+[node name="Cube_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_3wi47")

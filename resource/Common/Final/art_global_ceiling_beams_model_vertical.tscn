@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccyhul1vlph7i"]
+
+[ext_resource type="PackedScene" uid="uid://72el60mbsba" path="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical.glb" id="1_rftiq"]
+[ext_resource type="Texture2D" uid="uid://00ual1v36oli" path="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertBaseColor.png" id="2_6ssiq"]
+[ext_resource type="Texture2D" uid="uid://cc6k1b18inc80" path="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertNormal.png" id="3_evxt8"]
+[ext_resource type="Texture2D" uid="uid://bv8wqbhp3i2qh" path="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertRough.png" id="4_n17ml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ietqq"]
+specular_mode = 1
+albedo_texture = ExtResource("2_6ssiq")
+roughness = 0.7
+roughness_texture = ExtResource("4_n17ml")
+normal_enabled = true
+normal_texture = ExtResource("3_evxt8")
+
+[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" instance=ExtResource("1_rftiq")]
+
+[node name="BeamsVert" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ietqq")

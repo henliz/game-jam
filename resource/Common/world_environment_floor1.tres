@@ -4,12 +4,10 @@
 background_mode = 1
 tonemap_mode = 1
 tonemap_exposure = 1.5
-ssao_enabled = true
 ssao_radius = 0.5
 ssao_intensity = 4.0
 ssao_light_affect = 1.0
 ssao_ao_channel_affect = 0.3
-sdfgi_enabled = true
 sdfgi_read_sky_light = false
 sdfgi_min_cell_size = 0.1
 glow_enabled = true
@@ -23,4 +21,3 @@ fog_density = 0.02
 fog_height = 3.0
 fog_height_density = 0.05
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02

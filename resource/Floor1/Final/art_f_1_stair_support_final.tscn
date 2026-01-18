@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjurv7h181la5"]
+
+[ext_resource type="PackedScene" uid="uid://skc8uj0whwqw" path="res://resource/Floor1/ART_F1_StairSupport_Final.glb" id="1_1rvhp"]
+[ext_resource type="Texture2D" uid="uid://b0wan6cilpjv3" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportBaseColor.png" id="2_bo1rr"]
+[ext_resource type="Texture2D" uid="uid://cmsoxjimuvkmt" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportNormal.png" id="3_bo1rr"]
+[ext_resource type="Texture2D" uid="uid://brg6j2lmsa6sh" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportRough.png" id="3_bu7vd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bu7vd"]
+specular_mode = 1
+albedo_texture = ExtResource("2_bo1rr")
+roughness = 0.6
+roughness_texture = ExtResource("3_bu7vd")
+normal_enabled = true
+normal_texture = ExtResource("3_bo1rr")
+
+[node name="ART_F1_StairSupport_Final" instance=ExtResource("1_1rvhp")]
+
+[node name="StairSupport" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_bu7vd")

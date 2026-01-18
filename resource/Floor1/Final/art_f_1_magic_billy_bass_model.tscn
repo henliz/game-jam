@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnmnogv2cujt8"]
+
+[ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="1_gkosg"]
+[ext_resource type="Texture2D" uid="uid://c1ea0w6h30yoa" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model_ART_F1_MAGICBILLYBASS_TEXTURE.webp" id="2_rq1xf"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="3_n4ikq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crnsm"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("2_rq1xf")
+roughness = 0.5
+roughness_texture = ExtResource("3_n4ikq")
+backlight_enabled = true
+backlight_texture = ExtResource("2_rq1xf")
+
+[node name="ART_F1_MagicBillyBass_Model2" instance=ExtResource("1_gkosg")]
+
+[node name="ART_F1_MagicBillyBass_Model" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_crnsm")

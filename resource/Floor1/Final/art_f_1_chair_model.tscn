@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5nr6xtvu5ae4"]
+
+[ext_resource type="PackedScene" uid="uid://m4285rkjvcer" path="res://resource/Floor1/ART_F1_Chair_Model.glb" id="1_op6ml"]
+[ext_resource type="Texture2D" uid="uid://dbt0m2jqw62a" path="res://resource/Floor1/ART_F1_Chair_Model_ART_F1_Chair_color.webp" id="2_w1ik7"]
+[ext_resource type="Texture2D" uid="uid://cldy0ctcd6d07" path="res://resource/Floor1/ART_F1_Chair_Model_ART_F1_Chair_normal.webp" id="3_73ikf"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_tvicm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adfqu"]
+specular_mode = 1
+albedo_texture = ExtResource("2_w1ik7")
+roughness = 0.5
+roughness_texture = ExtResource("4_tvicm")
+normal_enabled = true
+normal_texture = ExtResource("3_73ikf")
+
+[node name="ART_F1_Chair_Model2" instance=ExtResource("1_op6ml")]
+
+[node name="ART_F1_Chair_Model" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_adfqu")

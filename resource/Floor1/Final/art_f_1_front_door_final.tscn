@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7gtje8ahgfo4"]
+
+[ext_resource type="PackedScene" uid="uid://c3dh8lcjmwkaq" path="res://resource/Floor1/ART_F1_FrontDoor_Final.glb" id="1_05v2y"]
+[ext_resource type="Texture2D" uid="uid://bcpl3pgiij3f2" path="res://resource/Floor1/ART_F1_FrontDoor_Final_DoorBaseColor.png" id="2_66cdt"]
+[ext_resource type="Texture2D" uid="uid://btkkq6rixwwvt" path="res://resource/Floor1/ART_F1_FrontDoor_Final_DoorNormal.png" id="3_irskp"]
+[ext_resource type="Texture2D" uid="uid://b1ly4lycmfr52" path="res://resource/Floor1/ART_F1_FrontDoor_Final_DoorRough.png" id="4_yardg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1rug"]
+specular_mode = 1
+albedo_texture = ExtResource("2_66cdt")
+roughness = 0.6
+roughness_texture = ExtResource("4_yardg")
+normal_enabled = true
+normal_texture = ExtResource("3_irskp")
+
+[node name="ART_F1_FrontDoor_Final" instance=ExtResource("1_05v2y")]
+
+[node name="Door" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d1rug")

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0wan6cilpjv3"
-path.s3tc="res://.godot/imported/ART_F1_StairSupport_Final_StairSupportBaseColor.png-c621b7b045324beec2404c642cb2ba69.s3tc.ctex"
+uid="uid://cc6k1b18inc80"
+path.s3tc="res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertNormal.png-d6971ce1c5afd3f58705422339ca883c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "00741631ebdadb8173ada7e6b8269c5e"
+"md5": "b074de6b9182cb0d54bc48f1f43fc072"
 }
 
 [deps]
 
-source_file="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportBaseColor.png"
-dest_files=["res://.godot/imported/ART_F1_StairSupport_Final_StairSupportBaseColor.png-c621b7b045324beec2404c642cb2ba69.s3tc.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertNormal.png"
+dest_files=["res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertNormal.png-d6971ce1c5afd3f58705422339ca883c.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://resource/Common/ART_GLOBAL_CeilingBeams_Model_Vertical_BeamVertNormal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
