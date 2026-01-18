@@ -8,15 +8,17 @@ class_name GlowOutline
 var glow_overlay: MeshInstance3D
 var is_glowing: bool = false
 var mesh_instance: MeshInstance3D
+var player_in_range: bool = false
 
 
 func _ready() -> void:
-	# Find the mesh - search self and children
-	# Note: Script extends Node3D but may be attached to a MeshInstance3D
+	# Search for mesh in self, children, then parent's tree (for sibling nodes)
 	mesh_instance = _find_mesh_instance(self)
+	if not mesh_instance and get_parent():
+		mesh_instance = _find_mesh_instance(get_parent())
 
 	if not mesh_instance:
-		push_error("GlowOutline: No MeshInstance3D found in node or children")
+		push_error("GlowOutline: No MeshInstance3D found in node tree")
 		return
 
 	print("GlowOutline: Found mesh '", mesh_instance.name, "' on node '", name, "'")
@@ -78,20 +80,39 @@ func _setup_interaction_area() -> void:
 	print("GlowOutline: Interaction area setup - radius: ", interaction_range)
 
 func _on_body_entered(body: Node3D) -> void:
-	print("GlowOutline: Body entered - ", body.name, " groups: ", body.get_groups())
 	if body.is_in_group("player"):
-		print("GlowOutline: Player detected! Enabling glow.")
-		enable_glow()
+		player_in_range = true
+		_update_glow_visibility()
 
 func _on_body_exited(body: Node3D) -> void:
-	print("GlowOutline: Body exited - ", body.name)
 	if body.is_in_group("player"):
-		disable_glow()
+		player_in_range = false
+		_update_glow_visibility()
+
+func _process(_delta: float) -> void:
+	if player_in_range:
+		_update_glow_visibility()
+
+func _update_glow_visibility() -> void:
+	if not glow_overlay:
+		return
+
+	var should_glow = player_in_range and not _is_player_inspecting()
+
+	if should_glow != is_glowing:
+		is_glowing = should_glow
+		glow_overlay.visible = is_glowing
+
+func _is_player_inspecting() -> bool:
+	var player = get_tree().get_first_node_in_group("player")
+	if player and "inspecting" in player:
+		return player.inspecting
+	return false
 
 func enable_glow() -> void:
-	is_glowing = true
-	glow_overlay.visible = true
+	player_in_range = true
+	_update_glow_visibility()
 
 func disable_glow() -> void:
-	is_glowing = false
-	glow_overlay.visible = false
+	player_in_range = false
+	_update_glow_visibility()

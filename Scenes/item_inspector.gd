@@ -16,6 +16,11 @@ const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
 @export var cleaning_rotation_degrees: float = 345.0
 @export var cloth_cursor_offset: Vector2 = Vector2(-45, -20)
 
+@export_group("Audio")
+@export var cleaning_complete_sound: AudioStream = preload("res://Audio/SFX/Puzzles/ESM_PG_cinematic_fx_magic_collect_shimmer_reveal_particles_swell_01.wav")
+
+var success_audio_player: AudioStreamPlayer
+
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
@@ -46,6 +51,7 @@ func _ready():
 	cleaning_ui.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_setup_cursor()
+	_setup_audio()
 
 
 func _setup_cursor() -> void:
@@ -57,6 +63,13 @@ func _setup_cursor() -> void:
 	cursor_sprite.visible = false
 	add_child(cursor_sprite)
 	_apply_cursor_scale()
+
+
+func _setup_audio() -> void:
+	success_audio_player = AudioStreamPlayer.new()
+	success_audio_player.bus = "SFX" if AudioServer.get_bus_index("SFX") != -1 else "Master"
+	success_audio_player.stream = cleaning_complete_sound
+	add_child(success_audio_player)
 
 
 func _apply_cursor_scale() -> void:
@@ -526,7 +539,9 @@ func _on_cleaning_progress(progress: float) -> void:
 	cleaning_progress_updated.emit(progress)
 
 func _on_cleaning_complete() -> void:
-	progress_label.text = "Cleaned!"
+	cleaning_ui.visible = false
+	if success_audio_player:
+		success_audio_player.play()
 	if cleanable:
 		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit(cleanable)

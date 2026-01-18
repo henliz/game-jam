@@ -159,8 +159,10 @@ func _start_text_timer(entry: Dictionary) -> void:
 
 func _show_caption(entry: Dictionary) -> void:
 	if caption_ui and caption_ui.has_method("show_caption"):
-		var speaker: String = entry.get("speaker", "")
-		var text: String = entry.get("text", "")
+		var speaker_val = entry.get("speaker")
+		var text_val = entry.get("text")
+		var speaker: String = str(speaker_val) if speaker_val != null else ""
+		var text: String = str(text_val) if text_val != null else ""
 		caption_ui.show_caption(speaker, text)
 
 
