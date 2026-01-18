@@ -1,7 +1,7 @@
 class_name Interactable
 extends StaticBody3D
 
-@export var inspect_scale: float = 1.0
+@export var inspect_scale: float = 0.5
 @export var item_name: String = "Item"
 @export_multiline var item_description: String = ""
 

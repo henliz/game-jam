@@ -1,100 +1,565 @@
 {
 	"entries": [
 		{
-			"id": "intro_welcome",
-			"speaker": "Narrator",
-			"text": "The ancient tower stands before you, its astral lens dim and cold.",
-			"audio_path": "res://Audio/Dialogue/file_example.ogg",
+			"id": "F1Entry",
+			"voiceover_id": "VO_F1_ENTRY",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "That was not a short walk. Thought I was going to lose a finger out there.\nAt least this place is hard to miss.\nThe energy here feels... strange. Hello? Anyone home?\n[Sighs] Of course not.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_ENTRY.ogg",
 			"type": "dialogue",
-			"subtype": null
+			"subtype": "entry",
+			"trigger_condition": "Player enters Floor 1 for first time"
 		},
 		{
-			"id": "first_artifact",
-			"speaker": "Narrator",
-			"text": "Ah, you've found your first artifact. Clean it well, and its light shall return.",
-			"audio_path": "res://Audio/Dialogue/keeper_first_artifact.ogg",
+			"id": "F1SeeInteractableFirst",
+			"voiceover_id": "VO_F1_SEE_INTERACTABLE_FIRST",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "Huh, that's new. Is it... glowing?",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_SEE_INTERACTABLE_FIRST.ogg",
 			"type": "dialogue",
-			"subtype": null
+			"subtype": "interaction",
+			"trigger_condition": "Player enters radius of interactable for the first time"
 		},
 		{
-			"id": "journal_first_open",
-			"speaker": "Player",
-			"text": "I should probably jot this down in my journal...",
-			"audio_path": "res://Audio/Dialogue/FirstJournal.ogg",
+			"id": "F1PickupInteractableFirst",
+			"voiceover_id": "VO_F1_PICKUP_INTERACTABLE_FIRST",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "You look like you've seen better days. I wonder if I can fix you.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_PICKUP_INTERACTABLE_FIRST.ogg",
 			"type": "dialogue",
-			"subtype": null
+			"subtype": "interaction",
+			"trigger_condition": "First Interactable picked up"
 		},
 		{
-			"id": "artifact_first_clean",
-			"speaker": "Player",
-			"text": "Feels much tidier already!",
-			"audio_path": "res://Audio/Dialogue/FirstClean.ogg",
+			"id": "F1FirstTimeCleaningDimension",
+			"voiceover_id": "VO_F1_FIRST_CLEAN_DIMENSION",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "Good gods!\nWhat sort of maniac has a liminal space just for home maintenance?",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_FIRST_CLEAN_DIMENSION.ogg",
 			"type": "dialogue",
-			"subtype": null
+			"subtype": "entry",
+			"trigger_condition": "Player enters Cleaning Dimension for first time"
+		},
+		{
+			"id": "F1FirstItemCleaned",
+			"voiceover_id": "VO_F1_FIRST_ITEM_CLEANED",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "At least this one corner feels a bit cleaner. The magic in the air feels slightly stronger, too.\nOh! Is that... [sniffing] burning paper? The journal!",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_FIRST_ITEM_CLEANED.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "First successful clean/repair action completed"
+		},
+		{
+			"id": "F1JournalPickup",
+			"voiceover_id": "VO_F1_JOURNAL_PICKUP",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "What are you?\n[Opens journal]\nI can't read any of this...\n[Sighs] I wonder if there's some way to decode it.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_JOURNAL_PICKUP.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Journal picked up"
+		},
+		{
+			"id": "F1FixBust",
+			"voiceover_id": "VO_F1_FIX_BUST",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "Wouldn't put it past a wizard to keep a bust of themselves in their own home...",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_FIX_BUST.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Bust object repair + clean start = complete"
+		},
+		{
+			"id": "F1Diary01",
+			"voiceover_id": "VO_F1_DIARY_1",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "The runes burnt away from this section. Interesting.\nI wonder if he used some sort of protection spell on this...\nThere's not much here, outside of that \"important\" incantation. Whatever that means.\nI should be glad I didn't walk here along the coast, I guess.\nI need more than this to figure out what's going on. I should keep looking around.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_DIARY_1.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F1Diary02",
+			"voiceover_id": "VO_F1_DIARY_2",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "More text.\n[A short pause]\nThis is a lonely place to be tied to. But what happened to him? And what's this about the light?\nI should make my way up there.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_DIARY_2.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F1Diary03",
+			"voiceover_id": "VO_F1_DIARY_3",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "Judging by the state of this place, it looks like he went off and found something to do.\nSomething besides counting spiderwebs.\nNow to figure out what he's been up to.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_DIARY_3.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F1IdleReminder01",
+			"voiceover_id": "VO_F1_IDLE_REMINDER_1",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "What a strange fish. Poor thing is covered in grime, now.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_IDLE_REMINDER_1.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 1)"
+		},
+		{
+			"id": "F1IdleReminder02",
+			"voiceover_id": "VO_F1_IDLE_REMINDER_2",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "Is that some sort of statue in pieces?",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_IDLE_REMINDER_2.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 2)"
+		},
+		{
+			"id": "F1IdleReminder03",
+			"voiceover_id": "VO_F1_IDLE_REMINDER_3",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "That teapot has seen better days.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_IDLE_REMINDER_3.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 3)"
+		},
+		{
+			"id": "F1AllItemsComplete",
+			"voiceover_id": "VO_F1_ALL_ITEMS_COMPLETE",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "That seems to be everything. Only way to go is up I suppose.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_ALL_ITEMS_COMPLETE.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "All required items on Floor 1 have been clean/repaired"
+		},
+		{
+			"id": "F1StairsBlocked",
+			"voiceover_id": "VO_F1_STAIRS_BLOCKED",
+			"floor": "Floor 1",
+			"speaker": null,
+			"text": "That's not going to work.",
+			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_STAIRS_BLOCKED.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Player attempts stairs before floor completion"
+		},
+		{
+			"id": "F2Entry",
+			"voiceover_id": "VO_F2_ENTRY",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "[Out of Breath] Did he walk those every day?\n Oh. It's lovely up here. Even with the mess.\nWell, time to keep looking...",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_ENTRY.ogg",
+			"type": "dialogue",
+			"subtype": "entry",
+			"trigger_condition": "Player enters Floor 2 for first time"
+		},
+		{
+			"id": "F2WindGust",
+			"voiceover_id": "VO_F2_WIND_GUST",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "Sounds like this place could blow right over.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_WIND_GUST.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Strong wind force event plays after entry"
+		},
+		{
+			"id": "F2FixGlobe",
+			"voiceover_id": "VO_F2_FIX_GLOBE",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "There, all the constellations look right again.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_FIX_GLOBE.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Globe object repaired state = Complete"
+		},
+		{
+			"id": "F2Diary04",
+			"voiceover_id": "VO_F2_DIARY_4",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "Every item seems to translate more of this journal. Seems like putting this place back together does something to the magic here.\nHe clearly thought quite highly of himself.\nA portal, though? That's an impressive bit of magic to pull off. Especially in a place like this.\nWhat else is tucked away up here?",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_DIARY_4.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F2Diary05",
+			"voiceover_id": "VO_F2_DIARY_5",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "I wonder what's under that spot? He's referencing something again, but what does it mean?\nMaybe it's something related to the tower?",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_DIARY_5.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F2Diary06",
+			"voiceover_id": "VO_F2_DIARY_6",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "I'm surprised he was able to find anything at all in here, between all of these boxes and his apparent talent for knocking things over.\nI'm assuming he never hired that assistant, either.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_DIARY_6.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F2IdleReminder01",
+			"voiceover_id": "VO_F2_IDLE_REMINDER_1",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "That's a strange lantern.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_IDLE_REMINDER_1.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 1)"
+		},
+		{
+			"id": "F2IdleReminder02",
+			"voiceover_id": "VO_F2_IDLE_REMINDER_2",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "It's a shame to leave a crystal ball in that state.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_IDLE_REMINDER_2.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 2)"
+		},
+		{
+			"id": "F2IdleReminder03",
+			"voiceover_id": "VO_F2_IDLE_REMINDER_3",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "Someone's fiddled with that globe.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_IDLE_REMINDER_3.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 3)"
+		},
+		{
+			"id": "F2AllItemsComplete",
+			"voiceover_id": "VO_F2_ALL_ITEMS_COMPLETE",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "I think that's everything. Seems to have unlocked the way up again.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_ALL_ITEMS_COMPLETE.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "All Floor 2 items cleaned/repaired"
+		},
+		{
+			"id": "F2StairsBlocked",
+			"voiceover_id": "VO_F2_STAIRS_BLOCKED",
+			"floor": "Floor 2",
+			"speaker": null,
+			"text": "Still not going to work.",
+			"audio_path": "res://Audio/Dialogue/Floor2/VO_F2_STAIRS_BLOCKED.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Player attempts stairs before floor completion"
+		},
+		{
+			"id": "F3Entry",
+			"voiceover_id": "VO_F3_ENTRY",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "Is it strange that I'm looking forward to organizing this?",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_ENTRY.ogg",
+			"type": "dialogue",
+			"subtype": "entry",
+			"trigger_condition": "Player enters Floor 3 first time"
+		},
+		{
+			"id": "F3FixPotion",
+			"voiceover_id": "VO_F3_FIX_POTION",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "There. Back in peak brewing form.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_FIX_POTION.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Distillation equipment cleaned and repaired"
+		},
+		{
+			"id": "F3WindowFrost",
+			"voiceover_id": "VO_F3_WINDOW_FROST",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "Beautiful. Even covered in frost.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_WINDOW_FROST.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Player interacts with frozen window"
+		},
+		{
+			"id": "F3Diary07",
+			"voiceover_id": "VO_F3_DIARY_7",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "[Snorts] There are few things worse than a gremlin in a laboratory.\nI'd like to see how he managed that. I'd also like to see how he got rid of it.\n[Pause] I'm close to being able to see everything in the journal, just a couple items more should do it.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_DIARY_7.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F3Diary08",
+			"voiceover_id": "VO_F3_DIARY_8",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "Another mention of something here he had to handle, but what?\nThe townsfolk said he lived alone and I haven't seen any sign of anyone.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_DIARY_8.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F3Diary09",
+			"voiceover_id": "VO_F3_DIARY_9",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "Well... Unless he's hiding on the roof he isn't here. But then where did he end up?\nRegardless, without him here I'll have to figure out how to get this light working again alone.\nI seem to have all the pieces of this incantation, now it's just a matter of figuring out how to use it.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_DIARY_9.ogg",
+			"type": "dialogue",
+			"subtype": "diary",
+			"trigger_condition": "Corresponding Diary Entry unlocked"
+		},
+		{
+			"id": "F3IdleReminder01",
+			"voiceover_id": "VO_F3_IDLE_REMINDER_1",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "I don't think the distillation set is meant to look like that.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_IDLE_REMINDER_1.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 7)"
+		},
+		{
+			"id": "F3IdleReminder02",
+			"voiceover_id": "VO_F3_IDLE_REMINDER_2",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "It would be a shame to leave that book so dirty.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_IDLE_REMINDER_2.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 8)"
+		},
+		{
+			"id": "F3IdleReminder03",
+			"voiceover_id": "VO_F3_IDLE_REMINDER_3",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "That mortar and pestle need cleaning.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_IDLE_REMINDER_3.ogg",
+			"type": "context",
+			"subtype": "idle",
+			"trigger_condition": "No interaction for 30 seconds (Item 9)"
+		},
+		{
+			"id": "F3AllItemsComplete",
+			"voiceover_id": "VO_F3_ALL_ITEMS_COMPLETE",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "The way up should be clear now. Can't be much longer now.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_ALL_ITEMS_COMPLETE.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "All Floor 3 items cleaned/repaired"
+		},
+		{
+			"id": "F3StairsBlocked",
+			"voiceover_id": "VO_F3_STAIRS_BLOCKED",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "Note to self: research the definition of insanity.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_STAIRS_BLOCKED.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Player attempts stairs before floor completion"
+		},
+		{
+			"id": "F3FinalStairs",
+			"voiceover_id": "VO_F3_FINAL_STAIRS",
+			"floor": "Floor 3",
+			"speaker": null,
+			"text": "That must be the top.",
+			"audio_path": "res://Audio/Dialogue/Floor3/VO_F3_FINAL_STAIRS.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Player unlocks or approaches final stair after completion"
+		},
+		{
+			"id": "F4Entry",
+			"voiceover_id": "VO_F4_ENTRY",
+			"floor": "Floor 4",
+			"speaker": null,
+			"text": "[A quiet gasp] I wonder how high up we are.\nThe view must be incredible from here.",
+			"audio_path": "res://Audio/Dialogue/Floor4/VO_F4_ENTRY.ogg",
+			"type": "dialogue",
+			"subtype": "entry",
+			"trigger_condition": "Player enters Floor 4"
+		},
+		{
+			"id": "F4SpiritEncounter",
+			"voiceover_id": "VO_F4_SPIRIT_ENCOUNTER",
+			"floor": "Floor 4",
+			"speaker": null,
+			"text": "Oh hello, little one. It's alright, I'm not here to harm you.\n It was you all along, wasn't it? Lighting the way.\nYou wanted me to fix everything up.",
+			"audio_path": "res://Audio/Dialogue/Floor4/VO_F4_SPIRIT_ENCOUNTER.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Player reaches spirit character/location"
+		},
+		{
+			"id": "F4FinalPuzzleStart",
+			"voiceover_id": "VO_F4_FINAL_PUZZLE_START",
+			"floor": "Floor 4",
+			"speaker": null,
+			"text": "Hmm... These look familiar.\nThe inscriptions from the journal must be connected to the astral lens somehow.",
+			"audio_path": "res://Audio/Dialogue/Floor4/VO_F4_FINAL_PUZZLE_START.ogg",
+			"type": "dialogue",
+			"subtype": "interaction",
+			"trigger_condition": "Player interacts with final puzzle"
+		},
+		{
+			"id": "F4FinalPuzzleComplete",
+			"voiceover_id": "VO_F4_FINAL_PUZZLE_COMPLETE",
+			"floor": "Floor 4",
+			"speaker": null,
+			"text": "Look at that! Good as new.\nI wonder what happens now?",
+			"audio_path": "res://Audio/Dialogue/Floor4/VO_F4_FINAL_PUZZLE_COMPLETE.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Final puzzle solved"
+		},
+		{
+			"id": "F4SnowLiftsEndgame",
+			"voiceover_id": "VO_F4_SNOW_LIFTS_ENDGAME",
+			"floor": "Floor 4",
+			"speaker": null,
+			"text": "[Laughing, almost in disbelief] I... I did it!\nThe snow is stopping, I can see the sky!\n[A deep breath and a long exhale] The sun feels warm again.",
+			"audio_path": "res://Audio/Dialogue/Floor4/VO_F4_SNOW_LIFTS_ENDGAME.ogg",
+			"type": "dialogue",
+			"subtype": "progression",
+			"trigger_condition": "Snow lifts"
 		},
 		{
 			"id": "context_surprised_01",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "What was that?",
 			"audio_path": "res://Audio/Context/surprised_01.ogg",
 			"type": "context",
-			"subtype": "surprised"
+			"subtype": "surprised",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_surprised_02",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "Whoa!",
 			"audio_path": "res://Audio/Context/surprised_02.ogg",
 			"type": "context",
-			"subtype": "surprised"
+			"subtype": "surprised",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_success_01",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "That did it!",
 			"audio_path": "res://Audio/Context/success_01.ogg",
 			"type": "context",
-			"subtype": "success"
+			"subtype": "success",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_success_02",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "Perfect.",
 			"audio_path": "res://Audio/Context/success_02.ogg",
 			"type": "context",
-			"subtype": "success"
+			"subtype": "success",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_confused_01",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "Hmm, that doesn't seem right...",
 			"audio_path": "res://Audio/Context/confused_01.ogg",
 			"type": "context",
-			"subtype": "confused"
+			"subtype": "confused",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_confused_02",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "What am I missing?",
 			"audio_path": "res://Audio/Context/confused_02.ogg",
 			"type": "context",
-			"subtype": "confused"
+			"subtype": "confused",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_effort_01",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "Almost there...",
 			"audio_path": "res://Audio/Context/effort_01.ogg",
 			"type": "context",
-			"subtype": "effort"
+			"subtype": "effort",
+			"trigger_condition": null
 		},
 		{
 			"id": "context_discovery_01",
-			"speaker": "Player",
+			"voiceover_id": null,
+			"floor": null,
+			"speaker": null,
 			"text": "Interesting...",
 			"audio_path": "res://Audio/Context/discovery_01.ogg",
 			"type": "context",
-			"subtype": "discovery"
+			"subtype": "discovery",
+			"trigger_condition": null
 		}
 	]
 }

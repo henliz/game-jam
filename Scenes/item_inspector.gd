@@ -16,6 +16,11 @@ const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
 @export var cleaning_rotation_degrees: float = 345.0
 @export var cloth_cursor_offset: Vector2 = Vector2(-45, -20)
 
+@export_group("Audio")
+@export var cleaning_complete_sound: AudioStream = preload("res://Audio/SFX/Puzzles/ESM_PG_cinematic_fx_magic_collect_shimmer_reveal_particles_swell_01.wav")
+
+var success_audio_player: AudioStreamPlayer
+
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
@@ -46,6 +51,7 @@ func _ready():
 	cleaning_ui.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_setup_cursor()
+	_setup_audio()
 
 
 func _setup_cursor() -> void:
@@ -59,12 +65,19 @@ func _setup_cursor() -> void:
 	_apply_cursor_scale()
 
 
+func _setup_audio() -> void:
+	success_audio_player = AudioStreamPlayer.new()
+	success_audio_player.bus = "SFX" if AudioServer.get_bus_index("SFX") != -1 else "Master"
+	success_audio_player.stream = cleaning_complete_sound
+	add_child(success_audio_player)
+
+
 func _apply_cursor_scale() -> void:
 	if not cursor_sprite or not cursor_sprite.texture:
 		return
 	var tex_size = cursor_sprite.texture.get_size()
-	var scale = grab_cursor_scale if current_cursor_mode == 2 else cloth_cursor_scale
-	cursor_sprite.size = tex_size * scale
+	var cursor_scale = grab_cursor_scale if current_cursor_mode == 2 else cloth_cursor_scale
+	cursor_sprite.size = tex_size * cursor_scale
 	cursor_sprite.pivot_offset = Vector2.ZERO  # Origin at top-left
 
 
@@ -111,19 +124,25 @@ func _hide_custom_cursor() -> void:
 
 
 func _update_cursor_from_state() -> void:
-	var item_is_clean = (cleanable == null) or cleanable.is_complete
+	var is_actively_cleanable = cleanable != null and not cleanable.is_complete
 
 	if is_dragging:
+		# Always show grab cursor when rotating
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		cursor_sprite.visible = true
 		_set_cursor_mode(2)  # Grab
-	elif item_is_clean:
-		cursor_sprite.visible = false  # Hide cursor when item is clean and not rotating
-	elif is_cleaning:
+	elif is_actively_cleanable:
+		# Item needs cleaning - use cloth cursors
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		cursor_sprite.visible = true
-		_set_cursor_mode(1)  # Cleaning (rotated cloth)
+		if is_cleaning:
+			_set_cursor_mode(1)  # Cleaning (rotated cloth)
+		else:
+			_set_cursor_mode(0)  # Cloth (idle)
 	else:
-		cursor_sprite.visible = true
-		_set_cursor_mode(0)  # Cloth (idle)
+		# Item doesn't need cleaning (repaired, already clean, or non-cleanable) - use system cursor
+		cursor_sprite.visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
@@ -131,6 +150,9 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	inspected_node = item
 	original_parent = item.get_parent()
 	original_transform = item.global_transform
+
+	# Disable collision shape to prevent physics interactions during inspection
+	_set_collision_enabled(item, false)
 
 	opened.emit(item)
 	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
@@ -163,13 +185,17 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 func close():
 	if not is_active:
 		return
+
+	# Re-enable collision shape when closing
+	if inspected_node:
+		_set_collision_enabled(inspected_node, true)
 	is_active = false
 	is_dragging = false
 	is_cleaning = false
 	animating_out = true
 	animating_in = false
 	slide_progress = 0.0
-
+		
 	if cleanable:
 		if cleanable.cleaning_progress_changed.is_connected(_on_cleaning_progress):
 			cleanable.cleaning_progress_changed.disconnect(_on_cleaning_progress)
@@ -282,7 +308,7 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 		if vertices.is_empty() or uv2_array.is_empty():
 			continue
 
-		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
@@ -385,7 +411,7 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 			continue
 
 		# Check each triangle - find the closest one by actual distance to triangle
-		var tri_count = indices.size() / 3 if indices.size() > 0 else vertices.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
@@ -501,13 +527,21 @@ func _find_cleanable(node: Node) -> Cleanable:
 			return result
 	return null
 
+
+func _set_collision_enabled(node: Node, enabled: bool) -> void:
+	var collision_shape = node.find_child("CollisionShape3D", false, false)
+	if collision_shape:
+		collision_shape.disabled = not enabled
+
 func _on_cleaning_progress(progress: float) -> void:
 	progress_bar.value = progress
 	_update_progress_label(progress)
 	cleaning_progress_updated.emit(progress)
 
 func _on_cleaning_complete() -> void:
-	progress_label.text = "Cleaned!"
+	cleaning_ui.visible = false
+	if success_audio_player:
+		success_audio_player.play()
 	if cleanable:
 		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit(cleanable)

@@ -64,20 +64,28 @@ func _hide_elements() -> void:
 	if walls_node:
 		for wall in walls_node.get_children():
 			if wall is Node3D:
-				wall.global_position.y += walls_drop_height
+				var pos = wall.global_position
+				pos.y += walls_drop_height
+				wall.global_position = pos
 				wall.visible = false
 
 	if rug_node:
-		rug_node.global_position.x -= rug_slide_distance
+		var pos = rug_node.global_position
+		pos.x -= rug_slide_distance
+		rug_node.global_position = pos
 		rug_node.visible = false
 
 	if table_node:
-		table_node.global_position.y += table_drop_height
+		var pos = table_node.global_position
+		pos.y += table_drop_height
+		table_node.global_position = pos
 		table_node.visible = false
 
 	for prop in props:
 		if prop:
-			prop.global_position.y += props_drop_height
+			var pos = prop.global_position
+			pos.y += props_drop_height
+			prop.global_position = pos
 			prop.visible = false
 
 
@@ -166,7 +174,7 @@ func animate_out() -> void:
 		var prop_index := 0
 		for prop in props:
 			if prop:
-				var start_pos = prop.global_position
+				var _start_pos = prop.global_position
 				var end_pos = target_positions[prop] + Vector3(0, props_drop_height, 0)
 				var delay := prop_index * stagger_delay * 0.5
 				_tween_rise(prop, end_pos, props_duration * 0.7, delay)

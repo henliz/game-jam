@@ -22,7 +22,7 @@ var clean_pixels: int = 0
 var is_complete: bool = false
 var item_id: String = ""
 
-const FIRST_CLEAN_DIALOGUE_ID := "artifact_first_clean"
+const FIRST_CLEAN_DIALOGUE_ID := "F1FirstItemCleaned"
 
 func _ready() -> void:
 
@@ -55,7 +55,7 @@ func _setup_dirt_overlay() -> void:
 	if dirt_shader:
 		overlay_material.shader = dirt_shader
 	else:
-		overlay_material.shader = load("res://resource/dirt_overlay_3d.gdshader")
+		overlay_material.shader = load("res://resource/Shaders/dirt_overlay_3d.gdshader")
 
 	overlay_material.set_shader_parameter("dirt_mask", dirt_mask_texture)
 	overlay_material.set_shader_parameter("dirt_strength", 0.8)
