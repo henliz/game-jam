@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv5bkjr03wmg4"
-path.s3tc="res://.godot/imported/brush_smear_01_256.png-6386ed36af84cf6a5f1f59a3b3554393.s3tc.ctex"
+uid="uid://cc2et06l67d1a"
+path.s3tc="res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_color_512.webp-4b2a357e8600bf99f554c4a15456cde8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "922a37d0763ea855336427bf569b3da8"
+}
 
 [deps]
 
-source_file="res://resource/Common/brush_smear_01_256.png"
-dest_files=["res://.godot/imported/brush_smear_01_256.png-6386ed36af84cf6a5f1f59a3b3554393.s3tc.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_color_512.webp"
+dest_files=["res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_color_512.webp-4b2a357e8600bf99f554c4a15456cde8.s3tc.ctex"]
 
 [params]
 

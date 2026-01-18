@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://pqlat0kyxu3g"]
+
+[ext_resource type="PackedScene" uid="uid://dic4e1mu6qvmk" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model.glb" id="1_37x0p"]
+[ext_resource type="Texture2D" uid="uid://cc2et06l67d1a" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_color_512.webp" id="2_amwrd"]
+[ext_resource type="Texture2D" uid="uid://egixe0owj8e6" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp" id="3_38xll"]
+[ext_resource type="Texture2D" uid="uid://bliqteyf5r8kq" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_rough_512.webp" id="4_y8ra8"]
+[ext_resource type="Material" uid="uid://cmn6marxg0m2n" path="res://resource/GraphicsCore/MAT_core_untextured_obj_assets.material" id="5_u3lu8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfyqb"]
+specular_mode = 1
+albedo_texture = ExtResource("2_amwrd")
+roughness_texture = ExtResource("4_y8ra8")
+emission_enabled = true
+emission_texture = ExtResource("3_38xll")
+
+[node name="ART_GLOBAL_WindowFrame_Model" instance=ExtResource("1_37x0p")]
+
+[node name="ART_GLOBAL_Window_a" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rfyqb")
+surface_material_override/1 = ExtResource("5_u3lu8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=77 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -42,11 +42,12 @@
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="42_6mm6r"]
-[ext_resource type="ArrayMesh" uid="uid://cglotbwur6tgs" path="res://resource/Floor1/f1_wall_door.res" id="43_xcb5n"]
-[ext_resource type="ArrayMesh" uid="uid://cpcbsvoha8nj1" path="res://resource/Floor1/f1_wall_clear.res" id="44_te07t"]
-[ext_resource type="ArrayMesh" uid="uid://bvhp4ku42g0me" path="res://resource/Floor1/f1_wall_window_right.res" id="45_b4e6k"]
-[ext_resource type="ArrayMesh" uid="uid://7pflpalh7d7c" path="res://resource/Floor1/f1_wall_window_center.res" id="46_0sgyr"]
+[ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="43_xcb5n"]
+[ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="44_te07t"]
+[ext_resource type="ArrayMesh" uid="uid://hbqx0kjrwor6" path="res://resource/Floor1/f1_wall_window_right.res" id="45_b4e6k"]
+[ext_resource type="ArrayMesh" uid="uid://b3a36yw77dkv5" path="res://resource/Floor1/f1_wall_window_center.res" id="46_0sgyr"]
 [ext_resource type="ArrayMesh" uid="uid://dwvr2nl4a63xi" path="res://resource/BlockoutAssets/F1_stove_wip.obj" id="47_xcb5n"]
+[ext_resource type="PackedScene" uid="uid://pqlat0kyxu3g" path="res://resource/Common/art_global_window_frame_model.tscn" id="48_b4e6k"]
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="48_te07t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
@@ -680,6 +681,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.872609, 2.026741, -11.13120
 
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
+visible = false
 amount = 512
 lifetime = 3.5
 visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)
@@ -811,6 +813,12 @@ omni_range = 7.0
 
 [node name="ART_F1_Sofa_Final" parent="Floor1" instance=ExtResource("14_04jkj")]
 transform = Transform3D(0.7071067, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.7071067, 3.9403915, 0.03891492, -3.8866901)
+
+[node name="ART_GLOBAL_WindowFrame_Model" parent="Floor1" instance=ExtResource("48_b4e6k")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.5)
+
+[node name="ART_GLOBAL_WindowFrame_Model2" parent="Floor1" instance=ExtResource("48_b4e6k")]
+transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.50000006, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("48_te07t")

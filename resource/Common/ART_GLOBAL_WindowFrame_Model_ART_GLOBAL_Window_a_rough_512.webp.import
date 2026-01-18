@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7csuxj6wuhxi"
-path="res://.godot/imported/brush_strokes_01_hue_strength3_512.png-a2c20151523b869e18673dff9b8a6680.ctex"
+uid="uid://bliqteyf5r8kq"
+path.s3tc="res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_rough_512.webp-d6b025f4859a4c87a0a1c29836c5051b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "0bcb54d6138ea0b02f212e895114f244"
 }
 
 [deps]
 
-source_file="res://resource/Common/brush_strokes_01_hue_strength3_512.png"
-dest_files=["res://.godot/imported/brush_strokes_01_hue_strength3_512.png-a2c20151523b869e18673dff9b8a6680.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_rough_512.webp"
+dest_files=["res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_rough_512.webp-d6b025f4859a4c87a0a1c29836c5051b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +27,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
