@@ -1,5 +1,6 @@
 extends Node3D
 
+signal repair_complete
 
 @onready var camera_3d: Camera3D = %Camera3D
 
@@ -18,9 +19,9 @@ var draggingCollider
 var mousePosition
 var dragging = false
 
-
 var correctPositions = {}
 var correctCount = 0
+var is_complete: bool = false
 
 
 func _ready() -> void:
@@ -49,8 +50,10 @@ func _input(event):
 func _process(_delta):
 	if !player.inspecting: return
 	if draggingCollider:
-		draggingCollider.global_position.x = mousePosition.x
-		draggingCollider.global_position.y = mousePosition.y
+		var pos = draggingCollider.global_position
+		pos.x = mousePosition.x
+		pos.y = mousePosition.y
+		draggingCollider.global_position = pos
 		draggingCollider.position.z = 0
 
 func drag_and_drop(intersect,isDropped):
@@ -70,6 +73,16 @@ func drag_and_drop(intersect,isDropped):
 			intersect.collider.position.z = 0
 			correctCount = correctCount+1
 			bust_click.play()
+			_check_repair_complete()
+
+
+func _check_repair_complete() -> void:
+	if is_complete:
+		return
+	if correctCount >= correctPositions.size():
+		is_complete = true
+		repair_complete.emit()
+		print("RepairMode: Repair complete!")
 
 func get_mouse_intersect(mouseEventPosition):
 	var params = PhysicsRayQueryParameters3D.new()

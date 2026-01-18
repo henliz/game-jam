@@ -138,6 +138,9 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	original_parent = item.get_parent()
 	original_transform = item.global_transform
 
+	# Disable collision shape to prevent physics interactions during inspection
+	_set_collision_enabled(item, false)
+
 	opened.emit(item)
 	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
 
@@ -167,11 +170,12 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 	_show_custom_cursor()
 
 func close():
-	if inspected_node.is_in_group("repairable"):
-		inspected_node.find_child("CollisionShape3D",false,false).disabled = false
-
 	if not is_active:
 		return
+
+	# Re-enable collision shape when closing
+	if inspected_node:
+		_set_collision_enabled(inspected_node, true)
 	is_active = false
 	is_dragging = false
 	is_cleaning = false
@@ -509,6 +513,12 @@ func _find_cleanable(node: Node) -> Cleanable:
 		if result:
 			return result
 	return null
+
+
+func _set_collision_enabled(node: Node, enabled: bool) -> void:
+	var collision_shape = node.find_child("CollisionShape3D", false, false)
+	if collision_shape:
+		collision_shape.disabled = not enabled
 
 func _on_cleaning_progress(progress: float) -> void:
 	progress_bar.value = progress

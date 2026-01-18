@@ -137,10 +137,6 @@ func _handle_interaction():
 				rotate_pipe.emit("right",current_rotatable)
 		
 func _start_inspection(item: Interactable):
-	if item.is_in_group("repairable"):
-		#camera.rotation.x = 0
-		#global_rotation.y = 180
-		item.find_child("CollisionShape3D",false,false).disabled = true
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	item_inspector.open(item, camera, item.inspect_scale)

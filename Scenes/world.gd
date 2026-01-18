@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var workstation_animator: WorkstationAnimator = $Workbench/WorkstationAnimator
 @onready var player: CharacterBody3D = $Player
-@onready var wizard_tome: Node3D = $WizardTome
 
 var item_inspector: ItemInspector
 
@@ -24,13 +23,8 @@ func _play_intro() -> void:
 
 
 func _on_inspector_opened(item: Node3D) -> void:
-	# Check if this is the wizard tome being inspected
-	if item != wizard_tome:
-		return
-
-	# Only animate in if the item isn't already cleaned
-	var cleanable = item.get_node_or_null("Cleanable") as Cleanable
-	if cleanable and cleanable.is_complete:
+	# Check if item needs the workstation (has Cleanable or is in repairable group)
+	if not _item_needs_workstation(item):
 		return
 
 	if workstation_animator and not workstation_animator.is_animated_in:
@@ -41,3 +35,16 @@ func _on_inspector_closed() -> void:
 	# Animate workstation out whenever inspector closes (if it's currently animated in)
 	if workstation_animator and workstation_animator.is_animated_in:
 		workstation_animator.animate_out()
+
+
+func _item_needs_workstation(item: Node3D) -> bool:
+	# Check for Cleanable node that still needs cleaning
+	var cleanable = item.get_node_or_null("Cleanable") as Cleanable
+	if cleanable and not cleanable.is_complete:
+		return true
+
+	# Check if item is in repairable group (may need repair minigame)
+	if item.is_in_group("repairable"):
+		return true
+
+	return false
