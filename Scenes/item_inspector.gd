@@ -34,6 +34,7 @@ var original_parent: Node
 var original_transform: Transform3D
 var camera: Camera3D
 var cleanable: Cleanable
+var placement_node: Node3D  # Workbench item placement position
 
 var is_active: bool = false
 var is_dragging: bool = false
@@ -145,11 +146,12 @@ func _update_cursor_from_state() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
+func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Node3D = null):
 	camera = cam
 	inspected_node = item
 	original_parent = item.get_parent()
 	original_transform = item.global_transform
+	placement_node = placement
 
 	# Disable collision shape to prevent physics interactions during inspection
 	_set_collision_enabled(item, false)
@@ -168,12 +170,18 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0):
 		cleaning_ui.visible = false
 
 	original_parent.remove_child(item)
-	camera.add_child(item)
 
-	var inspect_distance = 0.6
-	target_transform = Transform3D(Basis().scaled(Vector3.ONE * scale_factor), Vector3(0, 0, -inspect_distance))
-
-	item.transform = camera.global_transform.inverse() * original_transform
+	# Use workbench placement if provided, otherwise fall back to camera
+	if placement_node:
+		placement_node.add_child(item)
+		# Position item at placement origin with scale
+		target_transform = Transform3D(Basis().scaled(Vector3.ONE * scale_factor), Vector3.ZERO)
+		item.transform = placement_node.global_transform.inverse() * original_transform
+	else:
+		camera.add_child(item)
+		var inspect_distance = 0.6
+		target_transform = Transform3D(Basis().scaled(Vector3.ONE * scale_factor), Vector3(0, 0, -inspect_distance))
+		item.transform = camera.global_transform.inverse() * original_transform
 
 	visible = true
 	is_active = true
@@ -216,7 +224,8 @@ func _process(delta):
 		slide_progress = min(slide_progress, 1.0)
 		var t = ease(slide_progress, -2.0)
 
-		var start_local = camera.global_transform.inverse() * original_transform
+		var parent_node = placement_node if placement_node else camera
+		var start_local = parent_node.global_transform.inverse() * original_transform
 		inspected_node.transform = start_local.interpolate_with(target_transform, t)
 
 		if slide_progress >= 1.0:
@@ -227,7 +236,8 @@ func _process(delta):
 		slide_progress = min(slide_progress, 1.0)
 		var t = ease(slide_progress, -2.0)
 
-		var end_local = camera.global_transform.inverse() * original_transform
+		var parent_node = placement_node if placement_node else camera
+		var end_local = parent_node.global_transform.inverse() * original_transform
 		inspected_node.transform = target_transform.interpolate_with(end_local, t)
 
 		if slide_progress >= 1.0:
@@ -238,10 +248,12 @@ func _process(delta):
 
 func _return_item():
 	if inspected_node and is_instance_valid(inspected_node):
-		camera.remove_child(inspected_node)
+		var current_parent = placement_node if placement_node else camera
+		current_parent.remove_child(inspected_node)
 		original_parent.add_child(inspected_node)
 		inspected_node.global_transform = original_transform
 		inspected_node = null
+	placement_node = null
 
 func _input(event):
 	if not is_active or animating_in or animating_out:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=76 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -14,27 +14,15 @@
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
 [ext_resource type="PackedScene" uid="uid://rtjpbus10bx8" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
-[ext_resource type="PackedScene" uid="uid://ed77x3hrdkef" path="res://resource/Workstation/Rug.glb" id="9_kn0ld"]
-[ext_resource type="PackedScene" uid="uid://dlgm8tlwyw4m7" path="res://resource/Workstation/SmallTable.glb" id="10_hgpy0"]
 [ext_resource type="PackedScene" uid="uid://m4285rkjvcer" path="res://resource/Floor1/ART_F1_Chair_Model.glb" id="10_ochwf"]
 [ext_resource type="PackedScene" uid="uid://w8i3mi1nhpqi" path="res://resource/Floor1/ART_F1_Walls.glb" id="11_atqvy"]
-[ext_resource type="PackedScene" uid="uid://ckofdqtbwnsb0" path="res://resource/Workstation/Wall with Shelves.glb" id="11_t2t4p"]
-[ext_resource type="PackedScene" uid="uid://1ce4n0ufts26" path="res://resource/Workstation/Normal Wall.glb" id="12_0pcbe"]
 [ext_resource type="PackedScene" uid="uid://c3dh8lcjmwkaq" path="res://resource/Floor1/ART_F1_FrontDoor_Final.glb" id="12_p5wkl"]
-[ext_resource type="PackedScene" uid="uid://d1mc37c78aiy7" path="res://resource/Workstation/Candle.glb" id="13_axeuq"]
 [ext_resource type="PackedScene" uid="uid://bt6udvs0wh3qm" path="res://resource/Floor1/ART_F1_WizardJournal_Model.glb" id="13_r74th"]
-[ext_resource type="PackedScene" uid="uid://dgj4crcgiyemb" path="res://resource/Workstation/Skull Candle.glb" id="14_1cojt"]
 [ext_resource type="PackedScene" uid="uid://cb1euuauahwjb" path="res://resource/Floor1/ART_F1_Sofa_Final.glb" id="14_04jkj"]
 [ext_resource type="PackedScene" uid="uid://bf7q63lcnirlh" path="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Horizontal.glb" id="14_lkcvt"]
 [ext_resource type="PackedScene" uid="uid://djmcg7dfe6dsa" path="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Vertical.glb" id="15_atqvy"]
-[ext_resource type="PackedScene" uid="uid://beapdo4qi7ttl" path="res://resource/Workstation/Mineral.glb" id="15_yq1aw"]
-[ext_resource type="Script" uid="uid://dy6xo6jisemoo" path="res://Scenes/workstation_animator.gd" id="16_wsanim"]
-[ext_resource type="AudioStream" uid="uid://vjo07661ngm4" path="res://Audio/SFX/Workbench/WorkbenchFall1.wav" id="17_fall1"]
 [ext_resource type="PackedScene" uid="uid://bdlw8shhtkm0f" path="res://resource/Floor1/ART_F1_Ceiling_Model.glb" id="17_w5giw"]
-[ext_resource type="AudioStream" uid="uid://b6kydpnqksja2" path="res://Audio/SFX/Workbench/WorkbenchFall2.wav" id="18_fall2"]
 [ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="18_lkcvt"]
-[ext_resource type="AudioStream" uid="uid://cooh7yg2v7b0b" path="res://Audio/SFX/Workbench/WorkbenchRise1.wav" id="19_rise1"]
-[ext_resource type="AudioStream" uid="uid://btjbmflr0rg5h" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="20_rise2"]
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
 [ext_resource type="PackedScene" uid="uid://cfhhmv35hymii" path="res://Scenes/wizard_bust.tscn" id="28_1vso6"]
@@ -49,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://p3y4bpxoadox" path="res://resource/Floor1/Final/art_f_1_stone_brick_floor_final.tscn" id="47_uqdn7"]
 [ext_resource type="PackedScene" uid="uid://pqlat0kyxu3g" path="res://resource/Common/art_global_window_frame_model.tscn" id="48_b4e6k"]
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="48_te07t"]
-[ext_resource type="PackedScene" uid="uid://cb26liwye265d" path="res://resource/Floor1/art_f_1_stove_model.tscn" id="49_gwaj6"]
+[ext_resource type="PackedScene" path="res://resource/Floor1/art_f_1_stove_model.tscn" id="49_gwaj6"]
 [ext_resource type="PackedScene" uid="uid://d0q5gpv7gisxt" path="res://resource/Floor1/Final/art_f_1_stone_brick_floor_final_tile.tscn" id="49_kwnki"]
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="50_36g3o"]
 [ext_resource type="PackedScene" uid="uid://u0dphv7sgbih" path="res://resource/Floor1/Final/art_f_1_grandfather_clock_final.tscn" id="50_cvubk"]
@@ -59,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://ccyhul1vlph7i" path="res://resource/Common/Final/art_global_ceiling_beams_model_vertical.tscn" id="53_5kw24"]
 [ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="54_dsm2w"]
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="55_cvubk"]
+[ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="56_eskoj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -652,43 +641,6 @@ inspect_scale = 0.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6545596, 0.046768665, -25.792892)
 visible = false
 
-[node name="Workbench" type="Node" parent="."]
-
-[node name="WorkstationAnimator" type="Node" parent="Workbench" node_paths=PackedStringArray("walls_node", "rug_node", "table_node", "props")]
-script = ExtResource("16_wsanim")
-walls_node = NodePath("../Walls")
-rug_node = NodePath("../Rug")
-table_node = NodePath("../Table")
-props = [NodePath("../Candle"), NodePath("../SkullCandle"), NodePath("../Mineral")]
-fall_sounds = Array[AudioStream]([ExtResource("17_fall1"), ExtResource("18_fall2")])
-rise_sounds = Array[AudioStream]([ExtResource("19_rise1"), ExtResource("20_rise2")])
-
-[node name="Rug" parent="Workbench" instance=ExtResource("9_kn0ld")]
-transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 7.6301126, 0.00086675724, -10.831082)
-
-[node name="Table" parent="Workbench" instance=ExtResource("10_hgpy0")]
-transform = Transform3D(1.1255457, 0, 0, 0, 1.3026733, 0, 0, 0, 1.5312492, 7.850661, -0.06299365, -10.606988)
-
-[node name="Walls" type="Node" parent="Workbench"]
-
-[node name="ShelvedWall_01" parent="Workbench/Walls" instance=ExtResource("11_t2t4p")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -11.02927)
-
-[node name="NormalWall_01" parent="Workbench/Walls" instance=ExtResource("12_0pcbe")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -14.013069)
-
-[node name="NormalWall_02" parent="Workbench/Walls" instance=ExtResource("12_0pcbe")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -8.030006)
-
-[node name="Candle" parent="Workbench" instance=ExtResource("13_axeuq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9688873, 1.1340567, -11.6802435)
-
-[node name="SkullCandle" parent="Workbench" instance=ExtResource("14_1cojt")]
-transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 8.034319, 1.0597737, -10.145917)
-
-[node name="Mineral" parent="Workbench" instance=ExtResource("15_yq1aw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.872609, 2.026741, -11.131203)
-
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
 visible = false
@@ -817,6 +769,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 [node name="ART_F1_FrontDoor_Final" parent="Floor1/Props_Environment" instance=ExtResource("55_cvubk")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 
+[node name="Furniture_TableCShort" parent="Floor1/Props_Environment" instance=ExtResource("56_eskoj")]
+transform = Transform3D(0.8632018, 0, 0.5048591, 0, 1, 0, -0.5048591, 0, 0.8632018, 4.381275, 0.036036134, -2.506708)
+
 [node name="Lighting" type="Node3D" parent="Floor1"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Floor1/Lighting"]
@@ -877,6 +832,7 @@ spot_angle = 80.0
 
 [node name="DEV_OmniLight3D" type="OmniLight3D" parent="Floor1/Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
 light_energy = 1.5
 omni_range = 48.102
 
@@ -886,7 +842,7 @@ omni_range = 48.102
 transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
 
 [node name="ART_F1_Sofa_Final" parent="Floor1/Props" instance=ExtResource("51_vhf2b")]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 3.7979774, 0, -3.9605575)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 3.4983714, 0, -4.260164)
 
 [node name="ART_F1_MagicBillyBass_Model" parent="Floor1/Props" instance=ExtResource("52_g44x5")]
 transform = Transform3D(0.35228267, 0, -0.93589365, 0, 1, 0, 0.93589365, 0, 0.35228267, -0.23564148, 0.64605343, -2.002328)
@@ -895,6 +851,9 @@ transform = Transform3D(0.35228267, 0, -0.93589365, 0, 1, 0, 0.93589365, 0, 0.35
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("48_te07t")
+
+[node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
+transform = Transform3D(0.85812765, 0, 0.5134364, 0, 1, 0, -0.5134364, 0, 0.85812765, 44.342808, 0.9804082, -2.5139613)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

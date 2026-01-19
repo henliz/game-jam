@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://memxq4hb0eyj"]
+[gd_scene load_steps=6 format=3 uid="uid://memxq4hb0eyj"]
 
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_interactable"]
 [ext_resource type="PackedScene" uid="uid://cmalvk4704tpt" path="res://resource/Puzzles/Level01/L01_TeaKettle.glb" id="2_glb"]

@@ -25,6 +25,8 @@ var footstep_timer: float = 0.0
 @onready var camera = $Head/Camera3D
 @onready var interact_ray: RayCast3D = $Head/Camera3D/InteractRay
 @onready var item_inspector: ItemInspector = $ItemInspector
+@onready var workbench: Node3D = %Workbench
+@onready var workbench_animator: WorkstationAnimator = %Workbench/WorkstationAnimator
 @onready var interact_prompt: Label = $UI/InteractPrompt
 @onready var rotate_prompt: Label = $UI/RotatePrompt
 @onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
@@ -139,11 +141,13 @@ func _handle_interaction():
 func _start_inspection(item: Interactable):
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	item_inspector.open(item, camera, item.inspect_scale)
+	workbench_animator.animate_in()
+	item_inspector.open(item, camera, item.inspect_scale, workbench_animator.get_item_placement_node())
 
 func _on_inspection_closed():
 	inspecting = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	workbench_animator.animate_out()
 
 
 func _handle_footsteps(delta: float) -> void:

@@ -4,16 +4,17 @@ extends Node
 signal animation_started
 signal animation_completed
 
-@export var walls_node: Node
+@export var walls_node: Node3D
 @export var rug_node: Node3D
 @export var table_node: Node3D
 @export var props: Array[Node3D] = []
+@export var item_placement: Node3D
 
 @export_group("Animation Settings")
-@export var walls_drop_height: float = 8.0
-@export var rug_slide_distance: float = 6.0
-@export var table_drop_height: float = 5.0
-@export var props_drop_height: float = 3.0
+@export var walls_drop_height: float = 4.0
+@export var rug_slide_distance: float = 3.0
+@export var table_drop_height: float = 3.0
+@export var props_drop_height: float = 2.0
 
 @export var walls_duration: float = 0.8
 @export var rug_duration: float = 0.6
@@ -27,7 +28,7 @@ signal animation_completed
 @export var rise_sounds: Array[AudioStream] = []
 
 var is_animated_in: bool = false
-var target_positions: Dictionary = {}
+var target_positions: Dictionary = {}  # Stores local positions
 var audio_player: AudioStreamPlayer
 var current_sound_index: int = -1
 
@@ -44,48 +45,54 @@ func _setup_audio() -> void:
 
 
 func _store_target_positions() -> void:
+	# Store local positions so animations work correctly when parented to Player
 	if walls_node:
 		for wall in walls_node.get_children():
 			if wall is Node3D:
-				target_positions[wall] = wall.global_position
+				target_positions[wall] = wall.position
 
 	if rug_node:
-		target_positions[rug_node] = rug_node.global_position
+		target_positions[rug_node] = rug_node.position
 
 	if table_node:
-		target_positions[table_node] = table_node.global_position
+		target_positions[table_node] = table_node.position
 
 	for prop in props:
 		if prop:
-			target_positions[prop] = prop.global_position
+			target_positions[prop] = prop.position
+
+	if item_placement:
+		target_positions[item_placement] = item_placement.position
 
 
 func _hide_elements() -> void:
+	# Use local positions for animation offsets
 	if walls_node:
+		walls_node.visible = false
 		for wall in walls_node.get_children():
 			if wall is Node3D:
-				var pos = wall.global_position
+				var pos = wall.position
 				pos.y += walls_drop_height
-				wall.global_position = pos
+				wall.position = pos
 				wall.visible = false
 
 	if rug_node:
-		var pos = rug_node.global_position
-		pos.x -= rug_slide_distance
-		rug_node.global_position = pos
+		var pos = rug_node.position
+		pos.z -= rug_slide_distance  # Slide along local Z (forward/back)
+		rug_node.position = pos
 		rug_node.visible = false
 
 	if table_node:
-		var pos = table_node.global_position
+		var pos = table_node.position
 		pos.y += table_drop_height
-		table_node.global_position = pos
+		table_node.position = pos
 		table_node.visible = false
 
 	for prop in props:
 		if prop:
-			var pos = prop.global_position
+			var pos = prop.position
 			pos.y += props_drop_height
-			prop.global_position = pos
+			prop.position = pos
 			prop.visible = false
 
 
@@ -96,12 +103,18 @@ func animate_in() -> void:
 	is_animated_in = true
 	animation_started.emit()
 
+	# Show the parent workbench node (may be hidden in editor)
+	var workbench_root = get_parent()
+	if workbench_root is Node3D:
+		workbench_root.visible = true
+
 	_play_sound_forward()
 
 	var total_time: float = 0.0
 
 	# Phase 1: Walls drop down
 	if walls_node:
+		walls_node.visible = true
 		var wall_index := 0
 		for wall in walls_node.get_children():
 			if wall is Node3D:
@@ -147,7 +160,7 @@ func _tween_drop(node: Node3D, target_pos: Vector3, duration: float, delay: floa
 	tween.set_trans(Tween.TRANS_BOUNCE)
 
 	tween.tween_interval(delay)
-	tween.tween_property(node, "global_position", target_pos, duration)
+	tween.tween_property(node, "position", target_pos, duration)
 
 
 func _tween_slide(node: Node3D, target_pos: Vector3, duration: float, delay: float) -> void:
@@ -156,7 +169,7 @@ func _tween_slide(node: Node3D, target_pos: Vector3, duration: float, delay: flo
 	tween.set_trans(Tween.TRANS_BACK)
 
 	tween.tween_interval(delay)
-	tween.tween_property(node, "global_position", target_pos, duration)
+	tween.tween_property(node, "position", target_pos, duration)
 
 
 func animate_out() -> void:
@@ -174,7 +187,6 @@ func animate_out() -> void:
 		var prop_index := 0
 		for prop in props:
 			if prop:
-				var _start_pos = prop.global_position
 				var end_pos = target_positions[prop] + Vector3(0, props_drop_height, 0)
 				var delay := prop_index * stagger_delay * 0.5
 				_tween_rise(prop, end_pos, props_duration * 0.7, delay)
@@ -187,10 +199,10 @@ func animate_out() -> void:
 		var end_pos = target_positions[table_node] + Vector3(0, table_drop_height, 0)
 		_tween_rise(table_node, end_pos, table_duration * 0.7, table_delay)
 
-	# Phase 3: Rug slides out
+	# Phase 3: Rug slides out (along local Z)
 	if rug_node:
 		var rug_delay := total_time * 0.5
-		var end_pos = target_positions[rug_node] + Vector3(-rug_slide_distance, 0, 0)
+		var end_pos = target_positions[rug_node] + Vector3(0, 0, -rug_slide_distance)
 		_tween_slide_out(rug_node, end_pos, rug_duration * 0.7, rug_delay)
 
 	# Phase 4: Walls rise up
@@ -215,7 +227,7 @@ func _tween_rise(node: Node3D, target_pos: Vector3, duration: float, delay: floa
 	tween.set_trans(Tween.TRANS_QUAD)
 
 	tween.tween_interval(delay)
-	tween.tween_property(node, "global_position", target_pos, duration)
+	tween.tween_property(node, "position", target_pos, duration)
 
 
 func _tween_slide_out(node: Node3D, target_pos: Vector3, duration: float, delay: float) -> void:
@@ -224,17 +236,32 @@ func _tween_slide_out(node: Node3D, target_pos: Vector3, duration: float, delay:
 	tween.set_trans(Tween.TRANS_QUAD)
 
 	tween.tween_interval(delay)
-	tween.tween_property(node, "global_position", target_pos, duration)
+	tween.tween_property(node, "position", target_pos, duration)
 
 
 func _on_animate_out_complete() -> void:
 	_hide_elements()
 	is_animated_in = false
 
+	# Hide the parent workbench node again
+	var workbench_root = get_parent()
+	if workbench_root is Node3D:
+		workbench_root.visible = false
+
 
 func reset() -> void:
 	is_animated_in = false
 	_hide_elements()
+
+
+func get_item_placement_transform() -> Transform3D:
+	if item_placement:
+		return item_placement.global_transform
+	return Transform3D.IDENTITY
+
+
+func get_item_placement_node() -> Node3D:
+	return item_placement
 
 
 func _play_sound_forward() -> void:

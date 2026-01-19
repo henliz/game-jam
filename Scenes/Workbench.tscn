@@ -13,39 +13,49 @@
 [ext_resource type="PackedScene" uid="uid://dgj4crcgiyemb" path="res://resource/Workstation/Skull Candle.glb" id="11_7k7rp"]
 [ext_resource type="PackedScene" uid="uid://beapdo4qi7ttl" path="res://resource/Workstation/Mineral.glb" id="12_xf120"]
 
-[node name="Workbench" type="Node"]
+[node name="Workbench" type="Node3D"]
 
-[node name="WorkstationAnimator" type="Node" parent="." node_paths=PackedStringArray("walls_node", "rug_node", "table_node", "props")]
+[node name="WorkstationAnimator" type="Node" parent="." node_paths=PackedStringArray("walls_node", "rug_node", "table_node", "props", "item_placement")]
 script = ExtResource("1_6xin0")
 walls_node = NodePath("../Walls")
 rug_node = NodePath("../Rug")
 table_node = NodePath("../Table")
 props = [NodePath("../Candle"), NodePath("../SkullCandle"), NodePath("../Mineral")]
+item_placement = NodePath("../ItemPlacement")
 fall_sounds = Array[AudioStream]([ExtResource("2_0sjcb"), ExtResource("3_32e06")])
 rise_sounds = Array[AudioStream]([ExtResource("4_owai1"), ExtResource("5_hjmoo")])
 
+[node name="ItemPlacement" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
 [node name="Rug" parent="." instance=ExtResource("6_uoqj5")]
-transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 7.6301126, 0.00086675724, -10.831082)
+transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 0, 0, 0)
+visible = false
 
 [node name="Table" parent="." instance=ExtResource("7_tq8x7")]
-transform = Transform3D(1.1255457, 0, 0, 0, 1.3026733, 0, 0, 0, 1.5312492, 7.850661, -0.06299365, -10.606988)
+transform = Transform3D(1.1255457, 0, 0, 0, 1.3026733, 0, 0, 0, 1.5312492, 0, 0, 0)
+visible = false
 
-[node name="Walls" type="Node" parent="."]
+[node name="Walls" type="Node3D" parent="."]
+visible = false
 
 [node name="ShelvedWall_01" parent="Walls" instance=ExtResource("8_n65fo")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -11.02927)
+transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, 0)
 
 [node name="NormalWall_01" parent="Walls" instance=ExtResource("9_6pe0o")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -14.013069)
+transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, -1.5)
 
 [node name="NormalWall_02" parent="Walls" instance=ExtResource("9_6pe0o")]
-transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, 7.4877453, 0.014, -8.030006)
+transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, 1.5)
 
 [node name="Candle" parent="." instance=ExtResource("10_v6ad7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9688873, 1.1340567, -11.6802435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.1, -0.85)
+visible = false
 
 [node name="SkullCandle" parent="." instance=ExtResource("11_7k7rp")]
-transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 8.034319, 1.0597737, -10.145917)
+transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 0.2, 1.05, 0.7)
+visible = false
 
 [node name="Mineral" parent="." instance=ExtResource("12_xf120")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.872609, 2.026741, -11.131203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 2.0, -0.3)
+visible = false
