@@ -48,7 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="54_dsm2w"]
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="55_cvubk"]
 [ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="56_eskoj"]
-[ext_resource type="AudioStream" path="res://Audio/Music/Floor01_OST.mp3" id="57_music"]
+[ext_resource type="AudioStream" uid="uid://bwncnjxvnu2j7" path="res://Audio/Music/Floor01_OST.mp3" id="57_music"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -860,7 +860,8 @@ autoplay = true
 bus = &"Music"
 
 [node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.85812765, 0, 0.5134364, 0, 1, 0, -0.5134364, 0, 0.85812765, 44.342808, 0.9804082, -2.5139613)
+transform = Transform3D(0.85812765, 0, 0.5134364, 0, 1, 0, -0.5134364, 0, 0.85812765, 44.342808, 1.0831172, -2.5139613)
+inspect_scale = 3.5
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
