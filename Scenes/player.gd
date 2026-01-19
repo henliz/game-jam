@@ -37,6 +37,7 @@ var inspecting: bool = false
 var movement_enabled: bool = true
 var current_interactable: Interactable = null
 var current_rotatable: StaticBody3D = null
+var level_map_node: Node3D = null
 
 signal rotate_plate(direction,plate)
 signal rotate_pipe(direction,pipe)
@@ -45,6 +46,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
 	item_inspector.closed.connect(_on_inspection_closed)
+	# Find the Map node in the world scene for workbench level fade
+	call_deferred("_find_level_map")
 
 func _unhandled_input(event):
 	if inspecting:
@@ -141,7 +144,7 @@ func _handle_interaction():
 func _start_inspection(item: Interactable):
 	inspecting = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	workbench_animator.animate_in()
+	workbench_animator.animate_in_with_fade()
 	item_inspector.open(item, camera, item.inspect_scale, workbench_animator.get_item_placement_node())
 
 func _on_inspection_closed():
@@ -166,3 +169,17 @@ func _handle_footsteps(delta: float) -> void:
 	if footstep_timer >= step_interval:
 		footstep_timer = 0.0
 		footstep_player.play()
+
+
+func _find_level_map() -> void:
+	# Look for level geometry nodes in the current scene (world)
+	var world = get_tree().current_scene
+	if not world:
+		return
+
+	# Find floor nodes to hide during workbench inspection
+	var level_node_names = ["Floor1", "Floor2", "Floor3"]
+	for node_name in level_node_names:
+		var node = world.find_child(node_name, false, false) as Node3D
+		if node:
+			workbench_animator.add_level_node(node)

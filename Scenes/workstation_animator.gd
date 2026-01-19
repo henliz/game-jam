@@ -3,6 +3,8 @@ extends Node
 
 signal animation_started
 signal animation_completed
+signal level_fade_started
+signal level_fade_completed
 
 @export var walls_node: Node3D
 @export var rug_node: Node3D
@@ -23,6 +25,9 @@ signal animation_completed
 
 @export var stagger_delay: float = 0.15
 
+@export_group("Level Fade")
+@export var level_fade_duration: float = 1.0
+
 @export_group("Audio")
 @export var fall_sounds: Array[AudioStream] = []
 @export var rise_sounds: Array[AudioStream] = []
@@ -31,11 +36,28 @@ var is_animated_in: bool = false
 var target_positions: Dictionary = {}  # Stores local positions
 var audio_player: AudioStreamPlayer
 var current_sound_index: int = -1
+var level_nodes: Array[Node3D] = []
+var level_original_visibility: Dictionary = {}  # node -> bool
+var fade_overlay: ColorRect = null
+var fade_canvas: CanvasLayer = null
 
 func _ready() -> void:
 	_setup_audio()
+	_setup_fade_overlay()
 	_store_target_positions()
 	_hide_elements()
+
+
+func _setup_fade_overlay() -> void:
+	fade_canvas = CanvasLayer.new()
+	fade_canvas.layer = 50  # Above most UI but below item inspector
+	add_child(fade_canvas)
+
+	fade_overlay = ColorRect.new()
+	fade_overlay.color = Color(0, 0, 0, 0)  # Start transparent
+	fade_overlay.anchors_preset = Control.PRESET_FULL_RECT
+	fade_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fade_canvas.add_child(fade_overlay)
 
 
 func _setup_audio() -> void:
@@ -94,6 +116,56 @@ func _hide_elements() -> void:
 			pos.y += props_drop_height
 			prop.position = pos
 			prop.visible = false
+
+
+func add_level_node(node: Node3D) -> void:
+	if node and not level_nodes.has(node):
+		level_nodes.append(node)
+
+
+func animate_in_with_fade() -> void:
+	if is_animated_in:
+		return
+
+	level_fade_started.emit()
+
+	if level_nodes.size() > 0:
+		_fade_level_out()
+		await get_tree().create_timer(level_fade_duration).timeout
+		level_fade_completed.emit()
+
+	animate_in()
+
+
+func _fade_level_out() -> void:
+	if level_nodes.is_empty():
+		return
+
+	# Store original visibility and hide all level nodes after fade
+	for node in level_nodes:
+		level_original_visibility[node] = node.visible
+
+	# Fade to black using overlay, then hide all level nodes
+	var tween = create_tween()
+	tween.tween_property(fade_overlay, "color:a", 1.0, level_fade_duration)
+	tween.tween_callback(_hide_level_nodes)
+
+
+func _hide_level_nodes() -> void:
+	for node in level_nodes:
+		node.visible = false
+
+
+func _fade_level_in() -> void:
+	if level_nodes.is_empty():
+		return
+
+	# Show all level nodes first, then fade overlay out
+	for node in level_nodes:
+		node.visible = level_original_visibility.get(node, true)
+
+	var tween = create_tween()
+	tween.tween_property(fade_overlay, "color:a", 0.0, level_fade_duration)
 
 
 func animate_in() -> void:
@@ -247,6 +319,10 @@ func _on_animate_out_complete() -> void:
 	var workbench_root = get_parent()
 	if workbench_root is Node3D:
 		workbench_root.visible = false
+
+	# Fade the level back in
+	if level_nodes.size() > 0:
+		_fade_level_in()
 
 
 func reset() -> void:
