@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4j8kqm2xnl6y"]
+[gd_scene load_steps=5 format=3 uid="uid://c4j8kqm2xnl6y"]
 
 [ext_resource type="Script" uid="uid://ofvrq76xctpi" path="res://Scenes/journal_ui.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d0itfmafdjoyv" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png" id="2_spread1"]
+[ext_resource type="Texture2D" uid="uid://cwcmj4uph7dws" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_WIP_TEST.png" id="3_spread2"]
+[ext_resource type="Texture2D" uid="uid://16ydohbj0124" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_WIP_TEST.png" id="4_spread3"]
 
 [node name="JournalUI" type="CanvasLayer"]
 layer = 100
@@ -23,7 +25,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpreadDisplay" type="TextureRect" parent="JournalContainer"]
+[node name="Spread1_Blueprint" type="Control" parent="JournalContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,37 +44,95 @@ texture = ExtResource("2_spread1")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftPageContent" type="Control" parent="JournalContainer/SpreadDisplay"]
+[node name="LeftPage" type="Control" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
-anchor_left = 0.05
-anchor_top = 0.08
-anchor_right = 0.48
-anchor_bottom = 0.92
-offset_left = 214.0
-offset_top = 26.599998
-offset_right = 29.400024
-offset_bottom = -51.600037
+anchor_left = 0.08
+anchor_top = 0.1
+anchor_right = 0.47
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RightPageContent" type="Control" parent="JournalContainer/SpreadDisplay"]
+[node name="RightPage" type="Control" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
-anchor_left = 0.52
-anchor_top = 0.08
-anchor_right = 0.95
-anchor_bottom = 0.92
-offset_left = -13.399963
-offset_top = 31.599998
-offset_right = -229.0
-offset_bottom = -44.600037
+anchor_left = 0.53
+anchor_top = 0.1
+anchor_right = 0.92
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabButtons" type="Control" parent="JournalContainer/SpreadDisplay"]
+[node name="Spread2_Diary1" type="Control" parent="JournalContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread2_Diary1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_spread2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftPage" type="Control" parent="JournalContainer/Spread2_Diary1"]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.1
+anchor_right = 0.47
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPage" type="Control" parent="JournalContainer/Spread2_Diary1"]
+layout_mode = 1
+anchor_left = 0.53
+anchor_top = 0.1
+anchor_right = 0.92
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spread3_Diary2" type="Control" parent="JournalContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread3_Diary2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_spread3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftPage" type="Control" parent="JournalContainer/Spread3_Diary2"]
+layout_mode = 1
+anchor_left = 0.08
+anchor_top = 0.1
+anchor_right = 0.47
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPage" type="Control" parent="JournalContainer/Spread3_Diary2"]
+layout_mode = 1
+anchor_left = 0.53
+anchor_top = 0.1
+anchor_right = 0.92
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -5,9 +5,6 @@ signal journal_opened
 signal journal_closed
 signal page_changed(spread_index: int)
 
-@export_group("Spreads")
-@export var spread_textures: Array[Texture2D] = []
-
 @export_group("Animation")
 @export var fade_duration: float = 0.3
 
@@ -21,49 +18,30 @@ signal page_changed(spread_index: int)
 
 var is_open: bool = false
 var current_spread: int = 0
-var total_spreads: int = 3
+var spreads: Array[Control] = []
 
 @onready var background: ColorRect = $Background
 @onready var journal_container: Control = $JournalContainer
-@onready var spread_display: TextureRect = $JournalContainer/SpreadDisplay
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
-
-# Page content containers (for future text overlays)
-@onready var left_page_content: Control = $JournalContainer/SpreadDisplay/LeftPageContent
-@onready var right_page_content: Control = $JournalContainer/SpreadDisplay/RightPageContent
-
-# Tab buttons for quick navigation
-@onready var tab_buttons: Control = $JournalContainer/SpreadDisplay/TabButtons
 
 
 func _ready() -> void:
 	layer = 100
-	# Keep node processing but hide visually
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 	background.modulate.a = 0.0
 	journal_container.modulate.a = 0.0
 
-	_setup_spread_textures()
+	_collect_spreads()
 	_setup_audio()
-	_update_spread_display()
+	_show_spread(current_spread)
 
 
-func _setup_spread_textures() -> void:
-	if spread_textures.is_empty():
-		# Load default textures if none assigned in editor
-		var spread1 = load("res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png")
-		var spread2 = load("res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_WIP_TEST.png")
-		var spread3 = load("res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_WIP_TEST.png")
-
-		if spread1:
-			spread_textures.append(spread1)
-		if spread2:
-			spread_textures.append(spread2)
-		if spread3:
-			spread_textures.append(spread3)
-
-	total_spreads = spread_textures.size()
+func _collect_spreads() -> void:
+	spreads.clear()
+	for child in journal_container.get_children():
+		if child.name.begins_with("Spread"):
+			spreads.append(child)
 
 
 func _setup_audio() -> void:
@@ -79,7 +57,6 @@ func _setup_audio() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("journal"):
-		# Don't open journal during item inspection
 		if not is_open and _is_player_inspecting():
 			return
 		toggle_journal()
@@ -89,7 +66,6 @@ func _input(event: InputEvent) -> void:
 	if not is_open:
 		return
 
-	# Page navigation - A/Left for previous, D/Right for next
 	if event.is_action_pressed("left") or (event is InputEventKey and event.pressed and event.keycode == KEY_LEFT):
 		turn_page_left()
 		get_viewport().set_input_as_handled()
@@ -97,7 +73,6 @@ func _input(event: InputEvent) -> void:
 		turn_page_right()
 		get_viewport().set_input_as_handled()
 
-	# ESC to close
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		close_journal()
 		get_viewport().set_input_as_handled()
@@ -131,7 +106,6 @@ func open_journal() -> void:
 	tween.tween_property(background, "modulate:a", 0.7, fade_duration)
 	tween.tween_property(journal_container, "modulate:a", 1.0, fade_duration)
 
-	# Pause game and show cursor
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -177,7 +151,7 @@ func turn_page_left() -> void:
 
 
 func turn_page_right() -> void:
-	if current_spread < total_spreads - 1:
+	if current_spread < spreads.size() - 1:
 		current_spread += 1
 		_animate_page_turn(1)
 		_play_random_page_sound()
@@ -185,7 +159,7 @@ func turn_page_right() -> void:
 
 
 func go_to_spread(index: int) -> void:
-	if index >= 0 and index < total_spreads and index != current_spread:
+	if index >= 0 and index < spreads.size() and index != current_spread:
 		var direction = 1 if index > current_spread else -1
 		current_spread = index
 		_animate_page_turn(direction)
@@ -195,43 +169,14 @@ func go_to_spread(index: int) -> void:
 
 func _animate_page_turn(_direction: int) -> void:
 	var tween = create_tween()
-	tween.tween_property(spread_display, "modulate:a", 0.0, fade_duration * 0.5)
-	tween.tween_callback(_update_spread_display)
-	tween.tween_property(spread_display, "modulate:a", 1.0, fade_duration * 0.5)
+	tween.tween_property(journal_container, "modulate:a", 0.0, fade_duration * 0.5)
+	tween.tween_callback(func(): _show_spread(current_spread))
+	tween.tween_property(journal_container, "modulate:a", 1.0, fade_duration * 0.5)
 
 
-func _update_spread_display() -> void:
-	if current_spread >= 0 and current_spread < spread_textures.size():
-		spread_display.texture = spread_textures[current_spread]
-
-	_update_page_content()
-
-
-func _update_page_content() -> void:
-	# Clear existing content
-	for child in left_page_content.get_children():
-		child.queue_free()
-	for child in right_page_content.get_children():
-		child.queue_free()
-
-	# Content will be populated based on spread type and game progress
-	match current_spread:
-		0:
-			_populate_blueprint_spread()
-		_:
-			_populate_diary_spread(current_spread)
-
-
-func _populate_blueprint_spread() -> void:
-	# Blueprint page - will show discovered inscriptions
-	# This will be expanded when we add the inscription system
-	pass
-
-
-func _populate_diary_spread(_spread_index: int) -> void:
-	# Diary pages - will show journal entries (locked/unlocked)
-	# This will be expanded when we add the diary entry system
-	pass
+func _show_spread(index: int) -> void:
+	for i in range(spreads.size()):
+		spreads[i].visible = (i == index)
 
 
 func _play_sound(sound: AudioStream) -> void:
@@ -246,17 +191,6 @@ func _play_random_page_sound() -> void:
 	var random_index = randi() % page_turn_sounds.size()
 	audio_player.stream = page_turn_sounds[random_index]
 	audio_player.play()
-
-
-# Public API for other systems to add content
-func add_inscription(_inscription_data: Dictionary) -> void:
-	# Will be called when player discovers an inscription
-	pass
-
-
-func unlock_diary_entry(_entry_id: String) -> void:
-	# Will be called when a diary entry should be translated
-	pass
 
 
 func is_journal_open() -> bool:
