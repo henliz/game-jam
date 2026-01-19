@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=77 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="54_dsm2w"]
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="55_cvubk"]
 [ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="56_eskoj"]
+[ext_resource type="AudioStream" path="res://Audio/Music/Floor01_OST.mp3" id="57_music"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
@@ -851,6 +852,12 @@ transform = Transform3D(0.35228267, 0, -0.93589365, 0, 1, 0, 0.93589365, 0, 0.35
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("48_te07t")
+
+[node name="Floor1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("57_music")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
 
 [node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
 transform = Transform3D(0.85812765, 0, 0.5134364, 0, 1, 0, -0.5134364, 0, 0.85812765, 44.342808, 0.9804082, -2.5139613)
