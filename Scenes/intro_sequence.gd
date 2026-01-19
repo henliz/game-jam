@@ -2,23 +2,18 @@ extends CanvasLayer
 
 signal intro_complete
 
-const INTRO_TEXT := """Your story begins, as some stories do, in the winter.
-Though this is no ordinary winter - and yours is no ordinary task.
+const INTRO_SECTIONS := [
+	"Your story begins, as some stories do, in the winter.\nThough this is no ordinary winter - and yours is no ordinary task.",
+	"You play as an adventurer, hired by the people of a cursed land to investigate their local wizard's tower.\nThe isolated spire normally cuts through the cold with it's bright light, bringing forth spring.\nBut the beacon has not shone for some time now, it's keeper nowhere to be seen. The world is locked into a seemingly limitless whiteout.",
+	"Cold and afraid, the local populace has hired you to investigate, lest they succumb to the elements.\nTired from a string of unfortunate misadadventures, you arrive at the doorstep..."
+]
 
-You play as an adventurer, hired by the people of a cursed land to investigate their local wizard's tower.
-The isolated spire normally cuts through the cold with it’s bright light, bringing forth spring.
-But the beacon has not shone for some time now, it's keeper nowhere to be seen. The world is locked into a seemingly limitless whiteout.
-
-Cold and afraid, the local populace has hired you to investigate, lest they succumb to the elements.
-Tired from a string of unfortunate misadadventures, you arrive at the doorstep..."""
-
-
-
-const TEXT_FADE_IN_TIME := 0.0
+const SECTION_FADE_TIMES := [0.0, 12.0, 28.0]
+const SECTION_FADE_DURATION := 2.0
 const TEXT_HIDE_TIME := 45.0
 const SCENE_FADE_IN_TIME := 55.0
 const MOVEMENT_ENABLE_TIME := 65.0
-const INTRO_END_TIME := 83.0
+const CLEANUP_TIME := 72.0  # Time to actually destroy the sequence (after captions finish)
 const SKIP_HOLD_TIME := 2.5
 
 # these are here because the Level 1 Entry voiceover is now contained inside the intro sequence audio, so instead of utilizing a normal dialogue trigger, I've opted
@@ -42,19 +37,62 @@ var elapsed_time := 0.0
 var text_visible := false
 var scene_revealed := false
 var movement_returned := false
+var cleanup_done := false
 var player: CharacterBody3D = null
 var skip_hold_progress := 0.0
 var skip_stage := 0  # 0 = skip to text hide, 1 = skip to end
 var skip_cooldown := 0.0
 const SKIP_STAGE_DELAY := 3.0
 var current_caption_index := 0
+var current_section_index := 0
+var section_labels: Array[Label] = []
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 	black_overlay.modulate.a = 0.0
 	intro_text.modulate.a = 0.0
-	intro_text.text = INTRO_TEXT
+	intro_text.text = ""
+	_setup_section_labels()
+
+
+func _setup_section_labels() -> void:
+	# Create a label for each intro section, stacked vertically
+	for i in INTRO_SECTIONS.size():
+		var label = Label.new()
+		label.text = INTRO_SECTIONS[i]
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		label.modulate.a = 0.0
+
+		label.add_theme_color_override("font_color", Color(0.85, 0.85, 0.85, 1))
+		label.add_theme_font_size_override("font_size", 24)
+
+		section_labels.append(label)
+
+	# Use VBoxContainer to stack sections vertically
+	var container = VBoxContainer.new()
+	container.name = "SectionContainer"
+	container.anchors_preset = Control.PRESET_CENTER
+	container.anchor_left = 0.5
+	container.anchor_top = 0.5
+	container.anchor_right = 0.5
+	container.anchor_bottom = 0.5
+	container.offset_left = -600
+	container.offset_top = -300
+	container.offset_right = 600
+	container.offset_bottom = 300
+	container.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	container.grow_vertical = Control.GROW_DIRECTION_BOTH
+	container.alignment = BoxContainer.ALIGNMENT_CENTER
+	container.add_theme_constant_override("separation", 30)
+
+	for label in section_labels:
+		container.add_child(label)
+
+	black_overlay.add_child(container)
+	intro_text.visible = false  # Hide original label
 
 
 func start_sequence() -> void:
@@ -104,10 +142,10 @@ func _on_scene_loaded() -> void:
 		player.movement_enabled = false
 
 	intro_audio.play()
-
-	var text_tween = create_tween()
-	text_tween.tween_property(intro_text, "modulate:a", 1.0, 2.0)
 	text_visible = true
+	# First section fades in immediately, start tracking from section 1
+	_fade_in_section(0)
+	current_section_index = 1
 
 
 func _process(delta: float) -> void:
@@ -127,10 +165,14 @@ func _process(delta: float) -> void:
 		elapsed_time = intro_audio.get_playback_position()
 	else:
 		# Audio finished - ensure all events trigger
-		elapsed_time = INTRO_END_TIME
+		elapsed_time = CLEANUP_TIME
 
-	if text_visible and elapsed_time >= TEXT_HIDE_TIME and intro_text.modulate.a > 0:
-		intro_text.modulate.a = 0.0
+	# Handle sequential section fade-in
+	_update_text_sections()
+
+	# Hide all text at TEXT_HIDE_TIME
+	if text_visible and elapsed_time >= TEXT_HIDE_TIME:
+		_hide_all_sections()
 		text_visible = false
 
 	# Handle skip cooldown between stages
@@ -147,11 +189,43 @@ func _process(delta: float) -> void:
 		var reveal_tween = create_tween()
 		reveal_tween.tween_property(black_overlay, "modulate:a", 0.0, 2.0)
 
+	# Enable movement but don't destroy the sequence yet
 	if not movement_returned and elapsed_time >= MOVEMENT_ENABLE_TIME:
 		movement_returned = true
 		if player:
 			player.movement_enabled = true
 		_mark_intro_complete()
+
+	# Cleanup after captions finish (separate from movement enabling)
+	if not cleanup_done and elapsed_time >= CLEANUP_TIME:
+		cleanup_done = true
+		_cleanup_sequence()
+
+
+func _fade_in_section(index: int) -> void:
+	if index < 0 or index >= section_labels.size():
+		return
+	var tween = create_tween()
+	tween.tween_property(section_labels[index], "modulate:a", 1.0, SECTION_FADE_DURATION)
+
+
+func _update_text_sections() -> void:
+	# Check if we need to fade in the next section
+	if current_section_index >= SECTION_FADE_TIMES.size():
+		return
+
+	if elapsed_time >= SECTION_FADE_TIMES[current_section_index]:
+		_fade_in_section(current_section_index)
+		current_section_index += 1
+
+
+func _hide_all_sections() -> void:
+	for label in section_labels:
+		label.modulate.a = 0.0
+
+
+func _cleanup_sequence() -> void:
+	queue_free()
 
 
 func _update_captions() -> void:
@@ -191,7 +265,7 @@ func _skip_intro() -> void:
 	if skip_stage == 0:
 		# Stage 0: Skip to text hide time
 		intro_audio.seek(TEXT_HIDE_TIME)
-		intro_text.modulate.a = 0.0
+		_hide_all_sections()
 		text_visible = false
 		skip_container.visible = false
 		skip_stage = 1
@@ -211,10 +285,12 @@ func _skip_intro() -> void:
 		if player:
 			player.movement_enabled = true
 		_mark_intro_complete()
+		cleanup_done = true
+		_cleanup_sequence()
 
 
 func _mark_intro_complete() -> void:
 	GameState.mark_dialogue_triggered("VO_F1_ENTRY")
 	sequence_running = false
 	intro_complete.emit()
-	queue_free()
+	# Note: queue_free() is now called separately via _cleanup_sequence() at CLEANUP_TIME

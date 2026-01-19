@@ -860,8 +860,8 @@ autoplay = true
 bus = &"Music"
 
 [node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.85812765, 0, 0.5134364, 0, 1, 0, -0.5134364, 0, 0.85812765, 44.342808, 1.0831172, -2.5139613)
-inspect_scale = 3.5
+transform = Transform3D(0.5134363, 0, -0.85812765, 0, 1, 0, 0.85812765, 0, 0.5134363, 44.342808, 1.0831172, -2.5139613)
+inspect_scale = 3.0
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

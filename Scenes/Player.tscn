@@ -50,7 +50,7 @@ collide_with_areas = true
 
 [node name="Workbench" parent="Head" instance=ExtResource("2_workbench")]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.84033e-08, -1.6381445, -1.3926616)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.8073185e-08, -1.6381445, -1.6289871)
 visible = false
 
 [node name="ItemInspector" parent="." instance=ExtResource("2_inspector")]

@@ -15,6 +15,7 @@ item_name = "Antique Tea Kettle"
 item_description = "A beautifully crafted tea kettle, covered in years of dust and grime."
 
 [node name="teakettle_mesh" parent="." instance=ExtResource("2_glb")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)

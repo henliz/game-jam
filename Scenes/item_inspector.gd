@@ -174,9 +174,14 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 	# Use workbench placement if provided, otherwise fall back to camera
 	if placement_node:
 		placement_node.add_child(item)
-		# Position item at placement origin with scale
-		target_transform = Transform3D(Basis().scaled(Vector3.ONE * scale_factor), Vector3.ZERO)
-		item.transform = placement_node.global_transform.inverse() * original_transform
+		# Preserve item's Y rotation relative to camera so it faces the player as it was in the world
+		var item_local = placement_node.global_transform.inverse() * original_transform
+		item.transform = item_local
+
+		# Extract the item's current Y rotation in placement space and preserve it
+		var current_y_rotation = item_local.basis.get_euler().y
+		var target_basis = Basis.from_euler(Vector3(0, current_y_rotation, 0)).scaled(Vector3.ONE * scale_factor)
+		target_transform = Transform3D(target_basis, Vector3.ZERO)
 	else:
 		camera.add_child(item)
 		var inspect_distance = 0.6
@@ -271,8 +276,15 @@ func _input(event):
 
 	if event is InputEventMouseMotion:
 		if is_dragging:
-			inspected_node.rotate_y(event.relative.x * rotation_sensitivity)
-			inspected_node.rotate_x(event.relative.y * rotation_sensitivity)
+			# Rotate around camera axes instead of local axes
+			# This ensures drag-up always tilts away from camera regardless of item orientation
+			var cam_right = camera.global_transform.basis.x
+			var world_up = Vector3.UP
+
+			# Horizontal drag rotates around world Y (up) - spin like a turntable
+			inspected_node.global_rotate(world_up, event.relative.x * rotation_sensitivity)
+			# Vertical drag rotates around camera's right axis - tilt toward/away from player
+			inspected_node.global_rotate(cam_right, event.relative.y * rotation_sensitivity)
 		elif is_cleaning and cleanable and not cleanable.is_complete:
 			_try_clean_at_mouse()
 

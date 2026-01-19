@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlviucu8j0qkg"]
+[gd_scene load_steps=14 format=3 uid="uid://dlviucu8j0qkg"]
 
 [ext_resource type="Script" uid="uid://dy6xo6jisemoo" path="res://Scenes/workstation_animator.gd" id="1_6xin0"]
 [ext_resource type="AudioStream" uid="uid://vjo07661ngm4" path="res://Audio/SFX/Workbench/WorkbenchFall1.wav" id="2_0sjcb"]
+[ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="2_flicker"]
 [ext_resource type="AudioStream" uid="uid://b6kydpnqksja2" path="res://Audio/SFX/Workbench/WorkbenchFall2.wav" id="3_32e06"]
 [ext_resource type="AudioStream" uid="uid://cooh7yg2v7b0b" path="res://Audio/SFX/Workbench/WorkbenchRise1.wav" id="4_owai1"]
 [ext_resource type="AudioStream" uid="uid://btjbmflr0rg5h" path="res://Audio/SFX/Workbench/WorkbenchRise2.wav" id="5_hjmoo"]
@@ -29,15 +30,12 @@ rise_sounds = Array[AudioStream]([ExtResource("4_owai1"), ExtResource("5_hjmoo")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
 [node name="Rug" parent="." instance=ExtResource("6_uoqj5")]
-transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 0, 0, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 0, 0, -0.13996392)
 
 [node name="Table" parent="." instance=ExtResource("7_tq8x7")]
 transform = Transform3D(1.1255457, 0, 0, 0, 1.3026733, 0, 0, 0, 1.5312492, 0, 0, 0)
-visible = false
 
 [node name="Walls" type="Node3D" parent="."]
-visible = false
 
 [node name="ShelvedWall_01" parent="Walls" instance=ExtResource("8_n65fo")]
 transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, 0)
@@ -50,12 +48,15 @@ transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e
 
 [node name="Candle" parent="." instance=ExtResource("10_v6ad7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.1, -0.85)
-visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.048362494, 0.332942, 5.555153e-05)
+light_color = Color(0.7852611, 0.62284654, 0.18245322, 1)
+light_size = 0.01
+script = ExtResource("2_flicker")
 
 [node name="SkullCandle" parent="." instance=ExtResource("11_7k7rp")]
 transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 0.2, 1.05, 0.7)
-visible = false
 
 [node name="Mineral" parent="." instance=ExtResource("12_xf120")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 2.0, -0.3)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -0.3)
