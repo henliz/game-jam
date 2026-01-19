@@ -12,6 +12,7 @@ const SECTION_FADE_TIMES := [0.0, 12.0, 28.0]
 const SECTION_FADE_DURATION := 2.0
 const TEXT_HIDE_TIME := 45.0
 const SCENE_FADE_IN_TIME := 55.0
+const CAMERA_ENABLE_TIME := 58.0  # Return camera control slightly after scene fades in
 const MOVEMENT_ENABLE_TIME := 65.0
 const CLEANUP_TIME := 72.0  # Time to actually destroy the sequence (after captions finish)
 const SKIP_HOLD_TIME := 2.5
@@ -19,7 +20,7 @@ const SKIP_HOLD_TIME := 2.5
 # these are here because the Level 1 Entry voiceover is now contained inside the intro sequence audio, so instead of utilizing a normal dialogue trigger, I've opted
 # to simply hardcode the caption timings here. 
 const INTRO_CAPTIONS := [
-	{"time": 50.0, "text": "A short walk? I thought I was going to lose a finger out there."},
+	{"time": 50.0, "text": "That was NOT a short walk. I thought I was going to lose a finger out there."},
 	{"time": 55.0, "text": "At least this place is hard to miss."},
 	{"time": 60.0, "text": "The energy here feels… strange... Hello? Anyone home? Of course not."},
 	{"time": 69.0, "text": ""}  # Empty text signals hide caption
@@ -36,6 +37,7 @@ var sequence_running := false
 var elapsed_time := 0.0
 var text_visible := false
 var scene_revealed := false
+var camera_returned := false
 var movement_returned := false
 var cleanup_done := false
 var player: CharacterBody3D = null
@@ -140,6 +142,7 @@ func _on_scene_loaded() -> void:
 
 	if player:
 		player.movement_enabled = false
+		player.inspecting = true  # Disable camera look during intro
 
 	intro_audio.play()
 	text_visible = true
@@ -163,9 +166,9 @@ func _process(delta: float) -> void:
 
 	if intro_audio.playing:
 		elapsed_time = intro_audio.get_playback_position()
-	else:
-		# Audio finished - ensure all events trigger
-		elapsed_time = CLEANUP_TIME
+	elif not cleanup_done:
+		# Audio finished - ensure all events trigger by setting time past all thresholds
+		elapsed_time = CLEANUP_TIME + 1.0
 
 	# Handle sequential section fade-in
 	_update_text_sections()
@@ -189,16 +192,23 @@ func _process(delta: float) -> void:
 		var reveal_tween = create_tween()
 		reveal_tween.tween_property(black_overlay, "modulate:a", 0.0, 2.0)
 
+	# Return camera control after scene fades in
+	if not camera_returned and elapsed_time >= CAMERA_ENABLE_TIME:
+		camera_returned = true
+		if player:
+			player.inspecting = false  # Re-enable camera look
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	# Enable movement but don't destroy the sequence yet
 	if not movement_returned and elapsed_time >= MOVEMENT_ENABLE_TIME:
 		movement_returned = true
 		if player:
 			player.movement_enabled = true
-		_mark_intro_complete()
 
 	# Cleanup after captions finish (separate from movement enabling)
 	if not cleanup_done and elapsed_time >= CLEANUP_TIME:
 		cleanup_done = true
+		_mark_intro_complete()
 		_cleanup_sequence()
 
 
@@ -225,6 +235,17 @@ func _hide_all_sections() -> void:
 
 
 func _cleanup_sequence() -> void:
+	# Ensure caption is hidden before cleanup
+	DialogueManager.caption_ui.hide_caption()
+
+	# Safety: ensure player has full control restored
+	if player:
+		if not camera_returned:
+			player.inspecting = false
+		if not movement_returned:
+			player.movement_enabled = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	queue_free()
 
 
@@ -263,10 +284,11 @@ func _skip_intro() -> void:
 	skip_gauge.set_value(0.0)
 
 	if skip_stage == 0:
-		# Stage 0: Skip to text hide time
-		intro_audio.seek(TEXT_HIDE_TIME)
+		# Stage 0: Skip to first caption (50s) - skip past exposition text
+		intro_audio.seek(INTRO_CAPTIONS[0]["time"])
 		_hide_all_sections()
 		text_visible = false
+		current_section_index = SECTION_FADE_TIMES.size()  # Prevent more sections from fading in
 		skip_container.visible = false
 		skip_stage = 1
 		skip_cooldown = SKIP_STAGE_DELAY
@@ -281,9 +303,12 @@ func _skip_intro() -> void:
 			scene_revealed = true
 			black_overlay.modulate.a = 0.0
 
+		camera_returned = true
 		movement_returned = true
 		if player:
+			player.inspecting = false
 			player.movement_enabled = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		_mark_intro_complete()
 		cleanup_done = true
 		_cleanup_sequence()

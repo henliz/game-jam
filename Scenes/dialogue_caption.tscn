@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/dialogue_caption.gd" id="1_caption"]
 
 [node name="DialogueCaption" type="CanvasLayer"]
-layer = 10
+layer = 110
 script = ExtResource("1_caption")
 
 [node name="CaptionContainer" type="PanelContainer" parent="."]

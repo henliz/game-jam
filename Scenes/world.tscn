@@ -869,7 +869,7 @@ transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.750099
 [node name="Node" type="Node" parent="."]
 
 [node name="L1_MagicBillyBass" parent="Node" instance=ExtResource("51_uqdn7")]
-transform = Transform3D(0.45579356, 0, 0.8900855, 0, 1, 0, -0.8900855, 0, 0.45579356, 36.989506, 2.31531, 4.73911)
+transform = Transform3D(0.45579356, 0, 0.8900855, 0, 1, 0, -0.8900855, 0, 0.45579356, 36.989506, 2.2535224, 4.73911)
 
 [node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Node" instance=ExtResource("52_gwaj6")]
 transform = Transform3D(-0.86432743, 0, 0.50292933, 0, 1, 0, -0.50292933, 0, -0.86432743, 36.932434, 2.2670736, 4.8327303)
