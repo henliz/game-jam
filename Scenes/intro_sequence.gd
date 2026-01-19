@@ -4,7 +4,7 @@ signal intro_complete
 
 const INTRO_SECTIONS := [
 	"Your story begins, as some stories do, in the winter.\nThough this is no ordinary winter - and yours is no ordinary task.",
-	"You play as an adventurer, hired by the people of a cursed land to investigate their local wizard's tower.\nThe isolated spire normally cuts through the cold with it's bright light, bringing forth spring.\nBut the beacon has not shone for some time now, it's keeper nowhere to be seen. The world is locked into a seemingly limitless whiteout.",
+	"You play as an adventurer, hired by the people of a cursed land to investigate their local wizard's tower.\nThe isolated spire normally cuts through the cold with it's bright light, bringing forth spring.\nBut the beacon has not shone for some time now, it's keeper nowhere to be seen... \n\nThe world is locked into a seemingly limitless whiteout.",
 	"Cold and afraid, the local populace has hired you to investigate, lest they succumb to the elements.\nTired from a string of unfortunate misadadventures, you arrive at the doorstep..."
 ]
 
@@ -193,24 +193,23 @@ func _process(delta: float) -> void:
 		var reveal_tween = create_tween()
 		reveal_tween.tween_property(black_overlay, "modulate:a", 0.0, 2.0)
 
-	# Return camera control after scene fades in
-	if not camera_returned and elapsed_time >= CAMERA_ENABLE_TIME:
-		print("[INTRO] %.1fs - CAMERA RETURNED (inspecting=false, mouse captured)" % elapsed_time)
-		camera_returned = true
-		if player:
-			player.inspecting = false  # Re-enable camera look
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			print("[INTRO] WARNING: player is null when returning camera!")
-
-	# Enable movement but don't destroy the sequence yet
+	# Return camera AND movement together
 	if not movement_returned and elapsed_time >= MOVEMENT_ENABLE_TIME:
-		print("[INTRO] %.1fs - MOVEMENT RETURNED" % elapsed_time)
+		print("[INTRO] %.1fs - Returning player control" % elapsed_time)
+		camera_returned = true
 		movement_returned = true
 		if player:
+			print("[INTRO] inspecting was %s, movement_enabled was %s" % [player.inspecting, player.movement_enabled])
+			player.inspecting = false
 			player.movement_enabled = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			print("[INTRO] Now: inspecting=%s, movement_enabled=%s, mouse_mode=%s" % [player.inspecting, player.movement_enabled, Input.get_mouse_mode()])
 		else:
-			print("[INTRO] WARNING: player is null when returning movement!")
+			print("[INTRO] WARNING: player is null when returning control!")
+
+		# Hide the overlay completely to ensure it doesn't block input
+		black_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		print("[INTRO] Set black_overlay mouse_filter to IGNORE")
 
 	# Cleanup after captions finish (separate from movement enabling)
 	if not cleanup_done and elapsed_time >= CLEANUP_TIME:
