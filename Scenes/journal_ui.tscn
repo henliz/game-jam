@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4j8kqm2xnl6y"]
+
+[ext_resource type="Script" uid="uid://ofvrq76xctpi" path="res://Scenes/journal_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d0itfmafdjoyv" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png" id="2_spread1"]
+
+[node name="JournalUI" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="JournalContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadDisplay" type="TextureRect" parent="JournalContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_spread1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftPageContent" type="Control" parent="JournalContainer/SpreadDisplay"]
+layout_mode = 1
+anchor_left = 0.05
+anchor_top = 0.08
+anchor_right = 0.48
+anchor_bottom = 0.92
+offset_left = 214.0
+offset_top = 26.599998
+offset_right = 29.400024
+offset_bottom = -51.600037
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPageContent" type="Control" parent="JournalContainer/SpreadDisplay"]
+layout_mode = 1
+anchor_left = 0.52
+anchor_top = 0.08
+anchor_right = 0.95
+anchor_bottom = 0.92
+offset_left = -13.399963
+offset_top = 31.599998
+offset_right = -229.0
+offset_bottom = -44.600037
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabButtons" type="Control" parent="JournalContainer/SpreadDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

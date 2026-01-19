@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cvc1w5eq6hbos"
-path="res://.godot/imported/open_journal.wav-efb467cc72936454eec2ba1c286dadb1.sample"
+path="res://.godot/imported/JOURNAL_OPEN.wav-6ac5edd96c4199633fbc211b6f2f7f8c.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/UI/open_journal.wav"
-dest_files=["res://.godot/imported/open_journal.wav-efb467cc72936454eec2ba1c286dadb1.sample"]
+source_file="res://Audio/SFX/UI/JOURNAL_OPEN.wav"
+dest_files=["res://.godot/imported/JOURNAL_OPEN.wav-6ac5edd96c4199633fbc211b6f2f7f8c.sample"]
 
 [params]
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuqr7erdlouqh"]
+[gd_scene load_steps=15 format=3 uid="uid://cuqr7erdlouqh"]
 
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
 [ext_resource type="PackedScene" uid="uid://dlviucu8j0qkg" path="res://Scenes/Workbench.tscn" id="2_workbench"]
-[ext_resource type="Texture2D" uid="uid://ddw6so5jr38ps" path="res://resource/book_1.png" id="3_dewec"]
-[ext_resource type="Script" uid="uid://csqdjp6m2522o" path="res://Scenes/journal.gd" id="4_5ixxa"]
+[ext_resource type="PackedScene" path="res://Scenes/journal_ui.tscn" id="3_journal"]
 [ext_resource type="Script" uid="uid://c4j2eecr4gqp6" path="res://Scenes/repair_mode.gd" id="5_5ixxa"]
 [ext_resource type="AudioStream" uid="uid://b5y30voglic73" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_dry_punchy_interior_14.wav" id="5_walk1"]
 [ext_resource type="AudioStream" uid="uid://cxr0spfacpxb8" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_dry_punchy_interior_28.wav" id="6_walk2"]
@@ -108,20 +107,7 @@ text = "[Q][E] Rotate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Journal" type="TextureRect" parent="UI"]
-anchors_preset = -1
-anchor_left = 0.72200006
-anchor_top = 0.34300002
-anchor_right = 0.91
-anchor_bottom = 0.776
-offset_left = -143.24023
-offset_top = 812.56006
-offset_right = 935.7999
-offset_bottom = 1424.9202
-rotation = 0.07400946
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_dewec")
-script = ExtResource("4_5ixxa")
+[node name="JournalUI" parent="." instance=ExtResource("3_journal")]
 
 [node name="RepairMode" type="Node3D" parent="."]
 script = ExtResource("5_5ixxa")

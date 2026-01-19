@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://Scenes/game_state_manager.gd"
-;GameUI="*res://Scenes/Inventory.tscn"
 DialogueManager="*res://Scenes/dialogue_manager.tscn"
 ScreenEffects="*res://Scenes/screen_effects.tscn"
 

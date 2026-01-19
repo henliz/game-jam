@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=80 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="42_6mm6r"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="43_xcb5n"]
+[ext_resource type="PackedScene" uid="uid://kw88x03td8vn" path="res://resource/Chandelier.glb" id="44_13n8b"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="44_te07t"]
 [ext_resource type="ArrayMesh" uid="uid://hbqx0kjrwor6" path="res://resource/Floor1/f1_wall_window_right.res" id="45_b4e6k"]
 [ext_resource type="ArrayMesh" uid="uid://b3a36yw77dkv5" path="res://resource/Floor1/f1_wall_window_center.res" id="46_0sgyr"]
@@ -43,8 +44,9 @@
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="50_36g3o"]
 [ext_resource type="PackedScene" uid="uid://u0dphv7sgbih" path="res://resource/Floor1/Final/art_f_1_grandfather_clock_final.tscn" id="50_cvubk"]
 [ext_resource type="PackedScene" uid="uid://bjurv7h181la5" path="res://resource/Floor1/Final/art_f_1_stair_support_final.tscn" id="51_eskoj"]
+[ext_resource type="PackedScene" path="res://Scenes/L1_MagicBillyBass.tscn" id="51_uqdn7"]
 [ext_resource type="PackedScene" uid="uid://52kdta4h0cy5" path="res://resource/Floor1/Final/art_f_1_sofa_final.tscn" id="51_vhf2b"]
-[ext_resource type="PackedScene" uid="uid://cnmnogv2cujt8" path="res://resource/Floor1/Final/art_f_1_magic_billy_bass_model.tscn" id="52_g44x5"]
+[ext_resource type="PackedScene" uid="uid://vmisecexhjaj" path="res://resource/Floor1/ART_F1_MagicBillyBass_PLAQUE_MODEL.glb" id="52_gwaj6"]
 [ext_resource type="PackedScene" uid="uid://ccyhul1vlph7i" path="res://resource/Common/Final/art_global_ceiling_beams_model_vertical.tscn" id="53_5kw24"]
 [ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="54_dsm2w"]
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="55_cvubk"]
@@ -435,7 +437,7 @@ visible = false
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-0.8744505, 0, 0.48511478, 0, 1, 0, -0.48511478, 0, -0.8744505, 39.928596, 0, -3.9843376)
+transform = Transform3D(-0.9180041, 0, 0.39657107, 0, 1, 0, -0.39657107, 0, -0.9180041, 40.271347, 0, -5.059577)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0680656, 1.5630494, -11.639427)
@@ -668,9 +670,6 @@ transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.509958e-07, 0, -0.9999
 [node name="GameStateManager" type="Node" parent="."]
 script = ExtResource("29_qebug")
 
-[node name="L01_TeaKettle2" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54717404, 0.6905836, -25.455069)
-
 [node name="Floor1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
@@ -774,6 +773,9 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 [node name="Furniture_TableCShort" parent="Floor1/Props_Environment" instance=ExtResource("56_eskoj")]
 transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.226333, 0.036036134, -0.53254)
 
+[node name="Chandelier" parent="Floor1/Props_Environment" instance=ExtResource("44_13n8b")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0029449463, 4.0944953, -0.0072333813)
+
 [node name="Lighting" type="Node3D" parent="Floor1"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Floor1/Lighting"]
@@ -846,9 +848,6 @@ transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.57750
 [node name="ART_F1_Sofa_Final" parent="Floor1/Props" instance=ExtResource("51_vhf2b")]
 transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, -4.9237514, 0, 2.7116613)
 
-[node name="ART_F1_MagicBillyBass_Model" parent="Floor1/Props" instance=ExtResource("52_g44x5")]
-transform = Transform3D(0.35228267, 0, -0.93589365, 0, 1, 0, 0.93589365, 0, 0.35228267, -0.23564148, 0.64605343, -2.002328)
-
 [node name="Collision" type="Node3D" parent="Floor1"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -866,6 +865,17 @@ inspect_scale = 2.0
 
 [node name="ART_GLOBAL_Stairs_Model" parent="." instance=ExtResource("50_0sgyr")]
 transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, 39.896004, 0.030644178, -0.10987515)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="L1_MagicBillyBass" parent="Node" instance=ExtResource("51_uqdn7")]
+transform = Transform3D(0.45579356, 0, 0.8900855, 0, 1, 0, -0.8900855, 0, 0.45579356, 36.989506, 2.31531, 4.73911)
+
+[node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Node" instance=ExtResource("52_gwaj6")]
+transform = Transform3D(-0.86432743, 0, 0.50292933, 0, 1, 0, -0.50292933, 0, -0.86432743, 36.932434, 2.2670736, 4.8327303)
+
+[node name="ART_F1_Stool_Model" parent="." instance=ExtResource("31_1vso6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.456554, -0.00999999, -0.62048304)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
