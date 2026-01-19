@@ -13,17 +13,19 @@ signal level_fade_completed
 @export var item_placement: Node3D
 
 @export_group("Animation Settings")
-@export var walls_drop_height: float = 4.0
-@export var rug_slide_distance: float = 3.0
-@export var table_drop_height: float = 3.0
-@export var props_drop_height: float = 2.0
+@export var walls_drop_height: float = 8.0  # Increased to keep walls out of view
+@export var rug_slide_distance: float = 5.0  # Increased slide distance
+@export var table_drop_height: float = 6.0  # Increased to keep table out of view
+@export var props_drop_height: float = 4.0  # Increased for props
 
-@export var walls_duration: float = 0.8
-@export var rug_duration: float = 0.6
-@export var table_duration: float = 0.5
-@export var props_duration: float = 0.4
+@export var walls_duration: float = 0.9  # Slightly longer for further distance
+@export var rug_duration: float = 0.7
+@export var table_duration: float = 0.6
+@export var props_duration: float = 0.5
 
-@export var stagger_delay: float = 0.15
+@export var stagger_delay: float = 0.12  # Slightly faster stagger
+
+@export var animate_out_speed_multiplier: float = 1.2  # Slower rise to not zoom away
 
 @export_group("Level Fade")
 @export var level_fade_duration: float = 1.0
@@ -141,31 +143,64 @@ func _fade_level_out() -> void:
 	if level_nodes.is_empty():
 		return
 
-	# Store original visibility and hide all level nodes after fade
+	# Store original visibility for each node
 	for node in level_nodes:
 		level_original_visibility[node] = node.visible
 
-	# Fade to black using overlay, then hide all level nodes
+	# Fade level nodes to transparent using modulate, then hide them
 	var tween = create_tween()
-	tween.tween_property(fade_overlay, "color:a", 1.0, level_fade_duration)
+	tween.set_parallel(true)
+	for node in level_nodes:
+		if node is Node3D:
+			# Use CanvasItem modulate if available, otherwise we'll just fade and hide
+			tween.tween_method(_set_node_transparency.bind(node), 0.0, 1.0, level_fade_duration)
+
+	tween.set_parallel(false)
 	tween.tween_callback(_hide_level_nodes)
+
+
+func _set_node_transparency(alpha: float, node: Node3D) -> void:
+	# Recursively set transparency on all visual children
+	_recursive_set_transparency(node, 1.0 - alpha)
+
+
+func _recursive_set_transparency(node: Node, alpha: float) -> void:
+	if node is GeometryInstance3D:
+		var geo = node as GeometryInstance3D
+		geo.transparency = 1.0 - alpha
+	for child in node.get_children():
+		_recursive_set_transparency(child, alpha)
 
 
 func _hide_level_nodes() -> void:
 	for node in level_nodes:
 		node.visible = false
+		# Reset transparency for when we show them again
+		_recursive_set_transparency(node, 1.0)
 
 
 func _fade_level_in() -> void:
 	if level_nodes.is_empty():
 		return
 
-	# Show all level nodes first, then fade overlay out
+	# Show all level nodes first (with full transparency), then fade in
 	for node in level_nodes:
 		node.visible = level_original_visibility.get(node, true)
+		_recursive_set_transparency(node, 0.0)  # Start invisible
 
 	var tween = create_tween()
-	tween.tween_property(fade_overlay, "color:a", 0.0, level_fade_duration)
+	tween.set_parallel(true)
+	for node in level_nodes:
+		if node is Node3D:
+			tween.tween_method(_set_node_transparency.bind(node), 1.0, 0.0, level_fade_duration)
+
+	tween.set_parallel(false)
+	tween.tween_callback(_reset_level_transparency)
+
+
+func _reset_level_transparency() -> void:
+	for node in level_nodes:
+		_recursive_set_transparency(node, 1.0)
 
 
 func animate_in() -> void:
@@ -180,7 +215,9 @@ func animate_in() -> void:
 	if workbench_root is Node3D:
 		workbench_root.visible = true
 
-	_play_sound_forward()
+	# Delay sound to sync with walls/table landing (play when they're about to hit)
+	var sound_delay = walls_duration * 0.6  # Play sound partway through wall drop
+	get_tree().create_timer(sound_delay).timeout.connect(_play_sound_forward)
 
 	var total_time: float = 0.0
 
@@ -251,6 +288,7 @@ func animate_out() -> void:
 	_play_sound_rise()
 
 	var total_time: float = 0.0
+	var out_mult: float = animate_out_speed_multiplier  # Use multiplier for smoother exit
 
 	# Reverse order: props first, then table, then rug, then walls
 
@@ -261,21 +299,21 @@ func animate_out() -> void:
 			if prop:
 				var end_pos = target_positions[prop] + Vector3(0, props_drop_height, 0)
 				var delay := prop_index * stagger_delay * 0.5
-				_tween_rise(prop, end_pos, props_duration * 0.7, delay)
+				_tween_rise(prop, end_pos, props_duration * out_mult, delay)
 				prop_index += 1
-		total_time = props_duration * 0.7 + (prop_index * stagger_delay * 0.5)
+		total_time = props_duration * out_mult + (prop_index * stagger_delay * 0.5)
 
 	# Phase 2: Table rises
 	if table_node:
 		var table_delay := total_time * 0.3
 		var end_pos = target_positions[table_node] + Vector3(0, table_drop_height, 0)
-		_tween_rise(table_node, end_pos, table_duration * 0.7, table_delay)
+		_tween_rise(table_node, end_pos, table_duration * out_mult, table_delay)
 
 	# Phase 3: Rug slides out (along local Z)
 	if rug_node:
 		var rug_delay := total_time * 0.5
 		var end_pos = target_positions[rug_node] + Vector3(0, 0, -rug_slide_distance)
-		_tween_slide_out(rug_node, end_pos, rug_duration * 0.7, rug_delay)
+		_tween_slide_out(rug_node, end_pos, rug_duration * out_mult, rug_delay)
 
 	# Phase 4: Walls rise up
 	if walls_node:
@@ -285,11 +323,11 @@ func animate_out() -> void:
 			if wall is Node3D:
 				var end_pos = target_positions[wall] + Vector3(0, walls_drop_height, 0)
 				var delay := walls_delay + (wall_index * stagger_delay)
-				_tween_rise(wall, end_pos, walls_duration * 0.7, delay)
+				_tween_rise(wall, end_pos, walls_duration * out_mult, delay)
 				wall_index += 1
 
 	# Calculate total animation time and hide elements at end
-	var final_time := walls_duration + total_time + 0.5
+	var final_time := (walls_duration * out_mult) + total_time + 0.5
 	get_tree().create_timer(final_time).timeout.connect(_on_animate_out_complete)
 
 

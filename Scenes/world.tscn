@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=78 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -39,6 +39,7 @@
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="48_te07t"]
 [ext_resource type="PackedScene" path="res://resource/Floor1/art_f_1_stove_model.tscn" id="49_gwaj6"]
 [ext_resource type="PackedScene" uid="uid://d0q5gpv7gisxt" path="res://resource/Floor1/Final/art_f_1_stone_brick_floor_final_tile.tscn" id="49_kwnki"]
+[ext_resource type="PackedScene" uid="uid://qmrs6usmtoo7" path="res://resource/Common/ART_GLOBAL_Stairs_Model.glb" id="50_0sgyr"]
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="50_36g3o"]
 [ext_resource type="PackedScene" uid="uid://u0dphv7sgbih" path="res://resource/Floor1/Final/art_f_1_grandfather_clock_final.tscn" id="50_cvubk"]
 [ext_resource type="PackedScene" uid="uid://bjurv7h181la5" path="res://resource/Floor1/Final/art_f_1_stair_support_final.tscn" id="51_eskoj"]
@@ -771,7 +772,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 
 [node name="Furniture_TableCShort" parent="Floor1/Props_Environment" instance=ExtResource("56_eskoj")]
-transform = Transform3D(0.8632018, 0, 0.5048591, 0, 1, 0, -0.5048591, 0, 0.8632018, 4.381275, 0.036036134, -2.506708)
+transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.226333, 0.036036134, -0.53254)
 
 [node name="Lighting" type="Node3D" parent="Floor1"]
 
@@ -843,7 +844,7 @@ omni_range = 48.102
 transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
 
 [node name="ART_F1_Sofa_Final" parent="Floor1/Props" instance=ExtResource("51_vhf2b")]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 3.4983714, 0, -4.260164)
+transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, -4.9237514, 0, 2.7116613)
 
 [node name="ART_F1_MagicBillyBass_Model" parent="Floor1/Props" instance=ExtResource("52_g44x5")]
 transform = Transform3D(0.35228267, 0, -0.93589365, 0, 1, 0, 0.93589365, 0, 0.35228267, -0.23564148, 0.64605343, -2.002328)
@@ -860,8 +861,11 @@ autoplay = true
 bus = &"Music"
 
 [node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.5134363, 0, -0.85812765, 0, 1, 0, 0.85812765, 0, 0.5134363, 44.342808, 1.0831172, -2.5139613)
-inspect_scale = 3.0
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.926598, 1.0831172, -0.5157857)
+inspect_scale = 2.0
+
+[node name="ART_GLOBAL_Stairs_Model" parent="." instance=ExtResource("50_0sgyr")]
+transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, 39.896004, 0.030644178, -0.10987515)
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
