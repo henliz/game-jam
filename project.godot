@@ -32,6 +32,7 @@ puzzleplate=""
 puzzlepipe=""
 moveable=""
 finalpuzzle=""
+inscriptionslot=""
 
 [input]
 
