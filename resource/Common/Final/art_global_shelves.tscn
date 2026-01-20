@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://cquvdqs4ypwku"]
+
+[ext_resource type="PackedScene" uid="uid://doofchgs3yqco" path="res://resource/Common/ART_Global_Shelves.glb" id="1_wywuq"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_kjay6"]
+[ext_resource type="Texture2D" uid="uid://crmi5xirmdhb2" path="res://resource/Common/ART_Global_Shelves_ShelfBaseColor.png" id="3_wmvfu"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_nnpcn"]
+[ext_resource type="Texture2D" uid="uid://ctoma11lnps44" path="res://resource/Common/ART_Global_Shelves_ShelfNormal.png" id="5_rxabm"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_kyq40"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrmrp"]
+render_priority = 0
+shader = ExtResource("2_kjay6")
+shader_parameter/basecolor = Color(0.8589878, 0.9398265, 0.949097, 1)
+shader_parameter/texture_albedo = ExtResource("3_wmvfu")
+shader_parameter/texture_hue_shift = ExtResource("4_nnpcn")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_kyq40")
+shader_parameter/texture_normal = ExtResource("5_rxabm")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_Global_Shelves" instance=ExtResource("1_wywuq")]
+
+[node name="Cube_003" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_jrmrp")
