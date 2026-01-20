@@ -2,6 +2,7 @@ class_name Interactable
 extends StaticBody3D
 
 @export var inspect_scale: float = 0.5
+@export var inspect_offset: Vector3 = Vector3.ZERO  # Local offset when placed on workbench
 @export var item_name: String = "Item"
 @export_multiline var item_description: String = ""
 

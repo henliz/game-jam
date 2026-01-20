@@ -1,26 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh7k2xm4n8p3q"]
+[gd_scene load_steps=6 format=3 uid="uid://nxydaixptac2"]
 
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_interactable"]
 [ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="2_glb"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="4_glow"]
-[ext_resource type="Texture2D" uid="uid://c1ea0w6h30yoa" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model_ART_F1_MAGICBILLYBASS_TEXTURE.webp" id="5_texture"]
-[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_roughness"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bass"]
 size = Vector3(0.4, 0.15, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_billy"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-specular_mode = 1
-albedo_texture = ExtResource("5_texture")
-roughness = 0.5
-roughness_texture = ExtResource("6_roughness")
-backlight_enabled = true
-backlight_texture = ExtResource("5_texture")
 
 [node name="L1_MagicBillyBass" type="StaticBody3D"]
 script = ExtResource("1_interactable")
@@ -29,9 +15,6 @@ item_name = "Magic Billy Bass"
 item_description = "A magical singing fish mounted on a plaque. Its eyes seem to follow you..."
 
 [node name="billybass_mesh" parent="." instance=ExtResource("2_glb")]
-
-[node name="ART_F1_MagicBillyBass_Model" parent="billybass_mesh" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_billy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
@@ -42,7 +25,8 @@ script = ExtResource("3_cleanable")
 brush_size = 48.0
 brush_softness = 0.6
 
-[node name="GlowOutline" type="Node3D" parent="."]
+[node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("4_glow")
 glow_color = Color(0.96, 0.66, 0.19, 1)
 interaction_range = 2.5
+target_node = NodePath("../billybass_mesh")

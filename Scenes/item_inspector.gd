@@ -181,7 +181,12 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 		# Extract the item's current Y rotation in placement space and preserve it
 		var current_y_rotation = item_local.basis.get_euler().y
 		var target_basis = Basis.from_euler(Vector3(0, current_y_rotation, 0)).scaled(Vector3.ONE * scale_factor)
-		target_transform = Transform3D(target_basis, Vector3.ZERO)
+
+		# Apply inspect_offset if the item is an Interactable
+		var offset = Vector3.ZERO
+		if item is Interactable:
+			offset = item.inspect_offset
+		target_transform = Transform3D(target_basis, offset)
 	else:
 		camera.add_child(item)
 		var inspect_distance = 0.6

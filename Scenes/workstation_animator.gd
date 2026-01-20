@@ -34,6 +34,10 @@ signal level_fade_completed
 @export var fall_sounds: Array[AudioStream] = []
 @export var rise_sounds: Array[AudioStream] = []
 
+@export_group("Camera Reset")
+@export var camera_reset_duration: float = 0.4
+@export var default_camera_pitch: float = 0.0  # Default X rotation for camera (0 = looking straight ahead)
+
 var is_animated_in: bool = false
 var target_positions: Dictionary = {}  # Stores local positions
 var audio_player: AudioStreamPlayer
@@ -131,12 +135,31 @@ func animate_in_with_fade() -> void:
 
 	level_fade_started.emit()
 
+	# Reset player camera to look at workbench
+	_reset_player_camera()
+
 	if level_nodes.size() > 0:
 		_fade_level_out()
 		await get_tree().create_timer(level_fade_duration).timeout
 		level_fade_completed.emit()
 
 	animate_in()
+
+
+func _reset_player_camera() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if not player:
+		return
+
+	var camera = player.get_node_or_null("Head/Camera3D")
+	if not camera:
+		return
+
+	# Tween the camera's X rotation (pitch) back to default
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(camera, "rotation:x", default_camera_pitch, camera_reset_duration)
 
 
 func _fade_level_out() -> void:

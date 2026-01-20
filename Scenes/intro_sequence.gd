@@ -188,32 +188,24 @@ func _process(delta: float) -> void:
 	_update_captions()
 
 	if not scene_revealed and elapsed_time >= SCENE_FADE_IN_TIME:
-		print("[INTRO] %.1fs - Scene fade in started" % elapsed_time)
 		scene_revealed = true
 		var reveal_tween = create_tween()
 		reveal_tween.tween_property(black_overlay, "modulate:a", 0.0, 2.0)
 
 	# Return camera AND movement together
 	if not movement_returned and elapsed_time >= MOVEMENT_ENABLE_TIME:
-		print("[INTRO] %.1fs - Returning player control" % elapsed_time)
 		camera_returned = true
 		movement_returned = true
 		if player:
-			print("[INTRO] inspecting was %s, movement_enabled was %s" % [player.inspecting, player.movement_enabled])
 			player.inspecting = false
 			player.movement_enabled = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			print("[INTRO] Now: inspecting=%s, movement_enabled=%s, mouse_mode=%s" % [player.inspecting, player.movement_enabled, Input.get_mouse_mode()])
-		else:
-			print("[INTRO] WARNING: player is null when returning control!")
 
 		# Hide the overlay completely to ensure it doesn't block input
 		black_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		print("[INTRO] Set black_overlay mouse_filter to IGNORE")
 
 	# Cleanup after captions finish (separate from movement enabling)
 	if not cleanup_done and elapsed_time >= CLEANUP_TIME:
-		print("[INTRO] %.1fs - CLEANUP triggered" % elapsed_time)
 		cleanup_done = true
 		_mark_intro_complete()
 		_cleanup_sequence()
@@ -242,23 +234,17 @@ func _hide_all_sections() -> void:
 
 
 func _cleanup_sequence() -> void:
-	print("[INTRO] _cleanup_sequence called - camera_returned=%s, movement_returned=%s" % [camera_returned, movement_returned])
 	# Ensure caption is hidden before cleanup
 	DialogueManager.caption_ui.hide_caption()
 
 	# Safety: ensure player has full control restored
 	if player:
 		if not camera_returned:
-			print("[INTRO] SAFETY: Restoring camera control in cleanup!")
 			player.inspecting = false
 		if not movement_returned:
-			print("[INTRO] SAFETY: Restoring movement in cleanup!")
 			player.movement_enabled = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	else:
-		print("[INTRO] WARNING: player is null in cleanup!")
 
-	print("[INTRO] Sequence complete, calling queue_free()")
 	queue_free()
 
 
@@ -270,10 +256,8 @@ func _update_captions() -> void:
 	if elapsed_time >= caption["time"]:
 		var caption_text: String = caption["text"]
 		if caption_text.is_empty():
-			print("[INTRO] %.1fs - Caption %d: HIDE" % [elapsed_time, current_caption_index])
 			DialogueManager.caption_ui.hide_caption()
 		else:
-			print("[INTRO] %.1fs - Caption %d: '%s'" % [elapsed_time, current_caption_index, caption_text.substr(0, 30)])
 			DialogueManager.caption_ui.show_caption("", caption_text)
 		current_caption_index += 1
 

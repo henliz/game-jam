@@ -1,35 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4j8kqm2xnl6y"]
+[gd_scene load_steps=12 format=3 uid="uid://c4j8kqm2xnl6y"]
 
 [ext_resource type="Script" uid="uid://ofvrq76xctpi" path="res://Scenes/journal_ui.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d0itfmafdjoyv" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png" id="2_spread1"]
 [ext_resource type="Texture2D" uid="uid://cwcmj4uph7dws" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_WIP_TEST.png" id="3_spread2"]
 [ext_resource type="Texture2D" uid="uid://16ydohbj0124" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_WIP_TEST.png" id="4_spread3"]
 [ext_resource type="FontFile" uid="uid://do2plbqfli06l" path="res://resource/Fonts/SixHands.ttf" id="5_sixhands"]
-[ext_resource type="FontFile" uid="uid://c6gtnvdpdrqox" path="res://resource/Fonts/Angelic.ttf" id="6_angelic"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_unlocked"]
-font = ExtResource("5_sixhands")
-font_size = 24
-font_color = Color(0.15, 0.1, 0.05, 1)
+[ext_resource type="FontFile" uid="uid://cd7svr48oipc8" path="res://resource/Fonts/Angelic.ttf" id="6_angelic"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_unlocked_title"]
 font = ExtResource("5_sixhands")
 font_size = 28
 font_color = Color(0.7, 0.2, 0.2, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_unlocked"]
+font = ExtResource("5_sixhands")
+font_size = 24
+font_color = Color(0.15, 0.1, 0.05, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_unlocked_note"]
 font = ExtResource("5_sixhands")
 font_size = 22
 font_color = Color(0.15, 0.1, 0.05, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_locked"]
-font = ExtResource("6_angelic")
-font_size = 24
-font_color = Color(0.3, 0.3, 0.35, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_locked_title"]
 font = ExtResource("6_angelic")
 font_size = 28
+font_color = Color(0.3, 0.3, 0.35, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_locked"]
+font = ExtResource("6_angelic")
+font_size = 24
 font_color = Color(0.3, 0.3, 0.35, 1)
 
 [node name="JournalUI" type="CanvasLayer"]
@@ -90,19 +90,19 @@ grow_vertical = 2
 
 [node name="Title" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/UnlockedText"]
 layout_mode = 1
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 350.0
-offset_bottom = 60.0
+offset_left = 291.40002
+offset_top = 37.0
+offset_right = 621.4
+offset_bottom = 85.0
 text = "Day 1:"
 label_settings = SubResource("LabelSettings_unlocked_title")
 
 [node name="Body" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/UnlockedText"]
 layout_mode = 1
-offset_left = 20.0
-offset_top = 50.0
-offset_right = 380.0
-offset_bottom = 500.0
+offset_left = 392.40002
+offset_top = 37.0
+offset_right = 752.4
+offset_bottom = 1178.0
 text = "I always forget how strange it is to write in a new journal, the spines on these are always so bloody stiff... Not to mention transcribing all of the important bits over... Those loops are so fiddly to get right that I can feel a headache starting. But I can't be making mistakes like I did with the incantation the last time. Took me ages to calm everything down again.
 
 No letters again today. I'm starting to wonder if my last batch made it out successfully. The blasted lizards down the coast seem to have gotten a taste for the delivery birds again. Cornelius will certainly be insufferable about \"feeding the local wildlife\" if he finds out that's why I never responded to his letter."
@@ -111,10 +111,10 @@ autowrap_mode = 2
 
 [node name="Note" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/UnlockedText"]
 layout_mode = 1
-offset_left = 80.0
-offset_top = 480.0
-offset_right = 380.0
-offset_bottom = 580.0
+offset_left = 878.4
+offset_top = 255.0
+offset_right = 1178.4
+offset_bottom = 375.0
 text = "NOTE: Remember to transcribe the updated alchemical formulas!"
 label_settings = SubResource("LabelSettings_unlocked_note")
 horizontal_alignment = 1

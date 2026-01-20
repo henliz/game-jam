@@ -4,6 +4,7 @@ class_name GlowOutline
 @export var glow_color: Color = Color(0.4, 0.6, 1.0, 1.0)
 @export var glow_amount: float = 0.02
 @export var interaction_range: float = 1.0
+@export var target_node: Node3D  ## Assign the GLB root node - will find MeshInstance3D inside
 
 var glow_overlay: MeshInstance3D
 var is_glowing: bool = false
@@ -12,16 +13,22 @@ var player_in_range: bool = false
 
 
 func _ready() -> void:
-	# Search for mesh in self, children, then parent's tree (for sibling nodes)
-	mesh_instance = _find_mesh_instance(self)
-	if not mesh_instance and get_parent():
-		mesh_instance = _find_mesh_instance(get_parent())
+	# Use explicitly assigned node if provided, otherwise auto-detect
+	if target_node:
+		mesh_instance = _find_mesh_instance(target_node)
+		print("[GlowOutline] %s: Using target_node '%s', found mesh '%s'" % [get_parent().name if get_parent() else name, target_node.name, mesh_instance.name if mesh_instance else "NONE"])
+	else:
+		# Search for mesh in self, children, then parent's tree (for sibling nodes)
+		mesh_instance = _find_mesh_instance(self)
+		if not mesh_instance and get_parent():
+			mesh_instance = _find_mesh_instance(get_parent())
+		print("[GlowOutline] %s: Auto-detect found mesh '%s'" % [get_parent().name if get_parent() else name, mesh_instance.name if mesh_instance else "NONE"])
 
 	if not mesh_instance:
 		push_error("GlowOutline: No MeshInstance3D found in node tree")
 		return
 
-	print("GlowOutline: Found mesh '", mesh_instance.name, "' on node '", name, "'")
+	print("[GlowOutline] %s: Mesh resource path = %s" % [get_parent().name if get_parent() else name, mesh_instance.mesh.resource_path if mesh_instance.mesh else "NO MESH"])
 	_setup_glow_overlay()
 	_setup_interaction_area()
 
@@ -41,6 +48,7 @@ func _setup_glow_overlay() -> void:
 	glow_overlay.mesh = mesh_instance.mesh
 	glow_overlay.visible = false
 	glow_overlay.name = "GlowOverlay"
+	print("[GlowOutline] %s: glow_overlay.mesh = %s (id: %s)" % [get_parent().name if get_parent() else name, glow_overlay.mesh.resource_path if glow_overlay.mesh else "NULL", glow_overlay.mesh.get_instance_id() if glow_overlay.mesh else "N/A"])
 
 	var material = StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
@@ -57,6 +65,7 @@ func _setup_glow_overlay() -> void:
 
 	mesh_instance.add_child(glow_overlay)
 	glow_overlay.transform = Transform3D.IDENTITY
+	print("[GlowOutline] %s: Added glow_overlay to parent '%s' (path: %s)" % [get_parent().name if get_parent() else name, mesh_instance.name, mesh_instance.get_path()])
 
 
 func _setup_interaction_area() -> void:
@@ -76,8 +85,6 @@ func _setup_interaction_area() -> void:
 	# Connect signals
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
-
-	print("GlowOutline: Interaction area setup - radius: ", interaction_range)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

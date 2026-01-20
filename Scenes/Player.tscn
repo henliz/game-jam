@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
 [ext_resource type="PackedScene" uid="uid://dlviucu8j0qkg" path="res://Scenes/Workbench.tscn" id="2_workbench"]
-[ext_resource type="PackedScene" path="res://Scenes/journal_ui.tscn" id="3_journal"]
+[ext_resource type="PackedScene" uid="uid://c4j8kqm2xnl6y" path="res://Scenes/journal_ui.tscn" id="3_journal"]
 [ext_resource type="Script" uid="uid://c4j2eecr4gqp6" path="res://Scenes/repair_mode.gd" id="5_5ixxa"]
 [ext_resource type="AudioStream" uid="uid://b5y30voglic73" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_dry_punchy_interior_14.wav" id="5_walk1"]
 [ext_resource type="AudioStream" uid="uid://cxr0spfacpxb8" path="res://Audio/SFX/Player/Footsteps/ESM_GF_fx_wood_one_shots_footstep_sneakers_walking_dry_punchy_interior_28.wav" id="6_walk2"]
