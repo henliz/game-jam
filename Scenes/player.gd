@@ -198,6 +198,7 @@ func _find_level_map() -> void:
 		if node:
 			workbench_animator.add_level_node(node)
 
+func _on_finalpuzzle_closed() -> void:
 	camera.current=true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalpuzzle_is_active = false
