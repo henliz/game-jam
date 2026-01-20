@@ -9,16 +9,17 @@ var mousePosition
 var dragging = false
 var is_rotating = false
 
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
-@onready var inscription_button: TextureButton = $CanvasLayer/Panel/InscriptionButton
-@onready var inscription_button_2: TextureButton = $CanvasLayer/Panel/InscriptionButton2
-@onready var inscription_button_3: TextureButton = $CanvasLayer/Panel/InscriptionButton3
-@onready var inscription_button_4: TextureButton = $CanvasLayer/Panel/InscriptionButton4
-@onready var inscription_button_5: TextureButton = $CanvasLayer/Panel/InscriptionButton5
-@onready var inscription_button_6: TextureButton = $CanvasLayer/Panel/InscriptionButton6
-@onready var inscription_button_7: TextureButton = $CanvasLayer/Panel/InscriptionButton7
-@onready var inscription_button_8: TextureButton = $CanvasLayer/Panel/InscriptionButton8
-@onready var inscription_button_9: TextureButton = $CanvasLayer/Panel/InscriptionButton9
+@onready var panel: Panel = $CanvasLayer/Panel
+
+@onready var outer_fall_piece: TextureButton = $CanvasLayer/Panel/OuterFallPiece
+@onready var outer_summer_piece: TextureButton = $CanvasLayer/Panel/OuterSummerPiece
+@onready var outer_spring_piece: TextureButton = $CanvasLayer/Panel/OuterSpringPiece
+@onready var mid_fall_piece: TextureButton = $CanvasLayer/Panel/MidFallPiece
+@onready var mid_summer_piece: TextureButton = $CanvasLayer/Panel/MidSummerPiece
+@onready var mid_spring_piece: TextureButton = $CanvasLayer/Panel/MidSpringPiece
+@onready var inner_fall_piece: TextureButton = $CanvasLayer/Panel/InnerFallPiece
+@onready var inner_summer_piece: TextureButton = $CanvasLayer/Panel/InnerSummerPiece
+@onready var inner_spring_piece: TextureButton = $CanvasLayer/Panel/InnerSpringPiece
 
 var dragged_inscription : TextureButton = null
 var dragged_inscription_name : String = ""
@@ -37,6 +38,7 @@ var slotted_piece = {}
 
 @onready var mid: StaticBody3D = $Mid
 @onready var outer: StaticBody3D = $Outer
+@onready var inner: StaticBody3D = $Inner
 
 var ring_rotation = {}
 var completed_rings = {}
@@ -45,27 +47,28 @@ var hovered_ring : StaticBody3D = null
 var initial_inscription_position = {}
 
 func _ready() -> void:
-	ring_rotation = {mid:0,outer:0}
+	ring_rotation = {inner:0,mid:0,outer:0}
+	completed_rings = {inner:false,mid:false,outer:false}
 	initial_inscription_position = {
-		inscription_button:inscription_button.global_position,
-		inscription_button_2:inscription_button_2.global_position,
-		inscription_button_3:inscription_button_3.global_position,
-		inscription_button_4:inscription_button_4.global_position,
-		inscription_button_5:inscription_button_5.global_position,
-		inscription_button_6:inscription_button_6.global_position,
-		inscription_button_7:inscription_button_7.global_position,
-		inscription_button_8:inscription_button_8.global_position,
-		inscription_button_9:inscription_button_9.global_position
+		outer_fall_piece:outer_fall_piece.global_position,
+		outer_summer_piece:outer_summer_piece.global_position,
+		outer_spring_piece:outer_spring_piece.global_position,
+		mid_fall_piece:mid_fall_piece.global_position,
+		mid_summer_piece:mid_summer_piece.global_position,
+		mid_spring_piece:mid_spring_piece.global_position,
+		inner_fall_piece:inner_fall_piece.global_position,
+		inner_summer_piece:inner_summer_piece.global_position,
+		inner_spring_piece:inner_spring_piece.global_position
 	}
-	inscription_button.pressed.connect(_on_inscription_pressed.bind("OuterFallPiece",inscription_button))
-	inscription_button_2.pressed.connect(_on_inscription_pressed.bind("OuterSummerPiece",inscription_button_2))
-	inscription_button_3.pressed.connect(_on_inscription_pressed.bind("OuterSpringPiece",inscription_button_3))
-	inscription_button_4.pressed.connect(_on_inscription_pressed.bind("MidFallPiece",inscription_button_4))
-	inscription_button_5.pressed.connect(_on_inscription_pressed.bind("MidSummerPiece",inscription_button_5))
-	inscription_button_6.pressed.connect(_on_inscription_pressed.bind("MidSpringPiece",inscription_button_6))
-	inscription_button_7.pressed.connect(_on_inscription_pressed.bind("InnerFallPiece",inscription_button_7))
-	inscription_button_8.pressed.connect(_on_inscription_pressed.bind("InnerSummerPiece",inscription_button_8))
-	inscription_button_9.pressed.connect(_on_inscription_pressed.bind("InnerSpringPiece",inscription_button_9))
+	outer_fall_piece.pressed.connect(_on_inscription_pressed.bind("OuterFallPiece",outer_fall_piece))
+	outer_summer_piece.pressed.connect(_on_inscription_pressed.bind("OuterSummerPiece",outer_summer_piece))
+	outer_spring_piece.pressed.connect(_on_inscription_pressed.bind("OuterSpringPiece",outer_spring_piece))
+	mid_fall_piece.pressed.connect(_on_inscription_pressed.bind("MidFallPiece",mid_fall_piece))
+	mid_summer_piece.pressed.connect(_on_inscription_pressed.bind("MidSummerPiece",mid_summer_piece))
+	mid_spring_piece.pressed.connect(_on_inscription_pressed.bind("MidSpringPiece",mid_spring_piece))
+	inner_fall_piece.pressed.connect(_on_inscription_pressed.bind("InnerFallPiece",inner_fall_piece))
+	inner_summer_piece.pressed.connect(_on_inscription_pressed.bind("InnerSummerPiece",inner_summer_piece))
+	inner_spring_piece.pressed.connect(_on_inscription_pressed.bind("InnerSpringPiece",inner_spring_piece))
 	slotted_piece = {
 		inscription_slot_1:null,
 		inscription_slot_2:null,
@@ -80,7 +83,7 @@ func _ready() -> void:
 
 func _on_inscription_pressed(inscription_name: String,button : TextureButton) -> void:
 	dragged_inscription_name = inscription_name
-	if dragged_inscription: _reset_inscription()
+	if dragged_inscription: _reset_inscription(true)
 	dragged_inscription = button
 
 func _process(_delta: float) -> void:
@@ -88,9 +91,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("close"):
 		finalpuzzle_closed.emit()
 		is_active = false
-		canvas_layer.visible = false
+		panel.visible = false
 		hovered_ring = null
-	if !is_rotating and hovered_ring and Input.is_action_just_pressed("rotate_right"):
+	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_right"):
+		if completed_rings.get(hovered_ring):
 			var tween = get_tree().create_tween()
 			is_rotating=true
 			ring_rotation.set(hovered_ring,ring_rotation.get(hovered_ring)-30.0)
@@ -98,7 +102,10 @@ func _process(_delta: float) -> void:
 			await tween.finished
 			is_rotating=false
 			print(hovered_ring.rotation_degrees.y)
-	if !is_rotating and hovered_ring and Input.is_action_just_pressed("rotate_left"):
+		else:
+			print("ring not complete")
+	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_left"):
+		if completed_rings.get(hovered_ring):	
 			var tween = get_tree().create_tween()
 			is_rotating=true
 			ring_rotation.set(hovered_ring,ring_rotation.get(hovered_ring)+30.0)
@@ -106,8 +113,10 @@ func _process(_delta: float) -> void:
 			await tween.finished
 			is_rotating=false
 			print(hovered_ring.rotation_degrees.y)
+		else:
+			print("ring not complete")
 	if dragged_inscription and Input.is_action_just_pressed("release"):
-		_reset_inscription()
+		_reset_inscription(true)
 
 func _input(event):
 	if !is_active: return
@@ -135,22 +144,35 @@ func _input(event):
 		else:
 			hovered_ring = intersect.collider
 
-func _reset_inscription():
+func _reset_inscription(stay_visible: bool):
 	dragged_inscription.set_global_position(initial_inscription_position.get(dragged_inscription))
+	dragged_inscription.visible = stay_visible
 	dragged_inscription = null
 
 func _drop_piece(intersect):
-	if !intersect or !dragged_inscription: return
-	print(intersect.collider)
+	if !intersect or !hovered_ring: return
 	if intersect.collider and intersect.collider.is_in_group("inscriptionslot"):
-		var ring_piece = get_node(dragged_inscription_name)
-		ring_piece.reparent(intersect.collider.get_parent(),false)
-		slotted_piece.set(intersect.collider,ring_piece)
-		ring_piece.visible=true
-		
-		dragged_inscription = null
-		dragged_inscription_name = ""
-			
+		if dragged_inscription and !slotted_piece.get(intersect.collider) and dragged_inscription_name.begins_with(hovered_ring.name):
+			var ring_piece = intersect.collider.get_node(dragged_inscription_name)
+			ring_piece.visible=true
+			slotted_piece.set(intersect.collider,ring_piece)
+			_reset_inscription(false)
+			dragged_inscription_name = ""
+			check_completed_rings()
+			return
+		if !dragged_inscription and slotted_piece.get(intersect.collider):
+			var ring_piece = slotted_piece.get(intersect.collider)
+			ring_piece.visible=false
+			slotted_piece.set(intersect.collider,null)
+			dragged_inscription = panel.get_node(NodePath(ring_piece.name))
+			dragged_inscription_name = ring_piece.name
+			var currentMousePos = get_viewport().get_mouse_position()
+			var offsetVector = Vector2(30.0, 10.0)
+			var finalTexturePos = currentMousePos + offsetVector
+			dragged_inscription.set_global_position(finalTexturePos)
+			dragged_inscription.visible = true
+			return
+
 func get_mouse_intersect(mouseEventPosition):
 	var params = PhysicsRayQueryParameters3D.new()
 	params.from = puzzle_camera.project_ray_origin(mouseEventPosition)
@@ -160,10 +182,23 @@ func get_mouse_intersect(mouseEventPosition):
 	var result = world.intersect_ray(params)
 	
 	return result
+	
+func check_completed_rings():
+	if slotted_piece.get(inscription_slot_1) and slotted_piece.get(inscription_slot_2) and slotted_piece.get(inscription_slot_3):
+		completed_rings.set(outer,slotted_piece.get(inscription_slot_1).name == "OuterFallPiece" and slotted_piece.get(inscription_slot_2).name == "OuterSummerPiece" and slotted_piece.get(inscription_slot_3).name == "OuterSpringPiece")
+	if slotted_piece.get(inscription_slot_4) and slotted_piece.get(inscription_slot_5) and slotted_piece.get(inscription_slot_6):
+		completed_rings.set(mid,slotted_piece.get(inscription_slot_4).name == "MidFallPiece" and slotted_piece.get(inscription_slot_5).name == "MidSummerPiece" and slotted_piece.get(inscription_slot_6).name == "MidSpringPiece")
+	if slotted_piece.get(inscription_slot_7) and slotted_piece.get(inscription_slot_8) and slotted_piece.get(inscription_slot_9):
+		completed_rings.set(inner,slotted_piece.get(inscription_slot_7).name == "InnerFallPiece" and slotted_piece.get(inscription_slot_8).name == "InnerSummerPiece" and slotted_piece.get(inscription_slot_9).name == "InnerSpringPiece")
+	print(completed_rings)
+	
+func check_puzzle_complete():
+	for ring in completed_rings.keys():
+		if !completed_rings.get(ring): return false
 
 func _on_player_finalpuzzle_camera_trigger() -> void:
 	puzzle_camera.current=true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	is_active = true
-	canvas_layer.visible = true
+	panel.visible = true
 	hovered_ring = null
