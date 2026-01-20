@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://brnr264mnqmpn"]
+
+[ext_resource type="PackedScene" uid="uid://c14e1k2eumnye" path="res://resource/Floor1/ART_F1_Countertop_Final.glb" id="1_6sgnj"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_jsddu"]
+[ext_resource type="Texture2D" uid="uid://ca5h3f4c57r6i" path="res://resource/Floor1/ART_F1_Countertop_Final_CounterBaseColor.png" id="3_xts06"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_vjmdh"]
+[ext_resource type="Texture2D" uid="uid://bvtvayfk1maxf" path="res://resource/Floor1/ART_F1_Countertop_Final_CounterNormal.png" id="5_m3510"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_2accp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4rswe"]
+render_priority = 0
+shader = ExtResource("2_jsddu")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_xts06")
+shader_parameter/texture_hue_shift = ExtResource("4_vjmdh")
+shader_parameter/hue_shift_strength = 0.10000000149012
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_2accp")
+shader_parameter/texture_normal = ExtResource("5_m3510")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Countertop_Final" instance=ExtResource("1_6sgnj")]
+
+[node name="Kitchen" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_4rswe")

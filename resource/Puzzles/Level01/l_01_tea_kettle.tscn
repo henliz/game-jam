@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://5048m1y485jg"]
+
+[ext_resource type="PackedScene" uid="uid://cmalvk4704tpt" path="res://resource/Puzzles/Level01/L01_TeaKettle.glb" id="1_gurvs"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_kberr"]
+[ext_resource type="Texture2D" uid="uid://70aoro3qwd75" path="res://resource/Puzzles/Level01/L01_TeaKettle_TeapotBaseColor.png" id="3_agyuh"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_3m27j"]
+[ext_resource type="Texture2D" uid="uid://723igrohbubt" path="res://resource/Puzzles/Level01/L01_TeaKettle_TeapotNormalMap.png" id="5_f7w11"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_ygo10"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3fbj"]
+render_priority = 0
+shader = ExtResource("2_kberr")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_agyuh")
+shader_parameter/texture_hue_shift = ExtResource("4_3m27j")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_ygo10")
+shader_parameter/texture_normal = ExtResource("5_f7w11")
+shader_parameter/normal_scale = 0.30000010925
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(8, 8, 8)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="L01_TeaKettle" instance=ExtResource("1_gurvs")]
+
+[node name="teapot" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_f3fbj")

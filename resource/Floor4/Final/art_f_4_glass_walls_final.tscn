@@ -10,6 +10,12 @@
 [node name="glass_walls_base" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_p5bb7")
 
+[node name="glass_walls_braces_h1" parent="." index="1"]
+surface_material_override/0 = ExtResource("4_rflnj")
+
+[node name="glass_walls_braces_vertical" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_rflnj")
+
 [node name="glass_walls_handle_details" parent="." index="3"]
 surface_material_override/0 = ExtResource("3_xxhbc")
 

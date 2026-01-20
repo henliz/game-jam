@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://diii2g3pq2fb0"]
+[gd_scene load_steps=8 format=3 uid="uid://diii2g3pq2fb0"]
 
 [ext_resource type="PackedScene" uid="uid://e7cwde6f4k3g" path="res://resource/Floor4/ART_F4_Ceiling_Final.glb" id="1_kvkta"]
-[ext_resource type="Material" uid="uid://j3efhnp2hsr6" path="res://resource/GraphicsCore/MAT_core_universal_v1.material" id="2_w68xc"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_jh5ae"]
+[ext_resource type="Texture2D" uid="uid://c4cfrihlcvdhc" path="res://resource/Floor4/ART_F4_Ceiling_Final_RoofBasecolor.png" id="3_sdpq3"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_rp41h"]
+[ext_resource type="Texture2D" uid="uid://c7sujrbbewxvj" path="res://resource/Floor4/ART_F4_Ceiling_Final_RoofNormal.png" id="5_s061v"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_q3okl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qssnw"]
+render_priority = 0
+shader = ExtResource("2_jh5ae")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_sdpq3")
+shader_parameter/texture_hue_shift = ExtResource("4_rp41h")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("6_q3okl")
+shader_parameter/texture_normal = ExtResource("5_s061v")
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [node name="ART_F4_Ceiling_Final" instance=ExtResource("1_kvkta")]
 
 [node name="Roof" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_w68xc")
+surface_material_override/0 = SubResource("ShaderMaterial_qssnw")

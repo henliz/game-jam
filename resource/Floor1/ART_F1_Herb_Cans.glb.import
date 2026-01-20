@@ -1,0 +1,72 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b6wwf25gako82"
+path="res://.godot/imported/ART_F1_Herb_Cans.glb-be63ac29dab7aa13eead0a6834e97661.scn"
+
+[deps]
+
+source_file="res://resource/Floor1/ART_F1_Herb_Cans.glb"
+dest_files=["res://.godot/imported/ART_F1_Herb_Cans.glb-be63ac29dab7aa13eead0a6834e97661.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"meshes": {
+"ART_F1_Herb_Cans_herb_can_01_mesh": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/ART_F1_herb_can_01.res",
+"save_to_file/path": "uid://b4xcrn42x0dvg"
+},
+"ART_F1_Herb_Cans_herb_can_02_mesh": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/ART_F1_herb_can_02.res",
+"save_to_file/path": "uid://d13cyx8qubyne"
+},
+"ART_F1_Herb_Cans_herb_can_03_mesh": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://resource/Floor1/ART_F1_herb_can_03.res",
+"save_to_file/path": "uid://b5i643kllqvej"
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
