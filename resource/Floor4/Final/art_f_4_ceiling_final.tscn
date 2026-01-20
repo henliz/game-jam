@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://diii2g3pq2fb0"]
+
+[ext_resource type="PackedScene" uid="uid://e7cwde6f4k3g" path="res://resource/Floor4/ART_F4_Ceiling_Final.glb" id="1_kvkta"]
+[ext_resource type="Material" uid="uid://j3efhnp2hsr6" path="res://resource/GraphicsCore/MAT_core_universal_v1.material" id="2_w68xc"]
+
+[node name="ART_F4_Ceiling_Final" instance=ExtResource("1_kvkta")]
+
+[node name="Roof" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_w68xc")
