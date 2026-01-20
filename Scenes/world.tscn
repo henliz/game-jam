@@ -922,7 +922,7 @@ script = ExtResource("1_world")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.019047499, -28)
 
 [node name="Floor" type="CSGBox3D" parent="Map"]
-transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.027, -0.26, 0.007)
+transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.026665688, -0.21108484, 0.006896019)
 use_collision = true
 material = SubResource("StandardMaterial3D_yq1aw")
 
@@ -1453,101 +1453,107 @@ script = ExtResource("29_qebug")
 [node name="Floor1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 
-[node name="PropsEnvironment" type="Node3D" parent="Floor1"]
+[node name="Props_Environment" type="Node3D" parent="Floor1"]
 
-[node name="F1WallDoor" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallDoor" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("43_xcb5n")
 skeleton = NodePath("../../..")
 
-[node name="F1WallClear" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear2" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear2" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.5, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear3" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear3" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.5, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear4" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear4" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, -0.8660254, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear5" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear5" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear6" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear6" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, -0.8660254, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear7" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear7" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-0.5, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear8" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear8" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallClear9" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallClear9" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(0.86602545, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, 0.86602545, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("44_te07t")
 skeleton = NodePath("../..")
 
-[node name="F1WallWindowRight" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallWindowRight" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("45_b4e6k")
 
-[node name="F1WallWindowCenter" type="MeshInstance3D" parent="Floor1/PropsEnvironment"]
+[node name="F1WallWindowCenter" type="MeshInstance3D" parent="Floor1/Props_Environment"]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
 material_override = ExtResource("42_6mm6r")
 mesh = ExtResource("46_0sgyr")
 
-[node name="ART_F1_StoneBrickFloor_Final" parent="Floor1/PropsEnvironment" instance=ExtResource("47_uqdn7")]
+[node name="ART_F1_StoneBrickFloor_Final" parent="Floor1/Props_Environment" instance=ExtResource("47_uqdn7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.33670378)
 
-[node name="ART_GLOBAL_WindowFrame_Model" parent="Floor1/PropsEnvironment" instance=ExtResource("48_b4e6k")]
+[node name="ART_GLOBAL_WindowFrame_Model" parent="Floor1/Props_Environment" instance=ExtResource("48_b4e6k")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.5)
 
-[node name="ART_GLOBAL_WindowFrame_Model2" parent="Floor1/PropsEnvironment" instance=ExtResource("48_b4e6k")]
+[node name="ART_GLOBAL_WindowFrame_Model2" parent="Floor1/Props_Environment" instance=ExtResource("48_b4e6k")]
 transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.50000006, 0, 0, 0)
 
-[node name="ART_F1_StoneBrickFloor_Final_Tile" parent="Floor1/PropsEnvironment" instance=ExtResource("49_kwnki")]
+[node name="ART_F1_StoneBrickFloor_Final_Tile" parent="Floor1/Props_Environment" instance=ExtResource("49_kwnki")]
 
-[node name="ART_F1_StairSupport_Final" parent="Floor1/PropsEnvironment" instance=ExtResource("51_eskoj")]
+[node name="ART_F1_GrandfatherClock_Final" parent="Floor1/Props_Environment" instance=ExtResource("50_cvubk")]
+transform = Transform3D(0.59999996, 0, -1.0392306, 0, 1.2, 0, 1.0392306, 0, 0.59999996, -3.302147, 4.7683716e-07, -4.5361195)
 
-[node name="ART_F1_Stove_Model" parent="Floor1/PropsEnvironment" instance=ExtResource("49_gwaj6")]
+[node name="ART_F1_StairSupport_Final" parent="Floor1/Props_Environment" instance=ExtResource("51_eskoj")]
 
-[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" parent="Floor1/PropsEnvironment" instance=ExtResource("53_5kw24")]
+[node name="ART_F1_Stove_Model" parent="Floor1/Props_Environment" instance=ExtResource("49_gwaj6")]
 
-[node name="ART_F1_Ceiling_Model" parent="Floor1/PropsEnvironment" instance=ExtResource("54_dsm2w")]
+[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" parent="Floor1/Props_Environment" instance=ExtResource("53_5kw24")]
+
+[node name="ART_F1_Ceiling_Model" parent="Floor1/Props_Environment" instance=ExtResource("54_dsm2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="ART_F1_FrontDoor_Final" parent="Floor1/PropsEnvironment" instance=ExtResource("55_cvubk")]
+[node name="ART_F1_FrontDoor_Final" parent="Floor1/Props_Environment" instance=ExtResource("55_cvubk")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 
-[node name="Chandelier" parent="Floor1/PropsEnvironment" instance=ExtResource("44_13n8b")]
+[node name="Furniture_TableCShort" parent="Floor1/Props_Environment" instance=ExtResource("56_eskoj")]
+transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.226333, 0.036036134, -0.53254)
+
+[node name="Chandelier" parent="Floor1/Props_Environment" instance=ExtResource("44_13n8b")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0029449463, 4.0944953, -0.0072333813)
 
 [node name="ART_GLOBAL_Stairs_Model" parent="Floor1/PropsEnvironment" instance=ExtResource("50_0sgyr")]
@@ -1597,9 +1603,7 @@ light_color = Color(0.55, 0.8499999, 1, 1)
 light_energy = 0.8
 light_indirect_energy = 2.0
 shadow_enabled = true
-shadow_bias = 0.02
-shadow_normal_bias = 1.5
-shadow_blur = 2.5
+shadow_blur = 10.0
 spot_range = 8.0
 spot_attenuation = 0.5
 spot_angle = 80.0
@@ -1610,9 +1614,7 @@ light_color = Color(0.55, 0.8499999, 1, 1)
 light_energy = 0.8
 light_indirect_energy = 2.0
 shadow_enabled = true
-shadow_bias = 0.025
-shadow_normal_bias = 2.0
-shadow_blur = 2.5
+shadow_blur = 10.0
 spot_range = 8.0
 spot_attenuation = 0.5
 spot_angle = 80.0
@@ -1622,13 +1624,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 light_energy = 1.5
 omni_range = 48.102
 
-[node name="PropsSetDressing" type="Node3D" parent="Floor1"]
-
-[node name="ART_GLOBAL_Stairs_Model" parent="." instance=ExtResource("50_0sgyr")]
-transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, 39.896004, 0.030644178, -0.10987515)
-
-[node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Floor1/PropsSetDressing" instance=ExtResource("60_5kw24")]
-transform = Transform3D(0.5158953, 0.3063528, 1.3391104e-08, 2.1687713e-15, -2.6226832e-08, 0.59999996, 0.3063528, -0.5158953, -2.2550498e-08, 1.704979, 0.54929423, -2.536342)
+[node name="Props" type="Node3D" parent="Floor1"]
 
 [node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Floor1/Props" instance=ExtResource("52_gwaj6")]
 transform = Transform3D(-0.86432743, 0, 0.50292933, 0, 1, 0, -0.50292933, 0, -0.86432743, -3.067566, 2.2670736, 4.8327303)
