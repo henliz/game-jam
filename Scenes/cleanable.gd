@@ -109,7 +109,7 @@ func _build_uv_coverage_mask() -> void:
 			continue
 
 		# Rasterize each triangle into the coverage mask
-		var tri_count = indices.size() / 3 if indices.size() > 0 else uv2_array.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else uv2_array.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
