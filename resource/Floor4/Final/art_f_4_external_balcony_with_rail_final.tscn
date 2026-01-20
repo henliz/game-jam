@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://djme5pt2g8axp"]
+
+[ext_resource type="PackedScene" uid="uid://dfo5a80op11r8" path="res://resource/Floor4/ART_F4_External_Balcony_with_Rail_Final.glb" id="1_fyvcb"]
+[ext_resource type="Material" uid="uid://b4ams6pafja31" path="res://resource/Floor4/Final/SharedMaterials/MAT_metal_floor.material" id="2_jie56"]
+[ext_resource type="Material" uid="uid://c8fr8hutm887g" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_rose.material" id="3_01obo"]
+[ext_resource type="Material" uid="uid://ndocqsfprq5y" path="res://resource/Floor4/Final/SharedMaterials/MAT_handrail.material" id="4_wo126"]
+
+[node name="ART_F4_External_Balcony_with_Rail_Final" instance=ExtResource("1_fyvcb")]
+
+[node name="balcony_floor" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jie56")
+surface_material_override/1 = ExtResource("3_01obo")
+
+[node name="balcony_stairs_floor" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_jie56")
+
+[node name="balcony_stairs_railing_mounts1" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_01obo")
+
+[node name="balcony_stairs_railing_mounts2" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_01obo")
+
+[node name="balcony_railing_handrail2" parent="." index="4"]
+surface_material_override/0 = ExtResource("4_wo126")
+
+[node name="balcony_railing_handrail" parent="." index="5"]
+surface_material_override/0 = ExtResource("4_wo126")
