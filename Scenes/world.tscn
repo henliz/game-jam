@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=175 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -38,21 +38,25 @@
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="Texture2D" uid="uid://jkferp5gpwix" path="res://resource/Puzzles/Level02/GlobeMiddleRing_GlobeNormal.png" id="30_wmw5w"]
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
-[ext_resource type="Script" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
 [ext_resource type="Texture2D" uid="uid://bjliijdj4y6ib" path="res://resource/Puzzles/Level02/GlobeBottomRing_GlobeSphereBaseColor.png" id="31_d43ui"]
 [ext_resource type="Texture2D" uid="uid://0j03xawo3tnw" path="res://resource/Puzzles/Level02/GlobeBottomRing_GlobeRough.png" id="32_73ltt"]
 [ext_resource type="Texture2D" uid="uid://dl0aq2lyc3w3q" path="res://resource/Puzzles/Level02/GlobeBottomRing_GlobeNormal.png" id="33_im3sq"]
 [ext_resource type="Texture2D" uid="uid://bhifnq0s8js2y" path="res://resource/Puzzles/Level02/GlobeBottom_GlobeSphereBaseColor.png" id="34_5ivla"]
 [ext_resource type="Texture2D" uid="uid://cktnxd8oe3nff" path="res://resource/Puzzles/Level02/GlobeBottom_GlobeRough.png" id="35_5yf44"]
 [ext_resource type="Texture2D" uid="uid://dt0lxueskwt1q" path="res://resource/Puzzles/Level02/GlobeBottom_GlobeNormal.png" id="36_u4nag"]
+[ext_resource type="AudioStream" uid="uid://bn7tkai4qk314" path="res://resource/Puzzles/Level04/sound/final_puzzle_rings_turning_short.wav" id="41_svj78"]
+[ext_resource type="AudioStream" uid="uid://dmbcy7aalx8cd" path="res://resource/Puzzles/Level04/sound/ring_success.wav" id="42_qrg23"]
 [ext_resource type="Script" uid="uid://caam7nhtc55vv" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
+[ext_resource type="AudioStream" uid="uid://ecsnyi6ydyk7" path="res://resource/Puzzles/Level04/sound/ring_piece_insert.wav" id="43_4ke1i"]
 [ext_resource type="Texture2D" uid="uid://cm566nxk3vcgl" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingBaseColor.png" id="43_mkebs"]
 [ext_resource type="Texture2D" uid="uid://cx5hgkng5lt3" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingRough.png" id="44_a4ai1"]
+[ext_resource type="AudioStream" uid="uid://csinn5hqrve7g" path="res://resource/Puzzles/Level04/sound/ring_piece_pick_up.wav" id="44_p22x6"]
+[ext_resource type="AudioStream" uid="uid://54y1x0aigpav" path="res://resource/Puzzles/Level04/sound/ring_piece_put_down.wav" id="45_3p0mr"]
 [ext_resource type="Texture2D" uid="uid://f1gj5as71rt6" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingNormal.png" id="45_h2ogk"]
 [ext_resource type="Texture2D" uid="uid://vydgqf8phqbe" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingBaseColor.png" id="46_al65q"]
+[ext_resource type="Environment" uid="uid://b84788h52gshd" path="res://resource/Common/world_environment_dev.tres" id="47_svj78"]
 [ext_resource type="Texture2D" uid="uid://4nptgllnkcra" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingRough.png" id="47_xfvhd"]
 [ext_resource type="Texture2D" uid="uid://brac7st8mvs8q" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingNormal.png" id="48_6c0jt"]
-[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="48_te07t"]
 [ext_resource type="Texture2D" uid="uid://dvbl8vog4v5bk" path="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingBaseColor.png" id="49_74toi"]
 [ext_resource type="PackedScene" uid="uid://qmrs6usmtoo7" path="res://resource/Common/ART_GLOBAL_Stairs_Model.glb" id="50_0sgyr"]
 [ext_resource type="Texture2D" uid="uid://duqtggbud3d4s" path="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingRough.png" id="50_eea73"]
@@ -110,30 +114,6 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_3ua1v")
 shader_parameter/texture_albedo = SubResource("ViewportTexture_3ua1v")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_o06y3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o06y3"]
-albedo_color = Color(0.7309034, 0, 0.089955576, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_k7acu"]
-material = SubResource("StandardMaterial3D_o06y3")
-text = "1"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7acu"]
-albedo_color = Color(0.7294118, 0, 0.09019608, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_5v1tr"]
-material = SubResource("StandardMaterial3D_k7acu")
-text = "2"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5v1tr"]
-albedo_color = Color(0.7294118, 0, 0.09019608, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_0fj1v"]
-material = SubResource("StandardMaterial3D_5v1tr")
-text = "3
-"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k7acu"]
 height = 0.15
@@ -1382,8 +1362,32 @@ draw_pass_1 = SubResource("QuadMesh_xbk3s")
 stream = ExtResource("21_yq1aw")
 autoplay = true
 
-[node name="bust_click" type="AudioStreamPlayer3D" parent="."]
+[node name="BustClick" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("23_no8kt")
+bus = &"SFX"
+
+[node name="RingTurning" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("41_svj78")
+bus = &"SFX"
+
+[node name="RingSuccess" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("42_qrg23")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingInsert" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("43_4ke1i")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingPickUp" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("44_p22x6")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingPutDown" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("45_3p0mr")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="WizardBust_Prototype" parent="." instance=ExtResource("28_1vso6")]
@@ -1404,7 +1408,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03
 transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, -0.10921097, 0.018953323, -0.07377536)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("48_te07t")
+environment = ExtResource("47_svj78")
 
 [node name="Floor1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("57_music")
@@ -1432,7 +1436,6 @@ item_name = "Item"
 
 [node name="FinalPuzzle" type="Node3D" parent="." node_paths=PackedStringArray("puzzle_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.095428, 0.62157786, -0.90680027)
-visible = false
 script = ExtResource("42_w5giw")
 puzzle_camera = NodePath("Camera3D")
 
@@ -1521,6 +1524,7 @@ mesh = SubResource("ArrayMesh_2wu0n")
 skeleton = NodePath("../../InscriptionSlot7")
 
 [node name="Mid" type="StaticBody3D" parent="FinalPuzzle" groups=["finalpuzzle"]]
+transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 0, 0, 0)
 
 [node name="MidRing" type="CSGMesh3D" parent="FinalPuzzle/Mid"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -1, 0)
@@ -1605,7 +1609,7 @@ mesh = SubResource("ArrayMesh_ndgbs")
 skeleton = NodePath("../../InscriptionSlot4")
 
 [node name="Outer" type="StaticBody3D" parent="FinalPuzzle" groups=["finalpuzzle"]]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 0, 0)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, 0, 0, 0)
 
 [node name="OuterRing" type="CSGMesh3D" parent="FinalPuzzle/Outer"]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0, -1, 0)

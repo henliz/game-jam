@@ -46,8 +46,15 @@ var hovered_ring : StaticBody3D = null
 
 var initial_inscription_position = {}
 
+@onready var ring_insert: AudioStreamPlayer3D = $"../RingInsert"
+@onready var ring_pick_up: AudioStreamPlayer3D = $"../RingPickUp"
+@onready var ring_put_down: AudioStreamPlayer3D = $"../RingPutDown"
+@onready var ring_success: AudioStreamPlayer3D = $"../RingSuccess"
+@onready var ring_turning: AudioStreamPlayer3D = $"../RingTurning"
+
+
 func _ready() -> void:
-	ring_rotation = {inner:0,mid:0,outer:0}
+	ring_rotation = {inner:0,mid:-150.0,outer:90.0}
 	completed_rings = {inner:false,mid:false,outer:false}
 	initial_inscription_position = {
 		outer_fall_piece:outer_fall_piece.global_position,
@@ -85,6 +92,7 @@ func _on_inscription_pressed(inscription_name: String,button : TextureButton) ->
 	dragged_inscription_name = inscription_name
 	if dragged_inscription: _reset_inscription(true)
 	dragged_inscription = button
+	ring_pick_up.play()
 
 func _process(_delta: float) -> void:
 	if !is_active: return
@@ -95,28 +103,35 @@ func _process(_delta: float) -> void:
 		hovered_ring = null
 	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_right"):
 		if completed_rings.get(hovered_ring):
-			var tween = get_tree().create_tween()
 			is_rotating=true
+			if ring_turning.playing: ring_turning.stop()
+			ring_turning.play()
+			var tween = get_tree().create_tween()
 			ring_rotation.set(hovered_ring,ring_rotation.get(hovered_ring)-30.0)
 			tween.tween_property(hovered_ring,"rotation_degrees:y",ring_rotation.get(hovered_ring),1)
 			await tween.finished
 			is_rotating=false
+			check_puzzle_complete()
 			print(hovered_ring.rotation_degrees.y)
 		else:
 			print("ring not complete")
 	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_left"):
 		if completed_rings.get(hovered_ring):	
-			var tween = get_tree().create_tween()
 			is_rotating=true
+			if ring_turning.playing: ring_turning.stop()
+			ring_turning.play()
+			var tween = get_tree().create_tween()
 			ring_rotation.set(hovered_ring,ring_rotation.get(hovered_ring)+30.0)
 			tween.tween_property(hovered_ring,"rotation_degrees:y",ring_rotation.get(hovered_ring),1)
 			await tween.finished
 			is_rotating=false
+			check_puzzle_complete()
 			print(hovered_ring.rotation_degrees.y)
 		else:
 			print("ring not complete")
 	if dragged_inscription and Input.is_action_just_pressed("release"):
 		_reset_inscription(true)
+		ring_put_down.play()
 
 func _input(event):
 	if !is_active: return
@@ -157,8 +172,10 @@ func _drop_piece(intersect):
 			ring_piece.visible=true
 			slotted_piece.set(intersect.collider,ring_piece)
 			_reset_inscription(false)
+			ring_insert.play()
 			dragged_inscription_name = ""
 			check_completed_rings()
+			check_puzzle_complete()
 			return
 		if !dragged_inscription and slotted_piece.get(intersect.collider):
 			var ring_piece = slotted_piece.get(intersect.collider)
@@ -171,6 +188,7 @@ func _drop_piece(intersect):
 			var finalTexturePos = currentMousePos + offsetVector
 			dragged_inscription.set_global_position(finalTexturePos)
 			dragged_inscription.visible = true
+			ring_pick_up.play()
 			return
 
 func get_mouse_intersect(mouseEventPosition):
@@ -195,7 +213,12 @@ func check_completed_rings():
 func check_puzzle_complete():
 	for ring in completed_rings.keys():
 		if !completed_rings.get(ring): return false
-
+	for r in ring_rotation.values():
+		if fmod(r,360.0) != 0.0: return false
+	ring_success.play()
+	print("final puzzle is complete")
+	return true
+			
 func _on_player_finalpuzzle_camera_trigger() -> void:
 	puzzle_camera.current=true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
