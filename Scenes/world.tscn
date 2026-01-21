@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=61 format=3 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="Script" uid="uid://dqxkf6aljsc4y" path="res://Scenes/sphere_puzzle.gd" id="8_k7acu"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
-[ext_resource type="PackedScene" uid="uid://rtjpbus10bx8" path="res://Scenes/floor_plan.tscn" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://m4285rkjvcer" path="res://resource/Floor1/ART_F1_Chair_Model.glb" id="10_ochwf"]
 [ext_resource type="PackedScene" uid="uid://w8i3mi1nhpqi" path="res://resource/Floor1/ART_F1_Walls.glb" id="11_atqvy"]
 [ext_resource type="PackedScene" uid="uid://c3dh8lcjmwkaq" path="res://resource/Floor1/ART_F1_FrontDoor_Final.glb" id="12_p5wkl"]
@@ -623,10 +622,6 @@ shape = SubResource("CylinderShape3D_c5t2i")
 transform = Transform3D(0.08888026, 0.75597906, 0.6485337, -0.10661016, 0.6545906, -0.7484287, -0.99032044, -0.0026197196, 0.13877521, 7.982897, 1.3483937, -10.79328)
 inspect_scale = 0.8
 
-[node name="FloorPlan" parent="." instance=ExtResource("9_5v1tr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6545596, 0.046768665, -25.792892)
-visible = false
-
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
 visible = false
@@ -683,7 +678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.456554, -0.00999999, -0.62
 
 [node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
 transform = Transform3D(-0.89365363, 0, 0.4487575, 0, 1, 0, -0.44875753, 0, -0.8936536, 37.607212, 1.7648034, 4.334488)
-inspect_scale = 1.0
+inspect_scale = 1.5
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
