@@ -23,8 +23,8 @@ uniform vec4 ao_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 uniform float ao_light_affect : hint_range(0.0, 1.0, 0.01);
 
 group_uniforms backlight;
-uniform vec4 backlight : source_color;
-uniform sampler2D texture_backlight : hint_default_black, filter_linear_mipmap, repeat_enable;
+uniform vec4 backlight_color : source_color;
+uniform sampler2D texture_backlight : hint_default_white, filter_linear_mipmap, repeat_enable;
 varying vec3 uv1_triplanar_pos;
 
 group_uniforms mapping;
@@ -82,7 +82,7 @@ void fragment() {
 	//vec4 texture_albedo_triplanar = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
 	vec4 texture_hue_triplanar = triplanar_texture(texture_hue_shift, uv1_power_normal, uv1_triplanar_pos);
 	vec4 albedo = basecolor * texture_albedo_uv;
-	
+
 	float gray = texture_hue_triplanar.r;
 	float adjusted = adjust_shift_contrast(gray, hue_shift_strength);
 	ALBEDO = shift_hue2(albedo.rgb, adjusted);
@@ -103,6 +103,8 @@ void fragment() {
 	AO_LIGHT_AFFECT = ao_light_affect;
 
 	// Backlight: Enabled
-	vec3 backlight_tex = triplanar_texture(texture_backlight, uv1_power_normal, uv1_triplanar_pos).rgb;
-	BACKLIGHT = (backlight.rgb + backlight_tex);
+	vec3 texture_backlight_triplanar = triplanar_texture(texture_backlight, uv1_power_normal, uv1_triplanar_pos).rgb;
+	vec4 texture_backlight_uv = texture(texture_backlight, UV);
+	//BACKLIGHT = (backlight.rgb + backlight_tex);
+	BACKLIGHT = texture_backlight_uv.rgb * backlight_color.rgb;
 }

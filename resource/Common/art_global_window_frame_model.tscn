@@ -1,20 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://pqlat0kyxu3g"]
+[gd_scene load_steps=8 format=3 uid="uid://pqlat0kyxu3g"]
 
 [ext_resource type="PackedScene" uid="uid://dic4e1mu6qvmk" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model.glb" id="1_37x0p"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_38xll"]
 [ext_resource type="Texture2D" uid="uid://cc2et06l67d1a" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_color_512.webp" id="2_amwrd"]
-[ext_resource type="Texture2D" uid="uid://egixe0owj8e6" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp" id="3_38xll"]
-[ext_resource type="Texture2D" uid="uid://bliqteyf5r8kq" path="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_rough_512.webp" id="4_y8ra8"]
-[ext_resource type="Material" uid="uid://cmn6marxg0m2n" path="res://resource/GraphicsCore/MAT_core_untextured_obj_assets.material" id="5_u3lu8"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_y8ra8"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="5_u3lu8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfyqb"]
-specular_mode = 1
-albedo_texture = ExtResource("2_amwrd")
-roughness_texture = ExtResource("4_y8ra8")
-emission_enabled = true
-emission_texture = ExtResource("3_38xll")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1612"]
+render_priority = 0
+shader = ExtResource("2_38xll")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_amwrd")
+shader_parameter/texture_hue_shift = ExtResource("4_y8ra8")
+shader_parameter/hue_shift_strength = 0.5
+shader_parameter/roughness = 0.2000000095
+shader_parameter/texture_roughness = ExtResource("5_u3lu8")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/texture_backlight = ExtResource("2_amwrd")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d7i3u"]
+render_priority = 0
+shader = ExtResource("2_38xll")
+shader_parameter/basecolor = Color(0.35024562, 0.41318902, 0.47239858, 1)
+shader_parameter/texture_hue_shift = ExtResource("4_y8ra8")
+shader_parameter/hue_shift_strength = 1.0000000149012
+shader_parameter/roughness = 0.30000001425
+shader_parameter/texture_roughness = ExtResource("5_u3lu8")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.34901962, 0.4117647, 0.47058824, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [node name="ART_GLOBAL_WindowFrame_Model" instance=ExtResource("1_37x0p")]
 
 [node name="ART_GLOBAL_Window_a" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_rfyqb")
-surface_material_override/1 = ExtResource("5_u3lu8")
+surface_material_override/0 = SubResource("ShaderMaterial_r1612")
+surface_material_override/1 = SubResource("ShaderMaterial_d7i3u")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.795, -7.8)
+light_color = Color(0.831126, 0.9416815, 0.99999994, 1)
+omni_range = 2.0
