@@ -1,0 +1,203 @@
+[gd_scene load_steps=20 format=3 uid="uid://dk3ac3f26vyt1"]
+
+[ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
+[ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
+[ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="3_y8vtf"]
+[ext_resource type="ArrayMesh" uid="uid://hbqx0kjrwor6" path="res://resource/Floor1/f1_wall_window_right.res" id="4_jaypt"]
+[ext_resource type="ArrayMesh" uid="uid://b3a36yw77dkv5" path="res://resource/Floor1/f1_wall_window_center.res" id="5_h01gg"]
+[ext_resource type="PackedScene" uid="uid://p3y4bpxoadox" path="res://resource/Floor1/Final/art_f_1_stone_brick_floor_final.tscn" id="6_4f5xm"]
+[ext_resource type="PackedScene" uid="uid://pqlat0kyxu3g" path="res://resource/Common/art_global_window_frame_model.tscn" id="7_po5pa"]
+[ext_resource type="PackedScene" uid="uid://d0q5gpv7gisxt" path="res://resource/Floor1/Final/art_f_1_stone_brick_floor_final_tile.tscn" id="8_70lor"]
+[ext_resource type="PackedScene" uid="uid://u0dphv7sgbih" path="res://resource/Floor1/Final/art_f_1_grandfather_clock_final.tscn" id="9_edy72"]
+[ext_resource type="PackedScene" uid="uid://bjurv7h181la5" path="res://resource/Floor1/Final/art_f_1_stair_support_final.tscn" id="10_kso46"]
+[ext_resource type="PackedScene" path="res://resource/Floor1/art_f_1_stove_model.tscn" id="11_tx62q"]
+[ext_resource type="PackedScene" uid="uid://ccyhul1vlph7i" path="res://resource/Common/Final/art_global_ceiling_beams_model_vertical.tscn" id="12_ua5wc"]
+[ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="13_oo3qt"]
+[ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="14_mktx4"]
+[ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="15_bgo40"]
+[ext_resource type="PackedScene" uid="uid://kw88x03td8vn" path="res://resource/Chandelier.glb" id="16_23slo"]
+[ext_resource type="PackedScene" uid="uid://vmisecexhjaj" path="res://resource/Floor1/ART_F1_MagicBillyBass_PLAQUE_MODEL.glb" id="17_v2nrj"]
+[ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="18_3u1qr"]
+[ext_resource type="PackedScene" uid="uid://52kdta4h0cy5" path="res://resource/Floor1/Final/art_f_1_sofa_final.tscn" id="19_oucq8"]
+
+[node name="Floor1" type="Node3D"]
+
+[node name="Props_Environment" type="Node3D" parent="."]
+
+[node name="F1WallDoor" type="MeshInstance3D" parent="Props_Environment"]
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("2_hui2q")
+skeleton = NodePath("../../..")
+
+[node name="F1WallClear" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear2" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear3" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-0.5, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.5, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear4" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, -0.8660254, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear5" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear6" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, -0.8660254, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear7" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-0.5, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear8" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear9" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(0.86602545, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, 0.86602545, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("3_y8vtf")
+skeleton = NodePath("../..")
+
+[node name="F1WallWindowRight" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("4_jaypt")
+
+[node name="F1WallWindowCenter" type="MeshInstance3D" parent="Props_Environment"]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
+material_override = ExtResource("1_6hkfx")
+mesh = ExtResource("5_h01gg")
+
+[node name="ART_F1_StoneBrickFloor_Final" parent="Props_Environment" instance=ExtResource("6_4f5xm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.33670378)
+
+[node name="ART_GLOBAL_WindowFrame_Model" parent="Props_Environment" instance=ExtResource("7_po5pa")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.5)
+
+[node name="ART_GLOBAL_WindowFrame_Model2" parent="Props_Environment" instance=ExtResource("7_po5pa")]
+transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.50000006, 0, 0, 0)
+
+[node name="ART_F1_StoneBrickFloor_Final_Tile" parent="Props_Environment" instance=ExtResource("8_70lor")]
+
+[node name="ART_F1_GrandfatherClock_Final" parent="Props_Environment" instance=ExtResource("9_edy72")]
+transform = Transform3D(0.59999996, 0, -1.0392306, 0, 1.2, 0, 1.0392306, 0, 0.59999996, -3.302147, 4.7683716e-07, -4.5361195)
+
+[node name="ART_F1_StairSupport_Final" parent="Props_Environment" instance=ExtResource("10_kso46")]
+
+[node name="ART_F1_Stove_Model" parent="Props_Environment" instance=ExtResource("11_tx62q")]
+
+[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" parent="Props_Environment" instance=ExtResource("12_ua5wc")]
+
+[node name="ART_F1_Ceiling_Model" parent="Props_Environment" instance=ExtResource("13_oo3qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="ART_F1_FrontDoor_Final" parent="Props_Environment" instance=ExtResource("14_mktx4")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
+
+[node name="Furniture_TableCShort" parent="Props_Environment" instance=ExtResource("15_bgo40")]
+transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.226333, 0.036036134, -0.53254)
+
+[node name="Chandelier" parent="Props_Environment" instance=ExtResource("16_23slo")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0029449463, 4.0944953, -0.0072333813)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5017395, 1.2272917, 1.0496444)
+light_color = Color(1, 0.72249997, 0.55, 1)
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.03
+shadow_normal_bias = 1.5
+shadow_opacity = 0.9
+shadow_blur = 2.0
+omni_range = 7.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5967636, 3.3943653, 1.0496444)
+light_color = Color(1, 0.72249997, 0.55, 1)
+light_energy = 0.2
+light_indirect_energy = 2.0
+shadow_bias = 0.03
+shadow_normal_bias = 1.5
+shadow_opacity = 0.9
+shadow_blur = 2.0
+omni_range = 3.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.147564, 2.616885, -0.61735356)
+visible = false
+light_color = Color(1, 0.72249997, 0.55, 1)
+light_energy = 0.1
+light_indirect_energy = 2.0
+shadow_bias = 0.03
+shadow_normal_bias = 1.5
+shadow_opacity = 0.9
+shadow_blur = 2.0
+omni_range = 3.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6.2680244, 1.7430544, -0.4836231)
+light_color = Color(0.55, 0.8499999, 1, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 8.0
+spot_attenuation = 0.5
+spot_angle = 80.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-0.5000001, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.5000001, 5.434574, 1.7430544, -3.139147)
+light_color = Color(0.55, 0.8499999, 1, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_blur = 10.0
+spot_range = 8.0
+spot_attenuation = 0.5
+spot_angle = 80.0
+
+[node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
+light_energy = 1.5
+omni_range = 48.102
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Props" instance=ExtResource("17_v2nrj")]
+transform = Transform3D(-0.86432743, 0, 0.50292933, 0, 1, 0, -0.50292933, 0, -0.86432743, -3.067566, 2.2670736, 4.8327303)
+
+[node name="ART_F1_Chair_Model" parent="Props" instance=ExtResource("18_3u1qr")]
+transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
+
+[node name="ART_F1_Sofa_Final" parent="Props" instance=ExtResource("19_oucq8")]
+transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, -4.9237514, 0, 2.7116613)
+
+[node name="Collision" type="Node3D" parent="."]
