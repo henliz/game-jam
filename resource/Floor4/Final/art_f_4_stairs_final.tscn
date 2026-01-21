@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1qbacoyp5jn8"]
+
+[ext_resource type="PackedScene" uid="uid://dxatg1qnk30j5" path="res://resource/Floor4/ART_F4_Stairs_Final.glb" id="1_q25bq"]
+[ext_resource type="Material" uid="uid://c8fr8hutm887g" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_rose.material" id="2_6jvmv"]
+[ext_resource type="Material" uid="uid://b4ams6pafja31" path="res://resource/Floor4/Final/SharedMaterials/MAT_metal_floor.material" id="3_wquwh"]
+[ext_resource type="Material" uid="uid://c1u8illu4ji7t" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_yellow.material" id="4_4pgrm"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="5_dmvin"]
+[ext_resource type="Texture2D" uid="uid://bsbrn5bjpyev1" path="res://resource/Floor4/ART_F4_Stairs_Final_ART_F4_Stairs_cover_color_512.webp" id="6_4vevs"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="7_rww2s"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="8_k6yy1"]
+[ext_resource type="Material" uid="uid://ndocqsfprq5y" path="res://resource/Floor4/Final/SharedMaterials/MAT_handrail.material" id="9_w02tq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b61pr"]
+render_priority = 0
+shader = ExtResource("5_dmvin")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("6_4vevs")
+shader_parameter/texture_hue_shift = ExtResource("7_rww2s")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("8_k6yy1")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F4_Stairs_Final" instance=ExtResource("1_q25bq")]
+
+[node name="stairs_steps_mounts" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6jvmv")
+
+[node name="stairs_steps" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_wquwh")
+
+[node name="stairs_cover_inner" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_6jvmv")
+
+[node name="stairs_mount_steps" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_4pgrm")
+
+[node name="stairs_cover_outer" parent="." index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_b61pr")
+
+[node name="stairs_handrail" parent="." index="5"]
+surface_material_override/0 = ExtResource("9_w02tq")

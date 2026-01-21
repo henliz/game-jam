@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://caw00o3bfpcpl"]
+
+[ext_resource type="PackedScene" uid="uid://bnt7l8iw7ud7u" path="res://resource/Floor4/ART_F4_Glass_Walls_Final.glb" id="1_quqtm"]
+[ext_resource type="Material" uid="uid://c1u8illu4ji7t" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_yellow.material" id="2_p5bb7"]
+[ext_resource type="Material" uid="uid://pit3npy36cfu" path="res://resource/Floor4/Final/SharedMaterials/MAT_riveted_metal.material" id="3_xxhbc"]
+[ext_resource type="Material" uid="uid://dofx4bbdqoy6o" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_gray.material" id="4_rflnj"]
+
+[node name="ART_F4_Glass_Walls_Final" instance=ExtResource("1_quqtm")]
+
+[node name="glass_walls_base" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_p5bb7")
+
+[node name="glass_walls_braces_h1" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_xxhbc")
+
+[node name="glass_walls_braces_vertical" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_xxhbc")
+
+[node name="glass_walls_handle_details" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_rflnj")
+
+[node name="glass_walls_braces_h3" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_xxhbc")
+
+[node name="glass_walls_door_base" parent="." index="5"]
+surface_material_override/0 = ExtResource("4_rflnj")
+
+[node name="glass_walls_door_hinges" parent="." index="6"]
+surface_material_override/0 = ExtResource("4_rflnj")

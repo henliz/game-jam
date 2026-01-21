@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxtus36upos50"]
+
+[ext_resource type="Environment" uid="uid://l0t2otqt70qv" path="res://resource/Common/world_environment_floor4.tres" id="1_1lsd4"]
+[ext_resource type="PackedScene" uid="uid://diii2g3pq2fb0" path="res://resource/Floor4/Final/art_f_4_ceiling_final.tscn" id="1_pnfsh"]
+[ext_resource type="PackedScene" uid="uid://djme5pt2g8axp" path="res://resource/Floor4/Final/art_f_4_external_balcony_with_rail_final.tscn" id="2_y0qmr"]
+[ext_resource type="PackedScene" uid="uid://1y34pveo8jw5" path="res://resource/Floor4/Final/art_f_4_glass_door_final.tscn" id="3_7738j"]
+[ext_resource type="PackedScene" uid="uid://dss58plixgefb" path="res://resource/Floor4/Final/art_f_4_glass_model.tscn" id="4_5y2a3"]
+[ext_resource type="PackedScene" uid="uid://caw00o3bfpcpl" path="res://resource/Floor4/Final/art_f_4_glass_walls_final.tscn" id="5_3riwv"]
+[ext_resource type="PackedScene" uid="uid://d1qbacoyp5jn8" path="res://resource/Floor4/Final/art_f_4_stairs_final.tscn" id="6_smtlh"]
+[ext_resource type="PackedScene" uid="uid://cwfqnxqf48a6p" path="res://resource/Floor4/Final/art_f_4_astrolabe_base_final.tscn" id="7_y0qmr"]
+[ext_resource type="Material" uid="uid://c8fr8hutm887g" path="res://resource/Floor4/Final/SharedMaterials/MAT_painted_metal_rose.material" id="8_7738j"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5y2a3"]
+top_radius = 3.5
+bottom_radius = 3.5
+height = 1.0
+
+[node name="Floor4" type="Node3D"]
+
+[node name="PropsEnvironment" type="Node3D" parent="."]
+
+[node name="ART_F4_Ceiling_Final" parent="PropsEnvironment" instance=ExtResource("1_pnfsh")]
+
+[node name="ART_F4_External_Balcony_with_Rail_Final" parent="PropsEnvironment" instance=ExtResource("2_y0qmr")]
+
+[node name="ART_F4_Glass_Door_Final" parent="PropsEnvironment" instance=ExtResource("3_7738j")]
+transform = Transform3D(-0.15870951, 0, -0.9873253, 0, 1, 0, 0.9873253, 0, -0.15870951, -0.659, 0, -3.486)
+
+[node name="ART_F4_Glass_Model2" parent="PropsEnvironment" instance=ExtResource("4_5y2a3")]
+
+[node name="ART_F4_Glass_Walls_Final" parent="PropsEnvironment" instance=ExtResource("5_3riwv")]
+
+[node name="ART_F4_Stairs_Final" parent="PropsEnvironment" instance=ExtResource("6_smtlh")]
+
+[node name="ART_F4_Astrolabe_Base_Final" parent="PropsEnvironment" instance=ExtResource("7_y0qmr")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PropsEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CylinderMesh_5y2a3")
+surface_material_override/0 = ExtResource("8_7738j")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DEV_DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+visible = false
+
+[node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
+light_energy = 1.5
+omni_range = 48.102
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shadow_enabled = true
+shadow_bias = 0.05
+omni_range = 8.0
+
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_1lsd4")
