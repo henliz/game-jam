@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnrglyg68vnt1"]
+
+[ext_resource type="PackedScene" uid="uid://6s50ojt1iwyi" path="res://resource/Common/ART_GLOBAL_Coffee_Table.glb" id="1_s5rud"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_j5nvp"]
+[ext_resource type="Texture2D" uid="uid://c2mqsoppujd7c" path="res://resource/Common/ART_GLOBAL_Coffee_Table_CoffeeTable_01_diff_1k_edit.webp" id="3_p1nrm"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_7iujp"]
+[ext_resource type="Texture2D" uid="uid://deybctxbayjcy" path="res://resource/Common/ART_GLOBAL_Coffee_Table_CoffeeTable_01_nor_gl.webp" id="5_6a40y"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_c1xyt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o75g6"]
+render_priority = 0
+shader = ExtResource("2_j5nvp")
+shader_parameter/basecolor = Color(0.839214, 0.8558108, 0.901575, 1)
+shader_parameter/texture_albedo = ExtResource("3_p1nrm")
+shader_parameter/texture_hue_shift = ExtResource("4_7iujp")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_c1xyt")
+shader_parameter/texture_normal = ExtResource("5_6a40y")
+shader_parameter/normal_scale = 0.8000001330000002
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Coffee_Table" instance=ExtResource("1_s5rud")]
+
+[node name="CoffeeTable_01" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_o75g6")

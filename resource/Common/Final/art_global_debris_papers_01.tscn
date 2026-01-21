@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dom4x32yxw2hq"]
+
+[ext_resource type="PackedScene" uid="uid://d0d1micx20yp0" path="res://resource/Common/ART_GLOBAL_Debris_Papers_01.glb" id="1_a1sjx"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_un25m"]
+[ext_resource type="Texture2D" uid="uid://b2rhgh153b667" path="res://resource/Common/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp" id="3_krbk2"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_8y10y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xh7ir"]
+render_priority = 0
+shader = ExtResource("2_un25m")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_krbk2")
+shader_parameter/texture_hue_shift = ExtResource("4_8y10y")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.850000040375
+shader_parameter/texture_roughness = ExtResource("4_8y10y")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/texture_backlight = ExtResource("3_krbk2")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(4, 4, 4)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Debris_Papers_012" instance=ExtResource("1_a1sjx")]
+
+[node name="ART_GLOBAL_Debris_Papers_01" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_xh7ir")

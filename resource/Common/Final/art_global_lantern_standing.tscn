@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bomg5qgdsr0hd"]
+
+[ext_resource type="PackedScene" uid="uid://ddc1a5lvpw6ji" path="res://resource/Common/ART_GLOBAL_Lantern_Standing.glb" id="1_4hxtk"]
+[ext_resource type="Material" uid="uid://b5u0ps6y8puqj" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_halloweenbits.material" id="2_yanbo"]
+
+[node name="ART_GLOBAL_Lantern_Standing2" instance=ExtResource("1_4hxtk")]
+
+[node name="ART_GLOBAL_Lantern_Standing" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_yanbo")
