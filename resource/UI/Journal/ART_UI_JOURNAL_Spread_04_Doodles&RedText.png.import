@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0itfmafdjoyv"
-path="res://.godot/imported/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png-e8f411df9f1b6ed3e49d982063648e0f.ctex"
+uid="uid://bx3slg54yp0g7"
+path="res://.godot/imported/ART_UI_JOURNAL_Spread_04_Doodles&RedText.png-cb381e0da82b3b42f42e21780f525ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png"
-dest_files=["res://.godot/imported/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png-e8f411df9f1b6ed3e49d982063648e0f.ctex"]
+source_file="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_Doodles&RedText.png"
+dest_files=["res://.godot/imported/ART_UI_JOURNAL_Spread_04_Doodles&RedText.png-cb381e0da82b3b42f42e21780f525ab1.ctex"]
 
 [params]
 

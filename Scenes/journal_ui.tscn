@@ -1,10 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4j8kqm2xnl6y"]
+[gd_scene load_steps=24 format=3 uid="uid://c4j8kqm2xnl6y"]
 
 [ext_resource type="Script" uid="uid://ofvrq76xctpi" path="res://Scenes/journal_ui.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://d0itfmafdjoyv" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png" id="2_spread1"]
-[ext_resource type="Texture2D" uid="uid://cwcmj4uph7dws" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_WIP_TEST.png" id="3_spread2"]
-[ext_resource type="Texture2D" uid="uid://16ydohbj0124" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_WIP_TEST.png" id="4_spread3"]
+[ext_resource type="Texture2D" uid="uid://ufr3pmkvu3wm" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_B_Blueprint.png" id="2_j134b"]
+[ext_resource type="Texture2D" uid="uid://ba5wmplju6r2f" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_F1_Day1-2.png" id="4_e5wfp"]
+[ext_resource type="Texture2D" uid="uid://bptsku1av3nmd" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day01Entry_LOCKED.png" id="5_e5wfp"]
+[ext_resource type="Texture2D" uid="uid://242egcq44qil" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day02Entry_LOCKED.png" id="5_fcyhq"]
 [ext_resource type="FontFile" uid="uid://cd7svr48oipc8" path="res://resource/Fonts/Angelic.ttf" id="6_angelic"]
+[ext_resource type="Texture2D" uid="uid://5kl0riwgatu2" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Doodles&RedText.png" id="7_qrgs8"]
+[ext_resource type="Texture2D" uid="uid://cc6vxjrgrjuig" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_F2_Day3-4.png" id="8_b22iw"]
+[ext_resource type="Texture2D" uid="uid://cj1njw7twbyn8" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Doodles&RedText.png" id="9_3ml8e"]
+[ext_resource type="Texture2D" uid="uid://bdhwtpt1lcuw" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Day03Entry_LOCKED.png" id="10_841k7"]
+[ext_resource type="Texture2D" uid="uid://ceinylcm37nfg" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Day04Entry_LOCKED.png" id="11_hox76"]
+[ext_resource type="Texture2D" uid="uid://c4xi7b8lcb41w" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_BlankPages_F3_Day5-6.png" id="12_al6xp"]
+[ext_resource type="Texture2D" uid="uid://bx3slg54yp0g7" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_Doodles&RedText.png" id="13_0axce"]
+[ext_resource type="Texture2D" uid="uid://c3mgg1jfmmnmj" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_Day05Entry_LOCKED.png" id="14_6fadg"]
+[ext_resource type="Texture2D" uid="uid://dtdfyctpl32y4" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_Day06Entry_LOCKED.png" id="15_xwc38"]
+[ext_resource type="Texture2D" uid="uid://cb0acweljia4n" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_05_BlankPages_F4_Day7-8.png" id="16_0l47f"]
+[ext_resource type="Texture2D" uid="uid://cgv43qvs24xwj" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_05_Doodles&RedText.png" id="17_mn5d1"]
+[ext_resource type="Texture2D" uid="uid://dhuorpraq4rlv" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_05_Day7Entry_LOCKED.png" id="18_lvuvc"]
+[ext_resource type="Texture2D" uid="uid://praf7ucmobuu" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_05_Day8Entry_LOCKED.png" id="19_h6v7y"]
+[ext_resource type="Texture2D" uid="uid://di854wuel2qdf" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_06_BlankPages_F5_Day9-Credits.png" id="20_lvuvc"]
+[ext_resource type="Texture2D" uid="uid://i8rdjg5ksyfs" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_06_Doodles&RedText.png" id="21_lvuvc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_locked_title"]
 font = ExtResource("6_angelic")
@@ -51,7 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_spread1")
+texture = ExtResource("2_j134b")
 expand_mode = 1
 stretch_mode = 5
 
@@ -129,27 +145,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_spread2")
+texture = ExtResource("4_e5wfp")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftPage" type="Control" parent="JournalContainer/Spread2_Diary1"]
+[node name="Day1-2_Overlay" type="TextureRect" parent="JournalContainer/Spread2_Diary1"]
 layout_mode = 1
-anchor_left = 0.08
-anchor_top = 0.1
-anchor_right = 0.47
-anchor_bottom = 0.9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("7_qrgs8")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="RightPage" type="Control" parent="JournalContainer/Spread2_Diary1"]
+[node name="Day02_Locked" type="TextureRect" parent="JournalContainer/Spread2_Diary1"]
 layout_mode = 1
-anchor_left = 0.53
-anchor_top = 0.1
-anchor_right = 0.92
-anchor_bottom = 0.9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_fcyhq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day01_Locked" type="TextureRect" parent="JournalContainer/Spread2_Diary1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_e5wfp")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Spread3_Diary2" type="Control" parent="JournalContainer"]
 visible = false
@@ -167,27 +198,190 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_spread3")
+texture = ExtResource("8_b22iw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftPage" type="Control" parent="JournalContainer/Spread3_Diary2"]
+[node name="Day3-4_Overlay" type="TextureRect" parent="JournalContainer/Spread3_Diary2"]
 layout_mode = 1
-anchor_left = 0.08
-anchor_top = 0.1
-anchor_right = 0.47
-anchor_bottom = 0.9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_3ml8e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day03_Locked" type="TextureRect" parent="JournalContainer/Spread3_Diary2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_841k7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day04_Locked" type="TextureRect" parent="JournalContainer/Spread3_Diary2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_hox76")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spread4_Diary3" type="Control" parent="JournalContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RightPage" type="Control" parent="JournalContainer/Spread3_Diary2"]
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread4_Diary3"]
 layout_mode = 1
-anchor_left = 0.53
-anchor_top = 0.1
-anchor_right = 0.92
-anchor_bottom = 0.9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("12_al6xp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day5-6_Overlay" type="TextureRect" parent="JournalContainer/Spread4_Diary3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_0axce")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day05_Locked" type="TextureRect" parent="JournalContainer/Spread4_Diary3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_6fadg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day06_Locked" type="TextureRect" parent="JournalContainer/Spread4_Diary3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_xwc38")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spread5_Diary4" type="Control" parent="JournalContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread5_Diary4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_0l47f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day7-8_Overlay" type="TextureRect" parent="JournalContainer/Spread5_Diary4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_mn5d1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day07_Locked" type="TextureRect" parent="JournalContainer/Spread5_Diary4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_lvuvc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day08_Locked" type="TextureRect" parent="JournalContainer/Spread5_Diary4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_h6v7y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spread6_Diary5" type="Control" parent="JournalContainer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpreadTexture" type="TextureRect" parent="JournalContainer/Spread6_Diary5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_lvuvc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day9_Overlay" type="TextureRect" parent="JournalContainer/Spread6_Diary5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_lvuvc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Day09_Locked" type="TextureRect" parent="JournalContainer/Spread6_Diary5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_841k7")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
