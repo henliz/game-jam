@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=24 format=3 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -16,11 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="14_mktx4"]
 [ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="15_bgo40"]
 [ext_resource type="PackedScene" uid="uid://kw88x03td8vn" path="res://resource/Chandelier.glb" id="16_23slo"]
+[ext_resource type="PackedScene" uid="uid://brnr264mnqmpn" path="res://resource/Floor1/Final/art_f_1_countertop_final.tscn" id="17_jaypt"]
 [ext_resource type="PackedScene" uid="uid://vmisecexhjaj" path="res://resource/Floor1/ART_F1_MagicBillyBass_PLAQUE_MODEL.glb" id="17_v2nrj"]
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="18_3u1qr"]
 [ext_resource type="PackedScene" uid="uid://52kdta4h0cy5" path="res://resource/Floor1/Final/art_f_1_sofa_final.tscn" id="19_oucq8"]
-[ext_resource type="PackedScene" uid="uid://c14e1k2eumnye" path="res://resource/Floor1/ART_F1_Countertop_Final.glb" id="20_hui2q"]
+[ext_resource type="PackedScene" uid="uid://iw6xo6vwf2gy" path="res://resource/Floor1/Final/art_f_1_stool_model.tscn" id="21_jaypt"]
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="21_y8vtf"]
+[ext_resource type="PackedScene" uid="uid://ddua4rxfg8s5j" path="res://resource/Floor1/Final/art_f_1_wizard_journal_model.tscn" id="22_h01gg"]
 
 [node name="Floor1" type="Node3D"]
 
@@ -107,10 +109,9 @@ transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.5000
 [node name="ART_F1_StoneBrickFloor_Final_Tile" parent="Props_Environment" instance=ExtResource("8_70lor")]
 
 [node name="ART_F1_GrandfatherClock_Final" parent="Props_Environment" instance=ExtResource("9_edy72")]
-transform = Transform3D(-0.6278554, 0, -1.0226425, 0, 1.2, 0, 1.0226425, 0, -0.6278554, 2.6412632, 4.7683716e-07, -4.9400935)
+transform = Transform3D(1.0392305, 0, -0.6, 0, 1.2, 0, 0.6, 0, 1.0392305, 2.6412632, 4.7683716e-07, -4.9400935)
 
 [node name="ART_F1_StairSupport_Final" parent="Props_Environment" instance=ExtResource("10_kso46")]
-transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
 
 [node name="ART_F1_Stove_Model" parent="Props_Environment" instance=ExtResource("11_tx62q")]
 
@@ -128,6 +129,8 @@ transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0
 [node name="Chandelier" parent="Props_Environment" instance=ExtResource("16_23slo")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0029449463, 4.0944953, -0.0072333813)
 
+[node name="ART_F1_Countertop_Final" parent="Props_Environment" instance=ExtResource("17_jaypt")]
+
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
@@ -138,7 +141,7 @@ shadow_enabled = true
 shadow_bias = 0.03
 shadow_normal_bias = 1.5
 shadow_opacity = 0.9
-shadow_blur = 2.0
+shadow_blur = 1.5
 omni_range = 7.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
@@ -194,6 +197,7 @@ spot_angle = 80.0
 
 [node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
 light_energy = 1.5
 omni_range = 48.102
 
@@ -211,8 +215,11 @@ transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.57750
 [node name="ART_F1_Sofa_Final" parent="Props" instance=ExtResource("19_oucq8")]
 transform = Transform3D(0.7028363, 0, 0.7113517, 0, 1, 0, -0.7113517, 0, 0.7028363, -4.057038, 0.008825302, -3.973408)
 
-[node name="ART_F1_Countertop_Final" parent="Props" instance=ExtResource("20_hui2q")]
-transform = Transform3D(0.9961945, 0, 0.087155715, 0, 1, 0, -0.087155715, 0, 0.9961945, 0.021526728, -0.17568445, -0.32000473)
+[node name="ART_F1_Stool_Model" parent="Props" instance=ExtResource("21_jaypt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.021532, 0.07072237, -1.4916215)
+
+[node name="ART_F1_WizardJournal_Model2" parent="Props" instance=ExtResource("22_h01gg")]
+transform = Transform3D(-0.43731973, 0, 0.8993061, 0, 1, 0, -0.8993061, 0, -0.43731973, -0.8185373, 0.6228004, -0.025829256)
 
 [node name="Collision" type="Node3D" parent="."]
 

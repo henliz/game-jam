@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://iw6xo6vwf2gy"]
+
+[ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="1_wo8a7"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_pbjgr"]
+[ext_resource type="Texture2D" uid="uid://dnxbkmbp0u4pa" path="res://resource/Floor1/ART_F1_Stool_Model_StoolBaseColor.png" id="3_abyd6"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_tvk4t"]
+[ext_resource type="Texture2D" uid="uid://ceq1d105q7b42" path="res://resource/Floor1/ART_F1_Stool_Model_StoolNormal.png" id="5_sgf0v"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_xh1vh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlbx7"]
+render_priority = 0
+shader = ExtResource("2_pbjgr")
+shader_parameter/basecolor = Color(0.8573981, 0.6332764, 0.81161374, 1)
+shader_parameter/texture_albedo = ExtResource("3_abyd6")
+shader_parameter/texture_hue_shift = ExtResource("4_tvk4t")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_xh1vh")
+shader_parameter/texture_normal = ExtResource("5_sgf0v")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Stool_Model" instance=ExtResource("1_wo8a7")]
+
+[node name="BézierCurve_004" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67197424, 0, 0.8791706)
+surface_material_override/0 = SubResource("ShaderMaterial_nlbx7")
