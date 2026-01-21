@@ -241,6 +241,7 @@ func clean_at_uv(uv: Vector2) -> void:
 		cleaning_complete.emit()
 		dirt_mesh.queue_free()
 		DialogueManager.try_trigger_dialogue("item_first_clean", FIRST_CLEAN_DIALOGUE_ID)
+		GameState.set_item_cleaned(item_id)
 
 func _point_in_triangle(p: Vector2, a: Vector2, b: Vector2, c: Vector2) -> bool:
 	var d1 = _sign(p, a, b)

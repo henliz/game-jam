@@ -1,6 +1,7 @@
 class_name JournalUI
 extends CanvasLayer
 
+@onready var game_state = get_node("/root/GameState")
 signal journal_opened
 signal journal_closed	
 signal page_changed(spread_index: int)
@@ -27,7 +28,7 @@ var spreads: Array[Control] = []
 
 func _ready() -> void:
 	layer = 100
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	process_mode = Node.PROCESS_MODE_ALWAYS 
 	visible = false
 	background.modulate.a = 0.0
 	journal_container.modulate.a = 0.0
@@ -35,6 +36,7 @@ func _ready() -> void:
 	_collect_spreads()
 	_setup_audio()
 	_show_spread(current_spread)
+	game_state.state_changed.connect(_on_game_state_changed)
 
 
 func _collect_spreads() -> void:
@@ -199,3 +201,41 @@ func is_journal_open() -> bool:
 
 func get_current_spread() -> int:
 	return current_spread
+
+func _on_game_state_changed(key: String, _value: Variant) -> void:
+	if key == "triggered_dialogues":
+		_update_page_visibility()
+
+func _update_page_visibility() -> void:
+	print("UPDATE PAGE VISIBILITY")
+	var diary_to_page = {
+		"F1Diary01": {"spread": 1, "side": "left"},
+		"F1Diary02": {"spread": 1, "side": "right"},
+		"F1Diary03": {"spread": 2, "side": "left"},
+	}
+	
+	# Check which diary entries are unlocked and update ONLY those pages
+	for diary_id in diary_to_page:
+		var page_info = diary_to_page[diary_id]
+		var spread_index = page_info.spread
+		
+		# Make sure the spread exists
+		if spread_index >= spreads.size():
+			continue
+			
+		var spread = spreads[spread_index]
+		var is_unlocked = game_state.has_dialogue_triggered(diary_id)
+		
+		if page_info.side == "left":
+			var left_locked = spread.get_node_or_null("LeftPage_Locked")
+			var left_unlocked = spread.get_node_or_null("LeftPage_Unlocked")
+			if left_locked and left_unlocked:
+				left_locked.visible = not is_unlocked
+				left_unlocked.visible = is_unlocked
+				
+		elif page_info.side == "right":
+			var right_locked = spread.get_node_or_null("RightPage_Locked")
+			var right_unlocked = spread.get_node_or_null("RightPage_Unlocked")
+			if right_locked and right_unlocked:
+				right_locked.visible = not is_unlocked
+				right_unlocked.visible = is_unlocked

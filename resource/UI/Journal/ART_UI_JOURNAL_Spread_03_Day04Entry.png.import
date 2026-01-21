@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0itfmafdjoyv"
-path="res://.godot/imported/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png-e8f411df9f1b6ed3e49d982063648e0f.ctex"
+uid="uid://dg8rv8f4mdrvg"
+path="res://.godot/imported/ART_UI_JOURNAL_Spread_03_Day04Entry.png-c9437e42d13e81d424af414e54436bc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png"
-dest_files=["res://.godot/imported/ART_UI_JOURNAL_Spread_01_BlankPages_WIP_TEST.png-e8f411df9f1b6ed3e49d982063648e0f.ctex"]
+source_file="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Day04Entry.png"
+dest_files=["res://.godot/imported/ART_UI_JOURNAL_Spread_03_Day04Entry.png-c9437e42d13e81d424af414e54436bc4.ctex"]
 
 [params]
 
