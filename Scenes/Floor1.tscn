@@ -106,7 +106,7 @@ transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.5000
 [node name="ART_F1_StoneBrickFloor_Final_Tile" parent="Props_Environment" instance=ExtResource("8_70lor")]
 
 [node name="ART_F1_GrandfatherClock_Final" parent="Props_Environment" instance=ExtResource("9_edy72")]
-transform = Transform3D(0.59999996, 0, -1.0392306, 0, 1.2, 0, 1.0392306, 0, 0.59999996, -3.302147, 4.7683716e-07, -4.5361195)
+transform = Transform3D(-0.6278554, 0, -1.0226425, 0, 1.2, 0, 1.0226425, 0, -0.6278554, 2.6412632, 4.7683716e-07, -4.9400935)
 
 [node name="ART_F1_StairSupport_Final" parent="Props_Environment" instance=ExtResource("10_kso46")]
 transform = Transform3D(0.83632445, 0, 0.5482349, 0, 1, 0, -0.5482349, 0, 0.83632445, 0, 0, 0)
@@ -200,7 +200,7 @@ transform = Transform3D(-0.72923136, 0, -0.6842671, 0, 1, 0, 0.6842671, 0, -0.72
 transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
 
 [node name="ART_F1_Sofa_Final" parent="Props" instance=ExtResource("19_oucq8")]
-transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, 1.2510877, 0, -1.0450618)
+transform = Transform3D(0.7028363, 0, 0.7113517, 0, 1, 0, -0.7113517, 0, 0.7028363, -4.057038, 0.008825302, -3.973408)
 
 [node name="ART_F1_Countertop_Final" parent="Props" instance=ExtResource("20_hui2q")]
 transform = Transform3D(0.86397606, 0, 0.50353265, 0, 1, 0, -0.50353265, 0, 0.86397606, 0.021526728, -0.17568445, -0.32000473)

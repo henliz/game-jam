@@ -549,12 +549,38 @@ func _get_barycentric(p: Vector3, a: Vector3, b: Vector3, c: Vector3) -> Vector3
 
 func _find_cleanable(node: Node) -> Cleanable:
 	if node is Cleanable:
+		# Skip Cleanables on hidden meshes (e.g., complete_bust before repair)
+		var parent = node.get_parent()
+		if parent is Node3D and not parent.visible:
+			return null
 		return node
 	for child in node.get_children():
 		var result = _find_cleanable(child)
 		if result:
 			return result
 	return null
+
+
+func switch_to_cleanable(new_cleanable: Cleanable) -> void:
+	# Disconnect from old cleanable if connected
+	if cleanable:
+		if cleanable.cleaning_progress_changed.is_connected(_on_cleaning_progress):
+			cleanable.cleaning_progress_changed.disconnect(_on_cleaning_progress)
+		if cleanable.cleaning_complete.is_connected(_on_cleaning_complete):
+			cleanable.cleaning_complete.disconnect(_on_cleaning_complete)
+
+	cleanable = new_cleanable
+	if cleanable and not cleanable.is_complete:
+		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
+		cleanable.cleaning_complete.connect(_on_cleaning_complete)
+		cleaning_ui.visible = true
+		progress_bar.value = cleanable.get_cleaning_progress()
+		_update_progress_label(cleanable.get_cleaning_progress())
+		_update_cursor_from_state()
+		print("ItemInspector: Switched to new Cleanable")
+	else:
+		cleaning_ui.visible = false
+		_update_cursor_from_state()
 
 
 func _set_collision_enabled(node: Node, enabled: bool) -> void:

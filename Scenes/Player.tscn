@@ -112,3 +112,4 @@ vertical_alignment = 1
 
 [node name="RepairMode" type="Node3D" parent="."]
 script = ExtResource("5_5ixxa")
+snap_distance = 0.05

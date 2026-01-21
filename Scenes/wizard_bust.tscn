@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_wvo40"]
 [ext_resource type="Texture2D" uid="uid://dp2e35raowtf7" path="res://resource/Floor1/wizard_bust_fracture_wizard_bust_color_1k.webp" id="2_0ueb0"]
 [ext_resource type="Texture2D" uid="uid://diq7a7k33c4ar" path="res://resource/Floor1/wizard_bust_wizard_bust_color_1k.webp" id="2_1ytx6"]
+[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwx4r"]
 resource_name = "Material"
@@ -486,6 +487,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.1, 0)
 visible = false
 mesh = SubResource("ArrayMesh_60mct")
 skeleton = NodePath("")
+
+[node name="Cleanable" type="Node" parent="complete_bust"]
+script = ExtResource("3_cleanable")
+brush_size = 48.0
+brush_softness = 0.6
 
 [node name="wizard_bust_fractured" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
