@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=21 format=3 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://vmisecexhjaj" path="res://resource/Floor1/ART_F1_MagicBillyBass_PLAQUE_MODEL.glb" id="17_v2nrj"]
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="18_3u1qr"]
 [ext_resource type="PackedScene" uid="uid://52kdta4h0cy5" path="res://resource/Floor1/Final/art_f_1_sofa_final.tscn" id="19_oucq8"]
+[ext_resource type="PackedScene" uid="uid://c14e1k2eumnye" path="res://resource/Floor1/ART_F1_Countertop_Final.glb" id="20_hui2q"]
 
 [node name="Floor1" type="Node3D"]
 
@@ -108,6 +109,7 @@ transform = Transform3D(0.50000006, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.5000
 transform = Transform3D(0.59999996, 0, -1.0392306, 0, 1.2, 0, 1.0392306, 0, 0.59999996, -3.302147, 4.7683716e-07, -4.5361195)
 
 [node name="ART_F1_StairSupport_Final" parent="Props_Environment" instance=ExtResource("10_kso46")]
+transform = Transform3D(0.83632445, 0, 0.5482349, 0, 1, 0, -0.5482349, 0, 0.83632445, 0, 0, 0)
 
 [node name="ART_F1_Stove_Model" parent="Props_Environment" instance=ExtResource("11_tx62q")]
 
@@ -120,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 
 [node name="Furniture_TableCShort" parent="Props_Environment" instance=ExtResource("15_bgo40")]
-transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.226333, 0.036036134, -0.53254)
+transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.2234178, 0.036036134, -0.53254336)
 
 [node name="Chandelier" parent="Props_Environment" instance=ExtResource("16_23slo")]
 transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, -0.0029449463, 4.0944953, -0.0072333813)
@@ -192,12 +194,15 @@ omni_range = 48.102
 [node name="Props" type="Node3D" parent="."]
 
 [node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Props" instance=ExtResource("17_v2nrj")]
-transform = Transform3D(-0.86432743, 0, 0.50292933, 0, 1, 0, -0.50292933, 0, -0.86432743, -3.067566, 2.2670736, 4.8327303)
+transform = Transform3D(-0.72923136, 0, -0.6842671, 0, 1, 0, 0.6842671, 0, -0.72923136, 2.4519143, 2.7799299, 2.1822412)
 
 [node name="ART_F1_Chair_Model" parent="Props" instance=ExtResource("18_3u1qr")]
 transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
 
 [node name="ART_F1_Sofa_Final" parent="Props" instance=ExtResource("19_oucq8")]
-transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, -4.9237514, 0, 2.7116613)
+transform = Transform3D(-0.5197577, 0, 0.85431373, 0, 1, 0, -0.85431373, 0, -0.5197577, 1.2510877, 0, -1.0450618)
+
+[node name="ART_F1_Countertop_Final" parent="Props" instance=ExtResource("20_hui2q")]
+transform = Transform3D(0.86397606, 0, 0.50353265, 0, 1, 0, -0.50353265, 0, 0.86397606, 0.021526728, -0.17568445, -0.32000473)
 
 [node name="Collision" type="Node3D" parent="."]

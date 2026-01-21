@@ -32,7 +32,7 @@ var _default_state: Dictionary = {
 	},
 
 	# Player inventory (item IDs)
-	"inventory": [],
+	#"inventory": [],
 
 	# Misc flags you can add to as needed
 	"flags": {},

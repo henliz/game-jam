@@ -20,6 +20,7 @@ var jumping = false
 var last_floor : bool
 var vl : Vector3
 var footstep_timer: float = 0.0
+var camera_base_position: Vector3
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -45,6 +46,7 @@ signal rotate_pipe(direction,pipe)
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
+	camera_base_position = camera.position
 	item_inspector.closed.connect(_on_inspection_closed)
 	# Find the Map node in the world scene for workbench level fade
 	call_deferred("_find_level_map")
@@ -92,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 
 	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(t_bob)
+	camera.position = camera_base_position + _headbob(t_bob)
 
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped

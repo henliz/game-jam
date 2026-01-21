@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://wizard_tome_item"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bohwendmmlddk"]
 
 [ext_resource type="Texture2D" uid="uid://bh3l761po2upn" path="res://icon.svg" id="1_icon"]
 [ext_resource type="PackedScene" uid="uid://cxwotleatrb6m" path="res://tome_brown.glb" id="2_mesh"]
@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource("3_script")
 name = "Wizard's Tome"
-description = "An ancient tome belonging to Aldric Varen. Its pages are filled with arcane knowledge about the Eternal Winter."
+description = "An ancient tome belonging to a wizard. Its pages are filled with arcane knowledge about the Eternal Winter."
 mesh_scene = ExtResource("2_mesh")

@@ -53,7 +53,7 @@
 			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_FIRST_ITEM_CLEANED.ogg",
 			"type": "dialogue",
 			"subtype": "progression",
-			"trigger_condition": "First successful clean/repair action completed"
+			"trigger_condition": "First successful clean action completed"
 		},
 		{
 			"id": "F1JournalPickup",
