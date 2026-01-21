@@ -20,7 +20,7 @@ signal repair_complete
 
 @onready var wizard_bust_fractured: Node3D = $"../../WizardBust/wizard_bust_fractured"
 
-@onready var bust_click: AudioStreamPlayer3D = $"../../bust_click"
+@onready var bust_click: AudioStreamPlayer3D = $"../../BustClick"
 
 @onready var item_inspector: ItemInspector = $"../ItemInspector"
 
