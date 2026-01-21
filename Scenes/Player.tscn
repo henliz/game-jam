@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cuqr7erdlouqh"]
+[gd_scene load_steps=16 format=3 uid="uid://cuqr7erdlouqh"]
 
 [ext_resource type="Script" uid="uid://b17msw7imqw46" path="res://Scenes/player.gd" id="1_rpqav"]
+[ext_resource type="Environment" uid="uid://l0t2otqt70qv" path="res://resource/Common/world_environment_floor4.tres" id="2_glx4g"]
 [ext_resource type="PackedScene" uid="uid://c2m8n7k4qaqr1" path="res://Scenes/item_inspector.tscn" id="2_inspector"]
 [ext_resource type="PackedScene" uid="uid://dlviucu8j0qkg" path="res://Scenes/Workbench.tscn" id="2_workbench"]
 [ext_resource type="PackedScene" uid="uid://c4j8kqm2xnl6y" path="res://Scenes/journal_ui.tscn" id="3_journal"]
@@ -42,6 +43,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24063253, -0.35438493)
+environment = ExtResource("2_glx4g")
 fov = 85.0
 
 [node name="InteractRay" type="RayCast3D" parent="Head/Camera3D"]

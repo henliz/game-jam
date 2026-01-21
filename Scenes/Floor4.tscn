@@ -67,11 +67,22 @@ omni_range = 48.102
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+visible = false
 shadow_enabled = true
 shadow_bias = 0.05
 omni_range = 8.0
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4, 0)
+light_indirect_energy = 6.0
+shadow_enabled = true
+shadow_blur = 0.5
+spot_range = 8.0
+spot_attenuation = 0.25
+spot_angle = 70.0
+
 [node name="Collision" type="Node3D" parent="."]
+visible = false
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
