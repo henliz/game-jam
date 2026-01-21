@@ -1246,6 +1246,8 @@ bus = &"SFX"
 [node name="WizardBust_Prototype" parent="." instance=ExtResource("28_1vso6")]
 transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.509958e-07, 0, -0.99999994, 1.4907265, 1.3973029, 4.0968046)
 visible = false
+inspect_scale = 0.5
+item_name = "Item"
 
 [node name="Landscape" type="Node" parent="."]
 
@@ -1254,6 +1256,9 @@ script = ExtResource("29_qebug")
 
 [node name="Floor1" parent="." instance=ExtResource("29_opbav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
+
+[node name="ART_GLOBAL_Stairs_Model" parent="Floor1" instance=ExtResource("50_0sgyr")]
+transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, -0.10921097, 0.018953323, -0.07377536)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("48_te07t")
@@ -1268,9 +1273,6 @@ bus = &"Music"
 transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.927383, 1.0805786, -0.5145346)
 inspect_scale = 2.0
 
-[node name="ART_GLOBAL_Stairs_Model" parent="." instance=ExtResource("50_0sgyr")]
-transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, 39.896004, 0.030644178, -0.10987515)
-
 [node name="Node" type="Node" parent="."]
 
 [node name="L1_MagicBillyBass" parent="Node" instance=ExtResource("51_uqdn7")]
@@ -1283,6 +1285,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.456554, -0.00999999, -0.62
 [node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
 transform = Transform3D(-0.89365363, 0, 0.4487575, 0, 1, 0, -0.44875753, 0, -0.8936536, 37.607212, 1.7648034, 4.334488)
 inspect_scale = 1.5
+item_name = "Item"
 
 [node name="FinalPuzzle" type="Node3D" parent="." node_paths=PackedStringArray("puzzle_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.267124, 0.62157786, -0.90680027)

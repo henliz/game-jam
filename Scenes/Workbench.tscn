@@ -55,6 +55,13 @@ light_color = Color(0.7852611, 0.62284654, 0.18245322, 1)
 light_size = 0.01
 script = ExtResource("2_flicker")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Candle/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0045326, 1.318726, 0.7351925)
+light_color = Color(0.8564478, 0.4783504, 0.87970936, 1)
+light_energy = 0.745
+light_size = 0.01
+omni_range = 4.189
+
 [node name="SkullCandle" parent="." instance=ExtResource("11_7k7rp")]
 transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 0.2, 1.05, 0.7)
 

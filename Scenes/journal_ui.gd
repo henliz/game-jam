@@ -2,7 +2,7 @@ class_name JournalUI
 extends CanvasLayer
 
 signal journal_opened
-signal journal_closed
+signal journal_closed	
 signal page_changed(spread_index: int)
 
 @export_group("Animation")

@@ -480,6 +480,8 @@ radius = 0.19
 [node name="WizardBust" type="StaticBody3D" groups=["repairable"]]
 transform = Transform3D(-1, 0, -8.742277e-08, 0, 1, 0, 8.742278e-08, 0, -0.99999994, 0, 0, 0)
 script = ExtResource("1_wvo40")
+inspect_scale = 1.0
+item_name = "Wizard Bust"
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"
 
 [node name="complete_bust" type="MeshInstance3D" parent="."]

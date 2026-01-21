@@ -34,6 +34,8 @@ var correctCount = 0
 var is_complete: bool = false
 
 
+var repair_ui_shown: bool = false
+
 func _ready() -> void:
 	correctPositions = {face:Vector2(0,0.455),shoulder:Vector2(0.139,0.255),hat_point:Vector2(0,0.696),head_side:Vector2(-0.1,0.506),head_back:Vector2(0.048,0.439),hat_front:Vector2(0.249,0.494)}
 	_store_initial_positions()
@@ -63,6 +65,16 @@ func _input(event):
 
 
 func _process(_delta):
+	# Track inspect state to show/hide repair UI
+	if player.inspecting and not is_complete:
+		if not repair_ui_shown and item_inspector:
+			item_inspector.show_repair_ui()
+			repair_ui_shown = true
+	else:
+		if repair_ui_shown and item_inspector:
+			item_inspector.hide_repair_ui()
+			repair_ui_shown = false
+
 	if !player.inspecting: return
 	if draggingCollider:
 		var pos = draggingCollider.global_position
@@ -96,6 +108,12 @@ func _check_repair_complete() -> void:
 		return
 	if correctCount >= correctPositions.size():
 		is_complete = true
+
+		# Hide repair UI now that repair is complete
+		if item_inspector:
+			item_inspector.hide_repair_ui()
+			repair_ui_shown = false
+
 		for node in wizard_bust_fractured.get_children():
 			node.queue_free()
 		complete_bust.reparent(wizard_bust_fractured)
