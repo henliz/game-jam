@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
-[ext_resource type="Script" uid="uid://caam7nhtc55vv" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
+[ext_resource type="Script" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
 [ext_resource type="Texture2D" uid="uid://cm566nxk3vcgl" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingBaseColor.png" id="43_mkebs"]
 [ext_resource type="Texture2D" uid="uid://cx5hgkng5lt3" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingRough.png" id="44_a4ai1"]
 [ext_resource type="Texture2D" uid="uid://f1gj5as71rt6" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingNormal.png" id="45_h2ogk"]
@@ -1288,7 +1288,8 @@ inspect_scale = 1.5
 item_name = "Item"
 
 [node name="FinalPuzzle" type="Node3D" parent="." node_paths=PackedStringArray("puzzle_camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.267124, 0.62157786, -0.90680027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.095428, 0.62157786, -0.90680027)
+visible = false
 script = ExtResource("42_w5giw")
 puzzle_camera = NodePath("Camera3D")
 
