@@ -10,6 +10,7 @@ signal cleaning_complete
 @export var dirt_shader: Shader
 @export var dirt_texture: Texture2D
 @export var dirt_tint: Color = Color(0.4, 0.35, 0.3, 1.0)
+@export var force_overlay_visibility: bool = false  ## Enable for objects with custom shaders that block transparency
 
 var mask_image: Image
 var dirt_mask_texture: ImageTexture
@@ -60,6 +61,8 @@ func _setup_dirt_overlay() -> void:
 	overlay_material.set_shader_parameter("dirt_mask", dirt_mask_texture)
 	overlay_material.set_shader_parameter("dirt_strength", 0.8)
 	overlay_material.set_shader_parameter("dirt_tint", dirt_tint)
+	# Render after base mesh to ensure proper alpha blending on top of custom shaders
+	overlay_material.render_priority = 1
 
 	# Create a duplicate mesh for the dirt layer
 	dirt_mesh = MeshInstance3D.new()
@@ -71,11 +74,16 @@ func _setup_dirt_overlay() -> void:
 	for i in range(surface_count):
 		dirt_mesh.set_surface_override_material(i, overlay_material)
 
-	# Add as sibling, copy transform
-	mesh_instance.add_sibling(dirt_mesh)
-	dirt_mesh.transform = mesh_instance.transform
+	# Add as child of mesh_instance so visibility propagates correctly
+	mesh_instance.add_child(dirt_mesh)
+	dirt_mesh.transform = Transform3D.IDENTITY
 
 	print("Cleanable: Created dirt overlay mesh with ", surface_count, " surfaces")
+	print("  - mesh_instance path: ", mesh_instance.get_path())
+	print("  - mesh_instance global_pos: ", mesh_instance.global_position)
+	print("  - dirt_mesh parent: ", dirt_mesh.get_parent().name if dirt_mesh.get_parent() else "NONE")
+	print("  - dirt_mesh visible: ", dirt_mesh.visible)
+	print("  - mesh resource: ", mesh_instance.mesh.resource_path if mesh_instance.mesh else "NULL")
 
 func _calculate_initial_state() -> void:
 	total_pixels = mask_resolution * mask_resolution
@@ -85,7 +93,7 @@ func _calculate_initial_state() -> void:
 var uv_coverage_mask: Image
 
 func _build_uv_coverage_mask() -> void:
-	# Create a mask of which pixels are actually covered by UV2
+	# Create a mask of which pixels are actually covered by UV coordinates
 	uv_coverage_mask = Image.create(mask_resolution, mask_resolution, false, Image.FORMAT_L8)
 	uv_coverage_mask.fill(Color.BLACK)
 
@@ -94,22 +102,32 @@ func _build_uv_coverage_mask() -> void:
 		return
 
 	var mesh: Mesh = mesh_instance.mesh
+
+	# Debug: Print available UV data for this mesh
+	print("Cleanable DEBUG [", item_id, "]: Mesh '", mesh_instance.name, "' has ", mesh.get_surface_count(), " surfaces")
+	for dbg_idx in range(mesh.get_surface_count()):
+		var dbg_arrays = mesh.surface_get_arrays(dbg_idx)
+		var has_uv1 = dbg_arrays.size() > Mesh.ARRAY_TEX_UV and dbg_arrays[Mesh.ARRAY_TEX_UV] != null
+		var has_uv2 = dbg_arrays.size() > Mesh.ARRAY_TEX_UV2 and dbg_arrays[Mesh.ARRAY_TEX_UV2] != null
+		var uv1_size = dbg_arrays[Mesh.ARRAY_TEX_UV].size() if has_uv1 else 0
+		var uv2_size = dbg_arrays[Mesh.ARRAY_TEX_UV2].size() if has_uv2 else 0
+		print("  Surface ", dbg_idx, ": UV1=", has_uv1, " (", uv1_size, " verts), UV2=", has_uv2, " (", uv2_size, " verts)")
+
 	for surface_idx in range(mesh.get_surface_count()):
 		var arrays = mesh.surface_get_arrays(surface_idx)
 		if arrays.is_empty():
 			continue
 
 		var indices = arrays[Mesh.ARRAY_INDEX]
-		var uv2_array: PackedVector2Array
-		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
-		if uv2_array.is_empty() and arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV]
-		if uv2_array.is_empty():
+		# Use UV1 (primary texture coordinates) to match the shader
+		var uv_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv_array = arrays[Mesh.ARRAY_TEX_UV]
+		if uv_array.is_empty():
 			continue
 
 		# Rasterize each triangle into the coverage mask
-		var tri_count = indices.size() / 3 if indices.size() > 0 else uv2_array.size() / 3
+		var tri_count = indices.size() / 3 if indices.size() > 0 else uv_array.size() / 3
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
@@ -123,9 +141,9 @@ func _build_uv_coverage_mask() -> void:
 				i1 = tri * 3 + 1
 				i2 = tri * 3 + 2
 
-			var uv0 = uv2_array[i0]
-			var uv1 = uv2_array[i1]
-			var uv2 = uv2_array[i2]
+			var uv0 = uv_array[i0]
+			var uv1 = uv_array[i1]
+			var uv2 = uv_array[i2]
 			_rasterize_triangle(uv0, uv1, uv2)
 
 	# Count covered pixels

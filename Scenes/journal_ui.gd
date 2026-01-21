@@ -3,7 +3,7 @@ extends CanvasLayer
 
 @onready var game_state = get_node("/root/GameState")
 signal journal_opened
-signal journal_closed
+signal journal_closed	
 signal page_changed(spread_index: int)
 
 @export_group("Animation")
