@@ -11,6 +11,7 @@ signal cleaning_complete
 @export var dirt_texture: Texture2D
 @export var dirt_tint: Color = Color(0.4, 0.35, 0.3, 1.0)
 @export var force_overlay_visibility: bool = false  ## Enable for objects with custom shaders that block transparency
+@export var defer_until_visible: bool = false  ## Delay setup until parent mesh becomes visible
 
 var mask_image: Image
 var dirt_mask_texture: ImageTexture
@@ -22,11 +23,12 @@ var total_pixels: int = 0
 var clean_pixels: int = 0
 var is_complete: bool = false
 var item_id: String = ""
+var _initialized: bool = false
+var _waiting_for_visible: bool = false
 
 const FIRST_CLEAN_DIALOGUE_ID := "F1FirstItemCleaned"
 
 func _ready() -> void:
-
 	_resolve_item_id()
 
 	# Check if already cleaned in GameState
@@ -43,6 +45,30 @@ func _ready() -> void:
 		return
 
 	print("Cleanable: Found mesh instance: ", mesh_instance.name)
+
+	# If deferred and mesh is not visible, wait for it to become visible
+	if defer_until_visible and not mesh_instance.visible:
+		_waiting_for_visible = true
+		print("Cleanable: Deferring setup until mesh becomes visible")
+		return
+
+	_initialize_dirt_system()
+
+
+func _process(_delta: float) -> void:
+	if _waiting_for_visible and mesh_instance and mesh_instance.visible:
+		_waiting_for_visible = false
+		print("Cleanable: Mesh now visible, initializing dirt system")
+		_initialize_dirt_system()
+		set_process(false)
+	elif not _waiting_for_visible:
+		set_process(false)
+
+
+func _initialize_dirt_system() -> void:
+	if _initialized:
+		return
+	_initialized = true
 	_setup_dirt_overlay()
 	_calculate_initial_state()
 
