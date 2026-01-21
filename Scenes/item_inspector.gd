@@ -25,6 +25,7 @@ var success_audio_player: AudioStreamPlayer
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
 @onready var progress_label: Label = $CleaningUI/ProgressContainer/Label
+@onready var repair_ui: Control = $RepairUI
 
 var cursor_sprite: TextureRect
 var current_cursor_mode: int = 0  # 0=cloth, 1=cleaning, 2=grab
@@ -50,6 +51,7 @@ var animating_out: bool = false
 func _ready():
 	visible = false
 	cleaning_ui.visible = false
+	repair_ui.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_setup_cursor()
 	_setup_audio()
@@ -328,13 +330,12 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var indices = arrays[Mesh.ARRAY_INDEX]
 
-		var uv2_array: PackedVector2Array
-		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
-		if uv2_array.is_empty() and arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV]
+		# Use UV1 (primary texture coordinates) to match the dirt shader
+		var uv_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv_array = arrays[Mesh.ARRAY_TEX_UV]
 
-		if vertices.is_empty() or uv2_array.is_empty():
+		if vertices.is_empty() or uv_array.is_empty():
 			continue
 
 		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
@@ -363,9 +364,9 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 				var u = result.y
 				var v = result.z
 				var w = 1.0 - u - v
-				var uv0 = uv2_array[i0]
-				var uv1 = uv2_array[i1]
-				var uv2_coord = uv2_array[i2]
+				var uv0 = uv_array[i0]
+				var uv1 = uv_array[i1]
+				var uv2_coord = uv_array[i2]
 				best_uv = uv0 * w + uv1 * u + uv2_coord * v
 				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
 
@@ -424,19 +425,13 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var indices = arrays[Mesh.ARRAY_INDEX]
 
-		# Check if UV2 exists in arrays
-		var uv2_array: PackedVector2Array
-		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
+		# Use UV1 (primary texture coordinates) to match the dirt shader
+		var uv_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv_array = arrays[Mesh.ARRAY_TEX_UV]
 
-		# Fall back to UV1 if no UV2
-		if uv2_array.is_empty():
-			if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
-				uv2_array = arrays[Mesh.ARRAY_TEX_UV]
-				print("UV lookup: Using UV1 fallback for surface ", surface_idx)
-
-		if vertices.is_empty() or uv2_array.is_empty():
-			print("UV lookup: Surface ", surface_idx, " missing data - verts:", vertices.size(), " uvs:", uv2_array.size())
+		if vertices.is_empty() or uv_array.is_empty():
+			print("UV lookup: Surface ", surface_idx, " missing data - verts:", vertices.size(), " uvs:", uv_array.size())
 			continue
 
 		# Check each triangle - find the closest one by actual distance to triangle
@@ -466,9 +461,9 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 				best_dist = dist
 				# Calculate barycentric coords for the closest point to interpolate UVs
 				var bary = _get_barycentric(closest, v0, v1, v2)
-				var uv0 = uv2_array[i0]
-				var uv1 = uv2_array[i1]
-				var uv2_coord = uv2_array[i2]
+				var uv0 = uv_array[i0]
+				var uv1 = uv_array[i1]
+				var uv2_coord = uv_array[i2]
 				best_uv = uv0 * bary.x + uv1 * bary.y + uv2_coord * bary.z
 				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
 
@@ -569,6 +564,9 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 		if cleanable.cleaning_complete.is_connected(_on_cleaning_complete):
 			cleanable.cleaning_complete.disconnect(_on_cleaning_complete)
 
+	# Hide repair UI when switching to cleaning
+	repair_ui.visible = false
+
 	cleanable = new_cleanable
 	if cleanable and not cleanable.is_complete:
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
@@ -581,6 +579,14 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 	else:
 		cleaning_ui.visible = false
 		_update_cursor_from_state()
+
+
+func show_repair_ui() -> void:
+	repair_ui.visible = true
+
+
+func hide_repair_ui() -> void:
+	repair_ui.visible = false
 
 
 func _set_collision_enabled(node: Node, enabled: bool) -> void:
