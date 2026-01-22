@@ -78,22 +78,26 @@ func set_value(key: String, value: Variant) -> void:
 
 func _check_floor_progress() -> void:
 	print("=== CHECK FLOOR PROGRESS ===")
-	
+
 	# Count how many items are cleaned
 	var items_cleaned = state.cleaned_items.size()
 	print("Total items cleaned: ", items_cleaned)
-	
-	# Unlock diary pages in order
+
+	# Unlock diary pages in order - queue them through journal UI
 	var diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
+	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
+
 	for i in range(items_cleaned):
 		if i >= diary_pages.size():
 			break
 		var diary_id = diary_pages[i]
 		print("Checking diary ", diary_id)
 		if not has_dialogue_triggered(diary_id):
-			print("TRIGGERING: ", diary_id)
-			DialogueManager.try_trigger_dialogue(diary_id, diary_id)
-			break
+			print("QUEUEING: ", diary_id)
+			if journal_ui:
+				journal_ui.queue_diary_dialogue(diary_id)
+			else:
+				push_warning("GameState: No journal_ui found to queue diary dialogue")
 
 func unlock_floor(floor_num: int) -> void:
 	if floor_num not in state.unlocked_floors:

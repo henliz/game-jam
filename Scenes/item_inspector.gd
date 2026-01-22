@@ -160,7 +160,11 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 	_set_collision_enabled(item, false)
 
 	opened.emit(item)
-	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
+
+	# Delay dialogue to let workbench animation complete
+	get_tree().create_timer(1.5).timeout.connect(
+		func(): DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
+	)
 
 	# Restore teakettle glow range if it was increased for visibility
 	_restore_teakettle_glow_range(item)

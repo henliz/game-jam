@@ -3,7 +3,7 @@ extends CanvasLayer
 
 @onready var game_state = get_node("/root/GameState")
 signal journal_opened
-signal journal_closed	
+signal journal_closed
 signal page_changed(spread_index: int)
 
 @export_group("Animation")
@@ -18,11 +18,18 @@ signal page_changed(spread_index: int)
 @export var first_open_dialogue_id: String = "journal_first_open"
 @export var journal_pickup_dialogue_id: String = "F1JournalPickup"
 @export var after_pickup_dialogue_id: String = "F1PickupInteractableFirst"
+@export var diary_dialogue_delay: float = 2.0  # Delay between diary dialogues
+
+@export_group("Notification")
+@export var notification_icon_texture: Texture2D
 
 var is_open: bool = false
 var was_first_pickup: bool = false  # Track if this open was the first journal pickup
 var current_spread: int = 0
 var spreads: Array[Control] = []
+var pending_diary_dialogues: Array[String] = []  # Diary dialogues to play on next open
+var notification_icon: TextureRect  # Journal notification icon
+var notification_layer: CanvasLayer  # Separate layer so notification stays visible when journal is closed
 
 @onready var background: ColorRect = $Background
 @onready var journal_container: Control = $JournalContainer
@@ -39,7 +46,9 @@ func _ready() -> void:
 	add_to_group("journal_ui")
 	_collect_spreads()
 	_setup_audio()
+	_setup_notification_icon()
 	_show_spread(current_spread)
+	_update_page_visibility()  # Set initial page states
 	game_state.state_changed.connect(_on_game_state_changed)
 
 
@@ -59,6 +68,113 @@ func _setup_audio() -> void:
 		var page1 = load("res://Audio/SFX/UI/JOURNAL_PAGE_1.wav")
 		if page1:
 			page_turn_sounds.append(page1)
+
+
+func _setup_notification_icon() -> void:
+	if not notification_icon_texture:
+		notification_icon_texture = load("res://resource/UI/Journal/ART_UI_JOURNAL_ICON_PLACEHOLDER.png")
+
+	if not notification_icon_texture:
+		push_warning("JournalUI: No notification icon texture found")
+		return
+
+	# Check if notification layer already exists (persists across floor changes)
+	var existing = get_tree().root.get_node_or_null("JournalNotificationLayer")
+	if existing:
+		notification_layer = existing
+		notification_icon = notification_layer.get_node("NotificationContainer/NotificationIcon")
+		return
+
+	# Create separate CanvasLayer added to root viewport (persists across floors)
+	notification_layer = CanvasLayer.new()
+	notification_layer.layer = 50  # Above gameplay, below journal
+	notification_layer.name = "JournalNotificationLayer"
+
+	# Create a Control to hold the TextureRect (needed for anchors to work)
+	var container = Control.new()
+	container.name = "NotificationContainer"
+	container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	notification_layer.add_child(container)
+
+	notification_icon = TextureRect.new()
+	notification_icon.texture = notification_icon_texture
+	notification_icon.name = "NotificationIcon"
+	notification_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	# Position in bottom right, 40px from edges
+	notification_icon.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	notification_icon.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	notification_icon.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	notification_icon.position = Vector2(-40 - notification_icon_texture.get_width(), -40 - notification_icon_texture.get_height())
+
+	notification_icon.visible = false
+	container.add_child(notification_icon)
+
+	# Add to root viewport (not tied to any floor scene)
+	get_tree().root.add_child(notification_layer)
+
+
+func show_notification() -> void:
+	if notification_icon:
+		notification_icon.visible = true
+		print("JournalUI: Showing notification icon")
+
+
+func hide_notification() -> void:
+	if notification_icon:
+		notification_icon.visible = false
+		print("JournalUI: Hiding notification icon")
+
+
+func queue_diary_dialogue(dialogue_id: String) -> void:
+	if dialogue_id not in pending_diary_dialogues:
+		pending_diary_dialogues.append(dialogue_id)
+		show_notification()
+		print("JournalUI: Queued diary dialogue: ", dialogue_id)
+
+
+func _play_pending_diary_dialogues() -> void:
+	if pending_diary_dialogues.is_empty():
+		return
+
+	print("JournalUI: Playing ", pending_diary_dialogues.size(), " pending diary dialogues")
+
+	# Copy and clear pending list
+	var dialogues_to_play = pending_diary_dialogues.duplicate()
+	pending_diary_dialogues.clear()
+
+	# Start playing with a small initial delay
+	_play_diary_dialogue_sequence(dialogues_to_play, 0)
+
+
+func _play_diary_dialogue_sequence(dialogues: Array, index: int) -> void:
+	if index >= dialogues.size():
+		print("JournalUI: Finished playing all diary dialogues")
+		return
+
+	var dialogue_id = dialogues[index]
+	print("JournalUI: Playing diary dialogue ", index + 1, "/", dialogues.size(), ": ", dialogue_id)
+
+	# Play this dialogue
+	if DialogueManager.play(dialogue_id):
+		# Mark as triggered so page visibility updates
+		GameState.mark_dialogue_triggered(dialogue_id)
+		GameState.save_game()
+
+		# Connect to dialogue_finished to play next one
+		var on_finished: Callable
+		on_finished = func(_entry: Dictionary):
+			DialogueManager.dialogue_finished.disconnect(on_finished)
+			# Wait diary_dialogue_delay seconds before playing next
+			if index + 1 < dialogues.size():
+				get_tree().create_timer(diary_dialogue_delay).timeout.connect(
+					func(): _play_diary_dialogue_sequence(dialogues, index + 1)
+				)
+		DialogueManager.dialogue_finished.connect(on_finished)
+	else:
+		# If dialogue failed to play, try next one immediately
+		_play_diary_dialogue_sequence(dialogues, index + 1)
 
 
 func _input(event: InputEvent) -> void:
@@ -111,6 +227,9 @@ func open_journal() -> void:
 	is_open = true
 	visible = true
 
+	# Hide notification icon when journal opens
+	hide_notification()
+
 	# Check if we need to play the journal pickup dialogue (first pickup)
 	var is_first_pickup = journal_pickup_dialogue_id and not GameState.has_dialogue_triggered(journal_pickup_dialogue_id)
 	was_first_pickup = is_first_pickup  # Remember for when journal closes
@@ -129,6 +248,11 @@ func open_journal() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	_on_first_open()
+
+	# Play pending diary dialogues after a short delay (let other dialogues finish first)
+	if not pending_diary_dialogues.is_empty() and not is_first_pickup:
+		_play_pending_diary_dialogues()
+
 	journal_opened.emit()
 
 

@@ -93,7 +93,7 @@
 			"voiceover_id": "VO_F1_DIARY_2",
 			"floor": "Floor 1",
 			"speaker": null,
-			"text": "More text.\n[A short pause]\nThis is a lonely place to be tied to. But what happened to him? And what's this about the light?\nI should make my way up there.",
+			"text": "More text.\nThis is a lonely place to be tied to. But what happened to him? And what's this about the light?\nI should make my way up there.",
 			"audio_path": "res://Audio/Dialogue/Floor1/VO_F1_DIARY_2.ogg",
 			"type": "dialogue",
 			"subtype": "diary",
