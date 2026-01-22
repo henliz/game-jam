@@ -83,7 +83,9 @@ func _check_floor_progress() -> void:
 	# Count how many items are cleaned
 	var items_cleaned = state.cleaned_items.size()
 	print("Total items cleaned: ", items_cleaned)
-
+	if 2 not in state.unlocked_floors and items_cleaned>=3: unlock_floor(2)
+	if 3 not in state.unlocked_floors and items_cleaned>=6: unlock_floor(3)
+	if 4 not in state.unlocked_floors and items_cleaned>=9: unlock_floor(4)
 	# Unlock diary pages in order - queue them through journal UI
 	var diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
 	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
@@ -101,9 +103,8 @@ func _check_floor_progress() -> void:
 				push_warning("GameState: No journal_ui found to queue diary dialogue")
 
 func unlock_floor(floor_num: int) -> void:
-	if floor_num not in state.unlocked_floors:
-		state.unlocked_floors.append(floor_num)
-		state_changed.emit("unlocked_floors", state.unlocked_floors)
+	state.unlocked_floors.append(floor_num)
+	state_changed.emit("unlocked_floors", state.unlocked_floors)
 
 
 func mark_first_time_done(event: String) -> void:
