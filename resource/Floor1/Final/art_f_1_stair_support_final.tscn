@@ -1,19 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjurv7h181la5"]
+[gd_scene load_steps=8 format=3 uid="uid://bjurv7h181la5"]
 
 [ext_resource type="PackedScene" uid="uid://skc8uj0whwqw" path="res://resource/Floor1/ART_F1_StairSupport_Final.glb" id="1_1rvhp"]
 [ext_resource type="Texture2D" uid="uid://b0wan6cilpjv3" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportBaseColor.png" id="2_bo1rr"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_giuj0"]
 [ext_resource type="Texture2D" uid="uid://cmsoxjimuvkmt" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportNormal.png" id="3_bo1rr"]
-[ext_resource type="Texture2D" uid="uid://brg6j2lmsa6sh" path="res://resource/Floor1/ART_F1_StairSupport_Final_StairSupportRough.png" id="3_bu7vd"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_aadrp"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_0rtx3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bu7vd"]
-specular_mode = 1
-albedo_texture = ExtResource("2_bo1rr")
-roughness = 0.6
-roughness_texture = ExtResource("3_bu7vd")
-normal_enabled = true
-normal_texture = ExtResource("3_bo1rr")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0cp4"]
+render_priority = 0
+shader = ExtResource("2_giuj0")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_bo1rr")
+shader_parameter/texture_hue_shift = ExtResource("4_aadrp")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_0rtx3")
+shader_parameter/texture_normal = ExtResource("3_bo1rr")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.000000095
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [node name="ART_F1_StairSupport_Final" instance=ExtResource("1_1rvhp")]
 
 [node name="StairSupport" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_bu7vd")
+surface_material_override/0 = SubResource("ShaderMaterial_m0cp4")

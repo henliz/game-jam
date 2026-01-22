@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddua4rxfg8s5j"]
+
+[ext_resource type="PackedScene" uid="uid://bt6udvs0wh3qm" path="res://resource/Floor1/ART_F1_WizardJournal_Model.glb" id="1_g3i5s"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ojr04"]
+[ext_resource type="Texture2D" uid="uid://dhj81tfl2h62l" path="res://resource/Floor1/ART_F1_WizardJournal_Model_ART_F1_WizardJournal_Texture_color_1k.webp" id="3_61hkn"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_rv423"]
+[ext_resource type="Texture2D" uid="uid://dv254qkkkpdgv" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength2_512.png" id="5_g3i5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rv7as"]
+render_priority = 0
+shader = ExtResource("2_ojr04")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_61hkn")
+shader_parameter/texture_hue_shift = ExtResource("4_rv423")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("5_g3i5s")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(4, 4, 4)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_WizardJournal_Model2" instance=ExtResource("1_g3i5s")]
+
+[node name="ART_F1_WizardJournal_Model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -3.5762787e-07, -0.99999994, 0, 0.99999994, -3.5762787e-07, 0, 0.04, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_rv7as")

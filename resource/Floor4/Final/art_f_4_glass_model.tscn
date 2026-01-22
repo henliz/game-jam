@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dss58plixgefb"]
+
+[ext_resource type="PackedScene" uid="uid://bngb5e3hxmgx7" path="res://resource/Floor4/ART_F4_Glass_Model.glb" id="1_fokc5"]
+[ext_resource type="Material" uid="uid://cofbccxv2ey6c" path="res://resource/Floor4/Final/SharedMaterials/MAT_F4_glass2.material" id="2_2u0a6"]
+
+[node name="ART_F4_Glass_Model2" instance=ExtResource("1_fokc5")]
+
+[node name="ART_F4_Glass_Model" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2u0a6")

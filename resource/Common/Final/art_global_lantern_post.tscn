@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://chaijfyoxu51g"]
+
+[ext_resource type="PackedScene" uid="uid://kxdwj24mdg7h" path="res://resource/Common/ART_GLOBAL_Lantern_Post.glb" id="1_r8s5e"]
+[ext_resource type="Material" uid="uid://b5u0ps6y8puqj" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_halloweenbits.material" id="2_7qh8x"]
+
+[node name="ART_GLOBAL_Lantern_Post2" instance=ExtResource("1_r8s5e")]
+
+[node name="ART_GLOBAL_Lantern_Post" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_7qh8x")

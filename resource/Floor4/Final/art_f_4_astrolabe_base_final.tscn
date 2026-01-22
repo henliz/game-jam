@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwfqnxqf48a6p"]
+
+[ext_resource type="PackedScene" uid="uid://cdanoagygpr3v" path="res://resource/Floor4/ART_F4_Astrolabe_Base_Final.glb" id="1_43utm"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_7sy5b"]
+[ext_resource type="Texture2D" uid="uid://dhw6xkcceu5t4" path="res://resource/Floor4/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png" id="3_atsax"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_kh6ae"]
+[ext_resource type="Texture2D" uid="uid://by1y7c3bp2h0k" path="res://resource/Floor4/ART_F4_Astrolabe_Base_Final_AstrolabeBaseNormal.png" id="5_gjd6c"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_u6aiv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnx2d"]
+render_priority = 0
+shader = ExtResource("2_7sy5b")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_atsax")
+shader_parameter/texture_hue_shift = ExtResource("4_kh6ae")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_u6aiv")
+shader_parameter/texture_normal = ExtResource("5_gjd6c")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F4_Astrolabe_Base_Final" instance=ExtResource("1_43utm")]
+
+[node name="Circle_017" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rnx2d")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhla2vwb2828i"]
+
+[ext_resource type="PackedScene" uid="uid://byxegmwg5k7pa" path="res://resource/Common/ART_GLOBAL_Wooden_Log.glb" id="1_numm4"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_j48vm"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_q3sar"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_ovj4w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1878b"]
+render_priority = 0
+shader = ExtResource("2_j48vm")
+shader_parameter/basecolor = Color(0.41186208, 0.22028056, 0.10697589, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_q3sar")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.90000004275
+shader_parameter/texture_roughness = ExtResource("4_ovj4w")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.000000095
+shader_parameter/uv1_scale = Vector3(0.7, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmc7t"]
+render_priority = 0
+shader = ExtResource("2_j48vm")
+shader_parameter/basecolor = Color(0.7460314, 0.5500972, 0.32273299, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_q3sar")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.90000004275
+shader_parameter/texture_roughness = ExtResource("4_ovj4w")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.000000095
+shader_parameter/uv1_scale = Vector3(0.7, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Wooden_Log2" instance=ExtResource("1_numm4")]
+
+[node name="ART_GLOBAL_Wooden_Log" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_1878b")
+surface_material_override/1 = SubResource("ShaderMaterial_nmc7t")

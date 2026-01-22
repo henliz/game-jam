@@ -1,20 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://u0dphv7sgbih"]
+[gd_scene load_steps=6 format=3 uid="uid://u0dphv7sgbih"]
 
 [ext_resource type="PackedScene" uid="uid://crax3johqbxux" path="res://resource/Floor1/ART_F1_GrandfatherClock_Final.glb" id="1_cvsl2"]
 [ext_resource type="Texture2D" uid="uid://b5ogoq41m2x5y" path="res://resource/Floor1/ART_F1_GrandfatherClock_Final_ClockBaseColor.png" id="2_m40rd"]
-[ext_resource type="Texture2D" uid="uid://cmot1fh7md44y" path="res://resource/Floor1/ART_F1_GrandfatherClock_Final_ClockRough.png" id="4_juutp"]
+[ext_resource type="Texture2D" uid="uid://cmot1fh7md44y" path="res://resource/Floor1/ART_F1_GrandfatherClock_Final_ClockRough.png" id="4_cvsl2"]
+[ext_resource type="Texture2D" uid="uid://bn1h1gdl4hhn4" path="res://resource/Floor1/ART_F1_GrandfatherClock_Final_ClockNormal.png" id="5_6ks2d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ks2d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m40rd"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 specular_mode = 1
 albedo_texture = ExtResource("2_m40rd")
-roughness = 0.7
-roughness_texture = ExtResource("4_juutp")
+roughness = 0.6
+roughness_texture = ExtResource("4_cvsl2")
 normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("5_6ks2d")
 
 [node name="ART_F1_GrandfatherClock_Final" instance=ExtResource("1_cvsl2")]
 
 [node name="Cube" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6ks2d")
+surface_material_override/0 = SubResource("StandardMaterial3D_m40rd")

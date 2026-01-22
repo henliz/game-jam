@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ymdw2e7yyqf"]
+
+[ext_resource type="PackedScene" uid="uid://dg4q1mqafs8ar" path="res://resource/Common/ART_GLOBAL_Lantern_Hanging.glb" id="1_q60id"]
+[ext_resource type="Material" uid="uid://b5u0ps6y8puqj" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_halloweenbits.material" id="2_q5lnw"]
+
+[node name="ART_GLOBAL_Lantern_Hanging2" instance=ExtResource("1_q60id")]
+
+[node name="ART_GLOBAL_Lantern_Hanging" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_q5lnw")
