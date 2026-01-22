@@ -101,7 +101,7 @@
 [ext_resource type="Texture2D" uid="uid://dlj4hinchkmr6" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece01_Spring_Crop.png" id="87_levo3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
-albedo_color = Color(0.86036915, 0.8603692, 0.8603691, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
 size = Vector3(1, 0.6879883, 0.3630371)
@@ -1359,6 +1359,7 @@ process_material = SubResource("ParticleProcessMaterial_1cojt")
 draw_pass_1 = SubResource("QuadMesh_xbk3s")
 
 [node name="wind" type="AudioStreamPlayer3D" parent="."]
+process_mode = 1
 stream = ExtResource("21_yq1aw")
 autoplay = true
 
@@ -1411,6 +1412,7 @@ transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.750099
 environment = ExtResource("50_4ke1i")
 
 [node name="Floor1Music" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 stream = ExtResource("57_music")
 volume_db = -6.0
 autoplay = true

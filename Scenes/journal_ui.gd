@@ -16,8 +16,11 @@ signal page_changed(spread_index: int)
 
 @export_group("Dialogue")
 @export var first_open_dialogue_id: String = "journal_first_open"
+@export var journal_pickup_dialogue_id: String = "F1JournalPickup"
+@export var after_pickup_dialogue_id: String = "F1PickupInteractableFirst"
 
 var is_open: bool = false
+var was_first_pickup: bool = false  # Track if this open was the first journal pickup
 var current_spread: int = 0
 var spreads: Array[Control] = []
 
@@ -28,11 +31,12 @@ var spreads: Array[Control] = []
 
 func _ready() -> void:
 	layer = 100
-	process_mode = Node.PROCESS_MODE_ALWAYS 
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 	background.modulate.a = 0.0
 	journal_container.modulate.a = 0.0
 
+	add_to_group("journal_ui")
 	_collect_spreads()
 	_setup_audio()
 	_show_spread(current_spread)
@@ -87,6 +91,12 @@ func _is_player_inspecting() -> bool:
 	return false
 
 
+func _set_player_enabled(enabled: bool) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player and "movement_enabled" in player:
+		player.movement_enabled = enabled
+
+
 func toggle_journal() -> void:
 	if is_open:
 		close_journal()
@@ -101,14 +111,21 @@ func open_journal() -> void:
 	is_open = true
 	visible = true
 
-	_play_sound(open_sound)
+	# Check if we need to play the journal pickup dialogue (first pickup)
+	var is_first_pickup = journal_pickup_dialogue_id and not GameState.has_dialogue_triggered(journal_pickup_dialogue_id)
+	was_first_pickup = is_first_pickup  # Remember for when journal closes
+
+	# Only play open sound if not first pickup (dialogue will play instead)
+	if not is_first_pickup:
+		_play_sound(open_sound)
 
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(background, "modulate:a", 0.7, fade_duration)
 	tween.tween_property(journal_container, "modulate:a", 1.0, fade_duration)
 
-	get_tree().paused = true
+	# Disable player movement instead of pausing (keeps audio playing)
+	_set_player_enabled(false)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	_on_first_open()
@@ -116,7 +133,11 @@ func open_journal() -> void:
 
 
 func _on_first_open() -> void:
-	if first_open_dialogue_id:
+	# Check if journal pickup dialogue needs to play (first time picking up journal)
+	if journal_pickup_dialogue_id and not GameState.has_dialogue_triggered(journal_pickup_dialogue_id):
+		DialogueManager.try_trigger_dialogue(journal_pickup_dialogue_id, journal_pickup_dialogue_id)
+	elif first_open_dialogue_id:
+		# Regular first open dialogue (subsequent opens)
 		DialogueManager.try_trigger_dialogue("journal_first_open", first_open_dialogue_id)
 
 
@@ -138,10 +159,35 @@ func _on_close_complete() -> void:
 	is_open = false
 	visible = false
 
-	get_tree().paused = false
+	# Re-enable player movement
+	_set_player_enabled(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+	# If this was the first pickup, trigger the "see interactable" dialogue and increase glow ranges
+	if was_first_pickup:
+		was_first_pickup = false
+		_on_first_pickup_close()
+
 	journal_closed.emit()
+
+
+func _on_first_pickup_close() -> void:
+	# Trigger the dialogue about seeing glowing interactables
+	if after_pickup_dialogue_id:
+		DialogueManager.try_trigger_dialogue(after_pickup_dialogue_id, after_pickup_dialogue_id)
+
+	# Increase teakettle glow range to make it more noticeable
+	_increase_interactable_glow_ranges()
+
+
+func _increase_interactable_glow_ranges() -> void:
+	# Find teakettle and increase its glow range
+	var teakettle = get_tree().get_first_node_in_group("teakettle")
+	if teakettle:
+		var glow = teakettle.get_node_or_null("GlowOutline") as GlowOutline
+		if glow:
+			glow.set_interaction_range(5.0)
+			print("JournalUI: Increased teakettle glow range to 5.0")
 
 
 func turn_page_left() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=4 uid="uid://cfhhmv35hymii"]
+[gd_scene load_steps=33 format=4 uid="uid://cfhhmv35hymii"]
 
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_wvo40"]
+[ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="6_glow"]
 [ext_resource type="Texture2D" uid="uid://dp2e35raowtf7" path="res://resource/Floor1/wizard_bust_fracture_wizard_bust_color_1k.webp" id="2_0ueb0"]
 [ext_resource type="Texture2D" uid="uid://diq7a7k33c4ar" path="res://resource/Floor1/wizard_bust_wizard_bust_color_1k.webp" id="2_1ytx6"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
@@ -484,6 +485,13 @@ script = ExtResource("1_wvo40")
 inspect_scale = 1.0
 item_name = "Wizard Bust"
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"
+
+[node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("6_glow")
+glow_color = Color(0.96, 0.66, 0.19, 1)
+interaction_range = 2.5
+target_node = NodePath("../wizard_bust_fractured/base/wizard_bust_cell1")
+requires_unlock = true
 
 [node name="complete_bust" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.1, 0)

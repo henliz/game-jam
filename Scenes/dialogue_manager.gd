@@ -20,6 +20,8 @@ var caption_ui: DialogueCaption
 
 
 func _ready() -> void:
+	# Allow dialogue to play even when game is paused (e.g., journal open)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	_setup_audio_player()
 	_load_dialogue_data()
 	_setup_caption_ui()
@@ -28,6 +30,7 @@ func _ready() -> void:
 func _setup_audio_player() -> void:
 	audio_player = AudioStreamPlayer.new()
 	audio_player.bus = "Dialogue"
+	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	audio_player.finished.connect(_on_audio_finished)
 	add_child(audio_player)
 

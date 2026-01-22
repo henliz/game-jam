@@ -435,5 +435,20 @@ texture = ExtResource("10_841k7")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Hint" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.8)
+theme_override_font_sizes/font_size = 14
+text = "Press J to close | Arrow keys to turn pages"
+horizontal_alignment = 1
+
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 bus = &"SFX"

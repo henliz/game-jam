@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=23 format=3 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
+[ext_resource type="Script" uid="uid://bgwnkwqtthnif" path="res://Scenes/distance_dialogue_trigger.gd" id="22_distrig"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="3_y8vtf"]
 [ext_resource type="ArrayMesh" uid="uid://hbqx0kjrwor6" path="res://resource/Floor1/f1_wall_window_right.res" id="4_jaypt"]
@@ -210,3 +211,10 @@ transform = Transform3D(0.86397606, 0, 0.50353265, 0, 1, 0, -0.50353265, 0, 0.86
 
 [node name="ART_F1_WizardJournal_Model2" parent="." instance=ExtResource("21_y8vtf")]
 transform = Transform3D(-0.9829546, 0, 0.18384837, 0, 1, 0, -0.18384837, 0, -0.9829546, -0.64779466, 0.6609968, -0.09370503)
+
+[node name="JournalDialogueTrigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.66, -0.09)
+script = ExtResource("22_distrig")
+trigger_id = "F1SeeInteractableFirst"
+dialogue_id = "F1SeeInteractableFirst"
+trigger_distance = 1.5

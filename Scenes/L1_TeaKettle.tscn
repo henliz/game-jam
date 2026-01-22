@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_kettle"]
 size = Vector3(0.25, 0.15, 0.15)
 
-[node name="L1_TeaKettle" type="StaticBody3D"]
+[node name="L1_TeaKettle" type="StaticBody3D" groups=["teakettle"]]
 script = ExtResource("1_interactable")
 inspect_scale = 1.5
 item_name = "Antique Tea Kettle"
@@ -31,3 +31,4 @@ script = ExtResource("4_glow")
 glow_color = Color(0.96, 0.66, 0.19, 1)
 interaction_range = 2.5
 target_node = NodePath("../teakettle_mesh")
+requires_unlock = true

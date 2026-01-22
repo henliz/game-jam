@@ -119,6 +119,12 @@ func _check_interactable():
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
 		if collider is Interactable:
+			# Check if this item requires unlock (has GlowOutline with requires_unlock)
+			var glow = collider.get_node_or_null("GlowOutline") as GlowOutline
+			if glow and glow.requires_unlock and not GameState.get_flag("puzzles_unlocked", false):
+				current_interactable = null
+				interact_prompt.visible = false
+				return
 			current_interactable = collider
 			interact_prompt.visible = not inspecting
 			return

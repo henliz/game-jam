@@ -6,7 +6,7 @@ signal closed
 signal cleaning_progress_updated(progress: float)
 signal item_cleaned(cleaned_item: Cleanable)
 
-const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
+const FIRST_INTERACT_DIALOGUE_ID := "F1FirstTimeCleaningDimension"
 
 @export_group("Cursor Settings")
 @export var cloth_cursor_texture: Texture2D = preload("res://resource/UI/cloth_cursor.png")
@@ -160,6 +160,9 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 
 	opened.emit(item)
 	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
+
+	# Restore teakettle glow range if it was increased for visibility
+	_restore_teakettle_glow_range(item)
 
 	cleanable = _find_cleanable(item)
 	if cleanable and not cleanable.is_complete:
@@ -612,3 +615,15 @@ func _on_cleaning_complete() -> void:
 func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)
 	progress_label.text = "Cleaning: %d%%" % percent
+
+
+func _restore_teakettle_glow_range(item: Node3D) -> void:
+	# Check if this item is the teakettle (in the teakettle group)
+	if not item.is_in_group("teakettle"):
+		return
+
+	var glow = item.get_node_or_null("GlowOutline") as GlowOutline
+	if glow and glow.interaction_range == 5.0:
+		# Restore to original value (matching the scene default of 2.5)
+		glow.set_interaction_range(2.5)
+		print("ItemInspector: Restored teakettle glow range to 2.5")

@@ -123,6 +123,9 @@ func _check_repair_complete() -> void:
 		repair_complete.emit()
 		print("RepairMode: Repair complete!")
 
+		# Trigger dialogue about the wizard having a bust of themselves
+		DialogueManager.try_trigger_dialogue("F1FixBust", "F1FixBust")
+
 		# Transition to cleaning mode
 		_start_cleaning_mode()
 
