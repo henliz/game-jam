@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxtus36upos50"]
+[gd_scene load_steps=14 format=3 uid="uid://dxtus36upos50"]
 
-[ext_resource type="Environment" uid="uid://l0t2otqt70qv" path="res://resource/Common/world_environment_floor4.tres" id="1_1lsd4"]
 [ext_resource type="PackedScene" uid="uid://diii2g3pq2fb0" path="res://resource/Floor4/Final/art_f_4_ceiling_final.tscn" id="1_pnfsh"]
 [ext_resource type="PackedScene" uid="uid://djme5pt2g8axp" path="res://resource/Floor4/Final/art_f_4_external_balcony_with_rail_final.tscn" id="2_y0qmr"]
 [ext_resource type="PackedScene" uid="uid://1y34pveo8jw5" path="res://resource/Floor4/Final/art_f_4_glass_door_final.tscn" id="3_7738j"]
@@ -130,6 +129,3 @@ shape = SubResource("ConcavePolygonShape3D_3riwv")
 [node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="Collision/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("ConcavePolygonShape3D_smtlh")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_1lsd4")

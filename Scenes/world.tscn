@@ -1,5 +1,4 @@
-[gd_scene load_steps=175 format=4 uid="uid://bm48vayfgjkp"]
-
+[gd_scene load_steps=176 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -32,14 +31,9 @@
 [ext_resource type="Texture2D" uid="uid://d1ytyn7xxw08j" path="res://resource/Puzzles/Level02/GlobeStand_GlobeStandRough.png" id="26_355yf"]
 [ext_resource type="Texture2D" uid="uid://dbfid4yko0ubb" path="res://resource/Puzzles/Level02/GlobeStand_GlobeStandNormal.png" id="27_4ke1i"]
 [ext_resource type="PackedScene" uid="uid://cfhhmv35hymii" path="res://Scenes/wizard_bust.tscn" id="28_1vso6"]
-[ext_resource type="PackedScene" uid="uid://dxtus36upos50" path="res://Scenes/Floor4.tscn" id="29_coyub"]
-[ext_resource type="PackedScene" uid="uid://dk3ac3f26vyt1" path="res://Scenes/Floor1.tscn" id="29_opbav"]
-[ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
-[ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
-[ext_resource type="Environment" uid="uid://l0t2otqt70qv" path="res://resource/Common/world_environment_floor4.tres" id="30_ochwf"]
-[ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
 [ext_resource type="Texture2D" uid="uid://b776ujt23hf3j" path="res://resource/Puzzles/Level02/GlobeMiddleRing_GlobeSphereBaseColor.png" id="28_p22x6"]
 [ext_resource type="Texture2D" uid="uid://qr5ewuo08y0o" path="res://resource/Puzzles/Level02/GlobeMiddleRing_GlobeRough.png" id="29_3p0mr"]
+[ext_resource type="PackedScene" uid="uid://dxtus36upos50" path="res://Scenes/Floor4.tscn" id="29_coyub"]
 [ext_resource type="PackedScene" uid="uid://dk3ac3f26vyt1" path="res://Scenes/Floor1.tscn" id="29_opbav"]
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
@@ -1239,6 +1233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0292838, 0.9894624, -24.142
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98480785, 0.03610349, -0.16985354, 0, 0.97814775, 0.20791169, 0.1736482, -0.20475309, 0.9632873, 0, 9.435643, -15.294653)
+visible = false
 shadow_enabled = true
 shadow_bias = 0.03
 directional_shadow_mode = 0
@@ -1414,11 +1409,11 @@ script = ExtResource("29_qebug")
 [node name="Floor1" parent="." instance=ExtResource("29_opbav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
 
-[node name="Floor4" parent="." instance=ExtResource("29_coyub")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-
 [node name="ART_GLOBAL_Stairs_Model" parent="Floor1" instance=ExtResource("50_0sgyr")]
 transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, -0.10921097, 0.018953323, -0.07377536)
+
+[node name="Floor4" parent="." instance=ExtResource("29_coyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("50_4ke1i")
