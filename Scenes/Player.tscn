@@ -49,6 +49,11 @@ fov = 85.0
 target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
+light_energy = 0.3
+spot_range = 3.0
+spot_angle = 60.0
+
 [node name="Workbench" parent="Head" instance=ExtResource("2_workbench")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.802909e-09, -1.6381445, -2.2757356)

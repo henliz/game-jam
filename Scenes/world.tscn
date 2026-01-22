@@ -1236,7 +1236,7 @@ visible = false
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -0.99989206, 40.40522, 0, -4.5120316)
+transform = Transform3D(-0.9982584, 0, -0.058992878, 0, 1, 0, 0.058992878, 0, -0.9982584, 39.850475, 0, -5.063959)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.408157, 0.22766972, -3.9865572)
