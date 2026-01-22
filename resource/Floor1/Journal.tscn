@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://clb2l0wtton5a"]
+
+[ext_resource type="PackedScene" uid="uid://bt6udvs0wh3qm" path="res://resource/Floor1/ART_F1_WizardJournal_Model.glb" id="1_oud75"]
+
+[node name="ART_F1_WizardJournal_Model2" instance=ExtResource("1_oud75")]

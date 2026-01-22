@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var workstation_animator: WorkstationAnimator = $Workbench/WorkstationAnimator
+@onready var workstation_animator: WorkstationAnimator = get_node_or_null("Workbench/WorkstationAnimator")
 @onready var player: CharacterBody3D = $Player
 
 var item_inspector: ItemInspector

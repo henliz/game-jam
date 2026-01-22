@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dikbfsb4farfj"]
+
+[ext_resource type="PackedScene" uid="uid://dddfhflyhs0t8" path="res://resource/Workstation/JarofLife.glb" id="1_x63e2"]
+
+[node name="JarofLife" instance=ExtResource("1_x63e2")]

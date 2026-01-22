@@ -19,6 +19,7 @@ signal repair_complete
 @onready var complete_bust: MeshInstance3D = $"../../WizardBust/complete_bust"
 
 @onready var wizard_bust_fractured: Node3D = $"../../WizardBust/wizard_bust_fractured"
+@onready var wizard_bust: Node3D = $"../../WizardBust"
 
 @onready var bust_click: AudioStreamPlayer3D = $"../../BustClick"
 
@@ -65,9 +66,10 @@ func _input(event):
 
 
 func _process(_delta):
-	# Track inspect state to show/hide repair UI
-	if player.inspecting and not is_complete:
-		if not repair_ui_shown and item_inspector:
+	# Track inspect state to show/hide repair UI (only for wizard bust)
+	var is_inspecting_bust = player.inspecting and item_inspector and item_inspector.inspected_node == wizard_bust
+	if is_inspecting_bust and not is_complete:
+		if not repair_ui_shown:
 			item_inspector.show_repair_ui()
 			repair_ui_shown = true
 	else:

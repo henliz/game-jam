@@ -54,11 +54,11 @@
 [ext_resource type="AudioStream" uid="uid://54y1x0aigpav" path="res://resource/Puzzles/Level04/sound/ring_piece_put_down.wav" id="45_3p0mr"]
 [ext_resource type="Texture2D" uid="uid://f1gj5as71rt6" path="res://resource/Puzzles/Level04/BrokenRings/SmallRingBroken_RingNormal.png" id="45_h2ogk"]
 [ext_resource type="Texture2D" uid="uid://vydgqf8phqbe" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingBaseColor.png" id="46_al65q"]
-[ext_resource type="Environment" uid="uid://b84788h52gshd" path="res://resource/Common/world_environment_dev.tres" id="47_svj78"]
 [ext_resource type="Texture2D" uid="uid://4nptgllnkcra" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingRough.png" id="47_xfvhd"]
 [ext_resource type="Texture2D" uid="uid://brac7st8mvs8q" path="res://resource/Puzzles/Level04/BrokenRings/MedRingBroken_RingNormal.png" id="48_6c0jt"]
 [ext_resource type="Texture2D" uid="uid://dvbl8vog4v5bk" path="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingBaseColor.png" id="49_74toi"]
 [ext_resource type="PackedScene" uid="uid://qmrs6usmtoo7" path="res://resource/Common/ART_GLOBAL_Stairs_Model.glb" id="50_0sgyr"]
+[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="50_4ke1i"]
 [ext_resource type="Texture2D" uid="uid://duqtggbud3d4s" path="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingRough.png" id="50_eea73"]
 [ext_resource type="Texture2D" uid="uid://cfdq0ke57834s" path="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingNormal.png" id="51_cwuo4"]
 [ext_resource type="PackedScene" uid="uid://nxydaixptac2" path="res://Scenes/L1_MagicBillyBass.tscn" id="51_uqdn7"]
@@ -1408,7 +1408,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03
 transform = Transform3D(0.75009954, 0, 0.661325, 0, 1, 0, -0.661325, 0, 0.75009954, -0.10921097, 0.018953323, -0.07377536)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("47_svj78")
+environment = ExtResource("50_4ke1i")
 
 [node name="Floor1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("57_music")
@@ -1419,6 +1419,7 @@ bus = &"Music"
 [node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
 transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.927383, 1.0805786, -0.5145346)
 inspect_scale = 2.0
+inspect_offset = Vector3(0, 0.25, 0)
 
 [node name="Node" type="Node" parent="."]
 
@@ -1432,6 +1433,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.456554, -0.00999999, -0.62
 [node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
 transform = Transform3D(-0.89365363, 0, 0.4487575, 0, 1, 0, -0.44875753, 0, -0.8936536, 37.607212, 1.7648034, 4.334488)
 inspect_scale = 1.5
+inspect_offset = Vector3(0, 0.15, 0)
 item_name = "Item"
 
 [node name="FinalPuzzle" type="Node3D" parent="." node_paths=PackedStringArray("puzzle_camera")]

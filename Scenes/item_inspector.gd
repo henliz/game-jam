@@ -583,6 +583,7 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 
 func show_repair_ui() -> void:
 	repair_ui.visible = true
+	cleaning_ui.visible = false  # Hide cleaning UI when showing repair UI
 
 
 func hide_repair_ui() -> void:
