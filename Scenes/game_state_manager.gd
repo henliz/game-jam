@@ -2,6 +2,7 @@ extends Node
 
 signal state_changed(key: String, value: Variant)
 signal game_loaded
+signal unlock_blueprint
 
 const SAVE_PATH := "user://savegame.json"
 
@@ -123,6 +124,7 @@ func is_item_cleaned(item_id: String) -> bool:
 func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 	state.cleaned_items[item_id] = cleaned
 	state_changed.emit("cleaned_items", state.cleaned_items)
+	if cleaned: unlock_blueprint.emit()
 	
 	# Check if we should unlock a diary page
 	_check_floor_progress()

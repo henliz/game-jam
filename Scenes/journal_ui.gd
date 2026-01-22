@@ -23,6 +23,21 @@ signal page_changed(spread_index: int)
 @export_group("Notification")
 @export var notification_icon_texture: Texture2D
 
+@export_group("Blueprints")
+@export var blueprints_1 : Resource
+@export var blueprints_2 : Resource
+@export var blueprints_3 : Resource
+@export var blueprints_4 : Resource
+@export var blueprints_5 : Resource
+@export var blueprints_6 : Resource
+@export var blueprints_7 : Resource
+@export var blueprints_8 : Resource
+@export var blueprints_9 : Resource
+
+@onready var blueprints: TextureRect = $JournalContainer/Spread1_Blueprint/Blueprints
+var curr_blueprint : int = 0
+var blueprint_list = []
+
 var is_open: bool = false
 var was_first_pickup: bool = false  # Track if this open was the first journal pickup
 var current_spread: int = 0
@@ -42,6 +57,7 @@ func _ready() -> void:
 	visible = false
 	background.modulate.a = 0.0
 	journal_container.modulate.a = 0.0
+	blueprint_list = [blueprints_1,blueprints_2,blueprints_3,blueprints_4,blueprints_5,blueprints_6,blueprints_7,blueprints_8,blueprints_9]
 
 	add_to_group("journal_ui")
 	_collect_spreads()
@@ -50,7 +66,14 @@ func _ready() -> void:
 	_show_spread(current_spread)
 	_update_page_visibility()  # Set initial page states
 	game_state.state_changed.connect(_on_game_state_changed)
+	game_state.unlock_blueprint.connect(_increment_blueprint_page)
 
+
+func _increment_blueprint_page():
+	if curr_blueprint>=8: return
+	print("increment blueprint")
+	blueprints.texture = blueprint_list[curr_blueprint]
+	curr_blueprint = curr_blueprint+1
 
 func _collect_spreads() -> void:
 	spreads.clear()
@@ -310,8 +333,8 @@ func _increase_interactable_glow_ranges() -> void:
 	if teakettle:
 		var glow = teakettle.get_node_or_null("GlowOutline") as GlowOutline
 		if glow:
-			glow.set_interaction_range(5.0)
-			print("JournalUI: Increased teakettle glow range to 5.0")
+			glow.set_interaction_range(3.0)
+			print("JournalUI: Increased teakettle glow range to 3.0")
 
 
 func turn_page_left() -> void:

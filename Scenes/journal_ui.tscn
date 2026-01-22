@@ -1,17 +1,27 @@
-[gd_scene load_steps=28 format=3 uid="uid://c4j8kqm2xnl6y"]
+[gd_scene load_steps=36 format=3 uid="uid://c4j8kqm2xnl6y"]
 
 [ext_resource type="Script" uid="uid://ofvrq76xctpi" path="res://Scenes/journal_ui.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://ufr3pmkvu3wm" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_01_BlankPages_B_Blueprint.png" id="2_j134b"]
+[ext_resource type="Texture2D" uid="uid://do047t57kmwka" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_01_BlankPage_REVISED.png" id="2_c76m7"]
+[ext_resource type="Texture2D" uid="uid://ckg155s0layy" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_02_Blueprint_BaseText.png" id="3_4b5mq"]
+[ext_resource type="Texture2D" uid="uid://chmtraov348pu" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_05_2of9_Pieces.png" id="3_dxkjp"]
 [ext_resource type="Texture2D" uid="uid://ba5wmplju6r2f" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_BlankPages_F1_Day1-2.png" id="4_e5wfp"]
+[ext_resource type="Texture2D" uid="uid://dehck6uor7ydc" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_06_3of9_Pieces.png" id="4_kxh4x"]
+[ext_resource type="Texture2D" uid="uid://gkwcfgxgbg57" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_03_0of9_Pieces_BlackRaysOnly.png" id="4_roaqt"]
+[ext_resource type="Texture2D" uid="uid://cwh8no6676ox6" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_07_4of9_Pieces.png" id="5_3b6ed"]
+[ext_resource type="Texture2D" uid="uid://nt07l48yvpcj" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_04_1of9_Pieces.png" id="5_4b5mq"]
 [ext_resource type="Texture2D" uid="uid://bptsku1av3nmd" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day01Entry_LOCKED.png" id="5_e5wfp"]
 [ext_resource type="Texture2D" uid="uid://242egcq44qil" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day02Entry_LOCKED.png" id="5_fcyhq"]
-[ext_resource type="FontFile" uid="uid://cd7svr48oipc8" path="res://resource/Fonts/Angelic.ttf" id="6_angelic"]
+[ext_resource type="Texture2D" uid="uid://c7vrwkuda18e3" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_08_5of9_Pieces.png" id="6_mtdoa"]
 [ext_resource type="Texture2D" uid="uid://cw3hmtkbfd48l" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day01Entry.png" id="7_hxka7"]
 [ext_resource type="Texture2D" uid="uid://5kl0riwgatu2" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Doodles&RedText.png" id="7_qrgs8"]
+[ext_resource type="Texture2D" uid="uid://p0vxhr6ftetg" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_09_6of9_Pieces.png" id="7_wkkui"]
 [ext_resource type="Texture2D" uid="uid://cc6vxjrgrjuig" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_BlankPages_F2_Day3-4.png" id="8_b22iw"]
+[ext_resource type="Texture2D" uid="uid://cnus0munvsbqj" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_10_7of9_Pieces.png" id="8_yim21"]
 [ext_resource type="Texture2D" uid="uid://cj1njw7twbyn8" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Doodles&RedText.png" id="9_3ml8e"]
 [ext_resource type="Texture2D" uid="uid://b0vmjk8batjmi" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_02_Day02Entry.png" id="9_25oep"]
+[ext_resource type="Texture2D" uid="uid://b822tfcuwj6pc" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_11_8of9_Pieces.png" id="9_v3wyj"]
 [ext_resource type="Texture2D" uid="uid://bdhwtpt1lcuw" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Day03Entry_LOCKED.png" id="10_841k7"]
+[ext_resource type="Texture2D" uid="uid://c2em3uv0hkmnp" path="res://resource/UI/Journal/Blueprint/ART_UI_JOURNAL_Spread_01_12_9of9_Pieces.png" id="10_mqnl7"]
 [ext_resource type="Texture2D" uid="uid://ceinylcm37nfg" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_03_Day04Entry_LOCKED.png" id="11_hox76"]
 [ext_resource type="Texture2D" uid="uid://c4xi7b8lcb41w" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_BlankPages_F3_Day5-6.png" id="12_al6xp"]
 [ext_resource type="Texture2D" uid="uid://bx3slg54yp0g7" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_04_Doodles&RedText.png" id="13_0axce"]
@@ -26,19 +36,18 @@
 [ext_resource type="Texture2D" uid="uid://di854wuel2qdf" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_06_BlankPages_F5_Day9-Credits.png" id="20_lvuvc"]
 [ext_resource type="Texture2D" uid="uid://i8rdjg5ksyfs" path="res://resource/UI/Journal/ART_UI_JOURNAL_Spread_06_Doodles&RedText.png" id="21_lvuvc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_locked_title"]
-font = ExtResource("6_angelic")
-font_size = 28
-font_color = Color(0.3, 0.3, 0.35, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_locked"]
-font = ExtResource("6_angelic")
-font_size = 24
-font_color = Color(0.3, 0.3, 0.35, 1)
-
 [node name="JournalUI" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_script")
+blueprints_1 = ExtResource("5_4b5mq")
+blueprints_2 = ExtResource("3_dxkjp")
+blueprints_3 = ExtResource("4_kxh4x")
+blueprints_4 = ExtResource("5_3b6ed")
+blueprints_5 = ExtResource("6_mtdoa")
+blueprints_6 = ExtResource("7_wkkui")
+blueprints_7 = ExtResource("8_yim21")
+blueprints_8 = ExtResource("9_v3wyj")
+blueprints_9 = ExtResource("10_mqnl7")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -71,67 +80,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_j134b")
+texture = ExtResource("2_c76m7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LeftPage" type="Control" parent="JournalContainer/Spread1_Blueprint"]
-layout_mode = 1
-anchor_left = 0.08
-anchor_top = 0.1
-anchor_right = 0.47
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UnlockedText" type="Control" parent="JournalContainer/Spread1_Blueprint/LeftPage"]
+[node name="SpreadTexture2" type="TextureRect" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_4b5mq")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="LockedText" type="Control" parent="JournalContainer/Spread1_Blueprint/LeftPage"]
-visible = false
+[node name="BlueprintBase" type="TextureRect" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_roaqt")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Title" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/LockedText"]
+[node name="Blueprints" type="TextureRect" parent="JournalContainer/Spread1_Blueprint"]
 layout_mode = 1
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 350.0
-offset_bottom = 60.0
-text = "Day 1:"
-label_settings = SubResource("LabelSettings_locked_title")
-
-[node name="Body" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/LockedText"]
-layout_mode = 1
-offset_left = 20.0
-offset_top = 50.0
-offset_right = 380.0
-offset_bottom = 500.0
-text = "I always forget how strange it is to write in a new journal, the spines on these are always so bloody stiff... Not to mention transcribing all of the important bits over... Those loops are so fiddly to get right that I can feel a headache starting. But I can't be making mistakes like I did with the incantation the last time. Took me ages to calm everything down again.
-
-No letters again today. I'm starting to wonder if my last batch made it out successfully. The blasted lizards down the coast seem to have gotten a taste for the delivery birds again. Cornelius will certainly be insufferable about \"feeding the local wildlife\" if he finds out that's why I never responded to his letter."
-label_settings = SubResource("LabelSettings_locked")
-autowrap_mode = 2
-
-[node name="Note" type="Label" parent="JournalContainer/Spread1_Blueprint/LeftPage/LockedText"]
-layout_mode = 1
-offset_left = 80.0
-offset_top = 480.0
-offset_right = 380.0
-offset_bottom = 580.0
-text = "NOTE: Remember to transcribe the updated alchemical formulas!"
-label_settings = SubResource("LabelSettings_locked")
-horizontal_alignment = 1
-autowrap_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Spread2_Diary1" type="Control" parent="JournalContainer"]
 visible = false
