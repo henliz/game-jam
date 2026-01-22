@@ -153,7 +153,7 @@ func _build_uv_coverage_mask() -> void:
 			continue
 
 		# Rasterize each triangle into the coverage mask
-		var tri_count = indices.size() / 3 if indices.size() > 0 else uv_array.size() / 3
+		var tri_count = indices.size() / 3.0 if indices.size() > 0 else uv_array.size() / 3.0
 		for tri in range(tri_count):
 			var i0: int
 			var i1: int
@@ -241,7 +241,6 @@ func clean_at_uv(uv: Vector2) -> void:
 		cleaning_complete.emit()
 		dirt_mesh.queue_free()
 		DialogueManager.try_trigger_dialogue("item_first_clean", FIRST_CLEAN_DIALOGUE_ID)
-		GameState.set_item_cleaned(item_id)
 
 func _point_in_triangle(p: Vector2, a: Vector2, b: Vector2, c: Vector2) -> bool:
 	var d1 = _sign(p, a, b)
@@ -299,4 +298,5 @@ func _resolve_item_id() -> void:
 func mark_cleaned_in_save() -> void:
 	if item_id:
 		GameState.set_item_cleaned(item_id, true)
+		
 		GameState.save_game()

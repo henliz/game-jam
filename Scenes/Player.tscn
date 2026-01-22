@@ -50,7 +50,7 @@ target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
-light_energy = 0.3
+light_energy = 0.5
 spot_range = 3.0
 spot_angle = 60.0
 
