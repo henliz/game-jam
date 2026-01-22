@@ -71,10 +71,12 @@ func _process(_delta):
 	if is_inspecting_bust and not is_complete:
 		if not repair_ui_shown:
 			item_inspector.show_repair_ui()
+			item_inspector.rotation_enabled = false  # Disable rotation during repair
 			repair_ui_shown = true
 	else:
 		if repair_ui_shown and item_inspector:
 			item_inspector.hide_repair_ui()
+			item_inspector.rotation_enabled = true  # Re-enable rotation
 			repair_ui_shown = false
 
 	if !player.inspecting: return
@@ -114,6 +116,7 @@ func _check_repair_complete() -> void:
 		# Hide repair UI now that repair is complete
 		if item_inspector:
 			item_inspector.hide_repair_ui()
+			item_inspector.rotation_enabled = true  # Re-enable rotation for cleaning
 			repair_ui_shown = false
 
 		for node in wizard_bust_fractured.get_children():

@@ -12,5 +12,5 @@ item_name = "Wizard's Journal"
 pickup_sound = ExtResource("3_pickup_sound")
 open_journal_after = true
 unlock_puzzles = true
-interaction_range = 1.5
+interaction_range = 3.0
 target_node = NodePath("..")

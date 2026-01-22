@@ -1239,7 +1239,7 @@ shadow_enabled = true
 transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -0.99989206, 40.40522, 0, -4.5120316)
 
 [node name="SpherePuzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.506245, 0.80000025, -3.9865572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.408157, 0.22766972, -3.9865572)
 script = ExtResource("8_k7acu")
 
 [node name="Plate1" type="StaticBody3D" parent="SpherePuzzle" groups=["puzzleplate"]]

@@ -40,6 +40,7 @@ var placement_node: Node3D  # Workbench item placement position
 var is_active: bool = false
 var is_dragging: bool = false
 var is_cleaning: bool = false
+var rotation_enabled: bool = true  # Can be disabled during repair minigames
 var rotation_sensitivity: float = 0.005
 
 var target_transform: Transform3D
@@ -285,7 +286,7 @@ func _input(event):
 				_try_clean_at_mouse()
 
 	if event is InputEventMouseMotion:
-		if is_dragging:
+		if is_dragging and rotation_enabled:
 			# Rotate around camera axes instead of local axes
 			# This ensures drag-up always tilts away from camera regardless of item orientation
 			var cam_right = camera.global_transform.basis.x
