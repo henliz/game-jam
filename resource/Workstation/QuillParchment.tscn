@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0hdn5chjhqne"]
+
+[ext_resource type="PackedScene" uid="uid://bg4i2o5dev7nu" path="res://resource/Workstation/QuillParchment.glb" id="1_sb8rx"]
+
+[node name="QuillParchment" instance=ExtResource("1_sb8rx")]

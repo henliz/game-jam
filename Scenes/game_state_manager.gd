@@ -2,6 +2,7 @@ extends Node
 
 signal state_changed(key: String, value: Variant)
 signal game_loaded
+signal unlock_blueprint
 
 const SAVE_PATH := "user://savegame.json"
 
@@ -44,7 +45,6 @@ var _default_state: Dictionary = {
 	"triggered_dialogues": {},
 }
 
-
 func _ready() -> void:
 	reset_to_default()
 
@@ -57,18 +57,6 @@ func reset_to_default() -> void:
 
 func get_value(key: String, default: Variant = null) -> Variant:
 	return state.get(key, default)
-
-
-func get_puzzle(puzzle_id: String) -> Dictionary:
-	return state.puzzles.get(puzzle_id, {"cleaned": false, "repaired": false})
-
-
-func is_puzzle_cleaned(puzzle_id: String) -> bool:
-	return get_puzzle(puzzle_id).get("cleaned", false)
-
-
-func is_puzzle_repaired(puzzle_id: String) -> bool:
-	return get_puzzle(puzzle_id).get("repaired", false)
 
 
 func is_floor_unlocked(floor_num: int) -> bool:
@@ -89,20 +77,28 @@ func set_value(key: String, value: Variant) -> void:
 	state[key] = value
 	state_changed.emit(key, value)
 
+func _check_floor_progress() -> void:
+	print("=== CHECK FLOOR PROGRESS ===")
 
-func set_puzzle_cleaned(puzzle_id: String, cleaned: bool = true) -> void:
-	if puzzle_id not in state.puzzles:
-		state.puzzles[puzzle_id] = {"cleaned": false, "repaired": false}
-	state.puzzles[puzzle_id].cleaned = cleaned
-	state_changed.emit("puzzles", state.puzzles)
+	# Count how many items are cleaned
+	var items_cleaned = state.cleaned_items.size()
+	print("Total items cleaned: ", items_cleaned)
 
+	# Unlock diary pages in order - queue them through journal UI
+	var diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
+	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
 
-func set_puzzle_repaired(puzzle_id: String, repaired: bool = true) -> void:
-	if puzzle_id not in state.puzzles:
-		state.puzzles[puzzle_id] = {"cleaned": false, "repaired": false}
-	state.puzzles[puzzle_id].repaired = repaired
-	state_changed.emit("puzzles", state.puzzles)
-
+	for i in range(items_cleaned):
+		if i >= diary_pages.size():
+			break
+		var diary_id = diary_pages[i]
+		print("Checking diary ", diary_id)
+		if not has_dialogue_triggered(diary_id):
+			print("QUEUEING: ", diary_id)
+			if journal_ui:
+				journal_ui.queue_diary_dialogue(diary_id)
+			else:
+				push_warning("GameState: No journal_ui found to queue diary dialogue")
 
 func unlock_floor(floor_num: int) -> void:
 	if floor_num not in state.unlocked_floors:
@@ -125,10 +121,13 @@ func set_flag(flag_name: String, value: Variant = true) -> void:
 func is_item_cleaned(item_id: String) -> bool:
 	return state.cleaned_items.get(item_id, false)
 
-
 func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 	state.cleaned_items[item_id] = cleaned
 	state_changed.emit("cleaned_items", state.cleaned_items)
+	if cleaned: unlock_blueprint.emit()
+	
+	# Check if we should unlock a diary page
+	_check_floor_progress()
 
 
 # --- Dialogue Triggers ---

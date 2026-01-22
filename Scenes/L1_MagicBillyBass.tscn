@@ -24,9 +24,11 @@ shape = SubResource("BoxShape3D_bass")
 script = ExtResource("3_cleanable")
 brush_size = 48.0
 brush_softness = 0.6
+force_overlay_visibility = true
 
 [node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
 script = ExtResource("4_glow")
 glow_color = Color(0.96, 0.66, 0.19, 1)
-interaction_range = 2.5
+interaction_range = 4.0
 target_node = NodePath("../billybass_mesh")
+requires_unlock = true

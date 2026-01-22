@@ -10,6 +10,8 @@ var caption_visible: bool = false
 
 
 func _ready() -> void:
+	# Allow captions to display even when game is paused (e.g., journal open)
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	container.modulate.a = 0.0
 	container.visible = false
 

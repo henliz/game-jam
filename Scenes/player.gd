@@ -43,6 +43,10 @@ var level_map_node: Node3D = null
 signal rotate_plate(direction,plate)
 signal rotate_pipe(direction,pipe)
 
+var finalpuzzle_is_active = false
+signal finalpuzzle_camera_trigger
+var collider_is_finalpuzzle = false
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	last_floor = is_on_floor()
@@ -52,7 +56,7 @@ func _ready() -> void:
 	call_deferred("_find_level_map")
 
 func _unhandled_input(event):
-	if inspecting:
+	if inspecting or finalpuzzle_is_active:
 		return
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * SENSITIVITY)
@@ -60,6 +64,7 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(75))
 		
 func _physics_process(delta: float) -> void:
+	if finalpuzzle_is_active: return
 	_check_interactable()
 	_handle_interaction()
 
@@ -114,12 +119,22 @@ func _check_interactable():
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
 		if collider is Interactable:
+			# Check if this item requires unlock (has GlowOutline with requires_unlock)
+			var glow = collider.get_node_or_null("GlowOutline") as GlowOutline
+			if glow and glow.requires_unlock and not GameState.get_flag("puzzles_unlocked", false):
+				current_interactable = null
+				interact_prompt.visible = false
+				return
 			current_interactable = collider
 			interact_prompt.visible = not inspecting
 			return
 		if collider and (collider.is_in_group("puzzleplate") or collider.is_in_group("puzzlepipe")):
 			current_rotatable = collider
 			rotate_prompt.visible = true
+			return
+		if collider and collider.is_in_group("finalpuzzle"):
+			collider_is_finalpuzzle = true
+			interact_prompt.visible = true
 			return
 	current_interactable = null
 	interact_prompt.visible = false
@@ -142,6 +157,10 @@ func _handle_interaction():
 				rotate_pipe.emit("left",current_rotatable)
 			if Input.is_action_just_pressed("rotate_right"):
 				rotate_pipe.emit("right",current_rotatable)
+	if Input.is_action_just_pressed("interact") and collider_is_finalpuzzle:
+		finalpuzzle_camera_trigger.emit()
+		finalpuzzle_is_active = true
+		interact_prompt.visible = false
 		
 func _start_inspection(item: Interactable):
 	inspecting = true
@@ -185,3 +204,8 @@ func _find_level_map() -> void:
 		var node = world.find_child(node_name, false, false) as Node3D
 		if node:
 			workbench_animator.add_level_node(node)
+
+func _on_finalpuzzle_closed() -> void:
+	camera.current=true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	finalpuzzle_is_active = false

@@ -6,7 +6,7 @@ signal closed
 signal cleaning_progress_updated(progress: float)
 signal item_cleaned(cleaned_item: Cleanable)
 
-const FIRST_INTERACT_DIALOGUE_ID := "item_first_interact"
+const FIRST_INTERACT_DIALOGUE_ID := "F1FirstTimeCleaningDimension"
 
 @export_group("Cursor Settings")
 @export var cloth_cursor_texture: Texture2D = preload("res://resource/UI/cloth_cursor.png")
@@ -25,6 +25,7 @@ var success_audio_player: AudioStreamPlayer
 @onready var cleaning_ui: Control = $CleaningUI
 @onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
 @onready var progress_label: Label = $CleaningUI/ProgressContainer/Label
+@onready var repair_ui: Control = $RepairUI
 
 var cursor_sprite: TextureRect
 var current_cursor_mode: int = 0  # 0=cloth, 1=cleaning, 2=grab
@@ -39,6 +40,7 @@ var placement_node: Node3D  # Workbench item placement position
 var is_active: bool = false
 var is_dragging: bool = false
 var is_cleaning: bool = false
+var rotation_enabled: bool = true  # Can be disabled during repair minigames
 var rotation_sensitivity: float = 0.005
 
 var target_transform: Transform3D
@@ -50,6 +52,7 @@ var animating_out: bool = false
 func _ready():
 	visible = false
 	cleaning_ui.visible = false
+	repair_ui.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_setup_cursor()
 	_setup_audio()
@@ -157,7 +160,14 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 	_set_collision_enabled(item, false)
 
 	opened.emit(item)
-	DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
+
+	# Delay dialogue to let workbench animation complete
+	get_tree().create_timer(1.5).timeout.connect(
+		func(): DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
+	)
+
+	# Restore teakettle glow range if it was increased for visibility
+	_restore_teakettle_glow_range(item)
 
 	cleanable = _find_cleanable(item)
 	if cleanable and not cleanable.is_complete:
@@ -280,7 +290,7 @@ func _input(event):
 				_try_clean_at_mouse()
 
 	if event is InputEventMouseMotion:
-		if is_dragging:
+		if is_dragging and rotation_enabled:
 			# Rotate around camera axes instead of local axes
 			# This ensures drag-up always tilts away from camera regardless of item orientation
 			var cam_right = camera.global_transform.basis.x
@@ -328,13 +338,12 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var indices = arrays[Mesh.ARRAY_INDEX]
 
-		var uv2_array: PackedVector2Array
-		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
-		if uv2_array.is_empty() and arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV]
+		# Use UV1 (primary texture coordinates) to match the dirt shader
+		var uv_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv_array = arrays[Mesh.ARRAY_TEX_UV]
 
-		if vertices.is_empty() or uv2_array.is_empty():
+		if vertices.is_empty() or uv_array.is_empty():
 			continue
 
 		var tri_count = indices.size() / 3.0 if indices.size() > 0 else vertices.size() / 3.0
@@ -363,9 +372,9 @@ func _raycast_mesh_for_uv(ray_origin: Vector3, ray_dir: Vector3) -> Vector2:
 				var u = result.y
 				var v = result.z
 				var w = 1.0 - u - v
-				var uv0 = uv2_array[i0]
-				var uv1 = uv2_array[i1]
-				var uv2_coord = uv2_array[i2]
+				var uv0 = uv_array[i0]
+				var uv1 = uv_array[i1]
+				var uv2_coord = uv_array[i2]
 				best_uv = uv0 * w + uv1 * u + uv2_coord * v
 				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
 
@@ -424,19 +433,13 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var indices = arrays[Mesh.ARRAY_INDEX]
 
-		# Check if UV2 exists in arrays
-		var uv2_array: PackedVector2Array
-		if arrays.size() > Mesh.ARRAY_TEX_UV2 and arrays[Mesh.ARRAY_TEX_UV2] != null:
-			uv2_array = arrays[Mesh.ARRAY_TEX_UV2]
+		# Use UV1 (primary texture coordinates) to match the dirt shader
+		var uv_array: PackedVector2Array
+		if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
+			uv_array = arrays[Mesh.ARRAY_TEX_UV]
 
-		# Fall back to UV1 if no UV2
-		if uv2_array.is_empty():
-			if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null:
-				uv2_array = arrays[Mesh.ARRAY_TEX_UV]
-				print("UV lookup: Using UV1 fallback for surface ", surface_idx)
-
-		if vertices.is_empty() or uv2_array.is_empty():
-			print("UV lookup: Surface ", surface_idx, " missing data - verts:", vertices.size(), " uvs:", uv2_array.size())
+		if vertices.is_empty() or uv_array.is_empty():
+			print("UV lookup: Surface ", surface_idx, " missing data - verts:", vertices.size(), " uvs:", uv_array.size())
 			continue
 
 		# Check each triangle - find the closest one by actual distance to triangle
@@ -466,9 +469,9 @@ func _get_uv_at_point(point: Vector3, _normal: Vector3) -> Vector2:
 				best_dist = dist
 				# Calculate barycentric coords for the closest point to interpolate UVs
 				var bary = _get_barycentric(closest, v0, v1, v2)
-				var uv0 = uv2_array[i0]
-				var uv1 = uv2_array[i1]
-				var uv2_coord = uv2_array[i2]
+				var uv0 = uv_array[i0]
+				var uv1 = uv_array[i1]
+				var uv2_coord = uv_array[i2]
 				best_uv = uv0 * bary.x + uv1 * bary.y + uv2_coord * bary.z
 				best_uv = best_uv.clamp(Vector2.ZERO, Vector2.ONE)
 
@@ -569,6 +572,9 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 		if cleanable.cleaning_complete.is_connected(_on_cleaning_complete):
 			cleanable.cleaning_complete.disconnect(_on_cleaning_complete)
 
+	# Hide repair UI when switching to cleaning
+	repair_ui.visible = false
+
 	cleanable = new_cleanable
 	if cleanable and not cleanable.is_complete:
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
@@ -581,6 +587,15 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 	else:
 		cleaning_ui.visible = false
 		_update_cursor_from_state()
+
+
+func show_repair_ui() -> void:
+	repair_ui.visible = true
+	cleaning_ui.visible = false  # Hide cleaning UI when showing repair UI
+
+
+func hide_repair_ui() -> void:
+	repair_ui.visible = false
 
 
 func _set_collision_enabled(node: Node, enabled: bool) -> void:
@@ -605,3 +620,15 @@ func _on_cleaning_complete() -> void:
 func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)
 	progress_label.text = "Cleaning: %d%%" % percent
+
+
+func _restore_teakettle_glow_range(item: Node3D) -> void:
+	# Check if this item is the teakettle (in the teakettle group)
+	if not item.is_in_group("teakettle"):
+		return
+
+	var glow = item.get_node_or_null("GlowOutline") as GlowOutline
+	if glow and glow.interaction_range == 5.0:
+		# Restore to original value (matching the scene default of 2.5)
+		glow.set_interaction_range(2.5)
+		print("ItemInspector: Restored teakettle glow range to 2.5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlviucu8j0qkg"]
+[gd_scene load_steps=17 format=3 uid="uid://dlviucu8j0qkg"]
 
 [ext_resource type="Script" uid="uid://dy6xo6jisemoo" path="res://Scenes/workstation_animator.gd" id="1_6xin0"]
 [ext_resource type="AudioStream" uid="uid://vjo07661ngm4" path="res://Audio/SFX/Workbench/WorkbenchFall1.wav" id="2_0sjcb"]
@@ -9,10 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://ed77x3hrdkef" path="res://resource/Workstation/Rug.glb" id="6_uoqj5"]
 [ext_resource type="PackedScene" uid="uid://dlgm8tlwyw4m7" path="res://resource/Workstation/SmallTable.glb" id="7_tq8x7"]
 [ext_resource type="PackedScene" uid="uid://ckofdqtbwnsb0" path="res://resource/Workstation/Wall with Shelves.glb" id="8_n65fo"]
+[ext_resource type="PackedScene" uid="uid://b0hdn5chjhqne" path="res://resource/Workstation/QuillParchment.tscn" id="8_owai1"]
 [ext_resource type="PackedScene" uid="uid://1ce4n0ufts26" path="res://resource/Workstation/Normal Wall.glb" id="9_6pe0o"]
+[ext_resource type="PackedScene" uid="uid://dikbfsb4farfj" path="res://resource/Workstation/JarOfLife.tscn" id="10_32e06"]
 [ext_resource type="PackedScene" uid="uid://d1mc37c78aiy7" path="res://resource/Workstation/Candle.glb" id="10_v6ad7"]
 [ext_resource type="PackedScene" uid="uid://dgj4crcgiyemb" path="res://resource/Workstation/Skull Candle.glb" id="11_7k7rp"]
-[ext_resource type="PackedScene" uid="uid://beapdo4qi7ttl" path="res://resource/Workstation/Mineral.glb" id="12_xf120"]
+[ext_resource type="PackedScene" uid="uid://dv4xjcmp3oun0" path="res://resource/Workstation/Mineral.tscn" id="13_0sjcb"]
+[ext_resource type="PackedScene" uid="uid://5o6b58fvcudc" path="res://resource/Workstation/PotPlant.tscn" id="13_hjmoo"]
 
 [node name="Workbench" type="Node3D"]
 
@@ -21,13 +24,13 @@ script = ExtResource("1_6xin0")
 walls_node = NodePath("../Walls")
 rug_node = NodePath("../Rug")
 table_node = NodePath("../Table")
-props = [NodePath("../Candle"), NodePath("../SkullCandle"), NodePath("../Mineral")]
+props = [NodePath("../Candle"), NodePath("../SkullCandle"), null]
 item_placement = NodePath("../ItemPlacement")
 fall_sounds = Array[AudioStream]([ExtResource("2_0sjcb"), ExtResource("3_32e06")])
 rise_sounds = Array[AudioStream]([ExtResource("4_owai1"), ExtResource("5_hjmoo")])
 
 [node name="ItemPlacement" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Rug" parent="." instance=ExtResource("6_uoqj5")]
 transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 0, 0, -0.13996392)
@@ -35,16 +38,28 @@ transform = Transform3D(1, 0, 0, 0, 0.8534421, 0, 0, 0, 1.3741716, 0, 0, -0.1399
 [node name="Table" parent="." instance=ExtResource("7_tq8x7")]
 transform = Transform3D(1.1255457, 0, 0, 0, 1.3026733, 0, 0, 0, 1.5312492, 0, 0, 0)
 
+[node name="QuillParchment" parent="Table" instance=ExtResource("8_owai1")]
+transform = Transform3D(-0.2484079, 0, 0.85302454, 0, 0.76765203, 0, -0.6270163, 0, -0.18259239, -0.28663316, 0.86294746, 0.68125284)
+
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="ShelvedWall_01" parent="Walls" instance=ExtResource("8_n65fo")]
 transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, 0)
 
+[node name="Mineral" parent="Walls/ShelvedWall_01" instance=ExtResource("13_0sjcb")]
+transform = Transform3D(-5.828185e-08, 0, 1.3333334, 0, 1.3333334, 0, -1.3333334, 0, -5.828185e-08, -0.035797786, 2.6853673, -1.6679366)
+
 [node name="NormalWall_01" parent="Walls" instance=ExtResource("9_6pe0o")]
 transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, -1.5)
 
+[node name="JarofLife" parent="Walls/NormalWall_01" instance=ExtResource("10_32e06")]
+transform = Transform3D(-5.828185e-08, 0, 1.3333334, 0, 1.3333334, 0, -1.3333334, 0, -5.828185e-08, 0.4014387, 3.781329, -1.718174)
+
 [node name="NormalWall_02" parent="Walls" instance=ExtResource("9_6pe0o")]
 transform = Transform3D(-3.278354e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.278354e-08, -0.35, 0, 1.5)
+
+[node name="PotPlant" parent="Walls/NormalWall_02" instance=ExtResource("13_hjmoo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.70466113, 3.72908, -1.6030209)
 
 [node name="Candle" parent="." instance=ExtResource("10_v6ad7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.1, -0.85)
@@ -55,8 +70,12 @@ light_color = Color(0.7852611, 0.62284654, 0.18245322, 1)
 light_size = 0.01
 script = ExtResource("2_flicker")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Candle/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0045326, 1.318726, 0.7351925)
+light_color = Color(0.8564478, 0.4783504, 0.87970936, 1)
+light_energy = 0.745
+light_size = 0.01
+omni_range = 4.189
+
 [node name="SkullCandle" parent="." instance=ExtResource("11_7k7rp")]
 transform = Transform3D(-0.120052055, 0, -0.21928863, 0, 0.25, 0, 0.21928863, 0, -0.120052055, 0.2, 1.05, 0.7)
-
-[node name="Mineral" parent="." instance=ExtResource("12_xf120")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -0.3)

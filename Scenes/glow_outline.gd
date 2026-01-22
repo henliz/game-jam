@@ -5,11 +5,13 @@ class_name GlowOutline
 @export var glow_amount: float = 0.02
 @export var interaction_range: float = 1.0
 @export var target_node: Node3D  ## Assign the GLB root node - will find MeshInstance3D inside
+@export var requires_unlock: bool = false  ## If true, requires puzzles_unlocked flag
 
 var glow_overlay: MeshInstance3D
 var is_glowing: bool = false
 var mesh_instance: MeshInstance3D
 var player_in_range: bool = false
+var interaction_sphere: SphereShape3D
 
 
 func _ready() -> void:
@@ -71,10 +73,10 @@ func _setup_glow_overlay() -> void:
 func _setup_interaction_area() -> void:
 	var area = Area3D.new()
 	var collision = CollisionShape3D.new()
-	var sphere = SphereShape3D.new()
+	interaction_sphere = SphereShape3D.new()
 
-	sphere.radius = interaction_range
-	collision.shape = sphere
+	interaction_sphere.radius = interaction_range
+	collision.shape = interaction_sphere
 	area.add_child(collision)
 	add_child(area)
 
@@ -104,11 +106,17 @@ func _update_glow_visibility() -> void:
 	if not glow_overlay:
 		return
 
-	var should_glow = player_in_range and not _is_player_inspecting()
+	var should_glow = player_in_range and not _is_player_inspecting() and _is_unlocked()
 
 	if should_glow != is_glowing:
 		is_glowing = should_glow
 		glow_overlay.visible = is_glowing
+
+
+func _is_unlocked() -> bool:
+	if not requires_unlock:
+		return true
+	return GameState.get_flag("puzzles_unlocked", false)
 
 func _is_player_inspecting() -> bool:
 	var player = get_tree().get_first_node_in_group("player")
@@ -123,3 +131,9 @@ func enable_glow() -> void:
 func disable_glow() -> void:
 	player_in_range = false
 	_update_glow_visibility()
+
+
+func set_interaction_range(new_range: float) -> void:
+	interaction_range = new_range
+	if interaction_sphere:
+		interaction_sphere.radius = new_range
