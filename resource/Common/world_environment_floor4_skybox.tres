@@ -1,0 +1,46 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://c8nsgy46ehweg"]
+
+[ext_resource type="Texture2D" uid="uid://bawdrocxcnim3" path="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_ColdSunset_Equirect.png" id="1_uvpow"]
+
+[sub_resource type="Gradient" id="Gradient_1cojt"]
+offsets = PackedFloat32Array(0, 0.14516129, 0.8548387, 0.9892473)
+colors = PackedColorArray(0, 0, 0, 1, 0.047058824, 0.05490196, 0.12156863, 1, 0.6735636, 0.7084251, 0.66179293, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yq1aw"]
+gradient = SubResource("Gradient_1cojt")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7aeow"]
+panorama = ExtResource("1_uvpow")
+
+[sub_resource type="Sky" id="Sky_go701"]
+sky_material = SubResource("PanoramaSkyMaterial_7aeow")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_go701")
+ambient_light_source = 3
+tonemap_mode = 1
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_intensity = 5.0
+ssao_light_affect = 1.0
+sdfgi_enabled = true
+sdfgi_min_cell_size = 0.15
+glow_enabled = true
+glow_intensity = 0.3
+glow_bloom = 0.1
+glow_hdr_scale = 4.0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.56, 0.651, 0.7, 1)
+fog_light_energy = 2.0
+fog_sun_scatter = 0.2
+fog_density = 1.0
+fog_height = 20.0
+fog_height_density = 0.05
+fog_depth_end = 50.0
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.39254782, 0.6401954, 0.9739296, 1)
+volumetric_fog_emission = Color(1, 1, 1, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
