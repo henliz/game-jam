@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=36 format=3 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://iw6xo6vwf2gy" path="res://resource/Floor1/Final/art_f_1_stool_model.tscn" id="21_jaypt"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="21_mktx4"]
 [ext_resource type="PackedScene" uid="uid://chaijfyoxu51g" path="res://resource/Common/Final/art_global_lantern_post.tscn" id="21_oo3qt"]
-[ext_resource type="Script" uid="uid://cnq5ldfjntqtv" path="res://Scenes/distance_dialogue_trigger.gd" id="22_distrig"]
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="26_70lor"]
 [ext_resource type="PackedScene" uid="uid://bhla2vwb2828i" path="res://resource/Common/Final/art_global_wooden_log.tscn" id="27_bgo40"]
 [ext_resource type="PackedScene" uid="uid://cufxmq25fs0sc" path="res://resource/Floor1/Final/art_f_1_chandelier.tscn" id="27_oo3qt"]
@@ -376,12 +375,6 @@ shape = SubResource("ConcavePolygonShape3D_bgo40")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Collision/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 2.1401978, 1.5)
 shape = SubResource("CylinderShape3D_mktx4")
-
-[node name="JournalDialogueTrigger" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.66, -0.09)
-script = ExtResource("22_distrig")
-trigger_id = "F1SeeInteractableFirst"
-dialogue_id = "F1SeeInteractableFirst"
 
 [node name="portal" type="Area3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.7727003, 1.0503978, -0.8574468)
