@@ -1,26 +1,15 @@
-[gd_scene load_steps=151 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=139 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
-[ext_resource type="PackedScene" uid="uid://colh0jn3rogl1" path="res://Scenes/FloorPlan2.tscn" id="2_pyn1s"]
-[ext_resource type="PackedScene" uid="uid://dumbylc7bmwel" path="res://Scenes/wizard_tome.tscn" id="2_tome"]
 [ext_resource type="Shader" uid="uid://nhm27mag0l25" path="res://Scenes/portal.gdshader" id="4_3ua1v"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
-[ext_resource type="PackedScene" uid="uid://m4285rkjvcer" path="res://resource/Floor1/ART_F1_Chair_Model.glb" id="10_ochwf"]
-[ext_resource type="PackedScene" uid="uid://w8i3mi1nhpqi" path="res://resource/Floor1/ART_F1_Walls.glb" id="11_atqvy"]
-[ext_resource type="PackedScene" uid="uid://c3dh8lcjmwkaq" path="res://resource/Floor1/ART_F1_FrontDoor_Final.glb" id="12_p5wkl"]
-[ext_resource type="PackedScene" uid="uid://bt6udvs0wh3qm" path="res://resource/Floor1/ART_F1_WizardJournal_Model.glb" id="13_r74th"]
-[ext_resource type="PackedScene" uid="uid://cb1euuauahwjb" path="res://resource/Floor1/ART_F1_Sofa_Final.glb" id="14_04jkj"]
-[ext_resource type="PackedScene" uid="uid://bf7q63lcnirlh" path="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Horizontal.glb" id="14_lkcvt"]
-[ext_resource type="PackedScene" uid="uid://djmcg7dfe6dsa" path="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Vertical.glb" id="15_atqvy"]
-[ext_resource type="PackedScene" uid="uid://bdlw8shhtkm0f" path="res://resource/Floor1/ART_F1_Ceiling_Model.glb" id="17_w5giw"]
-[ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="18_lkcvt"]
 [ext_resource type="PackedScene" uid="uid://d0grwopg7hs7q" path="res://Scenes/sphere_puzzle.tscn" id="21_6c0jt"]
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
@@ -29,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dk3ac3f26vyt1" path="res://Scenes/Floor1.tscn" id="29_opbav"]
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
-[ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
 [ext_resource type="Script" uid="uid://cnq5ldfjntqtv" path="res://Scenes/distance_dialogue_trigger.gd" id="34_d5ow5"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="38_h46qv"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="40_d5ow5"]
@@ -739,9 +727,6 @@ script = ExtResource("1_world")
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="FloorPlan2" parent="Map" instance=ExtResource("2_pyn1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.019047499, -28)
-
 [node name="Floor" type="CSGBox3D" parent="Map"]
 transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.027, -0.26, 0.007)
 use_collision = true
@@ -822,6 +807,7 @@ transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0,
 fov = 100.0
 
 [node name="TreeClusters DEMO" type="Node3D" parent="Map"]
+visible = false
 
 [node name="Trees" type="Node3D" parent="Map/TreeClusters DEMO"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04559, 0.30611563, -24.886091)
@@ -961,36 +947,6 @@ transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2
 [node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("8_qebug")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
 
-[node name="ART_F1_Chair_Model2" parent="Map" instance=ExtResource("10_ochwf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1316552, 0.038916405, -24.016972)
-
-[node name="ART_F1_Walls" parent="Map" instance=ExtResource("11_atqvy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.968218, 0, 2.6439133)
-
-[node name="ART_F1_Stool_Model" parent="Map" instance=ExtResource("31_1vso6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7249863, 0.038915157, -23.3448)
-
-[node name="ART_F1_FrontDoor_Final" parent="Map" instance=ExtResource("12_p5wkl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4609294, 0, -22.78649)
-
-[node name="ART_F1_WizardJournal_Model2" parent="Map" instance=ExtResource("13_r74th")]
-transform = Transform3D(0.07156715, 0, -0.9974358, 0, 1, 0, 0.9974358, 0, 0.07156715, 0.8313341, 0.7420969, -25.716219)
-
-[node name="ART_GLOBAL_CeilingBeams_Model_Horizontal" parent="Map" instance=ExtResource("14_lkcvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.059631, 0, -11.941266)
-
-[node name="ART_GLOBAL_CeilingBeams_Model_Vertical" parent="Map" instance=ExtResource("15_atqvy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.059631, 0, -11.941266)
-
-[node name="ART_F1_Sofa_Final" parent="Map" instance=ExtResource("14_04jkj")]
-transform = Transform3D(0.07156715, 0, -0.9974358, 0, 1, 0, 0.9974358, 0, 0.07156715, 6.8534603, 0, -25.475883)
-
-[node name="ART_F1_Ceiling_Model" parent="Map" instance=ExtResource("17_w5giw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.059631, 0, -11.941266)
-
-[node name="ART_F1_MagicBillyBass_Model2" parent="Map" instance=ExtResource("18_lkcvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0292838, 0.9894624, -24.142248)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98480785, 0.03610349, -0.16985354, 0, 0.97814775, 0.20791169, 0.1736482, -0.20475309, 0.9632873, 0, 9.435643, -15.294653)
 visible = false
@@ -1064,10 +1020,6 @@ mesh = SubResource("CylinderMesh_k7acu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
 shape = SubResource("CylinderShape3D_c5t2i")
 
-[node name="WizardTome" parent="." instance=ExtResource("2_tome")]
-transform = Transform3D(0.08888026, 0.75597906, 0.6485337, -0.10661016, 0.6545906, -0.7484287, -0.99032044, -0.0026197196, 0.13877521, 7.982897, 1.3483937, -10.79328)
-inspect_scale = 0.8
-
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
 visible = false
@@ -1130,8 +1082,8 @@ script = ExtResource("34_d5ow5")
 trigger_id = "F1SeeInteractableFirst"
 dialogue_id = "F1SeeInteractableFirst"
 
-[node name="ART_F1_WizardJournal_Model2" parent="." instance=ExtResource("90_h46qv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355, 0.682, -0.126)
+[node name="WizardJournal" parent="." instance=ExtResource("90_h46qv")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 39.355, 0.682, -0.126)
 
 [node name="Floor4" parent="." instance=ExtResource("29_coyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
