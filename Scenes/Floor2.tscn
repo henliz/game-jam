@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ineivc0o1klp"]
+
+[ext_resource type="Environment" uid="uid://0ci8rtd6fq61" path="res://resource/Common/world_environment_floor2.tres" id="1_df4o2"]
+
+[node name="Floor2" type="Node3D"]
+
+[node name="Props_Environment" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_df4o2")
