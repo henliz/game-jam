@@ -4,6 +4,9 @@ extends Node3D
 @onready var plate_1: StaticBody3D = $Plate1
 @onready var plate_2: StaticBody3D = $Plate2
 @onready var plate_3: StaticBody3D = $Plate3
+@onready var globe_sphere: MeshInstance3D = $GlobeSphere
+
+@onready var solved_sphere: Interactable = $SolvedSphere
 
 @onready var ring_success: AudioStreamPlayer3D = $"../RingSuccess"
 @onready var ring_turning: AudioStreamPlayer3D = $"../RingTurning"
@@ -14,7 +17,7 @@ var is_rotating = false
 func _ready() -> void:
 	plate_rotation_values = {plate_1:135.0,plate_2:-90.0,plate_3:45.0}
 
-func _on_player_rotate(direction: String, plate: StaticBody3D) -> void:
+func _on_player_rotate_plate(direction: Variant, plate: Variant) -> void:
 	if is_rotating: return
 	if(direction == "left"):
 		_rotate(plate,-45.0)
@@ -31,7 +34,7 @@ func _rotate(plate: StaticBody3D, increment: float):
 	await tween.finished
 	is_rotating=false
 	if _check_solution():
-		ring_success.play()
+		_on_puzzle_solved()
 
 func _check_solution():
 	var values = plate_rotation_values.values()
@@ -40,3 +43,11 @@ func _check_solution():
 			return false
 	
 	return true
+	
+func _on_puzzle_solved():
+	ring_success.play()
+	plate_1.queue_free()
+	plate_2.queue_free()
+	plate_3.queue_free()
+	globe_sphere.queue_free()
+	solved_sphere.visible=true
