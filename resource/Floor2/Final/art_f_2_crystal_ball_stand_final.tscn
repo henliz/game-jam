@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://c26sxuhed8dhy"]
+
+[ext_resource type="PackedScene" uid="uid://3cr3rtxs4mcv" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final.glb" id="1_2sknq"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ujo8b"]
+[ext_resource type="Texture2D" uid="uid://cyma3rtnuc2o4" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.webp" id="3_jjvs6"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_chg0l"]
+[ext_resource type="Texture2D" uid="uid://b58eetfom6eed" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallNormal.webp" id="5_k6ve4"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_a6kbw"]
+[ext_resource type="Texture2D" uid="uid://duggfxq5gjrlw" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallRough.webp" id="7_jjvs6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_baoi3"]
+render_priority = 0
+shader = ExtResource("2_ujo8b")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_jjvs6")
+shader_parameter/texture_hue_shift = ExtResource("4_chg0l")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_a6kbw")
+shader_parameter/texture_normal = ExtResource("5_k6ve4")
+shader_parameter/normal_scale = 0.7000001282500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chg0l"]
+disable_fog = true
+albedo_texture = ExtResource("3_jjvs6")
+metallic = 0.25
+metallic_specular = 0.4
+roughness = 0.15
+roughness_texture = ExtResource("7_jjvs6")
+normal_enabled = true
+normal_scale = 0.2
+normal_texture = ExtResource("5_k6ve4")
+backlight_enabled = true
+backlight = Color(0.6389355, 0.26169103, 0.4122286, 1)
+refraction_scale = 0.1
+disable_receive_shadows = true
+proximity_fade_distance = 3.65
+stencil_flags = 2
+
+[node name="ART_F2_CrystalBallStand_Final" instance=ExtResource("1_2sknq")]
+
+[node name="ART_F2_CrystalBallStand_Final_model" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_baoi3")
+surface_material_override/1 = SubResource("StandardMaterial3D_chg0l")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://52kdta4h0cy5"]
+[gd_scene load_steps=8 format=3 uid="uid://52kdta4h0cy5"]
 
 [ext_resource type="PackedScene" uid="uid://cb1euuauahwjb" path="res://resource/Floor1/ART_F1_Sofa_Final.glb" id="1_w60qx"]
 [ext_resource type="Texture2D" uid="uid://wb7du6duyv44" path="res://resource/Floor1/ART_F1_Sofa_Final_SofaBaseColor.png" id="2_0n21n"]
@@ -8,12 +8,28 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wi47"]
 specular_mode = 1
 albedo_texture = ExtResource("2_0n21n")
-roughness = 0.7
+roughness = 0.6
 roughness_texture = ExtResource("4_m70ya")
 normal_enabled = true
 normal_texture = ExtResource("3_vh3hx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0gjo"]
+size = Vector3(2.285, 1.1651611, 1.235)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu0wx"]
+size = Vector3(1.905, 1.0388223, 0.625)
 
 [node name="ART_F1_Sofa_Final" instance=ExtResource("1_w60qx")]
 
 [node name="Cube_002" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_3wi47")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08258057, 0.46260744)
+shape = SubResource("BoxShape3D_m0gjo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0647414, 0.15776369)
+shape = SubResource("BoxShape3D_mu0wx")
