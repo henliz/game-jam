@@ -215,7 +215,7 @@ visible = false
 [node name="Props" type="Node3D" parent="."]
 
 [node name="ART_F1_MagicBillyBass_PLAQUE_MODEL" parent="Props" instance=ExtResource("17_v2nrj")]
-transform = Transform3D(-0.72923136, 0, -0.6842671, 0, 1, 0, 0.6842671, 0, -0.72923136, 2.4519143, 2.7799299, 2.1822412)
+transform = Transform3D(-0.79604405, 0, -0.60523826, 0, 1, 0, 0.60523826, 0, -0.79604405, 2.3659863, 2.0722184, 2.8931496)
 
 [node name="ART_F1_Chair_Model" parent="Props" instance=ExtResource("18_3u1qr")]
 transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.5775015, -0.8713951, 0.038916524, -0.14125091)
