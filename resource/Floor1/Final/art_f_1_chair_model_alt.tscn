@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://6txw7olmdcck"]
+
+[ext_resource type="PackedScene" uid="uid://m4285rkjvcer" path="res://resource/Floor1/ART_F1_Chair_Model.glb" id="1_5jwd0"]
+[ext_resource type="Texture2D" uid="uid://dbt0m2jqw62a" path="res://resource/Floor1/ART_F1_Chair_Model_ART_F1_Chair_color.webp" id="2_2akmg"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_fn53k"]
+[ext_resource type="Texture2D" uid="uid://cldy0ctcd6d07" path="res://resource/Floor1/ART_F1_Chair_Model_ART_F1_Chair_normal.webp" id="3_fn53k"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_0gs7h"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_walp8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2uwa"]
+render_priority = 0
+shader = ExtResource("2_fn53k")
+shader_parameter/basecolor = Color(0.6309119, 0.6561992, 0.9072073, 1)
+shader_parameter/texture_albedo = ExtResource("2_2akmg")
+shader_parameter/texture_hue_shift = ExtResource("4_0gs7h")
+shader_parameter/hue_shift_strength = 0.20000000298024
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("4_walp8")
+shader_parameter/texture_normal = ExtResource("3_fn53k")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1.5, 1.5, 1.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fn53k"]
+size = Vector3(0.565, 1.095, 0.58628905)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_walp8"]
+size = Vector3(0.565, 0.77211916, 0.10993359)
+
+[node name="ART_F1_Chair_Model2" instance=ExtResource("1_5jwd0")]
+
+[node name="ART_F1_Chair_Model" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_d2uwa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.047424316, 0.03435546)
+shape = SubResource("BoxShape3D_fn53k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83888674, -0.26234272)
+shape = SubResource("BoxShape3D_walp8")

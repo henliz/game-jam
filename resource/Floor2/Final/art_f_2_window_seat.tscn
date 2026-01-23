@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh0a5wsmsy843"]
+[gd_scene load_steps=9 format=3 uid="uid://dh0a5wsmsy843"]
 
 [ext_resource type="PackedScene" uid="uid://m86alsvvinmi" path="res://resource/Floor2/ART_F2_Window_Seat.glb" id="1_p8fgt"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ut5dq"]
@@ -25,7 +25,20 @@ shader_parameter/uv1_blend_sharpness = 4.00000019
 shader_parameter/uv1_scale = Vector3(2, 2, 2)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8fgt"]
+size = Vector3(1.222229, 1.144989, 2.9152832)
+
 [node name="ART_F2_Window_Seat" instance=ExtResource("1_p8fgt")]
 
 [node name="ReadingNook" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_ttkwy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.909585, 0.3990631, 0.029418945)
+shape = SubResource("BoxShape3D_p8fgt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -4.272785, 0.3990631, 2.4498997)
+shape = SubResource("BoxShape3D_p8fgt")

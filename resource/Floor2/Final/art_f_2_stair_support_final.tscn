@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2n25ng57mlov"]
+[gd_scene load_steps=9 format=3 uid="uid://b2n25ng57mlov"]
 
 [ext_resource type="PackedScene" uid="uid://ptax6lfm3al3" path="res://resource/Floor2/ART_F2_StairSupport_Final.glb" id="1_7y7as"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_iuqfc"]
@@ -25,7 +25,20 @@ shader_parameter/uv1_blend_sharpness = 2.000000095
 shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7y7as"]
+size = Vector3(2.5516129, 10.491783, 3.742508)
+
 [node name="ART_F2_StairSupport_Final" instance=ExtResource("1_7y7as")]
 
 [node name="StairSupport_001" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_qjvtx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.97437, 0, -0.22495103, 0, 1, 0, 0.22495103, 0, 0.97437, -0.12003127, 4.7458916, 5.365749)
+shape = SubResource("BoxShape3D_7y7as")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.9653633, 0, 0.2609089, 0, 1, 0, -0.2609089, 0, 0.9653633, 0.751, 4.746, 5.189)
+shape = SubResource("BoxShape3D_7y7as")

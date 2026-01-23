@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://drnwx4srtx85j"]
+
+[ext_resource type="PackedScene" uid="uid://di7i6ojys7yi" path="res://resource/Floor1/ART_F1_Window_Cill.glb" id="1_db30v"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_cayre"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_uclgb"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_dqnnc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5cg5"]
+render_priority = 0
+shader = ExtResource("2_cayre")
+shader_parameter/basecolor = Color(0.33722377, 0.14804295, 0.16950166, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_uclgb")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("4_dqnnc")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Window_Cill" instance=ExtResource("1_db30v")]
+
+[node name="ART_F1_Window_Cill_model" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_w5cg5")

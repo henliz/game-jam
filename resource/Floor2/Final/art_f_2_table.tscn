@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgoaw6ud14syw"]
+
+[ext_resource type="PackedScene" uid="uid://csojmwtbrvt3g" path="res://resource/Floor2/ART_F2_Table.glb" id="1_eqmgi"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_iastn"]
+[ext_resource type="Texture2D" uid="uid://bpmic8ufhr1nm" path="res://resource/Floor2/ART_F2_Table_F2TableBaseColor.png" id="3_1y3hw"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_m8iag"]
+[ext_resource type="Texture2D" uid="uid://dqrmmi3r5c1pd" path="res://resource/Floor2/ART_F2_Table_F2TableNormal.png" id="5_5kvyq"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_4br6p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fakj1"]
+render_priority = 0
+shader = ExtResource("2_iastn")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_1y3hw")
+shader_parameter/texture_hue_shift = ExtResource("4_m8iag")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_4br6p")
+shader_parameter/texture_normal = ExtResource("5_5kvyq")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eqmgi"]
+height = 1.0888672
+radius = 1.4052734
+
+[node name="ART_F2_Table" instance=ExtResource("1_eqmgi")]
+
+[node name="BézierCurve_003" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_fakj1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47802734, 0)
+shape = SubResource("CylinderShape3D_eqmgi")
