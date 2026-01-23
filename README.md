@@ -39,10 +39,10 @@ The isolated spire normally cuts through the cold with it’s bright light, brin
 **The Tower:**
 - Ground floor + 2-3 interior floors + beacon chamber at the top
 - Each floor contains puzzles and pieces of the narrative
-- Stairs unlock when the current floor's key mechanisms are restored
+- Stairs unlock when the current floor's three items are cleaned/restored (?)
 
 **Progression:**
-- Floor-by-floor exploration with escalating complexity
+- Floor-by-floor exploration with escalating (does it idk I feel like a bit??) complexity
 - Journal entries reveal tower systems and the wizard's story
 - Environmental storytelling through object placement and decay
 
