@@ -1,18 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://chaijfyoxu51g"]
+[gd_scene load_steps=3 format=3 uid="uid://chaijfyoxu51g"]
 
 [ext_resource type="PackedScene" uid="uid://kxdwj24mdg7h" path="res://resource/Common/ART_GLOBAL_Lantern_Post.glb" id="1_r8s5e"]
 [ext_resource type="Material" uid="uid://b5u0ps6y8puqj" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_halloweenbits.material" id="2_7qh8x"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_r8s5e"]
-size = Vector3(0.171, 0.168, 0.78)
 
 [node name="ART_GLOBAL_Lantern_Post2" instance=ExtResource("1_r8s5e")]
 
 [node name="ART_GLOBAL_Lantern_Post" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_7qh8x")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013427734, 0.25820923)
-shape = SubResource("BoxShape3D_r8s5e")

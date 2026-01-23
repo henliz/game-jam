@@ -26,10 +26,6 @@ ScreenEffects="*res://Scenes/screen_effects.tscn"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/extra_snaps/plugin.cfg")
-
 [global_group]
 
 puzzleplate=""
