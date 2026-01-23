@@ -333,8 +333,7 @@ func _increase_interactable_glow_ranges() -> void:
 	if teakettle:
 		var glow = teakettle.get_node_or_null("GlowOutline") as GlowOutline
 		if glow:
-			glow.set_interaction_range(3.0)
-			print("JournalUI: Increased teakettle glow range to 3.0")
+			glow.set_interaction_range(10.0)
 
 
 func turn_page_left() -> void:

@@ -1160,11 +1160,11 @@ requires_unlock = true
 [node name="Node" type="Node" parent="."]
 
 [node name="L1_MagicBillyBass" parent="Node" instance=ExtResource("51_uqdn7")]
-transform = Transform3D(-0.6199434, 0, 0.7846466, 0, 1, 0, -0.7846466, 0, -0.6199434, 42.406437, 2.1291335, 2.6304817)
+transform = Transform3D(-0.4877683, 0, -0.8729732, 0, 1, 0, 0.8729732, 0, -0.4877683, 42.881306, 2.291667, -4.9189796)
 inspect_scale = 1.6
 
 [node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
-transform = Transform3D(-0.89365363, 0, 0.4487575, 0, 1, 0, -0.44875753, 0, -0.8936536, 37.607212, 1.7648034, 4.334488)
+transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, 37.519882, 1.6030809, 4.1603274)
 inspect_scale = 1.5
 inspect_offset = Vector3(0, 0.15, 0)
 item_name = "Item"
