@@ -1,23 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnmnogv2cujt8"]
+[gd_scene load_steps=10 format=3 uid="uid://cnmnogv2cujt8"]
 
 [ext_resource type="PackedScene" uid="uid://cpup8cdth1iu7" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model.glb" id="1_gkosg"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="2_naw38"]
 [ext_resource type="Texture2D" uid="uid://c1ea0w6h30yoa" path="res://resource/Floor1/ART_F1_MagicBillyBass_Model_ART_F1_MAGICBILLYBASS_TEXTURE.webp" id="2_rq1xf"]
-[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="3_n4ikq"]
+[ext_resource type="Shader" uid="uid://dofepo1fkyvr8" path="res://resource/GraphicsCore/SH_universal_transparent_v1.gdshader" id="3_cdbee"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="5_f3fnu"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="5_tkpao"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="6_cdbee"]
+[ext_resource type="Texture2D" uid="uid://dv254qkkkpdgv" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength2_512.png" id="6_d5f8g"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crnsm"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-specular_mode = 1
-albedo_texture = ExtResource("2_rq1xf")
-roughness = 0.5
-roughness_texture = ExtResource("3_n4ikq")
-backlight_enabled = true
-backlight_texture = ExtResource("2_rq1xf")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo8y5"]
+render_priority = 0
+shader = ExtResource("3_cdbee")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_rq1xf")
+shader_parameter/texture_hue_shift = ExtResource("5_f3fnu")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_d5f8g")
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/texture_backlight = ExtResource("2_rq1xf")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 2, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [node name="ART_F1_MagicBillyBass_Model2" instance=ExtResource("1_gkosg")]
 script = ExtResource("2_naw38")
@@ -26,7 +34,7 @@ item_name = "Magic Billy Bass"
 item_description = "A magical fish"
 
 [node name="ART_F1_MagicBillyBass_Model" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_crnsm")
+surface_material_override/0 = SubResource("ShaderMaterial_xo8y5")
 
 [node name="Cleanable" type="Node" parent="." index="1"]
 script = ExtResource("5_tkpao")
