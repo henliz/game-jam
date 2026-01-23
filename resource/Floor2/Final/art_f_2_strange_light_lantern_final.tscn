@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0pe6en7cubua"]
+
+[ext_resource type="PackedScene" uid="uid://bpk5jpdssowu" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Final.glb" id="1_a1piq"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ihg5b"]
+[ext_resource type="Texture2D" uid="uid://ko11goxwgns3" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Texture.png" id="3_jswoj"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_2mmql"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="5_gxore"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvn6h"]
+render_priority = 0
+shader = ExtResource("2_ihg5b")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_jswoj")
+shader_parameter/texture_hue_shift = ExtResource("4_2mmql")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.42000001995
+shader_parameter/texture_roughness = ExtResource("5_gxore")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(6, 6, 6)
+shader_parameter/uv1_offset = Vector3(0.005, 0, 0)
+
+[node name="ART_F2_StrangeLightLantern_Final" instance=ExtResource("1_a1piq")]
+
+[node name="Cylinder_004" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_lvn6h")

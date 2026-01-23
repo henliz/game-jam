@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0ntohtgwlqul"]
+
+[ext_resource type="PackedScene" uid="uid://b4mq8tnewhvhj" path="res://resource/Floor2/ART_F2_Tree_Final.glb" id="1_06520"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_hmkum"]
+[ext_resource type="Texture2D" uid="uid://brsdtu17un441" path="res://resource/Floor2/ART_F2_Tree_Final_TreeDirtBaseColor.png" id="3_ertag"]
+[ext_resource type="Texture2D" uid="uid://4hgm5wj6awpc" path="res://resource/Floor2/ART_F2_Tree_Final_ART_F2_Tree_Textue.png" id="3_hmkum"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_6vl05"]
+[ext_resource type="Texture2D" uid="uid://cwaumba5mr1kh" path="res://resource/Floor2/ART_F2_Tree_Final_TreeNormal.png" id="5_kec77"]
+[ext_resource type="Texture2D" uid="uid://cwfy8pvj7yqfu" path="res://resource/Floor2/ART_F2_Tree_Final_TreeDirtNormal.png" id="5_ln0de"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_kec77"]
+[ext_resource type="Texture2D" uid="uid://dgol61f1ygtfs" path="res://resource/Floor2/ART_F2_Tree_Final_SetDressingBaseColor.png" id="8_6vl05"]
+[ext_resource type="Texture2D" uid="uid://b42mjujne7nq8" path="res://resource/Floor2/ART_F2_Tree_Final_SetDressingNormal.png" id="9_ln0de"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ertag"]
+render_priority = 0
+shader = ExtResource("2_hmkum")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_hmkum")
+shader_parameter/texture_hue_shift = ExtResource("4_6vl05")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_kec77")
+shader_parameter/texture_normal = ExtResource("5_kec77")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/texture_backlight = ExtResource("3_hmkum")
+shader_parameter/uv1_blend_sharpness = 3.0000001425
+shader_parameter/uv1_scale = Vector3(1.5, 1.5, 1.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21wqo"]
+render_priority = 0
+shader = ExtResource("2_hmkum")
+shader_parameter/basecolor = Color(0.71712494, 0.70690703, 0.7342525, 1)
+shader_parameter/texture_albedo = ExtResource("3_ertag")
+shader_parameter/texture_hue_shift = ExtResource("4_6vl05")
+shader_parameter/hue_shift_strength = 0.10000000149012
+shader_parameter/roughness = 0.90000004275
+shader_parameter/texture_roughness = ExtResource("6_kec77")
+shader_parameter/texture_normal = ExtResource("5_ln0de")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kec77"]
+render_priority = 0
+shader = ExtResource("2_hmkum")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("8_6vl05")
+shader_parameter/texture_hue_shift = ExtResource("4_6vl05")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.400000019
+shader_parameter/texture_roughness = ExtResource("6_kec77")
+shader_parameter/texture_normal = ExtResource("9_ln0de")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/texture_backlight = ExtResource("8_6vl05")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(8, 8, 8)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F2_Tree_Final" instance=ExtResource("1_06520")]
+
+[node name="TreeFinal" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ertag")
+
+[node name="TreeDirt" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_21wqo")
+
+[node name="ChainsOnBranches" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_kec77")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2n25ng57mlov"]
+
+[ext_resource type="PackedScene" uid="uid://ptax6lfm3al3" path="res://resource/Floor2/ART_F2_StairSupport_Final.glb" id="1_7y7as"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_iuqfc"]
+[ext_resource type="Texture2D" uid="uid://qnsyeuhclqef" path="res://resource/Floor2/ART_F2_StairSupport_Final_StairSupportBaseColor.png" id="3_nshuw"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_rqfiy"]
+[ext_resource type="Texture2D" uid="uid://b6t4gibsx4k0j" path="res://resource/Floor2/ART_F2_StairSupport_Final_StairSupportNormal.png" id="5_qfqed"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_snna8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjvtx"]
+render_priority = 0
+shader = ExtResource("2_iuqfc")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_nshuw")
+shader_parameter/texture_hue_shift = ExtResource("4_rqfiy")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("6_snna8")
+shader_parameter/texture_normal = ExtResource("5_qfqed")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.000000095
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F2_StairSupport_Final" instance=ExtResource("1_7y7as")]
+
+[node name="StairSupport_001" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_qjvtx")
