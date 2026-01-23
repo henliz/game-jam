@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn1vs7wfc2h0d"
-path.s3tc="res://.godot/imported/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.jpg-5e2ba8ccb3a4e0479ba4eec87e7a1d80.s3tc.ctex"
+uid="uid://dvh8s3fkf5d6q"
+path.s3tc="res://.godot/imported/ART_F2_Stairs_StairsBaseColor.png-4ac651ed9debfa0afa8355880581d457.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ba81c3614ecf346d49fbb64ec579e3ed"
+"md5": "73c04a3a779a6a7e3d59a6f658b25c5f"
 }
 
 [deps]
 
-source_file="res://resource/Floor2/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.jpg"
-dest_files=["res://.godot/imported/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.jpg-5e2ba8ccb3a4e0479ba4eec87e7a1d80.s3tc.ctex"]
+source_file="res://resource/Floor2/ART_F2_Stairs_StairsBaseColor.png"
+dest_files=["res://.godot/imported/ART_F2_Stairs_StairsBaseColor.png-4ac651ed9debfa0afa8355880581d457.s3tc.ctex"]
 
 [params]
 
