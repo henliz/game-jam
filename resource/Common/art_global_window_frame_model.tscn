@@ -49,4 +49,5 @@ surface_material_override/1 = SubResource("ShaderMaterial_d7i3u")
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.795, -7.8)
 light_color = Color(0.831126, 0.9416815, 0.99999994, 1)
+light_energy = 4.0
 omni_range = 2.0

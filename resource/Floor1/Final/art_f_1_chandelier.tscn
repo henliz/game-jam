@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://cufxmq25fs0sc"]
+
+[ext_resource type="PackedScene" uid="uid://otw4jr4608oy" path="res://resource/Floor1/ART_F1_Chandelier.glb" id="1_hv160"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ox1r3"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_0j6sf"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_qre3y"]
+[ext_resource type="PackedScene" uid="uid://ik43mjxhd2kq" path="res://resource/Common/Final/art_global_candle_01.tscn" id="5_mtxbi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1turn"]
+render_priority = 0
+shader = ExtResource("2_ox1r3")
+shader_parameter/basecolor = Color(1, 0.712, 0.27999997, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_0j6sf")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.400000019
+shader_parameter/texture_roughness = ExtResource("4_qre3y")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7uwn"]
+render_priority = 0
+shader = ExtResource("2_ox1r3")
+shader_parameter/basecolor = Color(0.4017598, 0.22679998, 0.81, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_0j6sf")
+shader_parameter/hue_shift_strength = 0.60000000894072
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("4_qre3y")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Chandelier" instance=ExtResource("1_hv160")]
+
+[node name="ART_F1_Chandelier_model" parent="." index="0"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_1turn")
+surface_material_override/1 = SubResource("ShaderMaterial_m7uwn")
+
+[node name="ART_GLOBAL_Candle_012" parent="." index="1" instance=ExtResource("5_mtxbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5149637, 0.42375982, 0.51144105)
+
+[node name="ART_GLOBAL_Candle_013" parent="." index="2" instance=ExtResource("5_mtxbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5118994, 0.42375982, 0.51144105)
+
+[node name="ART_GLOBAL_Candle_014" parent="." index="3" instance=ExtResource("5_mtxbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5149637, 0.42375982, -0.5136109)
+
+[node name="ART_GLOBAL_Candle_015" parent="." index="4" instance=ExtResource("5_mtxbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5118994, 0.42375982, -0.5136109)
