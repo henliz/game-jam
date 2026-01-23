@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_toon;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_toon;
 
 group_uniforms color;
 uniform vec4 basecolor : source_color = vec4(1.0);
