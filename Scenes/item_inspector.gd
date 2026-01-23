@@ -23,7 +23,8 @@ var success_audio_player: AudioStreamPlayer
 
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
-@onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
+@onready var fill_texture: TextureRect = $CleaningUI/ProgressContainer/FillTexture
+@onready var fill_mask: Control = $CleaningUI/ProgressContainer/FillMask
 @onready var progress_label: Label = $CleaningUI/ProgressContainer/Label
 
 var cursor_sprite: TextureRect
@@ -164,7 +165,7 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
 		cleanable.cleaning_complete.connect(_on_cleaning_complete)
 		cleaning_ui.visible = true
-		progress_bar.value = cleanable.get_cleaning_progress()
+		_update_fill_texture(cleanable.get_cleaning_progress())
 		_update_progress_label(cleanable.get_cleaning_progress())
 	else:
 		cleaning_ui.visible = false
@@ -574,7 +575,7 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
 		cleanable.cleaning_complete.connect(_on_cleaning_complete)
 		cleaning_ui.visible = true
-		progress_bar.value = cleanable.get_cleaning_progress()
+		_update_fill_texture(cleanable.get_cleaning_progress())
 		_update_progress_label(cleanable.get_cleaning_progress())
 		_update_cursor_from_state()
 		print("ItemInspector: Switched to new Cleanable")
@@ -589,9 +590,8 @@ func _set_collision_enabled(node: Node, enabled: bool) -> void:
 		collision_shape.disabled = not enabled
 
 func _on_cleaning_progress(progress: float) -> void:
-	progress_bar.value = progress
+	_update_fill_texture(progress)
 	_update_progress_label(progress)
-	cleaning_progress_updated.emit(progress)
 
 func _on_cleaning_complete() -> void:
 	cleaning_ui.visible = false
@@ -605,3 +605,24 @@ func _on_cleaning_complete() -> void:
 func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)
 	progress_label.text = "Cleaning: %d%%" % percent
+<<<<<<< Updated upstream
+=======
+
+func _update_fill_texture(progress: float) -> void:
+	if fill_mask:
+		var start_x = 771.0 - 378.0  # 393 (hidden)
+		var end_x = 771.0  # (visible)
+		fill_mask.position.x = start_x + (378.0 * progress)
+		print("FILL MASK: progress=", progress, " position.x=", fill_mask.position.x)
+
+func _restore_teakettle_glow_range(item: Node3D) -> void:
+	# Check if this item is the teakettle (in the teakettle group)
+	if not item.is_in_group("teakettle"):
+		return
+
+	var glow = item.get_node_or_null("GlowOutline") as GlowOutline
+	if glow and glow.interaction_range == 5.0:
+		# Restore to original value (matching the scene default of 2.5)
+		glow.set_interaction_range(2.5)
+		print("ItemInspector: Restored teakettle glow range to 2.5")
+>>>>>>> Stashed changes
