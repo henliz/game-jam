@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=151 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://detpmspr33j78" path="res://Scenes/game_state_manager.gd" id="29_qebug"]
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="31_1vso6"]
+[ext_resource type="Script" uid="uid://cnq5ldfjntqtv" path="res://Scenes/distance_dialogue_trigger.gd" id="34_d5ow5"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="38_h46qv"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="40_d5ow5"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="41_s0myj"]
@@ -89,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://dv7wqdjvsns0s" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece02_Summer_Crop.png" id="86_i7fxq"]
 [ext_resource type="Texture2D" uid="uid://dlj4hinchkmr6" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece01_Spring_Crop.png" id="87_levo3"]
 [ext_resource type="PackedScene" uid="uid://b2cg3sbt57hlk" path="res://resource/Puzzles/Level02/ART_F2_StrangeLightLantern_Final.glb" id="87_quixx"]
+[ext_resource type="PackedScene" uid="uid://clb2l0wtton5a" path="res://resource/Floor1/Journal.tscn" id="90_h46qv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1121,6 +1123,15 @@ script = ExtResource("29_qebug")
 
 [node name="Floor1" parent="." instance=ExtResource("29_opbav")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
+
+[node name="JournalDialogueTrigger2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355213, 0.6716909, -0.1260998)
+script = ExtResource("34_d5ow5")
+trigger_id = "F1SeeInteractableFirst"
+dialogue_id = "F1SeeInteractableFirst"
+
+[node name="ART_F1_WizardJournal_Model2" parent="." instance=ExtResource("90_h46qv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355, 0.682, -0.126)
 
 [node name="Floor4" parent="." instance=ExtResource("29_coyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)

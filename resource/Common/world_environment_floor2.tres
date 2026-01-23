@@ -1,38 +1,28 @@
-[gd_resource type="Environment" load_steps=5 format=3 uid="uid://0ci8rtd6fq61"]
-
-[sub_resource type="Gradient" id="Gradient_1cojt"]
-offsets = PackedFloat32Array(0, 0.14516129, 0.8548387, 0.9892473)
-colors = PackedColorArray(0, 0, 0, 1, 0.047058824, 0.05490196, 0.12156863, 1, 0.6735636, 0.7084251, 0.66179293, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_yq1aw"]
-gradient = SubResource("Gradient_1cojt")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1cojt"]
-sky_top_color = Color(0.16504008, 0.37990576, 0.72235507, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-sky_energy_multiplier = 1.2
-
-[sub_resource type="Sky" id="Sky_go701"]
-sky_material = SubResource("ProceduralSkyMaterial_1cojt")
+[gd_resource type="Environment" format=3 uid="uid://0ci8rtd6fq61"]
 
 [resource]
-background_mode = 2
-sky = SubResource("Sky_go701")
-ambient_light_source = 3
+background_mode = 1
 tonemap_mode = 1
+tonemap_exposure = 1.5
+tonemap_white = 1.5
+ssao_enabled = true
+ssao_radius = 0.5
+ssao_intensity = 4.0
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 0.3
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 2
+sdfgi_min_cell_size = 0.1
+sdfgi_energy = 5.0
 glow_enabled = true
 glow_intensity = 0.3
 glow_bloom = 0.1
 glow_hdr_scale = 4.0
-fog_enabled = true
 fog_light_color = Color(0.50624764, 0.6314242, 0.7977032, 1)
 fog_light_energy = 2.0
 fog_sun_scatter = 0.2
 fog_density = 0.02
 fog_height = 3.0
 fog_height_density = 0.05
-volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.39254782, 0.6401954, 0.9739296, 1)
-volumetric_fog_emission = Color(1, 1, 1, 1)
-adjustment_enabled = true
-adjustment_color_correction = SubResource("GradientTexture2D_yq1aw")
+volumetric_fog_enabled = true
