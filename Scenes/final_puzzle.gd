@@ -30,6 +30,9 @@ var is_rotating = false
 @onready var telescope_big: MeshInstance3D = $TelescopeBig
 @onready var telescope_med: MeshInstance3D = $TelescopeMed
 @onready var telescope_small: MeshInstance3D = $TelescopeSmall
+@onready var fire_light: Node3D = $FireLight
+@onready var god_rays_2: MeshInstance3D = $GodRays2
+@onready var god_rays_3: MeshInstance3D = $GodRays3
 
 
 var dragged_inscription : TextureButton = null
@@ -231,8 +234,11 @@ func check_puzzle_complete():
 	telescope_big.visible=true
 	telescope_med.visible=true
 	telescope_small.visible=true
+	god_rays_2.visible=true
+	god_rays_3.visible=true
+	fire_light.visible=true
 	world_environment.environment.fog_enabled=false
-	world_environment.environment.background_energy_multiplier = 1.6
+	world_environment.environment.background_energy_multiplier = 1.8
 	snow.visible=false
 	wind.stop()
 	directional_light_3d.visible=true

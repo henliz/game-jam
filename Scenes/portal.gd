@@ -1,11 +1,12 @@
 extends Area3D
-@export var current_floor: int = 1  # Which floor this portal is on
+@export var current_floor: int
 @onready var game_state = get_node("/root/GameState")
 @onready var snow: GPUParticles3D = $"../../snow"
 
 @onready var world_environment: WorldEnvironment = $"../../WorldEnvironment"
 const WORLD_ENVIRONMENT_FLOOR_4_SKYBOX = preload("uid://c8nsgy46ehweg")
 
+@onready var portal_visual: Node3D = $PortalVisual
 
 var transition_canvas: CanvasLayer
 var video_player: VideoStreamPlayer
@@ -29,17 +30,22 @@ func _ready() -> void:
 	else:
 		push_warning("Portal: TransitionCanvas autoload not found")
 
+func _process(_delta: float) -> void:
+	if portal_visual.visible and game_state.is_floor_unlocked(current_floor+1):
+		portal_visual.visible=false
+
 func _on_body_entered(body: Node3D) -> void:
+	print("ent2")
 	if body.name != "Player" or is_transitioning:
 		return
 
 	is_transitioning = true
-
+	print(current_floor)
 	# Find the next unlocked floor with an arrival marker
 	for next_floor in range(current_floor + 1, 5):
 		if not game_state.is_floor_unlocked(next_floor):
 			continue
-
+		print("ent")
 		var arrival_path = "/root/World/Floor%d/arrival" % next_floor
 		var arrival_marker = get_node_or_null(arrival_path)
 
