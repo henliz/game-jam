@@ -1,23 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://c26sxuhed8dhy"]
+[gd_scene load_steps=14 format=3 uid="uid://c26sxuhed8dhy"]
 
-[ext_resource type="PackedScene" uid="uid://3cr3rtxs4mcv" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final.glb" id="1_2sknq"]
-[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ujo8b"]
-[ext_resource type="Texture2D" uid="uid://cyma3rtnuc2o4" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.webp" id="3_jjvs6"]
-[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_chg0l"]
-[ext_resource type="Texture2D" uid="uid://b58eetfom6eed" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallNormal.webp" id="5_k6ve4"]
-[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_a6kbw"]
-[ext_resource type="Texture2D" uid="uid://duggfxq5gjrlw" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallRough.webp" id="7_jjvs6"]
+[ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_interactable"]
+[ext_resource type="PackedScene" uid="uid://3cr3rtxs4mcv" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final.glb" id="2_glb"]
+[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
+[ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="4_glow"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="5_shader"]
+[ext_resource type="Texture2D" uid="uid://cyma3rtnuc2o4" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_ART_F2_CrystalBallStand_Texture.webp" id="6_albedo"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="7_hue"]
+[ext_resource type="Texture2D" uid="uid://b58eetfom6eed" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallNormal.webp" id="8_normal"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="9_rough_tex"]
+[ext_resource type="Texture2D" uid="uid://duggfxq5gjrlw" path="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallRough.webp" id="10_roughness"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_baoi3"]
 render_priority = 0
-shader = ExtResource("2_ujo8b")
+shader = ExtResource("5_shader")
 shader_parameter/basecolor = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("3_jjvs6")
-shader_parameter/texture_hue_shift = ExtResource("4_chg0l")
+shader_parameter/texture_albedo = ExtResource("6_albedo")
+shader_parameter/texture_hue_shift = ExtResource("7_hue")
 shader_parameter/hue_shift_strength = 0.20000000298024
 shader_parameter/roughness = 0.750000035625
-shader_parameter/texture_roughness = ExtResource("6_a6kbw")
-shader_parameter/texture_normal = ExtResource("5_k6ve4")
+shader_parameter/texture_roughness = ExtResource("9_rough_tex")
+shader_parameter/texture_normal = ExtResource("8_normal")
 shader_parameter/normal_scale = 0.7000001282500001
 shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/ao_light_affect = 0.0
@@ -28,14 +31,14 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chg0l"]
 disable_fog = true
-albedo_texture = ExtResource("3_jjvs6")
+albedo_texture = ExtResource("6_albedo")
 metallic = 0.25
 metallic_specular = 0.4
 roughness = 0.15
-roughness_texture = ExtResource("7_jjvs6")
+roughness_texture = ExtResource("10_roughness")
 normal_enabled = true
 normal_scale = 0.2
-normal_texture = ExtResource("5_k6ve4")
+normal_texture = ExtResource("8_normal")
 backlight_enabled = true
 backlight = Color(0.6389355, 0.26169103, 0.4122286, 1)
 refraction_scale = 0.1
@@ -43,8 +46,35 @@ disable_receive_shadows = true
 proximity_fade_distance = 3.65
 stencil_flags = 2
 
-[node name="ART_F2_CrystalBallStand_Final" instance=ExtResource("1_2sknq")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_baoi3"]
+height = 0.3
+radius = 0.2
 
-[node name="ART_F2_CrystalBallStand_Final_model" parent="." index="0"]
+[node name="CrystalBall" type="StaticBody3D"]
+script = ExtResource("1_interactable")
+inspect_scale = 1.5
+inspect_offset = Vector3(0, -1, 0)
+item_name = "Crystal Ball"
+item_description = "A mysterious crystal ball, clouded with dust and age."
+
+[node name="crystal_ball_mesh" parent="." instance=ExtResource("2_glb")]
+
+[node name="ART_F2_CrystalBallStand_Final_model" parent="crystal_ball_mesh" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_baoi3")
 surface_material_override/1 = SubResource("StandardMaterial3D_chg0l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19150913, 0)
+shape = SubResource("CylinderShape3D_baoi3")
+
+[node name="Cleanable" type="Node" parent="."]
+script = ExtResource("3_cleanable")
+brush_size = 48.0
+brush_softness = 0.6
+
+[node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
+script = ExtResource("4_glow")
+glow_color = Color(0.96, 0.66, 0.19, 1)
+interaction_range = 2.5
+target_node = NodePath("../crystal_ball_mesh/ART_F2_CrystalBallStand_Final_model")
+requires_unlock = true

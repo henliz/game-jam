@@ -14,9 +14,9 @@ var state: Dictionary = {}
 var _default_state: Dictionary = {
 	# Puzzle states (9 puzzles)
 	"puzzles": {
-		"puzzle_1": {"cleaned": false, "repaired": false},
-		"puzzle_2": {"cleaned": false, "repaired": false},
-		"puzzle_3": {"cleaned": false, "repaired": false},
+		"puzzle_1": {"cleaned": true, "repaired": false},
+		"puzzle_2": {"cleaned": true, "repaired": false},
+		"puzzle_3": {"cleaned": true, "repaired": true},
 		"puzzle_4": {"cleaned": false, "repaired": false},
 		"puzzle_5": {"cleaned": false, "repaired": false},
 		"puzzle_6": {"cleaned": false, "repaired": false},
@@ -75,7 +75,9 @@ func _apply_debug_floor2_state() -> void:
 		"F1Diary02": true,
 		"F1Diary03": true,
 	}
-	print("DEBUG: Applied floor 2 test state - Floors 2 & 4 unlocked, 3 puzzles complete")
+	# Unlock puzzles (normally done by picking up journal)
+	state.flags["puzzles_unlocked"] = true
+	print("DEBUG: Applied floor 2 test state - Floors 2 & 4 unlocked, 3 puzzles complete, puzzles unlocked")
 
 
 # --- Getters with convenient shortcuts ---

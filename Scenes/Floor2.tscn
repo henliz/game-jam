@@ -289,15 +289,15 @@ transform = Transform3D(0.9330226, 0, 0.35981768, 0, 1, 0, -0.35981768, 0, 0.933
 transform = Transform3D(0.37784076, 0, -0.9258706, 0, 1, 0, 0.9258706, 0, 0.37784076, 0.63807595, 1.0229806, 0.3806437)
 
 [node name="arrival" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8355339, 0.49689943, -1.6752661)
+transform = Transform3D(-0.459642, 0, -0.8881044, 0, 1, 0, 0.8881044, 0, -0.459642, 2.4285054, 0.49689943, -1.6752661)
 
 [node name="portal" type="Area3D" parent="."]
-transform = Transform3D(1.1250281, 0, -0.9921249, 0, 1.5, 0, 0.9921249, 0, 1.1250281, -3.8355339, 0.49689943, 1.6752661)
+transform = Transform3D(1.1250281, 0, -0.9921249, 0, 1.5, 0, 0.9921249, 0, 1.1250281, 5.354687, 0.49689943, -0.22901249)
 script = ExtResource("26_portal")
 current_floor = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="portal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32313967)
+transform = Transform3D(0.82099974, 0, 0.5709285, 0, 1, 0, -0.5709285, 0, 0.82099974, -0.058820814, 0, 0.4284508)
 shape = SubResource("BoxShape3D_s6l8a")
 
 [connection signal="body_entered" from="portal" to="portal" method="_on_body_entered"]

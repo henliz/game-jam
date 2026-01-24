@@ -8,7 +8,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_bass"]
 size = Vector3(0.4, 0.15, 0.2)
 
-[node name="L1_MagicBillyBass" type="StaticBody3D"]
+[node name="MagicBillyBass" type="StaticBody3D"]
 script = ExtResource("1_interactable")
 inspect_scale = 1.25
 item_name = "Magic Billy Bass"

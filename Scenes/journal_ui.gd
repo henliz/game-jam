@@ -45,6 +45,8 @@ var spreads: Array[Control] = []
 var pending_diary_dialogues: Array[String] = []  # Diary dialogues to play on next open
 var notification_icon: TextureRect  # Journal notification icon
 var notification_layer: CanvasLayer  # Separate layer so notification stays visible when journal is closed
+var is_playing_diary_sequence: bool = false  # Guard against re-entrant diary sequence calls
+var current_diary_callback: Callable  # Track current callback for proper cleanup
 
 @onready var background: ColorRect = $Background
 @onready var journal_container: Control = $JournalContainer
@@ -161,40 +163,61 @@ func _play_pending_diary_dialogues() -> void:
 	if pending_diary_dialogues.is_empty():
 		return
 
+	if is_playing_diary_sequence:
+		print("JournalUI: Already playing diary sequence, skipping")
+		return
+
 	print("JournalUI: Playing ", pending_diary_dialogues.size(), " pending diary dialogues")
 
 	# Copy and clear pending list
 	var dialogues_to_play = pending_diary_dialogues.duplicate()
 	pending_diary_dialogues.clear()
 
-	# Start playing with a small initial delay
+	is_playing_diary_sequence = true
 	_play_diary_dialogue_sequence(dialogues_to_play, 0)
 
 
 func _play_diary_dialogue_sequence(dialogues: Array, index: int) -> void:
 	if index >= dialogues.size():
 		print("JournalUI: Finished playing all diary dialogues")
+		is_playing_diary_sequence = false
 		return
 
 	var dialogue_id = dialogues[index]
+
+	# Skip if already triggered (prevents infinite loops)
+	if GameState.has_dialogue_triggered(dialogue_id):
+		print("JournalUI: Skipping already triggered dialogue: ", dialogue_id)
+		_play_diary_dialogue_sequence(dialogues, index + 1)
+		return
+
 	print("JournalUI: Playing diary dialogue ", index + 1, "/", dialogues.size(), ": ", dialogue_id)
 
 	# Play this dialogue
 	if DialogueManager.play(dialogue_id):
-		# Mark as triggered so page visibility updates
+		# Mark as triggered FIRST to prevent re-queuing
 		GameState.mark_dialogue_triggered(dialogue_id)
 		GameState.save_game()
 
+		# Disconnect any previous callback first
+		if current_diary_callback.is_valid():
+			if DialogueManager.dialogue_finished.is_connected(current_diary_callback):
+				DialogueManager.dialogue_finished.disconnect(current_diary_callback)
+
 		# Connect to dialogue_finished to play next one
-		var on_finished: Callable
-		on_finished = func(_entry: Dictionary):
-			DialogueManager.dialogue_finished.disconnect(on_finished)
+		current_diary_callback = func(_entry: Dictionary):
+			if current_diary_callback.is_valid() and DialogueManager.dialogue_finished.is_connected(current_diary_callback):
+				DialogueManager.dialogue_finished.disconnect(current_diary_callback)
 			# Wait diary_dialogue_delay seconds before playing next
 			if index + 1 < dialogues.size():
 				get_tree().create_timer(diary_dialogue_delay).timeout.connect(
-					func(): _play_diary_dialogue_sequence(dialogues, index + 1)
+					func(): _play_diary_dialogue_sequence(dialogues, index + 1),
+					CONNECT_ONE_SHOT
 				)
-		DialogueManager.dialogue_finished.connect(on_finished)
+			else:
+				is_playing_diary_sequence = false
+
+		DialogueManager.dialogue_finished.connect(current_diary_callback, CONNECT_ONE_SHOT)
 	else:
 		# If dialogue failed to play, try next one immediately
 		_play_diary_dialogue_sequence(dialogues, index + 1)
