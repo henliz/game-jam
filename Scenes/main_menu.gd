@@ -2,6 +2,16 @@ extends Node2D
 
 const IntroSequence = preload("res://Scenes/intro_sequence.tscn")
 
+# Define where the actual button is in the texture (adjust these values!)
+const NEW_GAME_BUTTON_RECT = Rect2(65, 585, 195, 55)
+
+func _on_new_game_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			var local_pos = new_game_button.get_local_mouse_position()
+			if NEW_GAME_BUTTON_RECT.has_point(local_pos):
+				_on_new_game_pressed()
+
 @export_group("Parallax Settings")
 @export var tower_max_offset: float = 18.0
 @export var foreground_max_offset: float = 60.0
@@ -15,7 +25,7 @@ const IntroSequence = preload("res://Scenes/intro_sequence.tscn")
 @onready var quit_button: Button = $MenuContainer/QuitButton
 
 var resume_button: Button
-var new_game_button: Button
+var new_game_button: TextureRect
 var intro_instance: CanvasLayer = null
 
 var viewport_center: Vector2
@@ -36,7 +46,7 @@ func _ready() -> void:
 
 func _setup_menu_buttons() -> void:
 	var has_save = GameState.has_save_file()
-
+	
 	if has_save:
 		resume_button = Button.new()
 		resume_button.text = "Resume"
@@ -46,15 +56,19 @@ func _setup_menu_buttons() -> void:
 		resume_button.pressed.connect(_on_resume_pressed)
 		menu_container.add_child(resume_button)
 		menu_container.move_child(resume_button, 0)
-
-	new_game_button = Button.new()
-	new_game_button.text = "New Game"
-	new_game_button.flat = true
-	new_game_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	new_game_button.add_theme_font_size_override("font_size", 48)
-	new_game_button.pressed.connect(_on_new_game_pressed)
-	menu_container.add_child(new_game_button)
-	menu_container.move_child(new_game_button, 1 if has_save else 0)
+	
+	# Create TextureRect for New Game instead of Button
+	var new_game_texture = TextureRect.new()
+	new_game_texture.name = "NewGameButton"  # Add this line
+	new_game_texture.texture = preload("res://resource/UI/ART_UI_MAIN_Title_Screen_Start.png")
+	new_game_texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
+	new_game_texture.mouse_filter = Control.MOUSE_FILTER_STOP  # Allow mouse events
+	new_game_texture.gui_input.connect(_on_new_game_input)
+	
+	menu_container.add_child(new_game_texture)
+	menu_container.move_child(new_game_texture, 1 if has_save else 0)
+	
+	new_game_button = new_game_texture  # Keep reference
 
 
 func _process(delta: float) -> void:
