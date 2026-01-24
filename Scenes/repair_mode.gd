@@ -126,6 +126,9 @@ func _check_repair_complete() -> void:
 		repair_complete.emit()
 		print("RepairMode: Repair complete!")
 
+		# Mark the Wizard Bust as repaired in GameState
+		GameState.set_item_repaired("Wizard Bust")
+
 		# Trigger dialogue about the wizard having a bust of themselves
 		DialogueManager.try_trigger_dialogue("F1FixBust", "F1FixBust")
 

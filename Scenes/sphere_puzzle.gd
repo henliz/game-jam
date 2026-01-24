@@ -50,4 +50,7 @@ func _on_puzzle_solved():
 	plate_2.queue_free()
 	plate_3.queue_free()
 	globe_sphere.queue_free()
-	solved_sphere.visible=true
+	solved_sphere.visible = true
+
+	# Mark the Celestial Globe as repaired in GameState
+	GameState.set_item_repaired("Celestial Globe")

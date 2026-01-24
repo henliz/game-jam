@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ineivc0o1klp"]
+[gd_scene load_steps=30 format=3 uid="uid://ineivc0o1klp"]
 
 [ext_resource type="Environment" uid="uid://0ci8rtd6fq61" path="res://resource/Common/world_environment_floor2.tres" id="1_df4o2"]
 [ext_resource type="PackedScene" uid="uid://5xvjpxhh00wh" path="res://resource/Floor2/Final/art_f_2_ceiling_final.tscn" id="2_kueqo"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ckoaj2gtk077j" path="res://resource/Common/Final/art_global_fruit_bowl.tscn" id="19_4aq2v"]
 [ext_resource type="PackedScene" uid="uid://chaijfyoxu51g" path="res://resource/Common/Final/art_global_lantern_post.tscn" id="19_7tkd2"]
 [ext_resource type="PackedScene" uid="uid://n2dgmq6063yd" path="res://resource/Common/Final/art_global_bottles_05.tscn" id="20_anaxv"]
+[ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="20_b6w4d"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="20_s6l8a"]
 [ext_resource type="PackedScene" uid="uid://dxft285cx6i1y" path="res://resource/Common/Final/art_global_bottles_03.tscn" id="24_b6w4d"]
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="26_portal"]
@@ -233,6 +234,7 @@ shadow_bias = 0.05
 shadow_blur = 2.5
 omni_range = 4.0
 omni_attenuation = 1.2
+script = ExtResource("20_b6w4d")
 
 [node name="ART_GLOBAL_Candle_022" parent="Lighting/OmniLight3D6" instance=ExtResource("20_s6l8a")]
 transform = Transform3D(-0.45248148, 0, -0.8917738, 0, 1, 0, 0.8917738, 0, -0.45248148, 0.02174151, -0.36599994, -0.06492376)
@@ -283,10 +285,10 @@ environment = ExtResource("1_df4o2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91679823, 1.0224609, 0.7427458)
 
 [node name="ART_GLOBAL_Bottles_05" parent="." instance=ExtResource("20_anaxv")]
-transform = Transform3D(0.9330226, 0, 0.35981768, 0, 1, 0, -0.35981768, 0, 0.9330226, 0.7346159, 1.0224609, 0.75482714)
+transform = Transform3D(0.9330226, 0, 0.35981768, 0, 1, 0, -0.35981768, 0, 0.9330226, 0.5925331, 1.0224609, 0.75482714)
 
 [node name="ART_GLOBAL_Bottles_03" parent="." instance=ExtResource("24_b6w4d")]
-transform = Transform3D(0.37784076, 0, -0.9258706, 0, 1, 0, 0.9258706, 0, 0.37784076, 0.63807595, 1.0229806, 0.3806437)
+transform = Transform3D(0.37784076, 0, -0.9258706, 0, 1, 0, 0.9258706, 0, 0.37784076, 0.63807595, 1.0229806, 0.53608406)
 
 [node name="arrival" type="Node3D" parent="."]
 transform = Transform3D(-0.459642, 0, -0.8881044, 0, 1, 0, 0.8881044, 0, -0.459642, 2.4285054, 0.49689943, -1.6752661)

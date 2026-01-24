@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2cg3sbt57hlk"
-path="res://.godot/imported/ART_F2_StrangeLightLantern_Final.glb-1ba0796060c7f25e25a202b80a4f9357.scn"
+uid="uid://bnkwfoww8wk04"
+path="res://.godot/imported/StrangeLantern_FIXED.glb-6274026539e935dc3b571fb6e9165b30.scn"
 
 [deps]
 
-source_file="res://resource/Puzzles/Level02/ART_F2_StrangeLightLantern_Final.glb"
-dest_files=["res://.godot/imported/ART_F2_StrangeLightLantern_Final.glb-1ba0796060c7f25e25a202b80a4f9357.scn"]
+source_file="res://resource/Puzzles/Level02/StrangeLantern_FIXED.glb"
+dest_files=["res://.godot/imported/StrangeLantern_FIXED.glb-6274026539e935dc3b571fb6e9165b30.scn"]
 
 [params]
 

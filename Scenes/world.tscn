@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=131 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
@@ -19,8 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://memxq4hb0eyj" path="res://Scenes/L1_TeaKettle.tscn" id="30_o2rbt"]
 [ext_resource type="Script" uid="uid://cnq5ldfjntqtv" path="res://Scenes/distance_dialogue_trigger.gd" id="34_d5ow5"]
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="38_h46qv"]
-[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="40_d5ow5"]
-[ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="41_s0myj"]
 [ext_resource type="AudioStream" uid="uid://bn7tkai4qk314" path="res://resource/Puzzles/Level04/sound/final_puzzle_rings_turning_short.wav" id="41_svj78"]
 [ext_resource type="AudioStream" uid="uid://dmbcy7aalx8cd" path="res://resource/Puzzles/Level04/sound/ring_success.wav" id="42_qrg23"]
 [ext_resource type="Script" uid="uid://caam7nhtc55vv" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
@@ -63,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://bm4i5nhhiolwk" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingBaseColor.png" id="74_mbf3w"]
 [ext_resource type="Texture2D" uid="uid://c83prpbi55o31" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingRough.png" id="75_8ftdj"]
 [ext_resource type="Texture2D" uid="uid://c1gtqp5fpdgsb" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingNormal.png" id="76_fv0bq"]
+[ext_resource type="PackedScene" uid="uid://cmrvisjp66iu7" path="res://resource/Floor2/Final/FIXED_StrangeLantern/strange_lantern_fixed.tscn" id="76_wex5w"]
 [ext_resource type="Texture2D" uid="uid://4g18nc8bsbkr" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece9_RingBaseColor.png" id="77_nr0x8"]
 [ext_resource type="Texture2D" uid="uid://818kxarybsxy" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece9_RingRough.png" id="78_rly0l"]
 [ext_resource type="Texture2D" uid="uid://bkl2fl8b4g5po" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_OuterRing_Piece03_Fall_Crop.png" id="79_cwuo4"]
@@ -76,7 +75,6 @@
 [ext_resource type="PackedScene" uid="uid://bu1i34ulk2akp" path="res://resource/Puzzles/Level02/ART_F2_CrystalBallStand_Final.glb" id="85_cwuo4"]
 [ext_resource type="Texture2D" uid="uid://dv7wqdjvsns0s" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece02_Summer_Crop.png" id="86_i7fxq"]
 [ext_resource type="Texture2D" uid="uid://dlj4hinchkmr6" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece01_Spring_Crop.png" id="87_levo3"]
-[ext_resource type="PackedScene" uid="uid://b2cg3sbt57hlk" path="res://resource/Puzzles/Level02/ART_F2_StrangeLightLantern_Final.glb" id="87_quixx"]
 [ext_resource type="PackedScene" uid="uid://clb2l0wtton5a" path="res://resource/Floor1/Journal.tscn" id="90_h46qv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yq1aw"]
@@ -701,10 +699,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g3bgg")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_quixx"]
-height = 0.3
-radius = 0.1
-
 [node name="World" type="Node3D"]
 script = ExtResource("1_world")
 
@@ -922,12 +916,6 @@ stream = ExtResource("45_3p0mr")
 volume_db = 10.0
 bus = &"SFX"
 
-[node name="WizardBust_Prototype" parent="." instance=ExtResource("28_1vso6")]
-transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.509958e-07, 0, -0.99999994, 1.4907265, 1.3973029, 4.0968046)
-visible = false
-inspect_scale = 0.5
-item_name = "Item"
-
 [node name="Landscape" type="Node" parent="."]
 
 [node name="GameStateManager" type="Node" parent="."]
@@ -958,16 +946,23 @@ inspect_scale = 1.6
 transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, 37.519882, 1.6030809, 4.1603274)
 inspect_scale = 1.5
 inspect_offset = Vector3(0, 0.15, 0)
-item_name = "Item"
 
 [node name="Floor2" parent="." instance=ExtResource("9_tutfb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.083702, 0.2722664, -12.455258)
 
-[node name="CrystalBall2" parent="." instance=ExtResource("24_ctcri")]
+[node name="CrystalBall_Final" parent="." instance=ExtResource("24_ctcri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.296013, 1.2947273, -12.030593)
-inspect_offset = Vector3(0, 0.5, 0)
+inspect_offset = Vector3(0, 0, 0)
 
-[node name="CrystalBall" type="StaticBody3D" parent="." groups=["teakettle"]]
+[node name="StrangeLantern_FIXED" parent="." instance=ExtResource("76_wex5w")]
+transform = Transform3D(0.8838636, 0, 0.4677447, 0, 1, 0, -0.4677447, 0, 0.8838636, -57.130478, 1.2438241, -10.422382)
+inspect_scale = 2.0
+inspect_offset = Vector3(0, 0.2, 0)
+
+[node name="SpherePuzzle" parent="." instance=ExtResource("21_6c0jt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.93373, 0.4241345, -15.025014)
+
+[node name="CrystalBall_offset" type="StaticBody3D" parent="." groups=["teakettle"]]
 transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -52.729942, 1.4255993, -11.408258)
 visible = false
 script = ExtResource("38_h46qv")
@@ -975,11 +970,8 @@ inspect_scale = 2.0
 inspect_offset = Vector3(0, -1, 0)
 item_name = "Crystal Ball"
 
-[node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall" instance=ExtResource("85_cwuo4")]
+[node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall_offset" instance=ExtResource("85_cwuo4")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="SpherePuzzle" parent="." instance=ExtResource("21_6c0jt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.93373, 0.4241345, -15.025014)
 
 [node name="AlchemyPuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.131348, 1.3947718, 4.7457404)
@@ -1409,32 +1401,6 @@ offset_bottom = 971.00006
 rotation = -0.27608863
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("87_levo3")
-
-[node name="StrangeLantern" type="StaticBody3D" parent="." groups=["teakettle"]]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -58.192703, -0.23448598, -9.920429)
-script = ExtResource("38_h46qv")
-inspect_scale = 2.0
-inspect_offset = Vector3(0, 0.25, 0)
-item_name = "Strange Lantern"
-
-[node name="ART_F2_StrangeLightLantern_Final" parent="StrangeLantern" instance=ExtResource("87_quixx")]
-transform = Transform3D(0.27384162, 0, 0.96177477, 0, 1, 0, -0.96177477, 0, 0.27384162, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StrangeLantern"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294178, 1.6552633, -1.1348724)
-shape = SubResource("CylinderShape3D_quixx")
-
-[node name="Cleanable" type="Node" parent="StrangeLantern"]
-script = ExtResource("40_d5ow5")
-brush_size = 48.0
-brush_softness = 0.6
-
-[node name="GlowOutline" type="Node3D" parent="StrangeLantern" node_paths=PackedStringArray("target_node")]
-script = ExtResource("41_s0myj")
-glow_color = Color(0.96, 0.66, 0.19, 1)
-interaction_range = 2.5
-target_node = NodePath("../ART_F2_StrangeLightLantern_Final")
-requires_unlock = true
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.30494, 0.2598766, -13.621945)

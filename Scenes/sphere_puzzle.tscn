@@ -359,6 +359,9 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7208722, 0)
 visible = false
 script = ExtResource("17_gke3q")
+inspect_scale = 1.5
+item_name = "Celestial Globe"
+item_description = "An ancient celestial globe, its rings now properly aligned to reveal the cosmos."
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SolvedSphere"]

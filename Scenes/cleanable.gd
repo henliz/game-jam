@@ -59,6 +59,8 @@ func _process(_delta: float) -> void:
 	if _waiting_for_visible and mesh_instance and mesh_instance.visible:
 		_waiting_for_visible = false
 		print("Cleanable: Mesh now visible, initializing dirt system")
+		# Re-resolve item_id now that the node tree may have changed (e.g., after reparenting)
+		_resolve_item_id()
 		_initialize_dirt_system()
 		set_process(false)
 	elif not _waiting_for_visible:
@@ -287,12 +289,20 @@ func set_dirt_tint(color: Color) -> void:
 
 
 func _resolve_item_id() -> void:
+	# Search up the tree for an Interactable ancestor to get the item_name
+	var node = get_parent()
+	while node:
+		if node is Interactable:
+			item_id = node.item_name
+			print("Cleanable: Resolved item_id = ", item_id, " (from Interactable ancestor)")
+			return
+		node = node.get_parent()
+
+	# Fallback to immediate parent's name if no Interactable found
 	var parent = get_parent()
-	if parent and parent is Interactable:
-		item_id = parent.item_name
-	elif parent:
+	if parent:
 		item_id = parent.name
-	print("Cleanable: Resolved item_id = ", item_id)
+	print("Cleanable: Resolved item_id = ", item_id, " (fallback to parent name)")
 
 
 func mark_cleaned_in_save() -> void:
