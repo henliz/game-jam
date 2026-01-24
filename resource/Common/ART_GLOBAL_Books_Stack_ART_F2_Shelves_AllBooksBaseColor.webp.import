@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2syk5h5lretn"
-path.s3tc="res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"
+uid="uid://dvqr7wj8moysk"
+path.s3tc="res://.godot/imported/ART_GLOBAL_Books_Stack_ART_F2_Shelves_AllBooksBaseColor.webp-6afff170793761ea50d7ff130a4e1551.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "52bec3161a7fce02da6d564af7dfe859"
+}
 
 [deps]
 
-source_file="res://resource/Common/ART_GLOBAL_Rugs_Star_Texture.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_Books_Stack_ART_F2_Shelves_AllBooksBaseColor.webp"
+dest_files=["res://.godot/imported/ART_GLOBAL_Books_Stack_ART_F2_Shelves_AllBooksBaseColor.webp-6afff170793761ea50d7ff130a4e1551.s3tc.ctex"]
 
 [params]
 

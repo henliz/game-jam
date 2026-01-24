@@ -51,7 +51,7 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ct1o"]
 render_priority = 0
 shader = ExtResource("9_kqc5d")
-shader_parameter/basecolor = Color(0.51939666, 0.6650881, 0.68337476, 1)
+shader_parameter/basecolor = Color(0.22330001, 0.6879951, 0.77, 1)
 shader_parameter/texture_albedo = ExtResource("10_w0vj7")
 shader_parameter/texture_hue_shift = ExtResource("4_kqc5d")
 shader_parameter/hue_shift_strength = 1.0000000149012

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2syk5h5lretn"
-path.s3tc="res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"
+uid="uid://dkb1opk18v8xs"
+path.s3tc="res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "512b81cb2399d5137f8b477123f7d916"
+}
 
 [deps]
 
-source_file="res://resource/Common/ART_GLOBAL_Rugs_Star_Texture.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp"
+dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.s3tc.ctex"]
 
 [params]
 
