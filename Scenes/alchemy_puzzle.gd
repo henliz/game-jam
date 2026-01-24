@@ -1,11 +1,11 @@
 extends Node3D
 
-@onready var pipe_1: StaticBody3D = $Pipe1
-@onready var pipe_2: StaticBody3D = $Pipe2
-@onready var pipe_3: StaticBody3D = $Pipe3
+@export var pipe_1: StaticBody3D
+@export var pipe_2: StaticBody3D
+@export var pipe_3: StaticBody3D
 
-@onready var alchemy_container_completed: Interactable = $AlchemyContainer
-@onready var alchemy_container_uncomplete: MeshInstance3D = $ART_F3_DistillationFullSet/FinalContainer
+@export var alchemy_container_completed: Interactable 
+@export var alchemy_container_uncomplete: MeshInstance3D
 @onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
 
 var pipe_values = {}

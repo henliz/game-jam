@@ -78,5 +78,5 @@ force_overlay_visibility = true
 script = ExtResource("5_8jpsd")
 glow_color = Color(0.96, 0.66, 0.19, 1)
 interaction_range = 4.0
-target_node = NodePath("../FinalContainer")
+target_node = NodePath("..")
 requires_unlock = true
