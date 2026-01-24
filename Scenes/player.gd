@@ -133,7 +133,6 @@ func _check_interactable():
 			rotate_prompt.visible = true
 			return
 		if collider and collider.is_in_group("finalpuzzle"):
-			print(collider)
 			collider_is_finalpuzzle = true
 			interact_prompt.visible = true
 			return
