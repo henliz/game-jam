@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=54 format=4 uid="uid://bqmchw73r2wh5"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bw1pg8aomjp5d" path="res://resource/Floor3/Final/art_f_3_plant_3_final.tscn" id="21_t0y2g"]
 [ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="22_410h5"]
 [ext_resource type="PackedScene" uid="uid://dvijb7qxoe07a" path="res://resource/Common/Final/art_global_pillow_radana.tscn" id="23_jhuwn"]
+[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="24_410h5"]
 [ext_resource type="PackedScene" uid="uid://d5c86c1sds20" path="res://resource/Common/Final/art_global_wooden_stool.tscn" id="25_qlqp2"]
 [ext_resource type="PackedScene" uid="uid://jldjag0a162o" path="res://resource/Common/Final/art_global_books_fallen.tscn" id="26_w2tr4"]
 [ext_resource type="PackedScene" uid="uid://6w863udk384w" path="res://resource/Common/Final/art_global_books_row_01.tscn" id="27_w2tr4"]
@@ -40,7 +41,6 @@
 [ext_resource type="PackedScene" uid="uid://bomg5qgdsr0hd" path="res://resource/Common/Final/art_global_lantern_standing.tscn" id="37_om7v8"]
 [ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="38_eqym8"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="39_aoigi"]
-[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="24_410h5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pspkr"]
 _surfaces = [{
