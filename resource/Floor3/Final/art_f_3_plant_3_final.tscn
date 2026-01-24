@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://bw1pg8aomjp5d"]
+
+[ext_resource type="PackedScene" uid="uid://cxya5xls5agqr" path="res://resource/Floor3/ART_F3_Plant3_Final.glb" id="1_rvqww"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_828sm"]
+[ext_resource type="Texture2D" uid="uid://b0r1fy8myh643" path="res://resource/Floor3/ART_F3_Plant3_Final_IvyBaseColor.webp" id="3_j6qw3"]
+[ext_resource type="Texture2D" uid="uid://c3ksc3u3u5stg" path="res://resource/Floor3/ART_F3_Plant3_Final_PlantPot1BaseColor.webp" id="3_wynvk"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_oliic"]
+[ext_resource type="Texture2D" uid="uid://cfbtc1sd7wqs" path="res://resource/Floor3/ART_F3_Plant3_Final_PlantPot1Norm.webp" id="5_j6qw3"]
+[ext_resource type="Shader" uid="uid://dofepo1fkyvr8" path="res://resource/GraphicsCore/SH_universal_transparent_v1.gdshader" id="6_e3p56"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_w88j6"]
+[ext_resource type="Texture2D" uid="uid://cib7wxy44k8ut" path="res://resource/Floor3/ART_F3_Plant3_Final_ART_F3_Ivy_Texture.webp" id="7_mr7i0"]
+[ext_resource type="Texture2D" uid="uid://dfqd8a5xlriet" path="res://resource/Floor3/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp" id="8_6gkft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqfbj"]
+render_priority = 0
+shader = ExtResource("2_828sm")
+shader_parameter/basecolor = Color(0.50187135, 0.44245058, 0.44184256, 1)
+shader_parameter/texture_albedo = ExtResource("3_j6qw3")
+shader_parameter/texture_hue_shift = ExtResource("4_oliic")
+shader_parameter/hue_shift_strength = 0.5000000074506
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_w88j6")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rsiic"]
+render_priority = 0
+shader = ExtResource("6_e3p56")
+shader_parameter/basecolor = Color(0.38362655, 0.7877369, 0.6128306, 1)
+shader_parameter/texture_albedo = ExtResource("7_mr7i0")
+shader_parameter/texture_hue_shift = ExtResource("4_oliic")
+shader_parameter/hue_shift_strength = 1.0000000149012
+shader_parameter/roughness = 0.50000002375
+shader_parameter/texture_roughness = ExtResource("6_w88j6")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/texture_backlight = ExtResource("8_6gkft")
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3p56"]
+render_priority = 0
+shader = ExtResource("2_828sm")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_wynvk")
+shader_parameter/texture_hue_shift = ExtResource("4_oliic")
+shader_parameter/hue_shift_strength = 0.60000000894072
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_w88j6")
+shader_parameter/texture_normal = ExtResource("5_j6qw3")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F3_Plant3_Final" instance=ExtResource("1_rvqww")]
+
+[node name="IVY_Curve" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_hqfbj")
+
+[node name="IvyLeaf" parent="IVY_Curve" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rsiic")
+
+[node name="Cylinder_002" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_e3p56")

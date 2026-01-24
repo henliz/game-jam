@@ -69,7 +69,6 @@ omni_range = 8.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4, 0)
-visible = false
 light_indirect_energy = 6.0
 shadow_enabled = true
 shadow_blur = 0.5
@@ -124,4 +123,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("ConcavePolygonShape3D_smtlh")
 
 [node name="arrival" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5275442, -4.4600067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.387788, 0.5275441, 0.29940438)

@@ -350,7 +350,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_nwoon")
 skeleton = NodePath("")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." groups=["hideOnInspect"]]
 transform = Transform3D(0.41378033, 0, 0, 0, 0.41378033, 0, 0, 0, 0.41378033, 0, 0.8, 0)
 mesh = SubResource("ArrayMesh_24ixq")
 skeleton = NodePath("")
@@ -359,7 +359,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7208722, 0)
 visible = false
 script = ExtResource("17_gke3q")
-inspect_scale = 1.5
+inspect_scale = 1.1
 item_name = "Celestial Globe"
 item_description = "An ancient celestial globe, its rings now properly aligned to reveal the cosmos."
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"

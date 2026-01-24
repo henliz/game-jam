@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3 uid="uid://djn5vh7ixvvhu"]
+
+[ext_resource type="PackedScene" uid="uid://bto1178vurhrm" path="res://resource/Floor3/ART_F3_Pipes_Final.glb" id="1_w28ng"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_254o2"]
+[ext_resource type="Texture2D" uid="uid://c0yhio8udymsh" path="res://resource/Floor3/ART_F3_Pipes_Final_PipeBaseColor.webp" id="3_sc1jc"]
+[ext_resource type="Texture2D" uid="uid://d2e6ayfdnir1y" path="res://resource/Floor3/ART_F3_Pipes_Final_PipeTransmission.png" id="4_5d3y2"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="5_e5wfu"]
+[ext_resource type="Texture2D" uid="uid://dvjpg8m37s6vl" path="res://resource/Floor3/ART_F3_Pipes_Final_PipeNormal.webp" id="6_qvu1e"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="7_u4soe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_351k7"]
+render_priority = 0
+shader = ExtResource("2_254o2")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_sc1jc")
+shader_parameter/texture_hue_shift = ExtResource("5_e5wfu")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.50000002375
+shader_parameter/texture_roughness = ExtResource("7_u4soe")
+shader_parameter/texture_normal = ExtResource("6_qvu1e")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/texture_backlight = ExtResource("4_5d3y2")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F3_Pipes_Final" instance=ExtResource("1_w28ng")]
+
+[node name="F3Pipes" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_351k7")
