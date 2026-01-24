@@ -7,6 +7,7 @@ extends Node3D
 @onready var globe_sphere: MeshInstance3D = $GlobeSphere
 
 @onready var solved_sphere: Interactable = $SolvedSphere
+@onready var solved_sphere_collision: CollisionShape3D = $SolvedSphere/CollisionShape3D
 
 @onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
 @onready var ring_turning: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingTurning"
@@ -50,7 +51,5 @@ func _on_puzzle_solved():
 	plate_2.queue_free()
 	plate_3.queue_free()
 	globe_sphere.queue_free()
-	solved_sphere.visible = true
-
-	# Mark the Celestial Globe as repaired in GameState
-	GameState.set_item_repaired("Celestial Globe")
+	solved_sphere.visible=true
+	solved_sphere_collision.disabled=false

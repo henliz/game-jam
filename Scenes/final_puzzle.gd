@@ -1,5 +1,11 @@
 extends Node3D
 
+@export var world_environment: WorldEnvironment
+@export var snow: GPUParticles3D 
+@export var wind: AudioStreamPlayer3D 
+@export var directional_light_3d: DirectionalLight3D
+
+
 var is_active = false
 @export var puzzle_camera: Camera3D
 signal finalpuzzle_closed
@@ -225,3 +231,7 @@ func _on_player_finalpuzzle_camera_trigger() -> void:
 	is_active = true
 	panel.visible = true
 	hovered_ring = null
+	world_environment.environment.fog_enabled=false
+	snow.visible=false
+	wind.stop()
+	directional_light_3d.visible=true
