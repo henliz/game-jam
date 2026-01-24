@@ -33,7 +33,15 @@ var is_rotating = false
 @onready var fire_light: Node3D = $FireLight
 @onready var god_rays_2: MeshInstance3D = $GodRays2
 @onready var god_rays_3: MeshInstance3D = $GodRays3
-
+@onready var astrolabe_animation_big_ring: Node3D = $AstrolabeAnimationBigRing
+@onready var astrolabe_animation_med_ring: Node3D = $AstrolabeAnimationMedRing
+@onready var astrolabe_animation_small_ring: Node3D = $AstrolabeAnimationSmallRing
+@onready var animation_1: AnimationPlayer = $AstrolabeAnimationBigRing/AnimationPlayer
+@onready var animation_2: AnimationPlayer = $AstrolabeAnimationMedRing/AnimationPlayer
+@onready var animation_3: AnimationPlayer = $AstrolabeAnimationSmallRing/AnimationPlayer
+@onready var animation_1_loop: AnimationPlayer = $AstrolabeAnimationBigRing/AnimationPlayerLoop
+@onready var animation_2_loop: AnimationPlayer = $AstrolabeAnimationMedRing/AnimationPlayerLoop
+@onready var animation_3_loop: AnimationPlayer = $AstrolabeAnimationSmallRing/AnimationPlayerLoop
 
 var dragged_inscription : TextureButton = null
 var dragged_inscription_name : String = ""
@@ -65,7 +73,7 @@ var initial_inscription_position = {}
 @onready var ring_put_down: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingPutDown"
 @onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
 @onready var ring_turning: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingTurning"
-
+@onready var fire_whoosh: AudioStreamPlayer3D = $"../AudioStreamPlayers/FireWhoosh"
 
 func _ready() -> void:
 	ring_rotation = {inner:0,mid:-150.0,outer:90.0}
@@ -126,7 +134,6 @@ func _process(_delta: float) -> void:
 			await tween.finished
 			is_rotating=false
 			check_puzzle_complete()
-			print(hovered_ring.rotation_degrees.y)
 		else:
 			print("ring not complete")
 	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_left"):
@@ -140,7 +147,6 @@ func _process(_delta: float) -> void:
 			await tween.finished
 			is_rotating=false
 			check_puzzle_complete()
-			print(hovered_ring.rotation_degrees.y)
 		else:
 			print("ring not complete")
 	if dragged_inscription and Input.is_action_just_pressed("release"):
@@ -231,17 +237,11 @@ func check_puzzle_complete():
 		if fmod(r,360.0) != 0.0: return false
 	ring_success.play()
 	print("final puzzle is complete")
-	telescope_big.visible=true
-	telescope_med.visible=true
-	telescope_small.visible=true
-	god_rays_2.visible=true
-	god_rays_3.visible=true
-	fire_light.visible=true
-	world_environment.environment.fog_enabled=false
-	world_environment.environment.background_energy_multiplier = 1.8
-	snow.visible=false
-	wind.stop()
-	directional_light_3d.visible=true
+	finalpuzzle_closed.emit()
+	is_active = false
+	panel.visible = false
+	hovered_ring = null
+	_final_sequence()
 	return true
 			
 func _on_player_finalpuzzle_camera_trigger() -> void:
@@ -250,3 +250,33 @@ func _on_player_finalpuzzle_camera_trigger() -> void:
 	is_active = true
 	panel.visible = true
 	hovered_ring = null
+	
+func _final_sequence():
+	astrolabe_animation_big_ring.visible=true
+	astrolabe_animation_med_ring.visible=true
+	astrolabe_animation_small_ring.visible=true
+	outer.visible=false
+	mid.visible=false
+	inner.visible=false
+	await get_tree().create_timer(2).timeout
+	fire_whoosh.play()
+	fire_light.visible=true
+	await get_tree().create_timer(1).timeout
+	animation_1.play("RingsAction")
+	animation_2.play("Rings_003Action")
+	animation_3.play("Rings_002Action")
+	await get_tree().create_timer(15).timeout
+	var tween = get_tree().create_tween()
+	god_rays_2.visible=true
+	god_rays_3.visible=true
+	snow.visible=false
+	wind.stop()
+	tween.tween_property(world_environment.environment,"fog_sky_affect",0,4)
+	tween.tween_property(directional_light_3d,"light_energy",2.0,4)
+	await get_tree().create_timer(5).timeout
+	god_rays_2.visible=false
+	god_rays_3.visible=false
+	animation_1_loop.play("RingsAction")
+	animation_2_loop.play("Rings_003Action")
+	animation_3_loop.play("Rings_002Action")
+	
