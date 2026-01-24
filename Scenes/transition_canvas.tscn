@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb8dh8aenbald"]
+[gd_scene load_steps=2 format=3 uid="uid://h4h4hbert1pi"]
 
 [ext_resource type="FontFile" uid="uid://do2plbqfli06l" path="res://resource/Fonts/SixHands.ttf" id="1_xh0cd"]
 
 [node name="TransitionCanvas" type="CanvasLayer"]
+visible = false
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
