@@ -46,11 +46,11 @@ var hovered_ring : StaticBody3D = null
 
 var initial_inscription_position = {}
 
-@onready var ring_insert: AudioStreamPlayer3D = $"../RingInsert"
-@onready var ring_pick_up: AudioStreamPlayer3D = $"../RingPickUp"
-@onready var ring_put_down: AudioStreamPlayer3D = $"../RingPutDown"
-@onready var ring_success: AudioStreamPlayer3D = $"../RingSuccess"
-@onready var ring_turning: AudioStreamPlayer3D = $"../RingTurning"
+@onready var ring_insert: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingInsert"
+@onready var ring_pick_up: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingPickUp"
+@onready var ring_put_down: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingPutDown"
+@onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
+@onready var ring_turning: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingTurning"
 
 
 func _ready() -> void:

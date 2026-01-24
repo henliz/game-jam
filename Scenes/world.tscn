@@ -1,15 +1,15 @@
-[gd_scene load_steps=139 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=137 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
-[ext_resource type="Shader" uid="uid://nhm27mag0l25" path="res://Scenes/portal.gdshader" id="4_3ua1v"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
+[ext_resource type="PackedScene" uid="uid://ineivc0o1klp" path="res://Scenes/Floor2.tscn" id="9_tutfb"]
 [ext_resource type="PackedScene" uid="uid://d0grwopg7hs7q" path="res://Scenes/sphere_puzzle.tscn" id="21_6c0jt"]
 [ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
@@ -86,21 +86,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
 size = Vector3(1, 0.6879883, 0.3630371)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_p22x6"]
-viewport_path = NodePath("Map/portal2/CameraViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ikl"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("4_3ua1v")
-shader_parameter/texture_albedo = SubResource("ViewportTexture_p22x6")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_k7acu"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_c5t2i"]
-height = 0.39886475
-radius = 0.1
-
 [sub_resource type="Gradient" id="Gradient_pyn1s"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3254902)
 
@@ -162,6 +147,12 @@ radius = 0.2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_quixx"]
 height = 0.3
+radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k7acu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c5t2i"]
+height = 0.39886475
 radius = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3to6"]
@@ -732,62 +723,9 @@ transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.027, -0.26, 0.007)
 use_collision = true
 material = SubResource("StandardMaterial3D_yq1aw")
 
-[node name="Cabin" type="CSGBox3D" parent="Map"]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 2.26, -1.8212891)
-use_collision = true
-size = Vector3(1, 1, 1.3642578)
-
-[node name="RoomCut" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0.005479425)
-operation = 2
-size = Vector3(1, 1, 1.4118958)
-
-[node name="StairCut" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, -0.30137712, 0.64672494, 0.14451142)
-operation = 2
-size = Vector3(0.32954788, 0.6997986, 0.56609726)
-
-[node name="Door" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.2546874, -0.15409827, -0.65061915)
-operation = 2
-size = Vector3(2.7753906, 1.4805908, 1)
-
-[node name="AlchemyCut" type="CSGBox3D" parent="Map/Cabin"]
-transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.1, 0.20151357, -0.15491915, 0.62438595)
-operation = 2
-size = Vector3(1.9912109, 0.52049255, 1)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Map/Cabin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20624375, 0.038796782, 0.40930668)
-light_energy = 2.0
-
-[node name="Cabin2" type="CSGBox3D" parent="Map"]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 7.254099, -1.8206787)
-use_collision = true
-size = Vector3(1, 1, 1.3641357)
-
-[node name="RoomCut" type="CSGBox3D" parent="Map/Cabin2"]
-transform = Transform3D(0.90000004, 0, 0, 0, 0.90000004, 0, 0, 0, 0.90000004, -0.30080566, -0.19814396, 0.27100867)
-operation = 2
-size = Vector3(0.33154297, 0.6999397, 0.84648895)
-
-[node name="Stair" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 0.7664818, 0.64226604, 0, -0.64226604, 0.7664818, -3.0318222, 2.0070264, -0.36358058)
-use_collision = true
-size = Vector3(3.001709, 1, 7.447233)
-
 [node name="portal" type="Area3D" parent="Map"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.7754126, 5.3263593, 0.7475873)
 script = ExtResource("1_5ukr8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/portal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07416844, 0.32969418)
-shape = SubResource("BoxShape3D_5ukr8")
-
-[node name="PortalVisual" type="CSGBox3D" parent="Map/portal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070596635, 0.33277917, 0.5469322)
-size = Vector3(1.0214844, 1.045044, 0.13427734)
-material = SubResource("ShaderMaterial_r0ikl")
 
 [node name="portal2" type="Area3D" parent="Map"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.5537097, 0.57335246, -7.503555)
@@ -947,6 +885,9 @@ transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2
 [node name="dead trees with snow" parent="Map/TreeClusters DEMO/Trees8" instance=ExtResource("8_qebug")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("50_4ke1i")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98480785, 0.03610349, -0.16985354, 0, 0.97814775, 0.20791169, 0.1736482, -0.20475309, 0.9632873, 0, 9.435643, -15.294653)
 visible = false
@@ -957,6 +898,153 @@ directional_shadow_max_distance = 10.0
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
 transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -0.99989206, 40.036987, 0, -5.5734844)
+
+[node name="snow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
+visible = false
+amount = 512
+lifetime = 3.5
+visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)
+process_material = SubResource("ParticleProcessMaterial_1cojt")
+draw_pass_1 = SubResource("QuadMesh_xbk3s")
+
+[node name="AudioStreamPlayers" type="Node3D" parent="."]
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="AudioStreamPlayers"]
+process_mode = 1
+stream = ExtResource("57_music")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+
+[node name="wind" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+process_mode = 1
+stream = ExtResource("21_yq1aw")
+autoplay = true
+
+[node name="BustClick" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("23_no8kt")
+volume_db = 9.436
+bus = &"SFX"
+
+[node name="RingTurning" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("41_svj78")
+bus = &"SFX"
+
+[node name="RingSuccess" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("42_qrg23")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingInsert" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("43_4ke1i")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingPickUp" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("44_p22x6")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="RingPutDown" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
+stream = ExtResource("45_3p0mr")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="WizardBust_Prototype" parent="." instance=ExtResource("28_1vso6")]
+transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.509958e-07, 0, -0.99999994, 1.4907265, 1.3973029, 4.0968046)
+visible = false
+inspect_scale = 0.5
+item_name = "Item"
+
+[node name="Landscape" type="Node" parent="."]
+
+[node name="GameStateManager" type="Node" parent="."]
+script = ExtResource("29_qebug")
+
+[node name="Floor1" parent="." instance=ExtResource("29_opbav")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
+
+[node name="WizardJournal" parent="." instance=ExtResource("90_h46qv")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 39.355, 0.682, -0.126)
+
+[node name="JournalDialogueTrigger" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355213, 0.6716909, -0.1260998)
+script = ExtResource("34_d5ow5")
+trigger_id = "F1SeeInteractableFirst"
+dialogue_id = "F1SeeInteractableFirst"
+
+[node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.927383, 1.0805786, -0.5145346)
+inspect_scale = 2.0
+inspect_offset = Vector3(0, 0.25, 0)
+
+[node name="L1_MagicBillyBass" parent="." instance=ExtResource("51_uqdn7")]
+transform = Transform3D(-0.4877683, 0, -0.8729732, 0, 1, 0, 0.8729732, 0, -0.4877683, 42.881306, 2.291667, -4.9189796)
+inspect_scale = 1.6
+
+[node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
+transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, 37.519882, 1.6030809, 4.1603274)
+inspect_scale = 1.5
+inspect_offset = Vector3(0, 0.15, 0)
+item_name = "Item"
+
+[node name="Floor2" parent="." instance=ExtResource("9_tutfb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.083702, 0.2722664, -12.455258)
+
+[node name="CrystalBall" type="StaticBody3D" parent="." groups=["teakettle"]]
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 35.386612, 0.3081807, 1.0252756)
+script = ExtResource("38_h46qv")
+inspect_scale = 2.0
+inspect_offset = Vector3(0, 0.25, 0)
+item_name = "Antique Tea Kettle"
+item_description = "A beautifully crafted tea kettle, covered in years of dust and grime."
+
+[node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall" instance=ExtResource("85_cwuo4")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrystalBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2991985, 0)
+shape = SubResource("CylinderShape3D_0ip2a")
+
+[node name="Cleanable" type="Node" parent="CrystalBall"]
+script = ExtResource("40_d5ow5")
+brush_size = 48.0
+brush_softness = 0.6
+
+[node name="GlowOutline" type="Node3D" parent="CrystalBall" node_paths=PackedStringArray("target_node")]
+script = ExtResource("41_s0myj")
+glow_color = Color(0.96, 0.66, 0.19, 1)
+interaction_range = 2.5
+target_node = NodePath("../ART_F2_CrystalBallStand_Final")
+requires_unlock = true
+
+[node name="StrangeLantern" type="StaticBody3D" parent="." groups=["teakettle"]]
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.93958, -0.15246141, 3.1450276)
+script = ExtResource("38_h46qv")
+inspect_scale = 2.0
+inspect_offset = Vector3(0, 0.25, 0)
+item_name = "Antique Tea Kettle"
+item_description = "A beautifully crafted tea kettle, covered in years of dust and grime."
+
+[node name="ART_F2_StrangeLightLantern_Final" parent="StrangeLantern" instance=ExtResource("87_quixx")]
+transform = Transform3D(0.27384162, 0, 0.96177477, 0, 1, 0, -0.96177477, 0, 0.27384162, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StrangeLantern"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294178, 1.6552633, -1.1348724)
+shape = SubResource("CylinderShape3D_quixx")
+
+[node name="Cleanable" type="Node" parent="StrangeLantern"]
+script = ExtResource("40_d5ow5")
+brush_size = 48.0
+brush_softness = 0.6
+
+[node name="GlowOutline" type="Node3D" parent="StrangeLantern" node_paths=PackedStringArray("target_node")]
+script = ExtResource("41_s0myj")
+glow_color = Color(0.96, 0.66, 0.19, 1)
+interaction_range = 2.5
+target_node = NodePath("../ART_F2_StrangeLightLantern_Final")
+requires_unlock = true
 
 [node name="SpherePuzzle" parent="." instance=ExtResource("21_6c0jt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.408157, 0.22766972, -3.9865572)
@@ -1020,154 +1108,8 @@ mesh = SubResource("CylinderMesh_k7acu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0014433861, 0)
 shape = SubResource("CylinderShape3D_c5t2i")
 
-[node name="snow" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 17.448837, -1.2728524)
-visible = false
-amount = 512
-lifetime = 3.5
-visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)
-process_material = SubResource("ParticleProcessMaterial_1cojt")
-draw_pass_1 = SubResource("QuadMesh_xbk3s")
-
-[node name="wind" type="AudioStreamPlayer3D" parent="."]
-process_mode = 1
-stream = ExtResource("21_yq1aw")
-autoplay = true
-
-[node name="BustClick" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("23_no8kt")
-bus = &"SFX"
-
-[node name="RingTurning" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("41_svj78")
-bus = &"SFX"
-
-[node name="RingSuccess" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("42_qrg23")
-volume_db = 10.0
-bus = &"SFX"
-
-[node name="RingInsert" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("43_4ke1i")
-volume_db = 10.0
-bus = &"SFX"
-
-[node name="RingPickUp" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("44_p22x6")
-volume_db = 10.0
-bus = &"SFX"
-
-[node name="RingPutDown" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("45_3p0mr")
-volume_db = 10.0
-bus = &"SFX"
-
-[node name="WizardBust_Prototype" parent="." instance=ExtResource("28_1vso6")]
-transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.509958e-07, 0, -0.99999994, 1.4907265, 1.3973029, 4.0968046)
-visible = false
-inspect_scale = 0.5
-item_name = "Item"
-
-[node name="Landscape" type="Node" parent="."]
-
-[node name="GameStateManager" type="Node" parent="."]
-script = ExtResource("29_qebug")
-
-[node name="Floor1" parent="." instance=ExtResource("29_opbav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
-
-[node name="JournalDialogueTrigger2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355213, 0.6716909, -0.1260998)
-script = ExtResource("34_d5ow5")
-trigger_id = "F1SeeInteractableFirst"
-dialogue_id = "F1SeeInteractableFirst"
-
-[node name="WizardJournal" parent="." instance=ExtResource("90_h46qv")]
-transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 39.355, 0.682, -0.126)
-
 [node name="Floor4" parent="." instance=ExtResource("29_coyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("50_4ke1i")
-
-[node name="Floor1Music" type="AudioStreamPlayer" parent="."]
-process_mode = 1
-stream = ExtResource("57_music")
-volume_db = -6.0
-autoplay = true
-bus = &"Music"
-
-[node name="L1_TeaKettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.927383, 1.0805786, -0.5145346)
-inspect_scale = 2.0
-inspect_offset = Vector3(0, 0.25, 0)
-
-[node name="CrystalBall" type="StaticBody3D" parent="." groups=["teakettle"]]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 35.386612, 0.3081807, 1.0252756)
-script = ExtResource("38_h46qv")
-inspect_scale = 2.0
-inspect_offset = Vector3(0, 0.25, 0)
-item_name = "Antique Tea Kettle"
-item_description = "A beautifully crafted tea kettle, covered in years of dust and grime."
-
-[node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall" instance=ExtResource("85_cwuo4")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CrystalBall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2991985, 0)
-shape = SubResource("CylinderShape3D_0ip2a")
-
-[node name="Cleanable" type="Node" parent="CrystalBall"]
-script = ExtResource("40_d5ow5")
-brush_size = 48.0
-brush_softness = 0.6
-
-[node name="GlowOutline" type="Node3D" parent="CrystalBall" node_paths=PackedStringArray("target_node")]
-script = ExtResource("41_s0myj")
-glow_color = Color(0.96, 0.66, 0.19, 1)
-interaction_range = 2.5
-target_node = NodePath("../ART_F2_CrystalBallStand_Final")
-requires_unlock = true
-
-[node name="StrangeLantern" type="StaticBody3D" parent="." groups=["teakettle"]]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.93958, -0.15246141, 3.1450276)
-script = ExtResource("38_h46qv")
-inspect_scale = 2.0
-inspect_offset = Vector3(0, 0.25, 0)
-item_name = "Antique Tea Kettle"
-item_description = "A beautifully crafted tea kettle, covered in years of dust and grime."
-
-[node name="ART_F2_StrangeLightLantern_Final" parent="StrangeLantern" instance=ExtResource("87_quixx")]
-transform = Transform3D(0.27384162, 0, 0.96177477, 0, 1, 0, -0.96177477, 0, 0.27384162, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StrangeLantern"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294178, 1.6552633, -1.1348724)
-shape = SubResource("CylinderShape3D_quixx")
-
-[node name="Cleanable" type="Node" parent="StrangeLantern"]
-script = ExtResource("40_d5ow5")
-brush_size = 48.0
-brush_softness = 0.6
-
-[node name="GlowOutline" type="Node3D" parent="StrangeLantern" node_paths=PackedStringArray("target_node")]
-script = ExtResource("41_s0myj")
-glow_color = Color(0.96, 0.66, 0.19, 1)
-interaction_range = 2.5
-target_node = NodePath("../ART_F2_StrangeLightLantern_Final")
-requires_unlock = true
-
-[node name="Node" type="Node" parent="."]
-
-[node name="L1_MagicBillyBass" parent="Node" instance=ExtResource("51_uqdn7")]
-transform = Transform3D(-0.4877683, 0, -0.8729732, 0, 1, 0, 0.8729732, 0, -0.4877683, 42.881306, 2.291667, -4.9189796)
-inspect_scale = 1.6
-
-[node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
-transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, 37.519882, 1.6030809, 4.1603274)
-inspect_scale = 1.5
-inspect_offset = Vector3(0, 0.15, 0)
-item_name = "Item"
 
 [node name="FinalPuzzle" type="Node3D" parent="." node_paths=PackedStringArray("puzzle_camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.453167, 0)
@@ -1535,6 +1477,8 @@ offset_bottom = 971.00006
 rotation = -0.27608863
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("87_levo3")
+
+[node name="Node3D" type="Node3D" parent="."]
 
 [connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
 [connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]

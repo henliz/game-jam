@@ -8,8 +8,8 @@ extends Node3D
 
 @onready var solved_sphere: Interactable = $SolvedSphere
 
-@onready var ring_success: AudioStreamPlayer3D = $"../RingSuccess"
-@onready var ring_turning: AudioStreamPlayer3D = $"../RingTurning"
+@onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
+@onready var ring_turning: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingTurning"
 
 var plate_rotation_values = {}
 var is_rotating = false
