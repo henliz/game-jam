@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
-[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="6_ctcri"]
+[ext_resource type="Environment" uid="uid://c8nsgy46ehweg" path="res://resource/Common/world_environment_floor4_skybox.tres" id="6_3p0mr"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
@@ -1354,12 +1354,11 @@ transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_ctcri")
+environment = ExtResource("6_3p0mr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.98480785, 0.03610349, -0.16985354, 0, 0.97814775, 0.20791169, 0.1736482, -0.20475309, 0.9632873, 0, 9.435643, -15.294653)
-visible = false
-light_energy = 1.5
+transform = Transform3D(1.0000001, 0, 0, 0, 0.97814775, 0.20791169, 0, -0.20791173, 0.97814757, 0, 9.435643, -15.294653)
+light_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.03
 directional_shadow_mode = 0
@@ -1831,10 +1830,10 @@ process_material = SubResource("ParticleProcessMaterial_pgid1")
 draw_pass_1 = SubResource("ArrayMesh_cmt5e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="FinalPuzzle/FireLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1198219, 0.538972, -0.005279433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16891108, 0.6187743, 0.13468528)
 light_color = Color(2, 1.2, 0, 1)
-light_energy = 1.1148713
-omni_range = 3.1842875
+light_energy = 1.0104305
+omni_range = 3.0313349
 script = ExtResource("92_d43ui")
 movement_radius = 0.05
 
