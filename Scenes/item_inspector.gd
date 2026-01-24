@@ -23,9 +23,14 @@ var success_audio_player: AudioStreamPlayer
 
 @onready var background: ColorRect = $Background
 @onready var cleaning_ui: Control = $CleaningUI
-@onready var progress_bar: ProgressBar = $CleaningUI/ProgressContainer/ProgressBar
+@onready var fill_frame: TextureRect = $CleaningUI/ProgressContainer/FillFrame
+@onready var fill_clip: Control = $CleaningUI/ProgressContainer/FillClip  # Has clip_children enabled
+@onready var fill_texture: TextureRect = $CleaningUI/ProgressContainer/FillClip/FillTexture
 @onready var progress_label: Label = $CleaningUI/ProgressContainer/Label
 @onready var repair_ui: Control = $RepairUI
+
+# Fill gauge dimensions (based on your 1920x1080 assets)
+var fill_gauge_width: float = 378.0  # Width of the fillable area
 
 var cursor_sprite: TextureRect
 var current_cursor_mode: int = 0  # 0=cloth, 1=cleaning, 2=grab
@@ -174,7 +179,7 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
 		cleanable.cleaning_complete.connect(_on_cleaning_complete)
 		cleaning_ui.visible = true
-		progress_bar.value = cleanable.get_cleaning_progress()
+		_update_fill_texture(cleanable.get_cleaning_progress())
 		_update_progress_label(cleanable.get_cleaning_progress())
 	else:
 		cleaning_ui.visible = false
@@ -580,7 +585,7 @@ func switch_to_cleanable(new_cleanable: Cleanable) -> void:
 		cleanable.cleaning_progress_changed.connect(_on_cleaning_progress)
 		cleanable.cleaning_complete.connect(_on_cleaning_complete)
 		cleaning_ui.visible = true
-		progress_bar.value = cleanable.get_cleaning_progress()
+		_update_fill_texture(cleanable.get_cleaning_progress())
 		_update_progress_label(cleanable.get_cleaning_progress())
 		_update_cursor_from_state()
 		print("ItemInspector: Switched to new Cleanable")
@@ -604,7 +609,7 @@ func _set_collision_enabled(node: Node, enabled: bool) -> void:
 		collision_shape.disabled = not enabled
 
 func _on_cleaning_progress(progress: float) -> void:
-	progress_bar.value = progress
+	_update_fill_texture(progress)
 	_update_progress_label(progress)
 	cleaning_progress_updated.emit(progress)
 
@@ -621,6 +626,11 @@ func _update_progress_label(progress: float) -> void:
 	var percent = int(progress * 100)
 	progress_label.text = "Cleaning: %d%%" % percent
 
+func _update_fill_texture(progress: float) -> void:
+	# Resize the clip container to reveal more of the fill texture
+	# The clip container has clip_children=true, so resizing it clips the fill texture
+	if fill_clip:
+		fill_clip.size.x = fill_gauge_width * progress
 
 func _restore_teakettle_glow_range(item: Node3D) -> void:
 	# Check if this item is the teakettle (in the teakettle group)

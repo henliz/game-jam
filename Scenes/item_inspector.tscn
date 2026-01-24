@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2m8n7k4qaqr1"]
+[gd_scene load_steps=4 format=3 uid="uid://c2m8n7k4qaqr1"]
 
 [ext_resource type="Script" uid="uid://bnq70qd877ml5" path="res://Scenes/item_inspector.gd" id="1_inspector"]
+[ext_resource type="Texture2D" uid="uid://cdft4ljmxdmbr" path="res://resource/UI/ProgressBar/ART_UI_MAIN_MiniGames_ProgressBar_Fill.png" id="2_fyv72"]
+[ext_resource type="Texture2D" uid="uid://d1e5khwvr52ew" path="res://resource/UI/ProgressBar/ART_UI_MAIN_MiniGames_ProgressBar_Frame.png" id="3_shu6k"]
 
 [node name="ItemInspector" type="CanvasLayer"]
 layer = 10
@@ -23,42 +25,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressContainer" type="VBoxContainer" parent="CleaningUI"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="ProgressContainer" type="Control" parent="CleaningUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -80.0
-offset_right = 150.0
-offset_bottom = -30.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+
+[node name="FillClip" type="Control" parent="CleaningUI/ProgressContainer"]
+clip_contents = true
+anchors_preset = 0
+offset_left = 770.0
+offset_top = 497.0
+offset_right = 1149.0
+offset_bottom = 1015.0
+
+[node name="FillTexture" type="TextureRect" parent="CleaningUI/ProgressContainer/FillClip"]
+layout_mode = 0
+offset_left = -771.0
+offset_top = -497.0
+offset_right = 1149.0
+offset_bottom = 583.0
+texture = ExtResource("2_fyv72")
+
+[node name="FillFrame" type="TextureRect" parent="CleaningUI/ProgressContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_shu6k")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="CleaningUI/ProgressContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+layout_mode = 0
+offset_left = 857.0
+offset_top = 836.0
+offset_right = 1057.0
+offset_bottom = 866.0
+theme_override_colors/font_color = Color(0.78039217, 0.76862746, 0.70980394, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-text = "Cleaning Progress"
+text = "Cleaning: 0%"
 horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="CleaningUI/ProgressContainer"]
-layout_mode = 2
-max_value = 1.0
-show_percentage = false
 
 [node name="Hint" type="Label" parent="CleaningUI"]
 layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
+offset_left = 760.0
 offset_top = 20.0
-offset_right = 200.0
+offset_right = 1160.0
 offset_bottom = 50.0
-grow_horizontal = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.8)
 theme_override_font_sizes/font_size = 14
 text = "Left-click to clean | Right-click drag to rotate | E to exit"
@@ -75,13 +95,10 @@ grow_vertical = 2
 
 [node name="Hint" type="Label" parent="RepairUI"]
 layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
+offset_left = 710.0
 offset_top = 20.0
-offset_right = 250.0
+offset_right = 1210.0
 offset_bottom = 50.0
-grow_horizontal = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 0.8)
 theme_override_font_sizes/font_size = 14
 text = "Left-click to drag pieces in place | Right-click to rotate | R to reset pieces | E to exit"
