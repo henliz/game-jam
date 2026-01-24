@@ -232,6 +232,7 @@ func _on_player_finalpuzzle_camera_trigger() -> void:
 	panel.visible = true
 	hovered_ring = null
 	world_environment.environment.fog_enabled=false
+	world_environment.environment.background_energy_multiplier = 1.6
 	snow.visible=false
 	wind.stop()
 	directional_light_3d.visible=true

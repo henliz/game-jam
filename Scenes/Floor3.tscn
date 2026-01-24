@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=37 format=4 uid="uid://bqmchw73r2wh5"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://mdwy5nw8n8up" path="res://resource/Floor3/Final/art_f_3_plant_1_final.tscn" id="19_i301v"]
 [ext_resource type="PackedScene" uid="uid://dtlihq27m4s5m" path="res://resource/Floor3/Final/art_f_3_plant_2_final.tscn" id="20_410h5"]
 [ext_resource type="PackedScene" uid="uid://bw1pg8aomjp5d" path="res://resource/Floor3/Final/art_f_3_plant_3_final.tscn" id="21_t0y2g"]
+[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="24_410h5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pspkr"]
 _surfaces = [{
@@ -75,6 +76,9 @@ size = Vector3(1.2644043, 0.215, 1.0852724)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q8jc1"]
 size = Vector3(1.7980957, 0.215, 1.0852724)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0y2g"]
+size = Vector3(1, 0.6879883, 0.3630371)
 
 [node name="Floor3" type="Node3D"]
 
@@ -287,6 +291,7 @@ spot_angle = 13.44
 spot_angle_attenuation = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Lighting"]
+visible = false
 mesh = SubResource("SphereMesh_h3a3t")
 
 [node name="FogVolume" type="FogVolume" parent="Lighting"]
@@ -347,3 +352,17 @@ shape = SubResource("BoxShape3D_q8jc1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("17_lh6ih")
+
+[node name="arrival" type="Node3D" parent="."]
+transform = Transform3D(-0.64861166, 0, -0.7611196, 0, 1, 0, 0.7611196, 0, -0.64861166, -0.47254753, 0.49689943, -2.2474484)
+
+[node name="portal" type="Area3D" parent="."]
+transform = Transform3D(0.7089646, 0, -1.3218809, 0, 1.4999999, 0, 1.3218809, 0, 0.7089646, 3.102143, 0.49689943, -4.730822)
+script = ExtResource("24_410h5")
+current_floor = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal"]
+transform = Transform3D(0.82099974, 0, 0.5709285, 0, 1, 0, -0.5709285, 0, 0.82099974, -0.058820814, 0, 0.4284508)
+shape = SubResource("BoxShape3D_t0y2g")
+
+[connection signal="body_entered" from="portal" to="portal" method="_on_body_entered"]

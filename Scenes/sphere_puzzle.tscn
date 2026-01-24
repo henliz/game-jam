@@ -350,7 +350,7 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_nwoon")
 skeleton = NodePath("")
 
-[node name="Cube" type="MeshInstance3D" parent="."]
+[node name="Cube" type="MeshInstance3D" parent="." groups=["hideOnInspect"]]
 transform = Transform3D(0.41378033, 0, 0, 0, 0.41378033, 0, 0, 0, 0.41378033, 0, 0.8, 0)
 mesh = SubResource("ArrayMesh_24ixq")
 skeleton = NodePath("")

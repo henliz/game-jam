@@ -67,7 +67,7 @@ func reset_to_default() -> void:
 
 func _apply_debug_floor2_state() -> void:
 	# Unlock floors 2 and 4 for playtesting
-	state.unlocked_floors = [1, 2]
+	state.unlocked_floors = [1, 2, 3, 4]
 	# Mark first 3 puzzles as complete (floor 1 items cleaned)
 	state.cleaned_items = {
 		"Antique Tea Kettle": true,
