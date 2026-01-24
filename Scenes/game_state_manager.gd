@@ -6,6 +6,9 @@ signal unlock_blueprint
 
 const SAVE_PATH := "user://savegame.json"
 
+# Debug: Set to true to start with floor 2 unlocked and 3 puzzles complete
+const DEBUG_START_FLOOR_2 := true
+
 var state: Dictionary = {}
 
 var _default_state: Dictionary = {
@@ -51,6 +54,28 @@ func _ready() -> void:
 
 func reset_to_default() -> void:
 	state = _default_state.duplicate(true)
+	if DEBUG_START_FLOOR_2:
+		_apply_debug_floor2_state()
+
+
+func _apply_debug_floor2_state() -> void:
+	# Unlock floors 2 and 4 for playtesting
+	state.unlocked_floors = [1, 2, 4]
+	# Mark first 3 puzzles as complete (floor 1 items cleaned)
+	state.cleaned_items = {
+		"Teakettle": true,
+		"MagicBillyBass": true,
+		"WizardBust": true,
+	}
+	# Mark floor 1 diary dialogues as triggered
+	state.triggered_dialogues = {
+		"F1JournalPickup": true,
+		"F1PickupInteractableFirst": true,
+		"F1Diary01": true,
+		"F1Diary02": true,
+		"F1Diary03": true,
+	}
+	print("DEBUG: Applied floor 2 test state - Floors 2 & 4 unlocked, 3 puzzles complete")
 
 
 # --- Getters with convenient shortcuts ---

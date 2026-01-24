@@ -638,7 +638,7 @@ func _restore_teakettle_glow_range(item: Node3D) -> void:
 		return
 
 	var glow = item.get_node_or_null("GlowOutline") as GlowOutline
-	if glow and glow.interaction_range == 5.0:
-		# Restore to original value (matching the scene default of 2.5)
-		glow.set_interaction_range(2.5)
-		print("ItemInspector: Restored teakettle glow range to 2.5")
+	if glow and glow.interaction_range == 10.0:
+		# Restore to default after player interacts (was boosted to 10.0 by journal to draw attention)
+		glow.set_interaction_range(3.0)
+		print("ItemInspector: Restored teakettle glow range to 3.0")

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameState="*res://Scenes/game_state_manager.gd"
 DialogueManager="*res://Scenes/dialogue_manager.tscn"
 ScreenEffects="*res://Scenes/screen_effects.tscn"
+TransitionCanvas="*res://Scenes/transition_canvas.tscn"
 
 [display]
 

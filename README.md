@@ -1,6 +1,6 @@
 <!-- prettier-ignore-start -->
 <p align="center">
-  <img src="Equinox_Logo.png" alt="Equinox Logo" width="300"/>
+  <img src="/Equinox_Logo.png" alt="Equinox Logo" width="300"/>
 </p>
 <h3 align="center"><i>Itch Comfy Jam: Winter 2026</i></h3>
 

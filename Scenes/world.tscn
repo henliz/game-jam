@@ -1,9 +1,8 @@
-[gd_scene load_steps=137 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=136 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
-[ext_resource type="Script" uid="uid://dt8u5b77nky8t" path="res://Scenes/portal_2.gd" id="2_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="6_k7acu"]
@@ -723,27 +722,6 @@ transform = Transform3D(300, 0, 0, 0, 0.5, 0, 0, 0, 300, 0.027, -0.26, 0.007)
 use_collision = true
 material = SubResource("StandardMaterial3D_yq1aw")
 
-[node name="portal" type="Area3D" parent="Map"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.7754126, 5.3263593, 0.7475873)
-script = ExtResource("1_5ukr8")
-
-[node name="portal2" type="Area3D" parent="Map"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.5537097, 0.57335246, -7.503555)
-script = ExtResource("2_o06y3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/portal2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32313967)
-shape = SubResource("BoxShape3D_5ukr8")
-
-[node name="CameraViewport" type="SubViewport" parent="Map/portal2"]
-anisotropic_filtering_level = 2
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Map/portal2/CameraViewport"]
-transform = Transform3D(-1, 0, -8.742277e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -0.99999994, 2.5544097, 1.460728, -7.9246407)
-fov = 100.0
-
 [node name="TreeClusters DEMO" type="Node3D" parent="Map"]
 visible = false
 
@@ -993,7 +971,7 @@ item_name = "Item"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.083702, 0.2722664, -12.455258)
 
 [node name="CrystalBall" type="StaticBody3D" parent="." groups=["teakettle"]]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 35.386612, 0.3081807, 1.0252756)
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -52.729942, 0.26994014, -11.408258)
 script = ExtResource("38_h46qv")
 inspect_scale = 2.0
 inspect_offset = Vector3(0, 0.25, 0)
@@ -1047,7 +1025,7 @@ target_node = NodePath("../ART_F2_StrangeLightLantern_Final")
 requires_unlock = true
 
 [node name="SpherePuzzle" parent="." instance=ExtResource("21_6c0jt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.408157, 0.22766972, -3.9865572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.93373, 0.4241345, -15.025014)
 
 [node name="AlchemyPuzzle" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.131348, 1.3947718, 4.7457404)
@@ -1480,9 +1458,6 @@ texture_normal = ExtResource("87_levo3")
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[connection signal="body_entered" from="Map/portal" to="Map/portal" method="_on_body_entered"]
-[connection signal="body_entered" from="Map/portal2" to="Map/portal" method="_on_portal_2_body_entered"]
-[connection signal="body_entered" from="Map/portal2" to="Map/portal2" method="_on_body_entered"]
 [connection signal="finalpuzzle_camera_trigger" from="Player" to="FinalPuzzle" method="_on_player_finalpuzzle_camera_trigger"]
 [connection signal="rotate_pipe" from="Player" to="AlchemyPuzzle" method="_on_player_rotate"]
 [connection signal="rotate_plate" from="Player" to="SpherePuzzle" method="_on_player_rotate_plate"]

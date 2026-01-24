@@ -4,6 +4,7 @@ extends Area3D
 @onready var transition_canvas = get_node("/root/TransitionCanvas")  # CHANGED - removed /World/
 @onready var video_player: VideoStreamPlayer = transition_canvas.get_node("VideoStreamPlayer")
 @onready var title_label: Label = transition_canvas.get_node("Title")
+
 var is_transitioning := false
 # Floor name lookup
 var floor_names := {
@@ -33,6 +34,7 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	print("Portal: No unlocked floor with arrival marker found above floor ", current_floor)
 	is_transitioning = false
+	
 func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> void:
 	var floor_name = floor_names.get(next_floor, "Floor %d" % next_floor)
 	var video_path: String
@@ -72,3 +74,5 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 	
 	# Hide canvas
 	transition_canvas.hide()
+
+	print("Portal: No unlocked floor with arrival marker found above floor ", current_floor)

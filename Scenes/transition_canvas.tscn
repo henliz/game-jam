@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h4h4hbert1pi"]
 
-[ext_resource type="FontFile" uid="uid://do2plbqfli06l" path="res://resource/Fonts/SixHands.ttf" id="1_xh0cd"]
+[ext_resource type="FontFile" uid="uid://coamxlf03sfj5" path="res://resource/Fonts/SpellcasterCC/CCSpellcaster-Regular.otf" id="1_xh0cd"]
 
 [node name="TransitionCanvas" type="CanvasLayer"]
 visible = false
