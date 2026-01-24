@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://drnwx4srtx85j"]
+[gd_scene load_steps=7 format=3 uid="uid://drnwx4srtx85j"]
 
 [ext_resource type="PackedScene" uid="uid://di7i6ojys7yi" path="res://resource/Floor1/ART_F1_Window_Cill.glb" id="1_db30v"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_cayre"]
@@ -21,7 +21,16 @@ shader_parameter/uv1_blend_sharpness = 2.0
 shader_parameter/uv1_scale = Vector3(2, 2, 2)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_db30v"]
+size = Vector3(0.24, 0.04, 0.799)
+
 [node name="ART_F1_Window_Cill" instance=ExtResource("1_db30v")]
 
 [node name="ART_F1_Window_Cill_model" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_w5cg5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11706543, 0, 0)
+shape = SubResource("BoxShape3D_db30v")

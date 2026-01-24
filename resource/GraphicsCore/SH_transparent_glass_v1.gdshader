@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix, alpha_to_coverage, cull_disabled, diffuse_burley, specular_toon;
+render_mode blend_mix, depth_prepass_alpha, cull_disabled, diffuse_burley, specular_toon;
 
 group_uniforms color;
 uniform vec4 basecolor : source_color = vec4(1.0);
@@ -88,10 +88,9 @@ void fragment() {
 	ALBEDO = shift_hue2(albedo.rgb, adjusted);
 	//ALBEDO = vec3(adjusted);
 
-	ALPHA = texture_albedo_uv.a;
-	//ALPHA_SCISSOR_THRESHOLD = 0.5;
-
 	//SPECULAR = specular;
+	
+	ALPHA = 1.0 - texture_albedo_uv.r;
 
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);

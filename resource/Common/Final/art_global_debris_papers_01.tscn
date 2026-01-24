@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dom4x32yxw2hq"]
 
 [ext_resource type="PackedScene" uid="uid://d0d1micx20yp0" path="res://resource/Common/ART_GLOBAL_Debris_Papers_01.glb" id="1_a1sjx"]
-[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_un25m"]
+[ext_resource type="Shader" uid="uid://dofepo1fkyvr8" path="res://resource/GraphicsCore/SH_universal_transparent_v1.gdshader" id="2_hiab6"]
 [ext_resource type="Texture2D" uid="uid://b2rhgh153b667" path="res://resource/Common/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp" id="3_krbk2"]
 [ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_8y10y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xh7ir"]
 render_priority = 0
-shader = ExtResource("2_un25m")
+shader = ExtResource("2_hiab6")
 shader_parameter/basecolor = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("3_krbk2")
 shader_parameter/texture_hue_shift = ExtResource("4_8y10y")

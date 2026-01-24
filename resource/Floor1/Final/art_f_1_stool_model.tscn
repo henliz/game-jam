@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://iw6xo6vwf2gy"]
+[gd_scene load_steps=9 format=3 uid="uid://iw6xo6vwf2gy"]
 
 [ext_resource type="PackedScene" uid="uid://lo3yrb33vsbb" path="res://resource/Floor1/ART_F1_Stool_Model.glb" id="1_wo8a7"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_pbjgr"]
@@ -25,8 +25,18 @@ shader_parameter/uv1_blend_sharpness = 2.0
 shader_parameter/uv1_scale = Vector3(3, 3, 3)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wo8a7"]
+height = 0.80114746
+radius = 0.209
+
 [node name="ART_F1_Stool_Model" instance=ExtResource("1_wo8a7")]
 
 [node name="BézierCurve_004" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67197424, 0, 0.8791706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69, 0, 0.859)
 surface_material_override/0 = SubResource("ShaderMaterial_nlbx7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4241333, 0)
+shape = SubResource("CylinderShape3D_wo8a7")

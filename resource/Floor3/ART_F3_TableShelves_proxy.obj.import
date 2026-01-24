@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ba1a07lrhjbjp"
+path="res://.godot/imported/ART_F3_TableShelves_proxy.obj-64ba23c5f2142109fe20337bbc29ee99.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ART_F3_TableShelves_proxy.obj-64ba23c5f2142109fe20337bbc29ee99.mesh"]
+
+source_file="res://resource/Floor3/ART_F3_TableShelves_proxy.obj"
+dest_files=["res://.godot/imported/ART_F3_TableShelves_proxy.obj-64ba23c5f2142109fe20337bbc29ee99.mesh", "res://.godot/imported/ART_F3_TableShelves_proxy.obj-64ba23c5f2142109fe20337bbc29ee99.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

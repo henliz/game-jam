@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cquvdqs4ypwku"]
+[gd_scene load_steps=9 format=3 uid="uid://cquvdqs4ypwku"]
 
 [ext_resource type="PackedScene" uid="uid://doofchgs3yqco" path="res://resource/Common/ART_Global_Shelves.glb" id="1_wywuq"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_kjay6"]
@@ -25,8 +25,17 @@ shader_parameter/uv1_blend_sharpness = 2.0
 shader_parameter/uv1_scale = Vector3(0.5, 1, 2)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wywuq"]
+size = Vector3(2.215, 0.06662843, 0.93689454)
+
 [node name="ART_Global_Shelves" instance=ExtResource("1_wywuq")]
 
 [node name="Cube_003" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.43)
 surface_material_override/0 = SubResource("ShaderMaterial_jrmrp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41797975, 0.40155274)
+shape = SubResource("BoxShape3D_wywuq")

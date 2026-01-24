@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxft285cx6i1y"]
+[gd_scene load_steps=8 format=3 uid="uid://dxft285cx6i1y"]
 
 [ext_resource type="PackedScene" uid="uid://420fkk1ino8y" path="res://resource/Common/ART_GLOBAL_Bottles_03.glb" id="1_3dig4"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_h8ynx"]
 [ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_caxwo"]
 [ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_hm3vv"]
+[ext_resource type="Material" uid="uid://dvtssmchunj7n" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_Labels.material" id="5_h8ynx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f3xcw"]
 render_priority = 0
@@ -46,3 +47,4 @@ surface_material_override/1 = SubResource("ShaderMaterial_3dig4")
 
 [node name="ART_GLOBAL_Bottles_03_label" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("5_h8ynx")
