@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://spnomf80cc2y"]
+
+[ext_resource type="PackedScene" uid="uid://b30rjewlo5kr0" path="res://resource/Floor3/ART_F3_Balcony_Final.glb" id="1_eegdm"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_7rcqg"]
+[ext_resource type="Texture2D" uid="uid://dbr6btra83d5y" path="res://resource/Floor3/ART_F3_Balcony_Final_BalconyBaseColor.webp" id="3_ntyyo"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_ap1hd"]
+[ext_resource type="Texture2D" uid="uid://bev2fax3604o5" path="res://resource/Floor3/ART_F3_Balcony_Final_BalconyNormal.webp" id="5_d4yu2"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_55ydr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ett43"]
+render_priority = 0
+shader = ExtResource("2_7rcqg")
+shader_parameter/basecolor = Color(0.8127047, 0.775244, 0.7590752, 1)
+shader_parameter/texture_albedo = ExtResource("3_ntyyo")
+shader_parameter/texture_hue_shift = ExtResource("4_ap1hd")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_55ydr")
+shader_parameter/texture_normal = ExtResource("5_d4yu2")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0.185, 0.475, 1.03)
+
+[node name="ART_F3_Balcony_Final" instance=ExtResource("1_eegdm")]
+
+[node name="Cylinder_024" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ett43")

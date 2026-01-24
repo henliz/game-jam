@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgpbbep2qaoap"]
+
+[ext_resource type="PackedScene" uid="uid://cgnwactl0445j" path="res://resource/Floor3/ART_F3_TablesShelves_Final.glb" id="1_5gmua"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_5moh1"]
+[ext_resource type="Texture2D" uid="uid://bswha1b8ilbqm" path="res://resource/Floor3/ART_F3_TablesShelves_Final_F3DeskBaseColor.webp" id="3_3nhqj"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_4ukmr"]
+[ext_resource type="Texture2D" uid="uid://37gc2bx6xy4h" path="res://resource/Floor3/ART_F3_TablesShelves_Final_F3DeskNormal.webp" id="5_oa7rb"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_k2tuf"]
+[ext_resource type="Texture2D" uid="uid://dwwqn5lkxu2cn" path="res://resource/Floor3/ART_F3_TablesShelves_Final_F3ShelfBaseColor.webp" id="7_3nhqj"]
+[ext_resource type="Texture2D" uid="uid://bji1j1lv6a4k" path="res://resource/Floor3/ART_F3_TablesShelves_Final_F3ShelfNormal.webp" id="8_4ukmr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc73y"]
+render_priority = 0
+shader = ExtResource("2_5moh1")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_3nhqj")
+shader_parameter/texture_hue_shift = ExtResource("4_4ukmr")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_k2tuf")
+shader_parameter/texture_normal = ExtResource("5_oa7rb")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oa7rb"]
+render_priority = 0
+shader = ExtResource("2_5moh1")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_3nhqj")
+shader_parameter/texture_hue_shift = ExtResource("4_4ukmr")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_k2tuf")
+shader_parameter/texture_normal = ExtResource("8_4ukmr")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gmua"]
+size = Vector3(4.7, 1.957, 1.622)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5moh1"]
+size = Vector3(2.515199, 3.400742, 1.3014307)
+
+[node name="ART_F3_TablesShelves_Final" instance=ExtResource("1_5gmua")]
+
+[node name="Tables" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_hc73y")
+
+[node name="F3Shelves" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_oa7rb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 1.2401915, 0.50755376, 4.6284575)
+shape = SubResource("BoxShape3D_5gmua")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.4999999, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.4999999, 4.0355844, 1.2291797, 2.6766431)
+shape = SubResource("BoxShape3D_5moh1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(0.8660253, 0, -0.49999994, 0, 1, 0, 0.49999994, 0, 0.8660253, -2.1518583, 1.2291797, 4.3475494)
+shape = SubResource("BoxShape3D_5moh1")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://dx16cc8wje3ag"]
+
+[ext_resource type="PackedScene" uid="uid://cw4ceuj8ggl8u" path="res://resource/Floor3/ART_F3_Door_Final.glb" id="1_86rnd"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_4k8q5"]
+[ext_resource type="Texture2D" uid="uid://b8wovv2m02hsi" path="res://resource/Floor3/ART_F3_Door_Final_F3DoorFrameBaseColor.webp" id="3_r06so"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_o5ied"]
+[ext_resource type="Texture2D" uid="uid://bvec0fm38sw6f" path="res://resource/Floor3/ART_F3_Door_Final_F3DoorFrameNormal.webp" id="5_vikyg"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_6ncjw"]
+[ext_resource type="Texture2D" uid="uid://c5cqcjgdbpfjr" path="res://resource/Floor3/ART_F3_Door_Final_F3DoorBaseColor.webp" id="7_xkjq3"]
+[ext_resource type="Texture2D" uid="uid://ds2nhynnqtq6t" path="res://resource/Floor3/ART_F3_Door_Final_F3DoorNormal.webp" id="8_h8jvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3dvp"]
+render_priority = 0
+shader = ExtResource("2_4k8q5")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_r06so")
+shader_parameter/texture_hue_shift = ExtResource("4_o5ied")
+shader_parameter/hue_shift_strength = 2.0
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_6ncjw")
+shader_parameter/texture_normal = ExtResource("5_vikyg")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpy87"]
+render_priority = 0
+shader = ExtResource("2_4k8q5")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("7_xkjq3")
+shader_parameter/texture_hue_shift = ExtResource("4_o5ied")
+shader_parameter/hue_shift_strength = 1.0000000149012
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("6_6ncjw")
+shader_parameter/texture_normal = ExtResource("8_h8jvx")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F3_Door_Final" instance=ExtResource("1_86rnd")]
+
+[node name="ART_F3_Door_Frame_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.01, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_y3dvp")
+
+[node name="ART_F3_Door_model" parent="." index="1"]
+transform = Transform3D(-1, 0, 0, 0, 1.01, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_gpy87")
