@@ -36,6 +36,7 @@ enabled=PackedStringArray("res://addons/extra_snaps/plugin.cfg")
 puzzleplate=""
 puzzlepipe=""
 moveable=""
+hideOnInspect="collection of any interactables or their components that we need to hide when entering inspection mode"
 
 [input]
 
