@@ -61,8 +61,8 @@ func _ready() -> void:
 
 func reset_to_default() -> void:
 	state = _default_state.duplicate(true)
-	if DEBUG_START_FLOOR_2:
-		_apply_debug_floor2_state()
+	#if DEBUG_START_FLOOR_2:
+	#	_apply_debug_floor2_state()
 
 
 func _apply_debug_floor2_state() -> void:

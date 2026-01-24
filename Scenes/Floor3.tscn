@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=67 format=4 uid="uid://bqmchw73r2wh5"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bw1pg8aomjp5d" path="res://resource/Floor3/Final/art_f_3_plant_3_final.tscn" id="21_t0y2g"]
 [ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="22_410h5"]
 [ext_resource type="PackedScene" uid="uid://dvijb7qxoe07a" path="res://resource/Common/Final/art_global_pillow_radana.tscn" id="23_jhuwn"]
+[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="24_410h5"]
 [ext_resource type="PackedScene" uid="uid://d5c86c1sds20" path="res://resource/Common/Final/art_global_wooden_stool.tscn" id="25_qlqp2"]
 [ext_resource type="PackedScene" uid="uid://jldjag0a162o" path="res://resource/Common/Final/art_global_books_fallen.tscn" id="26_w2tr4"]
 [ext_resource type="PackedScene" uid="uid://6w863udk384w" path="res://resource/Common/Final/art_global_books_row_01.tscn" id="27_w2tr4"]
@@ -40,7 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://bomg5qgdsr0hd" path="res://resource/Common/Final/art_global_lantern_standing.tscn" id="37_om7v8"]
 [ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="38_eqym8"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="39_aoigi"]
-[ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="24_410h5"]
+[ext_resource type="Material" uid="uid://b7frshhg5cqxq" path="res://resource/Puzzles/VFX/EffectBlocks/source_files/materials/portal.material" id="42_om7v8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pspkr"]
 _surfaces = [{
@@ -96,6 +97,109 @@ size = Vector3(1.7980957, 0.215, 1.0852724)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t0y2g"]
 size = Vector3(1, 0.6879883, 0.3630371)
+
+[sub_resource type="Curve" id="Curve_eqym8"]
+_data = [Vector2(0.102612, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_48gr2"]
+curve = SubResource("Curve_eqym8")
+
+[sub_resource type="Curve" id="Curve_aoigi"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.164179, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cdlk0"]
+curve = SubResource("Curve_aoigi")
+
+[sub_resource type="Curve" id="Curve_uy7cc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.141791, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ada02"]
+curve = SubResource("Curve_uy7cc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5mgy"]
+lifetime_randomness = 0.4
+particle_flag_align_y = true
+angle_max = 180.0
+velocity_pivot = Vector3(1, 1, 1)
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_ada02")
+color = Color(0, 0.380392, 0.92549, 1)
+alpha_curve = SubResource("CurveTexture_48gr2")
+emission_curve = SubResource("CurveTexture_cdlk0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0isau"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5534614, 0.7956199, 0.926091, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_53upp"]
+_surfaces = [{
+"aabb": AABB(-0.0402224, -0.702579, -0.0464448, 0.0804447, 0.739765, 0.0696672),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AgADAAEAAwAEAAEABAACAAEAAAACAAQAAAAEAAMAAAADAAIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("/38AAKmqAAD/f///qaoAAP9/o+sAAAAA//+j6///AAAAAKPr//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8nthu"]
+resource_name = "cylinder_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.0402224, -0.702579, -0.0464448, 0.0804447, 0.739765, 0.0696672),
+"attribute_data": PackedByteArray("qar//1TV////////qar/f1TV/3//f/9///+2jv9/to5U1baOqaq2jg=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("BgAIAAQACAAJAAMACQAHAAUAAAAHAAkAAQAJAAgAAgAIAAYA"),
+"material": SubResource("StandardMaterial3D_0isau"),
+"primitive": 3,
+"uv_scale": Vector4(2, 1, 0, 0),
+"vertex_count": 10,
+"vertex_data": PackedByteArray("/38AAKmqjOL/fwAAqar/v/9/AACpqozi/3///6mq/7//f///qaqM4v9///+pqozi/3+j6wAA5P3/f6PrAADk/f//o+v//3uwAACj6///mKypMVLjAAD/f1NjVU7///9/Vc6sHKucqbEsoPET8ZPS33SpEgFvtADe")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_53upp")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yu6pw"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -4.37114e-08, 2, 2.00001, 1.00874e-05),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("AAACAAEAAgAEAAMABAAGAAUABgAIAAcACAAKAAkACgAMAAsADAAOAA0ADgAQAA8AEAASABEAEgAUABMAFAAWABUAFgAAABcAAAAEAAIABAAIAAYACAAMAAoADAAQAA4AEAAUABIAFAAAABYAAAAIAAQACAAQAAwAEAAAABQACAAAABAA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/3/+/zcCAADeXqL7LgIAAP8/2O4RAgAAfSWB2uQBAAAmEf+/qQEAAFwEIKFlAQAAAAD/fxsBAABcBN5e0gAAACYR/z+NAAAAfSV9JVMAAAD/PyURJgAAAN5eXAQJAAAA/38AAAAAAAAgoVwECQAAAP+/JREmAAAAgdp9JVMAAADY7v8/jQAAAKL73l7SAAAA////fxsBAACi+yChZQEAANju/7+pAQAAgdqB2uQBAAD/v9juEQIAACChovsuAgAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_etndq"]
+resource_name = "Untitled_Circle_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -4.37114e-08, 2, 2.00001, 1.00874e-05),
+"attribute_data": PackedByteArray("mk6/CGsxmBmYGWsxvwiaTgYAJm8GANiQvwhksZgZk85rMWbmmk4/9yZv+P/YkPj/ZLE/95POZuZm5pPOP/dksfj/2JD4/yZvP/eaTmbmazGTzpgZZLG/CNiQBgAmbwYA"),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("AAACAAEAAgAEAAMABAAGAAUABgAIAAcACAAKAAkACgAMAAsADAAOAA0ADgAQAA8AEAASABEAEgAUABMAFAAWABUAFgAAABcAAAAEAAIABAAIAAYACAAMAAoADAAQAA4AEAAUABIAFAAAABYAAAAIAAQACAAQAAwAEAAAABQACAAAABAA"),
+"material": ExtResource("42_om7v8"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/3/+/zcC/4/eXqL7LgL/j/8/2O4RAv+PfSWB2uQB/48mEf+/qQH/j1wEIKFlAf+PAAD/fxsB/49cBN5e0gD/jyYR/z+NAP+PfSV9JVMA/4//PyURJgD/j95eXAQJAP+P/38AAAAA/48goVwECQD/j/+/JREmAP+Pgdp9JVMA/4/Y7v8/jQD/j6L73l7SAP+P////fxsB/4+i+yChZQH/j9ju/7+pAf+PgdqB2uQB/4//v9juEQL/jyChovsuAv+P/3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yu6pw")
 
 [node name="Floor3" type="Node3D"]
 
@@ -508,12 +612,106 @@ environment = ExtResource("17_lh6ih")
 transform = Transform3D(-0.64861166, 0, -0.7611196, 0, 1, 0, 0.7611196, 0, -0.64861166, -0.47254753, 0.49689943, -2.2474484)
 
 [node name="portal" type="Area3D" parent="."]
-transform = Transform3D(0.7089646, 0, -1.3218809, 0, 1.4999999, 0, 1.3218809, 0, 0.7089646, 3.102143, 0.49689943, -4.730822)
+transform = Transform3D(-0.99630046, 0, 1.1213319, 0, 1.4999999, 0, -1.1213319, 0, -0.99630046, 3.2614114, -3.070394, -2.169848)
 script = ExtResource("24_410h5")
 current_floor = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="portal"]
-transform = Transform3D(0.82099974, 0, 0.5709285, 0, 1, 0, -0.5709285, 0, 0.82099974, -0.058820814, 0, 0.4284508)
+transform = Transform3D(0.9487051, 0, 0.3161624, 0, 1, 0, -0.3161624, 0, 0.9487051, 1.4601227, 2.6100574, 0.65038705)
 shape = SubResource("BoxShape3D_t0y2g")
+
+[node name="PortalVisual" type="Node3D" parent="portal"]
+transform = Transform3D(0.58490086, 0, 0.81110406, 0, 0.99999964, 0, -0.81110406, 0, 0.58490086, 0.64479303, 1.5681881, -0.78833413)
+
+[node name="sparks" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.24698798, -0.21430628, 0.064660296, 0.08405494, -0.0004495793, -0.32256132, 0.20746791, 0.2553112, 0.053707354, -0.5675287, 1.3296173, 1.7174056)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks2" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.18156773, -0.2143063, 0.17949146, 0.23407434, -0.0004495814, -0.2373188, 0.15281883, 0.25531122, 0.1502459, -0.6177095, 1.530071, 1.6756365)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks3" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.0014681424, -0.2143062, 0.25530726, 0.3333251, -0.0004495717, -0.0022941637, 0.0018193008, 0.2553111, 0.21429895, -0.77060056, 1.5981125, 1.5474213)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks4" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(-0.20829348, -0.21430628, 0.1476408, 0.19306657, -0.00044956012, 0.27172816, -0.17449993, 0.25531113, 0.124407016, -0.9242251, 1.4994916, 1.4182966)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks5" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(-0.24698798, -0.21430624, -0.06466027, -0.08405492, -0.0004495519, 0.3225612, -0.20746788, 0.2553111, -0.05370736, -0.9760206, 1.333288, 1.3745272)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks6" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(-0.14764076, -0.21430628, -0.20829341, -0.27172816, -0.00044955694, 0.19306657, -0.124407016, 0.25531113, -0.17449997, -0.92584, 1.1328337, 1.4162953)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks7" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.0859406, -0.21430632, -0.2404126, -0.314008, -0.0004495654, -0.11184806, 0.07158494, 0.2553112, -0.20199749, -0.77294946, 1.0647924, 1.5445106)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="sparks8" type="GPUParticles3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.20829342, -0.21430632, -0.1476408, -0.19306657, -0.00044958357, -0.27172816, 0.17449993, 0.25531113, -0.124407016, -0.6194712, 1.1300809, 1.6734536)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v5mgy")
+draw_pass_1 = SubResource("ArrayMesh_8nthu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="portal/PortalVisual"]
+transform = Transform3D(0.76592183, -0.64291865, -0.0044010803, -0.00687728, -0.0013477391, -0.99997544, 0.64289695, 0.7659333, -0.0054537947, -0.7401664, 1.1648576, 1.5065258)
+light_color = Color(0.58463764, 0.8303815, 1, 1)
+light_energy = 3.089
+omni_range = 1.3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="portal/PortalVisual"]
+transform = Transform3D(-0.25530732, -0.0014681611, -0.21430624, 0.0022941637, -0.33332512, -0.0004495426, -0.21429896, -0.0018192786, 0.25531113, -0.771775, 1.3314526, 1.545966)
+mesh = SubResource("ArrayMesh_etndq")
+skeleton = NodePath("")
 
 [connection signal="body_entered" from="portal" to="portal" method="_on_body_entered"]
