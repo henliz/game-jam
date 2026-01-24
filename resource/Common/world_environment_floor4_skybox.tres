@@ -17,6 +17,7 @@ sky_material = SubResource("PanoramaSkyMaterial_7aeow")
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 0.2
 sky = SubResource("Sky_go701")
 ambient_light_source = 3
 tonemap_mode = 1
@@ -36,7 +37,7 @@ fog_light_color = Color(0.3713412, 0.4337889, 0.46637025, 1)
 fog_light_energy = 2.0
 fog_sun_scatter = 0.2
 fog_density = 1.0
-fog_sky_affect = 0.46
+fog_sky_affect = 0.9
 fog_height = 20.0
 fog_height_density = 0.05
 fog_depth_end = 50.0

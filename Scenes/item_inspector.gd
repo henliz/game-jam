@@ -166,6 +166,10 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 
 	opened.emit(item)
 
+	var assets_to_hide = get_tree().get_nodes_in_group("hideOnInspect")
+	for asset in assets_to_hide:
+		asset.visible=false
+		
 	# Delay dialogue to let workbench animation complete
 	get_tree().create_timer(1.5).timeout.connect(
 		func(): DialogueManager.try_trigger_dialogue("item_first_interact", FIRST_INTERACT_DIALOGUE_ID)
@@ -218,6 +222,10 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 func close():
 	if not is_active:
 		return
+		
+	var assets_to_show = get_tree().get_nodes_in_group("hideOnInspect")
+	for asset in assets_to_show:
+		asset.visible=true
 
 	# Re-enable collision shape when closing
 	if inspected_node:
