@@ -287,7 +287,7 @@ inspect_scale = 1.8
 item_name = "AlchemyContainer"
 item_description = ""
 
-[node name="Pipe1" type="StaticBody3D" parent="." groups=["puzzlepipe"]]
+[node name="Pipe1" type="StaticBody3D" parent="." groups=["hideOnInspect", "puzzlepipe"]]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0.7004318, 0.22300005, -1.0775154)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe1"]
@@ -297,7 +297,7 @@ shape = SubResource("CylinderShape3D_c5t2i")
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
 
-[node name="Pipe2" type="StaticBody3D" parent="." groups=["puzzlepipe"]]
+[node name="Pipe2" type="StaticBody3D" parent="." groups=["hideOnInspect", "puzzlepipe"]]
 transform = Transform3D(0.8660255, 0, 0.5, 0, 1.0000001, 0, -0.50000006, 0, 0.8660254, 0.38743234, 0.22316456, -0.9077549)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe2"]
@@ -308,7 +308,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
 
-[node name="Pipe3" type="StaticBody3D" parent="." groups=["puzzlepipe"]]
+[node name="Pipe3" type="StaticBody3D" parent="." groups=["hideOnInspect", "puzzlepipe"]]
 transform = Transform3D(0.8660254, -1.5142069e-07, 0.5, 1.7484555e-07, 1, 0, -0.5, 8.742278e-08, 0.8660254, 0.07927847, 0.22300005, -0.7305374)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pipe3"]
@@ -318,7 +318,7 @@ shape = SubResource("CylinderShape3D_c5t2i")
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
 
-[node name="ART_F3_DistillationFullSet" type="Node3D" parent="."]
+[node name="ART_F3_DistillationFullSet" type="Node3D" parent="." groups=["hideOnInspect"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.131348, -1.3947718, -4.7457404)
 
 [node name="Chalk" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
