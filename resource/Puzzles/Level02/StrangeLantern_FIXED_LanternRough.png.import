@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bujhadqb8ycnx"
-path.s3tc="res://.godot/imported/ART_F2_StrangeLightLantern_Final_ART_F2_StrangeLightLantern_Texture.png-02e5ff2d6d4c9a86c5d84cfc05b6cfb8.s3tc.ctex"
+uid="uid://ca2jkqmitsrm8"
+path.s3tc="res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3eb2ba5ab71d3149051c1fb40fbad105"
+"md5": "e7eed9be16ef06cd6a92c19e77c9e77c"
 }
 
 [deps]
 
-source_file="res://resource/Puzzles/Level02/ART_F2_StrangeLightLantern_Final_ART_F2_StrangeLightLantern_Texture.png"
-dest_files=["res://.godot/imported/ART_F2_StrangeLightLantern_Final_ART_F2_StrangeLightLantern_Texture.png-02e5ff2d6d4c9a86c5d84cfc05b6cfb8.s3tc.ctex"]
+source_file="res://resource/Puzzles/Level02/StrangeLantern_FIXED_LanternRough.png"
+dest_files=["res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.s3tc.ctex"]
 
 [params]
 

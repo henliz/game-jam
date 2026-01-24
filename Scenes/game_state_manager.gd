@@ -9,14 +9,18 @@ const SAVE_PATH := "user://savegame.json"
 # Debug: Set to true to start with floor 2 unlocked and 3 puzzles complete
 const DEBUG_START_FLOOR_2 := true
 
+# Items that require BOTH repair AND clean to count as one complete puzzle
+# These items only emit 1 blueprint when both conditions are met
+const REPAIR_REQUIRED_ITEMS := ["Wizard Bust", "Celestial Globe"]
+
 var state: Dictionary = {}
 
 var _default_state: Dictionary = {
 	# Puzzle states (9 puzzles)
 	"puzzles": {
-		"puzzle_1": {"cleaned": true, "repaired": false},
-		"puzzle_2": {"cleaned": true, "repaired": false},
-		"puzzle_3": {"cleaned": true, "repaired": true},
+		"puzzle_1": {"cleaned": false, "repaired": false},
+		"puzzle_2": {"cleaned": false, "repaired": false},
+		"puzzle_3": {"cleaned": false, "repaired": false},
 		"puzzle_4": {"cleaned": false, "repaired": false},
 		"puzzle_5": {"cleaned": false, "repaired": false},
 		"puzzle_6": {"cleaned": false, "repaired": false},
@@ -44,6 +48,9 @@ var _default_state: Dictionary = {
 	# Cleanable items (store in puzzles above or here you can add keys by item_name, such as "Wizard's Tome")
 	 "cleaned_items": {},
 
+	# Repaired items (item_name -> true for items that have been repaired/solved)
+	"repaired_items": {},
+
 	# Dialogue triggers that have already fired (trigger_id -> true)
 	"triggered_dialogues": {},
 }
@@ -60,12 +67,16 @@ func reset_to_default() -> void:
 
 func _apply_debug_floor2_state() -> void:
 	# Unlock floors 2 and 4 for playtesting
-	state.unlocked_floors = [1, 2, 4]
+	state.unlocked_floors = [1, 2]
 	# Mark first 3 puzzles as complete (floor 1 items cleaned)
 	state.cleaned_items = {
-		"Teakettle": true,
-		"MagicBillyBass": true,
-		"WizardBust": true,
+		"Antique Tea Kettle": true,
+		"Magic Billy Bass": true,
+		"Wizard Bust": true,
+	}
+	# Mark Wizard Bust as repaired (required for floor 1 completion)
+	state.repaired_items = {
+		"Wizard Bust": true,
 	}
 	# Mark floor 1 diary dialogues as triggered
 	state.triggered_dialogues = {
@@ -107,27 +118,73 @@ func set_value(key: String, value: Variant) -> void:
 func _check_floor_progress() -> void:
 	print("=== CHECK FLOOR PROGRESS ===")
 
-	# Count how many items are cleaned
-	var items_cleaned = state.cleaned_items.size()
-	print("Total items cleaned: ", items_cleaned)
-	if 2 not in state.unlocked_floors and items_cleaned>=3: unlock_floor(2)
-	if 3 not in state.unlocked_floors and items_cleaned>=6: unlock_floor(3)
-	if 4 not in state.unlocked_floors and items_cleaned>=9: unlock_floor(4)
-	# Unlock diary pages in order - queue them through journal UI
-	var diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
-	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
+	# Floor 1 puzzles - Teakettle and Billy Bass need cleaning only
+	# Wizard Bust needs both cleaning AND repair
+	var floor1_clean_only = ["Antique Tea Kettle", "Magic Billy Bass"]
+	var floor1_repair_item = "Wizard Bust"
+	var floor1_clean_complete = _count_floor_items_complete(floor1_clean_only, false)
+	var floor1_bust_complete = is_item_cleaned(floor1_repair_item) and is_item_repaired(floor1_repair_item)
+	var floor1_complete = floor1_clean_complete + (1 if floor1_bust_complete else 0)
 
-	for i in range(items_cleaned):
-		if i >= diary_pages.size():
+	# Floor 2 puzzles - Crystal Ball and Strange Lantern need cleaning only
+	# Celestial Globe needs both cleaning AND repair
+	var floor2_clean_only = ["Crystal Ball", "Strange Lantern"]
+	var floor2_repair_item = "Celestial Globe"
+	var floor2_clean_complete = _count_floor_items_complete(floor2_clean_only, false)
+	var floor2_globe_complete = is_item_cleaned(floor2_repair_item) and is_item_repaired(floor2_repair_item)
+	var floor2_complete = floor2_clean_complete + (1 if floor2_globe_complete else 0)
+
+	print("Floor 1 complete: ", floor1_complete, "/3")
+	print("Floor 2 complete: ", floor2_complete, "/3")
+
+	# Unlock floors based on completion
+	if 2 not in state.unlocked_floors and floor1_complete >= 3:
+		unlock_floor(2)
+	if 3 not in state.unlocked_floors and floor2_complete >= 3:
+		unlock_floor(3)
+
+	# Queue diary dialogues based on puzzle completion
+	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
+	print("  journal_ui found: ", journal_ui != null)
+	print("  Wizard Bust - cleaned: ", is_item_cleaned("Wizard Bust"), ", repaired: ", is_item_repaired("Wizard Bust"))
+
+	# Floor 1 diary pages
+	var floor1_diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
+	for i in range(floor1_complete):
+		if i >= floor1_diary_pages.size():
 			break
-		var diary_id = diary_pages[i]
-		print("Checking diary ", diary_id)
-		if not has_dialogue_triggered(diary_id):
-			print("QUEUEING: ", diary_id)
+		var diary_id = floor1_diary_pages[i]
+		var already_triggered = has_dialogue_triggered(diary_id)
+		print("  Checking ", diary_id, " - already triggered: ", already_triggered)
+		if not already_triggered:
+			print("QUEUEING F1: ", diary_id)
 			if journal_ui:
 				journal_ui.queue_diary_dialogue(diary_id)
 			else:
-				push_warning("GameState: No journal_ui found to queue diary dialogue")
+				print("  ERROR: journal_ui is null, cannot queue diary!")
+
+	# Floor 2 diary pages (numbering continues from F1: 04, 05, 06)
+	var floor2_diary_pages = ["F2Diary04", "F2Diary05", "F2Diary06"]
+	for i in range(floor2_complete):
+		if i >= floor2_diary_pages.size():
+			break
+		var diary_id = floor2_diary_pages[i]
+		if not has_dialogue_triggered(diary_id):
+			print("QUEUEING F2: ", diary_id)
+			if journal_ui:
+				journal_ui.queue_diary_dialogue(diary_id)
+
+
+func _count_floor_items_complete(items: Array, require_repair: bool) -> int:
+	var count = 0
+	for item_name in items:
+		if is_item_cleaned(item_name):
+			if require_repair:
+				if is_item_repaired(item_name):
+					count += 1
+			else:
+				count += 1
+	return count
 
 func unlock_floor(floor_num: int) -> void:
 	state.unlocked_floors.append(floor_num)
@@ -152,9 +209,43 @@ func is_item_cleaned(item_id: String) -> bool:
 func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 	state.cleaned_items[item_id] = cleaned
 	state_changed.emit("cleaned_items", state.cleaned_items)
-	if cleaned: unlock_blueprint.emit()
-	
-	# Check if we should unlock a diary page
+
+	# Blueprint logic: repair+clean items only get 1 blueprint when BOTH are done
+	if cleaned:
+		if item_id in REPAIR_REQUIRED_ITEMS:
+			# Only emit if both repaired AND cleaned
+			if is_item_repaired(item_id):
+				unlock_blueprint.emit()
+				print("GameState: Blueprint unlocked for ", item_id, " (repair+clean complete)")
+		else:
+			# Clean-only items get blueprint on clean
+			unlock_blueprint.emit()
+			print("GameState: Blueprint unlocked for ", item_id, " (clean complete)")
+
+	_check_floor_progress()
+
+
+# --- Repaired Items ---
+
+func is_item_repaired(item_id: String) -> bool:
+	return state.repaired_items.get(item_id, false)
+
+func set_item_repaired(item_id: String, repaired: bool = true) -> void:
+	state.repaired_items[item_id] = repaired
+	state_changed.emit("repaired_items", state.repaired_items)
+
+	# Blueprint logic: repair+clean items only get 1 blueprint when BOTH are done
+	if repaired:
+		if item_id in REPAIR_REQUIRED_ITEMS:
+			# Only emit if both repaired AND cleaned
+			if is_item_cleaned(item_id):
+				unlock_blueprint.emit()
+				print("GameState: Blueprint unlocked for ", item_id, " (repair+clean complete)")
+		else:
+			# Repair-only items (if any) get blueprint on repair
+			unlock_blueprint.emit()
+			print("GameState: Blueprint unlocked for ", item_id, " (repair complete)")
+
 	_check_floor_progress()
 
 

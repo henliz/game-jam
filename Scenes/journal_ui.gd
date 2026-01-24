@@ -423,31 +423,47 @@ func _on_game_state_changed(key: String, _value: Variant) -> void:
 
 func _update_page_visibility() -> void:
 	print("UPDATE PAGE VISIBILITY")
+	# Maps diary IDs to their spread index, side, and optional custom node names
+	# For custom nodes: "locked" hides when unlocked, "unlocked" shows when unlocked (optional)
+	# Note: Diary numbering is sequential across floors (F1: 01-03, F2: 04-06, F3: 07-09)
 	var diary_to_page = {
 		"F1Diary01": {"spread": 1, "side": "left"},
 		"F1Diary02": {"spread": 1, "side": "right"},
 		"F1Diary03": {"spread": 2, "side": "left"},
+		"F2Diary04": {"spread": 2, "side": "right"},
+		"F2Diary05": {"spread": 3, "locked": "Day05_Locked"},
+		"F2Diary06": {"spread": 3, "locked": "Day06_Locked"},
 	}
-	
+
 	# Check which diary entries are unlocked and update ONLY those pages
 	for diary_id in diary_to_page:
 		var page_info = diary_to_page[diary_id]
 		var spread_index = page_info.spread
-		
+
 		# Make sure the spread exists
 		if spread_index >= spreads.size():
 			continue
-			
+
 		var spread = spreads[spread_index]
 		var is_unlocked = game_state.has_dialogue_triggered(diary_id)
-		
-		if page_info.side == "left":
+
+		# Handle custom node names (for spreads with different naming conventions)
+		if page_info.has("locked"):
+			var locked_node = spread.get_node_or_null(page_info.locked)
+			if locked_node:
+				locked_node.visible = not is_unlocked
+			# Unlocked node is optional - some spreads only have locked overlay
+			if page_info.has("unlocked"):
+				var unlocked_node = spread.get_node_or_null(page_info.unlocked)
+				if unlocked_node:
+					unlocked_node.visible = is_unlocked
+		elif page_info.side == "left":
 			var left_locked = spread.get_node_or_null("LeftPage_Locked")
 			var left_unlocked = spread.get_node_or_null("LeftPage_Unlocked")
 			if left_locked and left_unlocked:
 				left_locked.visible = not is_unlocked
 				left_unlocked.visible = is_unlocked
-				
+
 		elif page_info.side == "right":
 			var right_locked = spread.get_node_or_null("RightPage_Locked")
 			var right_unlocked = spread.get_node_or_null("RightPage_Unlocked")
