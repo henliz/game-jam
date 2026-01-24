@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://jldjag0a162o"]
+
+[ext_resource type="PackedScene" uid="uid://b7v4e41e0fqmp" path="res://resource/Common/ART_GLOBAL_Books_Fallen.glb" id="1_whd18"]
+[ext_resource type="Material" uid="uid://df4x0cul8kkbn" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_Books.material" id="2_xpnva"]
+
+[node name="ART_GLOBAL_Books_Fallen" instance=ExtResource("1_whd18")]
+
+[node name="ART_GLOBAL_Books_Fallen_model" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xpnva")
