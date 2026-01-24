@@ -27,6 +27,14 @@ var is_rotating = false
 @onready var inner_summer_piece: TextureButton = $CanvasLayer/Panel/InnerSummerPiece
 @onready var inner_spring_piece: TextureButton = $CanvasLayer/Panel/InnerSpringPiece
 
+@onready var telescope_big: MeshInstance3D = $TelescopeBig
+@onready var telescope_med: MeshInstance3D = $TelescopeMed
+@onready var telescope_small: MeshInstance3D = $TelescopeSmall
+@onready var fire_light: Node3D = $FireLight
+@onready var god_rays_2: MeshInstance3D = $GodRays2
+@onready var god_rays_3: MeshInstance3D = $GodRays3
+
+
 var dragged_inscription : TextureButton = null
 var dragged_inscription_name : String = ""
 
@@ -223,6 +231,17 @@ func check_puzzle_complete():
 		if fmod(r,360.0) != 0.0: return false
 	ring_success.play()
 	print("final puzzle is complete")
+	telescope_big.visible=true
+	telescope_med.visible=true
+	telescope_small.visible=true
+	god_rays_2.visible=true
+	god_rays_3.visible=true
+	fire_light.visible=true
+	world_environment.environment.fog_enabled=false
+	world_environment.environment.background_energy_multiplier = 1.8
+	snow.visible=false
+	wind.stop()
+	directional_light_3d.visible=true
 	return true
 			
 func _on_player_finalpuzzle_camera_trigger() -> void:
@@ -231,8 +250,3 @@ func _on_player_finalpuzzle_camera_trigger() -> void:
 	is_active = true
 	panel.visible = true
 	hovered_ring = null
-	world_environment.environment.fog_enabled=false
-	world_environment.environment.background_energy_multiplier = 1.6
-	snow.visible=false
-	wind.stop()
-	directional_light_3d.visible=true
