@@ -363,6 +363,7 @@ metadata/_custom_type_script = "uid://dgku75f4jy8wp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SolvedSphere"]
 shape = SubResource("SphereShape3D_gke3q")
+disabled = true
 
 [node name="Cleanable" type="Node" parent="SolvedSphere"]
 script = ExtResource("18_exs2u")
@@ -375,7 +376,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72, 0)
 mesh = SubResource("ArrayMesh_eugpe")
 skeleton = NodePath("")
 
-[node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
+[node name="GlowOutline" type="Node3D" parent="SolvedSphere" node_paths=PackedStringArray("target_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7208722, 0)
 script = ExtResource("22_womay")
 glow_color = Color(0.96, 0.66, 0.19, 1)
 interaction_range = 2.5
