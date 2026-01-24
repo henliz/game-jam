@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
 [ext_resource type="PackedScene" uid="uid://dit2oevcov2hy" path="res://resource/Birch Tree Dead Snow.glb" id="5_pt3ps"]
+[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="6_ctcri"]
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
-[ext_resource type="Environment" uid="uid://b84788h52gshd" path="res://resource/Common/world_environment_dev.tres" id="6_wex5w"]
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
 [ext_resource type="PackedScene" uid="uid://ineivc0o1klp" path="res://Scenes/Floor2.tscn" id="9_tutfb"]
@@ -847,7 +847,7 @@ transform = Transform3D(7.0000005, 0, 0, 0, 7, 0, 0, 0, 7.0000005, -1.5838165, 2
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.34229663, -0.35794404, -1.3917141)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_wex5w")
+environment = ExtResource("6_ctcri")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.98480785, 0.03610349, -0.16985354, 0, 0.97814775, 0.20791169, 0.1736482, -0.20475309, 0.9632873, 0, 9.435643, -15.294653)
@@ -858,7 +858,7 @@ directional_shadow_mode = 0
 directional_shadow_max_distance = 10.0
 
 [node name="Player" parent="." instance=ExtResource("1_a02cp")]
-transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -0.99989206, -53.92105, 1.0732702, -15.158093)
+transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -0.99989206, -0.26417565, 0.41802883, -4.8616266)
 
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 32.927532, -1.2728524)
@@ -918,33 +918,33 @@ bus = &"SFX"
 script = ExtResource("29_qebug")
 
 [node name="Floor1" parent="." instance=ExtResource("29_opbav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.00531, 0.012296557, -0.03598821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04082036, 0.012296557, -0.03598821)
 
 [node name="WizardJournal" parent="." instance=ExtResource("90_h46qv")]
-transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 39.355, 0.682, -0.126)
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -0.6911309, 0.682, -0.126)
 
 [node name="JournalDialogueTrigger" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.355213, 0.6716909, -0.1260998)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.69091725, 0.6716909, -0.1260998)
 script = ExtResource("34_d5ow5")
 trigger_id = "F1SeeInteractableFirst"
 dialogue_id = "F1SeeInteractableFirst"
 
 [node name="Teakettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 34.927383, 1.0805786, -0.5145346)
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -5.1187468, 1.0805786, -0.5145346)
 inspect_scale = 2.0
 inspect_offset = Vector3(0, 0.25, 0)
 
 [node name="MagicBillyBass" parent="." instance=ExtResource("51_uqdn7")]
-transform = Transform3D(-0.4877683, 0, -0.8729732, 0, 1, 0, 0.8729732, 0, -0.4877683, 42.881306, 2.291667, -4.9189796)
+transform = Transform3D(-0.4877683, 0, -0.8729732, 0, 1, 0, 0.8729732, 0, -0.4877683, 2.8351753, 2.291667, -4.9189796)
 inspect_scale = 1.6
 
 [node name="WizardBust" parent="." instance=ExtResource("28_1vso6")]
-transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, 37.519882, 1.6030809, 4.1603274)
+transform = Transform3D(-0.9256001, 0, 0.37850317, 0, 1, 0, -0.37850314, 0, -0.92560005, -2.5262482, 1.6030809, 4.1603274)
 inspect_scale = 1.5
 inspect_offset = Vector3(0, 0.15, 0)
 
 [node name="Floor2" parent="." instance=ExtResource("9_tutfb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.083702, 0.2722664, -12.455258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.083702, 0.2722664, -12.289664)
 
 [node name="CrystalBall_Final" parent="." instance=ExtResource("24_ctcri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.296013, 1.2947273, -12.030593)
@@ -955,7 +955,7 @@ transform = Transform3D(0.8838636, 0, 0.4677447, 0, 1, 0, -0.4677447, 0, 0.88386
 inspect_scale = 2.0
 inspect_offset = Vector3(0, 0.2, 0)
 
-[node name="SpherePuzzle" parent="." instance=ExtResource("21_6c0jt")]
+[node name="SpherePuzzle" parent="." groups=["hideOnInspect"] instance=ExtResource("21_6c0jt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.93373, 0.4241345, -15.025014)
 
 [node name="CrystalBall_offset" type="StaticBody3D" parent="." groups=["teakettle"]]
@@ -968,6 +968,15 @@ item_name = "Crystal Ball"
 
 [node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall_offset" instance=ExtResource("85_cwuo4")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="MortarPestle" parent="." instance=ExtResource("76_ctcri")]
+transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.419502, 1.2075727, -12.704869)
+
+[node name="ResearchNotebook" parent="." instance=ExtResource("77_mkebs")]
+transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.626774, 1.2075727, -11.593863)
+
+[node name="AlchemyPuzzle" parent="." instance=ExtResource("76_de5wk")]
+transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -52.409748, 1.2075727, -12.704869)
 
 [node name="Floor4" parent="." instance=ExtResource("29_coyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
@@ -1343,17 +1352,8 @@ rotation = -0.27608863
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("87_levo3")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.30494, 0.2598766, -13.621945)
-
-[node name="MortarPestle" parent="." instance=ExtResource("76_ctcri")]
-transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.419502, 1.2075727, -12.704869)
-
-[node name="ResearchNotebook" parent="." instance=ExtResource("77_mkebs")]
-transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.626774, 1.2075727, -11.593863)
-
-[node name="AlchemyPuzzle" parent="." instance=ExtResource("76_de5wk")]
-transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -52.409748, 1.2075727, -12.704869)
+[node name="Temporary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59494853, 0, 0)
 
 [connection signal="finalpuzzle_camera_trigger" from="Player" to="FinalPuzzle" method="_on_player_finalpuzzle_camera_trigger"]
 [connection signal="rotate_pipe" from="Player" to="AlchemyPuzzle" method="_on_player_rotate"]

@@ -88,7 +88,8 @@ func _apply_debug_floor2_state() -> void:
 	}
 	# Unlock puzzles (normally done by picking up journal)
 	state.flags["puzzles_unlocked"] = true
-	print("DEBUG: Applied floor 2 test state - Floors 2 & 4 unlocked, 3 puzzles complete, puzzles unlocked")
+	print("DEBUG: Applied floor 2 test state - Floor 2 unlocked, 3 puzzles complete, puzzles unlocked")
+
 
 
 # --- Getters with convenient shortcuts ---
