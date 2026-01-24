@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://qjbe7cx45l3y"]
+
+[ext_resource type="PackedScene" uid="uid://dfpwve4nq8dc" path="res://resource/Common/ART_GLOBAL_Rugs_Oval_Model.glb" id="1_bwqbu"]
+[ext_resource type="Shader" uid="uid://dofepo1fkyvr8" path="res://resource/GraphicsCore/SH_universal_transparent_v1.gdshader" id="2_mjspl"]
+[ext_resource type="Texture2D" uid="uid://baulrjk4lhtyp" path="res://resource/Common/ART_GLOBAL_Rugs_Oval_Texture.png" id="3_lqydj"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_tviqn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i81x"]
+render_priority = 0
+shader = ExtResource("2_mjspl")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_lqydj")
+shader_parameter/texture_hue_shift = ExtResource("4_tviqn")
+shader_parameter/hue_shift_strength = 0.10000000149012
+shader_parameter/roughness = 0.850000040375
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Rugs_Oval_Model" instance=ExtResource("1_bwqbu")]
+
+[node name="Circle" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_5i81x")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxft285cx6i1y"]
+
+[ext_resource type="PackedScene" uid="uid://420fkk1ino8y" path="res://resource/Common/ART_GLOBAL_Bottles_03.glb" id="1_3dig4"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_h8ynx"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_caxwo"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_hm3vv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3xcw"]
+render_priority = 0
+shader = ExtResource("2_h8ynx")
+shader_parameter/basecolor = Color(0.63893485, 0.28652728, 0.28336248, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_caxwo")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.2000000095
+shader_parameter/texture_roughness = ExtResource("4_hm3vv")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.43967322, 0.16231406, 0.2680789, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dig4"]
+render_priority = 0
+shader = ExtResource("2_h8ynx")
+shader_parameter/basecolor = Color(0.2067981, 0.35870862, 0.3731763, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_caxwo")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.850000040375
+shader_parameter/texture_roughness = ExtResource("4_hm3vv")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(4, 4, 4)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Bottles_03" instance=ExtResource("1_3dig4")]
+
+[node name="ART_GLOBAL_Bottles_03_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_f3xcw")
+surface_material_override/1 = SubResource("ShaderMaterial_3dig4")
+
+[node name="ART_GLOBAL_Bottles_03_label" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
