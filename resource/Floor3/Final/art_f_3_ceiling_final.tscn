@@ -1,0 +1,158 @@
+[gd_scene load_steps=20 format=3 uid="uid://bj2aftwna05wp"]
+
+[ext_resource type="PackedScene" uid="uid://buo2ucgvmmsam" path="res://resource/Floor3/ART_F3_Ceiling_Final.glb" id="1_7mn34"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_l68e6"]
+[ext_resource type="Texture2D" uid="uid://cs77rmsi4ndbq" path="res://resource/Floor3/ART_F3_Ceiling_Final_F3LampBaseColor.webp" id="3_q12g8"]
+[ext_resource type="Texture2D" uid="uid://dobodvfabsvn3" path="res://resource/Floor3/ART_F3_Ceiling_Final_F3LampEmit.webp" id="4_aah4l"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="5_ibiog"]
+[ext_resource type="Texture2D" uid="uid://dnxebaqu1hoyp" path="res://resource/Floor3/ART_F3_Ceiling_Final_F3LampNormal.webp" id="6_txkow"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="7_y7ki7"]
+[ext_resource type="Texture2D" uid="uid://ct5128ix2xwyw" path="res://resource/Floor3/ART_F3_Ceiling_Final_F3CeilingBaseColor.webp" id="8_eg5jo"]
+[ext_resource type="Shader" uid="uid://cndkgkwsvukjh" path="res://resource/GraphicsCore/SH_opaque_glass_v1.gdshader" id="8_mgue0"]
+[ext_resource type="Texture2D" uid="uid://bg2m7kn5dhy1h" path="res://resource/Floor3/ART_F3_Ceiling_Final_F3CeilingNormal.webp" id="9_mgue0"]
+[ext_resource type="Texture2D" uid="uid://c5l0ebua4vnu4" path="res://resource/Floor3/ART_F3_Ceiling_Final_BeamVertBaseColor.webp" id="10_gbug2"]
+[ext_resource type="Texture2D" uid="uid://cskmxx5swtfpc" path="res://resource/Floor3/ART_F3_Ceiling_Final_BeamVertNormal.webp" id="11_ckjwh"]
+[ext_resource type="Texture2D" uid="uid://dlylvua04fbya" path="res://resource/Floor3/ART_F3_Ceiling_Final_BeamHoriBaseColor.webp" id="12_ue7gu"]
+[ext_resource type="Texture2D" uid="uid://duv1iamftytjy" path="res://resource/Floor3/ART_F3_Ceiling_Final_BeamHoriNormal.webp" id="13_ygh6n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eg5jo"]
+render_priority = 0
+shader = ExtResource("2_l68e6")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_q12g8")
+shader_parameter/texture_hue_shift = ExtResource("5_ibiog")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.50000002375
+shader_parameter/texture_roughness = ExtResource("7_y7ki7")
+shader_parameter/texture_normal = ExtResource("6_txkow")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/texture_backlight = ExtResource("4_aah4l")
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih8lv"]
+render_priority = 0
+shader = ExtResource("8_mgue0")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("8_eg5jo")
+shader_parameter/texture_hue_shift = ExtResource("5_ibiog")
+shader_parameter/hue_shift_strength = 0.80000001192096
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("7_y7ki7")
+shader_parameter/texture_normal = ExtResource("9_mgue0")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ix4ns"]
+render_priority = 0
+shader = ExtResource("2_l68e6")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("10_gbug2")
+shader_parameter/texture_hue_shift = ExtResource("5_ibiog")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("7_y7ki7")
+shader_parameter/texture_normal = ExtResource("11_ckjwh")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xtbm7"]
+render_priority = 0
+shader = ExtResource("2_l68e6")
+shader_parameter/basecolor = Color(0.99999994, 0.7757497, 0.580711, 1)
+shader_parameter/texture_albedo = ExtResource("12_ue7gu")
+shader_parameter/texture_hue_shift = ExtResource("5_ibiog")
+shader_parameter/hue_shift_strength = 0.80000001192096
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("7_y7ki7")
+shader_parameter/texture_normal = ExtResource("13_ygh6n")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w5wow"]
+size = Vector3(0.16, 7.5959473, 0.37271485)
+
+[node name="ART_F3_Ceiling_Final" instance=ExtResource("1_7mn34")]
+
+[node name="Cylinder_009" parent="." index="0"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_eg5jo")
+
+[node name="Ceiling_002" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_ih8lv")
+
+[node name="BeamsVert_002" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_ix4ns")
+
+[node name="BeamsHor_002" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_xtbm7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+transform = Transform3D(0.96592546, 0, 0.25881895, 0, 1, 0, -0.25881895, 0, 0.96592546, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1.0000012, 2.3841858e-07, 3.5680523, 5.2438602)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.8660264, 0, -0.50000054, 0, 1, 0, 0.50000054, 0, 0.8660264, -2.6258998, 3.5677543, 4.5481925)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(0.5000006, 0, -0.86602646, 0, 1, 0, 0.86602646, 0, 0.5000006, -4.5427136, 3.5677543, 2.622737)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3"]
+transform = Transform3D(-2.980236e-08, 0, -1.0000012, 0, 1, 0, 1.0000012, 0, -2.980236e-08, -5.2460146, 3.5677543, -1.4144226e-07)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" index="4"]
+transform = Transform3D(-0.5000006, 0, -0.8660264, 0, 1, 0, 0.8660264, 0, -0.5000006, -4.5400176, 3.5677543, -2.6211805)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" index="5"]
+transform = Transform3D(-0.8660266, 0, -0.5000006, 0, 1, 0, 0.5000006, 0, -0.8660266, -2.6214468, 3.5677543, -4.540479)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" index="6"]
+transform = Transform3D(-1.0000014, 0, 0, 0, 1, 0, 0, 0, -1.0000014, 1.6763831e-08, 3.5677543, -5.2375064)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" index="7"]
+transform = Transform3D(-0.86602664, 0, 0.5000007, 0, 1, 0, -0.5000007, 0, -0.86602664, 2.6218283, 3.5677543, -4.5411396)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" index="8"]
+transform = Transform3D(-0.50000066, 0, 0.86602664, 0, 1, 0, -0.86602664, 0, -0.50000066, 4.5426664, 3.5677543, -2.6227095)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" index="9"]
+transform = Transform3D(0, 0, 1.0000015, 0, 1, 0, -1.0000015, 0, 0, 5.246809, 3.5677543, 0)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" index="10"]
+transform = Transform3D(0.50000083, 0, 0.8660269, 0, 1, 0, -0.8660269, 0, 0.50000083, 4.5371227, 3.5677543, 2.6195092)
+shape = SubResource("BoxShape3D_w5wow")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D" index="11"]
+transform = Transform3D(0.86602664, 0, 0.50000066, 0, 1, 0, -0.50000066, 0, 0.86602664, 2.6166487, 3.5677543, 4.5321684)
+shape = SubResource("BoxShape3D_w5wow")

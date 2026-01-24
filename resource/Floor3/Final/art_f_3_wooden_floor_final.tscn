@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvdu8k6w34uv"]
+
+[ext_resource type="PackedScene" uid="uid://yppkomlqwh6c" path="res://resource/Floor3/ART_F3_WoodenFloor_Final.glb" id="1_717dt"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_bgs8r"]
+[ext_resource type="Texture2D" uid="uid://ci42n1bl0a8qs" path="res://resource/Floor3/ART_F3_WoodenFloor_Final_F2FloorBaseColor.webp" id="3_1n007"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_x0ak8"]
+[ext_resource type="Texture2D" uid="uid://35u5w7s0dnsn" path="res://resource/Floor3/ART_F3_WoodenFloor_Final_F2FloorNormal.webp" id="5_im0t6"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_b0hd5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyg10"]
+render_priority = 0
+shader = ExtResource("2_bgs8r")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_1n007")
+shader_parameter/texture_hue_shift = ExtResource("4_x0ak8")
+shader_parameter/hue_shift_strength = 0.0
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_b0hd5")
+shader_parameter/texture_normal = ExtResource("5_im0t6")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(0.25, 0.25, 0.25)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F3_WoodenFloor_Final" instance=ExtResource("1_717dt")]
+
+[node name="F2Floor_001" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_tyg10")

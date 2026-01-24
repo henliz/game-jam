@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://boqgbosavs1lq"]
+
+[ext_resource type="PackedScene" uid="uid://cgd5mfn2xyf3d" path="res://resource/Floor3/ART_F3_Inner_Wall.glb" id="1_v0ryw"]
+[ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="2_df7no"]
+
+[node name="ART_F3_Inner_Wall" instance=ExtResource("1_v0ryw")]
+
+[node name="ART_F3_Inner_Wall_model" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_df7no")

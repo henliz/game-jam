@@ -1,16 +1,213 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=18 format=3 uid="uid://bqmchw73r2wh5"]
 
-[ext_resource type="Environment" uid="uid://cqxdomi0q7ty5" path="res://resource/Common/world_environment_floor3.tres" id="1_63oft"]
+[ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
+[ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
+[ext_resource type="ArrayMesh" uid="uid://hbqx0kjrwor6" path="res://resource/Floor1/f1_wall_window_right.res" id="3_oaajg"]
+[ext_resource type="ArrayMesh" uid="uid://b3a36yw77dkv5" path="res://resource/Floor1/f1_wall_window_center.res" id="4_4y2w3"]
+[ext_resource type="ArrayMesh" uid="uid://d0nwid5bl2m82" path="res://resource/Floor3/ART_F3_Wall_Door.obj" id="4_elm7w"]
+[ext_resource type="PackedScene" uid="uid://bj2aftwna05wp" path="res://resource/Floor3/Final/art_f_3_ceiling_final.tscn" id="5_by3gm"]
+[ext_resource type="PackedScene" uid="uid://dx16cc8wje3ag" path="res://resource/Floor3/Final/art_f_3_door_final.tscn" id="5_oaajg"]
+[ext_resource type="PackedScene" uid="uid://ctmp0maggx8au" path="res://resource/Floor3/Final/art_f_3_stairs_interior_final.tscn" id="6_oaajg"]
+[ext_resource type="PackedScene" uid="uid://bgpbbep2qaoap" path="res://resource/Floor3/Final/art_f_3_tables_shelves_final.tscn" id="8_ytof5"]
+[ext_resource type="PackedScene" uid="uid://spnomf80cc2y" path="res://resource/Floor3/Final/art_f_3_balcony_final.tscn" id="9_xolbj"]
+[ext_resource type="PackedScene" uid="uid://bvdu8k6w34uv" path="res://resource/Floor3/Final/art_f_3_wooden_floor_final.tscn" id="10_aa421"]
+[ext_resource type="PackedScene" uid="uid://mjgmvwpobql1" path="res://resource/Floor3/Final/art_f_3_raised_platform.tscn" id="12_04y7i"]
+[ext_resource type="PackedScene" uid="uid://djn5vh7ixvvhu" path="res://resource/Floor3/Final/art_f_3_pipes_final.tscn" id="13_lh6ih"]
+[ext_resource type="PackedScene" uid="uid://pqlat0kyxu3g" path="res://resource/Common/art_global_window_frame_model.tscn" id="14_pspkr"]
+[ext_resource type="PackedScene" uid="uid://boqgbosavs1lq" path="res://resource/Floor3/Final/art_f_3_inner_wall.tscn" id="15_lh6ih"]
+[ext_resource type="PackedScene" uid="uid://bn8h7hbw2asdb" path="res://resource/Floor3/Final/art_f_3_stairs_exterior_final.tscn" id="16_pspkr"]
+[ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="17_lh6ih"]
 
 [node name="Floor3" type="Node3D"]
 
 [node name="Props_Environment" type="Node3D" parent="."]
 
+[node name="Walls" type="Node3D" parent="Props_Environment"]
+
+[node name="F1WallClear" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(0.7577722, 0, 0.4375, 0, 1, 0, -0.4375, 0, 0.7577722, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear2" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-0.875, 0, 1.3212133e-07, 0, 1, 0, -1.3212133e-07, 0, -0.875, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear4" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-0.7577721, 0, 0.4375001, 0, 1, 0, -0.4375001, 0, -0.7577721, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear6" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-0.43749988, 0, 0.7577723, 0, 1, 0, -0.7577723, 0, -0.43749988, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear8" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(0.43750018, 0, 0.7577722, 0, 1, 0, -0.7577722, 0, 0.43750018, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear9" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(0.87500006, 0, -2.0861626e-07, 0, 1, 0, 2.0861626e-07, 0, 0.87500006, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear3" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-0.7577723, 0, -0.43749985, 0, 1, 0, 0.43749985, 0, -0.7577723, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear5" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-0.43750012, 0, -0.75777215, 0, 1, 0, 0.75777215, 0, -0.43750012, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallClear7" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(0.4374999, 0, -0.7577722, 0, 1, 0, 0.7577722, 0, 0.4374999, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("2_elm7w")
+skeleton = NodePath("../..")
+
+[node name="F1WallWindowRight" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(-3.8247464e-08, 0, 0.87499994, 0, 1, 0, -0.87499994, 0, -3.8247464e-08, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("3_oaajg")
+
+[node name="F1WallWindowRight2" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(8.940697e-08, 0, -0.875, 0, 1, 0, 0.875, 0, 8.940697e-08, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("4_4y2w3")
+
+[node name="F3WallDoor" type="MeshInstance3D" parent="Props_Environment/Walls"]
+transform = Transform3D(0.8660254, 0, -0.4375, 0, 1, 0, 0.5, 0, 0.7577722, 0, 0, 0)
+material_override = ExtResource("1_5m7pv")
+mesh = ExtResource("4_elm7w")
+skeleton = NodePath("../../..")
+
+[node name="ART_F3_Ceiling_Final" parent="Props_Environment" instance=ExtResource("5_by3gm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="ART_F3_Door_Final" parent="Props_Environment" instance=ExtResource("5_oaajg")]
+transform = Transform3D(0.8660254, 0, -0.4375, 0, 1, 0, 0.5, 0, 0.7577722, 0, 0, 0)
+
+[node name="ART_F3_StairsInterior_Final" parent="Props_Environment" instance=ExtResource("6_oaajg")]
+
+[node name="ART_F3_TablesShelves_Final" parent="Props_Environment" instance=ExtResource("8_ytof5")]
+
+[node name="ART_F3_Balcony_Final" parent="Props_Environment" instance=ExtResource("9_xolbj")]
+
+[node name="ART_F3_WoodenFloor_Final" parent="Props_Environment" instance=ExtResource("10_aa421")]
+
+[node name="ART_F3_RaisedPlatform" parent="Props_Environment" instance=ExtResource("12_04y7i")]
+
+[node name="ART_F3_Pipes_Final" parent="Props_Environment" instance=ExtResource("13_lh6ih")]
+
+[node name="ART_GLOBAL_WindowFrame_Model" parent="Props_Environment" instance=ExtResource("14_pspkr")]
+transform = Transform3D(-3.8247464e-08, 0, 0.875, 0, 1, 0, -0.875, 0, -3.8247464e-08, 0, 0, -0.435)
+
+[node name="ART_GLOBAL_WindowFrame_Model2" parent="Props_Environment" instance=ExtResource("14_pspkr")]
+transform = Transform3D(-3.824746e-08, 0, -0.87499994, 0, 1, 0, 0.87499994, 0, -3.824746e-08, 0, 0, 0)
+
+[node name="ART_F3_Inner_Wall" parent="Props_Environment" instance=ExtResource("15_lh6ih")]
+
+[node name="ART_F4_Stairs_Final" parent="Props_Environment" instance=ExtResource("16_pspkr")]
+transform = Transform3D(0.8886116, 0, -0.74563366, 0, 1, 0, 0.74563366, 0, 0.8886116, 0, 7.07, 0)
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Lighting" type="Node3D" parent="."]
 
+[node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
+light_energy = 1.5
+omni_range = 48.102
+
+[node name="DEV_DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8819103, 0)
+light_color = Color(1, 1, 0.87058824, 1)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.25
+shadow_opacity = 0.95
+shadow_blur = 2.0
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+omni_attenuation = 0.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.642458, 0)
+light_color = Color(1, 1, 0.87058824, 1)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 1.25
+shadow_opacity = 0.95
+shadow_blur = 1.5
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+omni_attenuation = 0.5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.4796133, 1.7430544, -0.4836231)
+light_color = Color(0.55, 0.8499999, 1, 1)
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_normal_bias = 2.0
+shadow_opacity = 0.9
+shadow_blur = 5.0
+spot_range = 8.0
+spot_attenuation = 0.5
+spot_angle = 80.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.4690557, 1.7430544, 0.016376913)
+light_color = Color(0.55, 0.8499999, 1, 1)
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.02
+shadow_normal_bias = 2.0
+shadow_opacity = 0.9
+shadow_blur = 5.0
+spot_range = 8.0
+spot_attenuation = 0.5
+spot_angle = 80.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96140784, -3.6692781, 0.35644877)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 0.6
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 2.0
+shadow_blur = 2.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(-0.99493444, -0.05985252, 0.08076607, -0.035114516, 0.9597465, 0.27866408, -0.09419371, 0.27441645, -0.9569865, 4.092486, 2.6535933, -8.454188)
+light_color = Color(1, 0.82600003, 0.71000004, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.015
+shadow_normal_bias = 1.5
+spot_range = 8.0
+spot_attenuation = 0.0
+spot_angle = 27.09
+spot_angle_attenuation = 0.1
+
 [node name="Collision" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_63oft")
+environment = ExtResource("17_lh6ih")
