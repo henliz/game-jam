@@ -89,7 +89,7 @@ void fragment() {
 	//ALBEDO = vec3(adjusted);
 
 	ALPHA = texture_albedo_uv.a;
-	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	//ALPHA_SCISSOR_THRESHOLD = 0.5;
 
 	//SPECULAR = specular;
 

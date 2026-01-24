@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://hvlx7lgao2c7"]
+
+[ext_resource type="PackedScene" uid="uid://bq2p7irerveur" path="res://resource/Common/ART_GLOBAL_Bottles_01.glb" id="1_yb53s"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_w2g86"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_tr1av"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_7yx7l"]
+[ext_resource type="Material" uid="uid://ypts3uub5wki" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_Cork.material" id="5_w2g86"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0who"]
+render_priority = 0
+shader = ExtResource("2_w2g86")
+shader_parameter/basecolor = Color(0.5876259, 0.19033355, 0.5432425, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_tr1av")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.2000000095
+shader_parameter/texture_roughness = ExtResource("4_7yx7l")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.22619998, 0.5033433, 0.58, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Bottles_01" instance=ExtResource("1_yb53s")]
+
+[node name="ART_GLOBAL_Bottles_01_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_d0who")
+surface_material_override/1 = ExtResource("5_w2g86")

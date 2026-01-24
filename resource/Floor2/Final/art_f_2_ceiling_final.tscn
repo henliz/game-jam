@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5xvjpxhh00wh"]
+[gd_scene load_steps=18 format=3 uid="uid://5xvjpxhh00wh"]
 
 [ext_resource type="PackedScene" uid="uid://cplb5c4iycmxj" path="res://resource/Floor2/ART_F2_Ceiling_Final.glb" id="1_8fifv"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_ofrja"]
@@ -86,6 +86,9 @@ shader_parameter/uv1_blend_sharpness = 4.00000019
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw2im"]
+size = Vector3(0.16, 7.5959473, 0.37271485)
+
 [node name="ART_F2_Ceiling_Final" instance=ExtResource("1_8fifv")]
 
 [node name="Ceiling_003" parent="." index="0"]
@@ -101,3 +104,54 @@ surface_material_override/0 = SubResource("ShaderMaterial_cp2fm")
 [node name="lamp_001" parent="." index="3"]
 layers = 2
 surface_material_override/0 = SubResource("ShaderMaterial_80t21")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+transform = Transform3D(0.96592546, 0, 0.25881895, 0, 1, 0, -0.25881895, 0, 0.96592546, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1.0000012, 2.4214387e-07, 3.5680523, 5.5936337)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.8660264, 0, -0.50000054, 0, 1, 0, 0.50000054, 0, 0.8660264, -2.798012, 3.5677543, 4.8462996)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(0.5000006, 0, -0.86602646, 0, 1, 0, 0.86602646, 0, 0.5000006, -4.8451233, 3.5677543, 2.797333)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3"]
+transform = Transform3D(-2.980236e-08, 0, -1.0000012, 0, 1, 0, 1.0000012, 0, -2.980236e-08, -5.594779, 3.5677543, -1.5183625e-07)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" index="4"]
+transform = Transform3D(-0.5000006, 0, -0.8660264, 0, 1, 0, 0.8660264, 0, -0.5000006, -4.8407235, 3.5677543, -2.7947934)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" index="5"]
+transform = Transform3D(-0.8660266, 0, -0.5000006, 0, 1, 0, 0.5000006, 0, -0.8660266, -2.7966654, 3.5677543, -4.843967)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" index="6"]
+transform = Transform3D(-1.0000014, 0, 0, 0, 1, 0, 0, 0, -1.0000014, 9.31324e-09, 3.5677543, -5.59435)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" index="7"]
+transform = Transform3D(-0.86602664, 0, 0.5000007, 0, 1, 0, -0.5000007, 0, -0.86602664, 2.7973478, 3.5677543, -4.8451486)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" index="8"]
+transform = Transform3D(-0.50000066, 0, 0.86602664, 0, 1, 0, -0.86602664, 0, -0.50000066, 4.8422966, 3.5677543, -2.795701)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" index="9"]
+transform = Transform3D(0, 0, 1.0000015, 0, 1, 0, -1.0000015, 0, 0, 5.5922465, 3.5677543, 0)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" index="10"]
+transform = Transform3D(0.50000083, 0, 0.8660269, 0, 1, 0, -0.8660269, 0, 0.50000083, 4.844777, 3.5677543, 2.7971334)
+shape = SubResource("BoxShape3D_dw2im")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D" index="11"]
+transform = Transform3D(0.86602664, 0, 0.50000066, 0, 1, 0, -0.50000066, 0, 0.86602664, 2.7969174, 3.5677543, 4.8444033)
+shape = SubResource("BoxShape3D_dw2im")
