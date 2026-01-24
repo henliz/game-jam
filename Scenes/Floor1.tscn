@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=46 format=3 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://ccyhul1vlph7i" path="res://resource/Common/Final/art_global_ceiling_beams_model_vertical.tscn" id="12_ua5wc"]
 [ext_resource type="PackedScene" uid="uid://bxqvvwf055oqw" path="res://resource/Floor1/Final/art_f_1_ceiling_model.tscn" id="13_oo3qt"]
 [ext_resource type="PackedScene" uid="uid://b7gtje8ahgfo4" path="res://resource/Floor1/Final/art_f_1_front_door_final.tscn" id="14_mktx4"]
-[ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="15_bgo40"]
 [ext_resource type="PackedScene" uid="uid://brnr264mnqmpn" path="res://resource/Floor1/Final/art_f_1_countertop_final.tscn" id="17_jaypt"]
 [ext_resource type="PackedScene" uid="uid://vmisecexhjaj" path="res://resource/Floor1/ART_F1_MagicBillyBass_PLAQUE_MODEL.glb" id="17_v2nrj"]
 [ext_resource type="PackedScene" uid="uid://c5nr6xtvu5ae4" path="res://resource/Floor1/Final/art_f_1_chair_model.tscn" id="18_3u1qr"]
@@ -27,12 +26,21 @@
 [ext_resource type="PackedScene" uid="uid://iw6xo6vwf2gy" path="res://resource/Floor1/Final/art_f_1_stool_model.tscn" id="21_jaypt"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="21_mktx4"]
 [ext_resource type="PackedScene" uid="uid://chaijfyoxu51g" path="res://resource/Common/Final/art_global_lantern_post.tscn" id="21_oo3qt"]
+[ext_resource type="PackedScene" uid="uid://upwfvx8kmqve" path="res://resource/Floor1/Final/furniture_table_c_short.tscn" id="23_bgo40"]
 [ext_resource type="Script" uid="uid://ck10nobi13ivy" path="res://Scenes/portal.gd" id="26_70lor"]
 [ext_resource type="PackedScene" uid="uid://bhla2vwb2828i" path="res://resource/Common/Final/art_global_wooden_log.tscn" id="27_bgo40"]
 [ext_resource type="PackedScene" uid="uid://cufxmq25fs0sc" path="res://resource/Floor1/Final/art_f_1_chandelier.tscn" id="27_oo3qt"]
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="29_mktx4"]
 [ext_resource type="PackedScene" uid="uid://bnrglyg68vnt1" path="res://resource/Common/Final/art_global_coffee_table.tscn" id="31_23slo"]
+[ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="32_23slo"]
 [ext_resource type="PackedScene" uid="uid://bgdqnoja5augn" path="res://resource/Common/Final/art_global_table_round_small.tscn" id="32_mktx4"]
+[ext_resource type="PackedScene" uid="uid://n2dgmq6063yd" path="res://resource/Common/Final/art_global_bottles_05.tscn" id="33_oucq8"]
+[ext_resource type="PackedScene" uid="uid://d1sjcgvl47idu" path="res://resource/Common/Final/art_global_bottles_04.tscn" id="34_hv8sr"]
+[ext_resource type="PackedScene" uid="uid://bl2231fa3ath8" path="res://resource/Common/Final/art_global_bottles_02.tscn" id="35_r3png"]
+[ext_resource type="PackedScene" uid="uid://dnm4u45g4jshb" path="res://resource/Common/Final/art_global_fruit_basket.tscn" id="36_nncji"]
+[ext_resource type="PackedScene" uid="uid://dxft285cx6i1y" path="res://resource/Common/Final/art_global_bottles_03.tscn" id="37_uehp7"]
+[ext_resource type="PackedScene" uid="uid://ckoaj2gtk077j" path="res://resource/Common/Final/art_global_fruit_bowl.tscn" id="40_b548n"]
+[ext_resource type="PackedScene" uid="uid://cqn2cqmmgrx3a" path="res://resource/Common/Final/art_global_potion_bottle_01.tscn" id="41_uehp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mktx4"]
 size = Vector3(14, 1, 14)
@@ -146,9 +154,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 [node name="ART_F1_FrontDoor_Final" parent="Props_Environment" instance=ExtResource("14_mktx4")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1, 0, 0, -0.48971534)
 
-[node name="Furniture_TableCShort" parent="Props_Environment" instance=ExtResource("15_bgo40")]
-transform = Transform3D(0.7801655, 0, 0.0009656017, 0, 1, 0, -0.0008850518, 0, 0.8511696, -5.2234178, 0.036036134, -0.53254336)
-
 [node name="ART_F1_Countertop_Final" parent="Props_Environment" instance=ExtResource("17_jaypt")]
 
 [node name="ART_GLOBAL_Stairs_Model" parent="Props_Environment" instance=ExtResource("18_4f5xm")]
@@ -245,7 +250,7 @@ omni_range = 48.102
 visible = false
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4934, 2.4940372, -2.6142058)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.782802, 2.4940372, -2.2381914)
 light_color = Color(1, 0.8, 0.6, 1)
 light_energy = 0.8
 light_indirect_energy = 2.0
@@ -274,7 +279,7 @@ omni_attenuation = 1.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(-0.4448071, 0, 0.89562637, 0, 1, 0, -0.89562637, 0, -0.4448071, -1.5849098, 1.6958406, 4.099342)
+transform = Transform3D(-0.4448071, 0, 0.89562637, 0, 1, 0, -0.89562637, 0, -0.4448071, -1.5741098, 1.6958406, 4.099342)
 light_color = Color(1, 0.6, 0.19999999, 1)
 light_energy = 0.41
 shadow_enabled = true
@@ -285,7 +290,7 @@ omni_attenuation = 1.2
 script = ExtResource("21_bgo40")
 
 [node name="ART_GLOBAL_Candle_022" parent="Lighting/OmniLight3D6" instance=ExtResource("21_mktx4")]
-transform = Transform3D(-0.45248148, 0, -0.8917738, 0, 1, 0, 0.8917738, 0, -0.45248148, 0.0023796707, -0.360901, -0.026764512)
+transform = Transform3D(-0.45248148, 0, -0.8917738, 0, 1, 0, 0.8917738, 0, -0.45248148, 0.018124819, -0.360901, -0.072387695)
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(-0.8567716, 0, -0.51569617, 0, 1, 0, 0.51569617, 0, -0.8567716, -5.25249, 1.6958407, 1.3658451)
@@ -293,6 +298,8 @@ light_color = Color(1, 0.6, 0.19999999, 1)
 light_energy = 0.41
 shadow_enabled = true
 shadow_bias = 0.05
+shadow_normal_bias = 1.5
+shadow_opacity = 0.95
 shadow_blur = 2.5
 omni_range = 4.0
 omni_attenuation = 1.2
@@ -319,7 +326,29 @@ shadow_blur = 2.5
 omni_range = 4.0
 omni_attenuation = 1.2
 
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.8597605, 3.3757477, -4.909163)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_opacity = 0.95
+shadow_blur = 2.0
+shadow_caster_mask = 4294967293
+omni_range = 6.0
+omni_attenuation = 1.4
+
+[node name="ART_GLOBAL_Lantern_Hanging2" parent="Lighting/OmniLight3D10" instance=ExtResource("20_ua5wc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="ART_GLOBAL_Lantern_Post2" parent="Lighting/OmniLight3D10" instance=ExtResource("21_oo3qt")]
+transform = Transform3D(0.5000001, 0, 0.8660259, 0, 1, 0, -0.8660259, 0, 0.5000001, -0.51718426, 0.5781908, -0.2940402)
+
 [node name="Props" type="Node3D" parent="."]
+
+[node name="Furniture_TableCShort2" parent="Props" instance=ExtResource("23_bgo40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.034325, 0.08890033, -0.66245866)
 
 [node name="ART_GLOBAL_Lantern_Hanging2" parent="Props" instance=ExtResource("20_ua5wc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.809071, 2.9940372, -2.2062922)
@@ -340,7 +369,7 @@ transform = Transform3D(0.5775015, 0, 0.8163897, 0, 1, 0, -0.8163897, 0, 0.57750
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -3.0129726, 0.008825541, -4.765876)
 
 [node name="ART_F1_Stool_Model" parent="Props" instance=ExtResource("21_jaypt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.021532, 0.07072237, -1.4916215)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.966482, 0.07072237, -1.4916215)
 
 [node name="ART_GLOBAL_Wooden_Log2" parent="Props" instance=ExtResource("27_bgo40")]
 transform = Transform3D(0.5049796, 0, 0.8631313, 0, 1, 0, -0.8631313, 0, 0.5049796, 1.1589738, 0.15739691, 1.4286844)
@@ -359,6 +388,30 @@ transform = Transform3D(-0.58754313, 0.07369143, -0.80583054, -0.63336134, 0.577
 
 [node name="ART_F1_Chandelier" parent="Props" instance=ExtResource("27_oo3qt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
+
+[node name="ART_GLOBAL_Coffee_Table" parent="Props" instance=ExtResource("31_23slo")]
+transform = Transform3D(-0.990548, 0, -0.3483023, 0, 1.05, 0, 0.3483023, 0, -0.990548, -2.0698276, 0, -2.7716053)
+
+[node name="ART_GLOBAL_Table_RoundSmall22" parent="Props" instance=ExtResource("32_mktx4")]
+transform = Transform3D(0.9556492, 0, 0.29450738, 0, 1, 0, -0.29450738, 0, 0.9556492, 2.9620588, 0.053329945, 0.57102966)
+
+[node name="ART_GLOBAL_Books_Stack" parent="Props" instance=ExtResource("32_23slo")]
+transform = Transform3D(0.8336931, 0, 0.55222803, 0, 1, 0, -0.55222803, 0, 0.8336931, 3.3191924, 1.1963965, 0.8682672)
+
+[node name="ART_GLOBAL_Bottles_05" parent="Props" instance=ExtResource("33_oucq8")]
+transform = Transform3D(-0.87606275, 0, -0.48219705, 0, 1, 0, 0.48219705, 0, -0.87606275, 3.0728052, 1.1963964, 0.2389409)
+
+[node name="ART_GLOBAL_Bottles_04" parent="Props" instance=ExtResource("34_hv8sr")]
+transform = Transform3D(-0.68313354, 0, 0.7302935, 0, 1, 0, -0.7302935, 0, -0.68313354, 3.1906285, 1.1963966, 0.17676657)
+
+[node name="ART_GLOBAL_Bottles_02" parent="Props" instance=ExtResource("35_r3png")]
+transform = Transform3D(-0.68844324, 0, 0.72529024, 0, 1, 0, -0.72529024, 0, -0.68844324, 3.0966148, 1.198897, 0.0755257)
+
+[node name="ART_GLOBAL_Fruit_Basket" parent="Props" instance=ExtResource("36_nncji")]
+transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1, -5.505004, 0.088899925, -1.2352761)
+
+[node name="ART_GLOBAL_Bottles_03" parent="Props" instance=ExtResource("37_uehp7")]
+transform = Transform3D(0.8537235, 0, -0.52072656, 0, 1, 0, 0.52072656, 0, 0.8537235, -5.53541, 1.0380096, -0.19758013)
 
 [node name="Collision" type="Node3D" parent="."]
 visible = false
@@ -406,10 +459,13 @@ shape = SubResource("BoxShape3D_edy72")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("29_mktx4")
 
-[node name="ART_GLOBAL_Coffee_Table" parent="." instance=ExtResource("31_23slo")]
-transform = Transform3D(-0.990548, 0, -0.3483023, 0, 1.05, 0, 0.3483023, 0, -0.990548, -2.0698276, 0, -2.7716053)
+[node name="ART_GLOBAL_Fruit_Basket" parent="." instance=ExtResource("36_nncji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3267517, 1.330161, 5.252932)
 
-[node name="ART_GLOBAL_Table_RoundSmall22" parent="." instance=ExtResource("32_mktx4")]
-transform = Transform3D(0.9556492, 0, 0.29450738, 0, 1, 0, -0.29450738, 0, 0.9556492, 2.9620588, 0.053329945, 0.57102966)
+[node name="ART_GLOBAL_Fruit_Bowl" parent="." instance=ExtResource("40_b548n")]
+transform = Transform3D(0.50977737, 0, -0.8603063, 0, 1, 0, 0.8603063, 0, 0.50977737, -4.6707, 1.3295898, 0.32438332)
+
+[node name="ART_GLOBAL_Potion_Bottle_01" parent="." instance=ExtResource("41_uehp7")]
+transform = Transform3D(0.98582375, 0.16778396, 0, -0.16665953, 0.9792171, -0.11557861, -0.019392239, 0.11394015, 0.99329835, -5.6409802, 1.0386083, -0.25882825)
 
 [connection signal="body_entered" from="portal" to="portal" method="_on_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://upwfvx8kmqve"]
+
+[ext_resource type="PackedScene" uid="uid://b50rriv01cb4n" path="res://resource/BlockoutAssets/QuantumTheoryFantasyInteriors/Props/Furniture_TableCShort.fbx" id="1_wv1in"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_5la2g"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="3_ewms8"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="4_ng5sj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ur0l"]
+render_priority = 0
+shader = ExtResource("2_5la2g")
+shader_parameter/basecolor = Color(0.20118752, 0.0900842, 0.06578378, 1)
+shader_parameter/texture_hue_shift = ExtResource("3_ewms8")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("4_ng5sj")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1.5, 1.5, 1.5)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wv1in"]
+size = Vector3(1.435, 0.9373906, 1.3)
+
+[node name="Furniture_TableCShort" instance=ExtResource("1_wv1in")]
+
+[node name="Furniture_TableCShort" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_1ur0l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48041406, 0)
+shape = SubResource("BoxShape3D_wv1in")
