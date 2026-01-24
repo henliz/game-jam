@@ -84,7 +84,7 @@
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_pyn1s"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.3254902)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_no8kt"]
 gradient = SubResource("Gradient_pyn1s")
@@ -100,8 +100,8 @@ curve = SubResource("Curve_xbk3s")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 5.0
-emission_ring_radius = 30.0
-emission_ring_inner_radius = 8.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 10.0
 emission_ring_cone_angle = 90.0
 direction = Vector3(0, -1, 0)
 initial_velocity_min = 6.0
@@ -865,6 +865,7 @@ transform = Transform3D(-0.99989206, 0, 0.014694989, 0, 1, 0, -0.014694989, 0, -
 
 [node name="snow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4219284, 32.927532, -1.2728524)
+visible = false
 amount = 512
 lifetime = 3.5
 visibility_aabb = AABB(-104.0638, -82.040955, -100.522064, 197.85977, 84.96666, 198.04083)

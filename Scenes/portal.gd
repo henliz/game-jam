@@ -1,6 +1,7 @@
 extends Area3D
 @export var current_floor: int = 1  # Which floor this portal is on
 @onready var game_state = get_node("/root/GameState")
+@onready var snow: GPUParticles3D = $"../../snow"
 
 @onready var world_environment: WorldEnvironment = $"../../WorldEnvironment"
 const WORLD_ENVIRONMENT_FLOOR_4_SKYBOX = preload("uid://c8nsgy46ehweg")
@@ -77,6 +78,7 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 	# Choose video based on floor
 	if next_floor == 4:
 		video_path = "res://Video/TransitionExternal.ogv"
+		snow.visible = true
 		world_environment.set_environment(WORLD_ENVIRONMENT_FLOOR_4_SKYBOX)
 	else:
 		video_path = "res://Video/TransitionInternal.ogv"
