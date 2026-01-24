@@ -283,6 +283,9 @@ alchemy_container_uncomplete = NodePath("ART_F3_DistillationFullSet/FinalContain
 [node name="AlchemyContainer" parent="." instance=ExtResource("2_sytep")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403759, 0.352, -0.42932892)
 visible = false
+inspect_scale = 1.8
+item_name = "AlchemyContainer"
+item_description = ""
 
 [node name="Pipe1" type="StaticBody3D" parent="." groups=["puzzlepipe"]]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 0.7004318, 0.22300005, -1.0775154)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=131 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
@@ -59,9 +59,11 @@
 [ext_resource type="Texture2D" uid="uid://b41xb87rjeyiw" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece7_RingNormal.png" id="73_u4nag"]
 [ext_resource type="Texture2D" uid="uid://bm4i5nhhiolwk" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingBaseColor.png" id="74_mbf3w"]
 [ext_resource type="Texture2D" uid="uid://c83prpbi55o31" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingRough.png" id="75_8ftdj"]
+[ext_resource type="PackedScene" uid="uid://kgocv7gfn47a" path="res://Scenes/mortar_pestle.tscn" id="76_ctcri"]
 [ext_resource type="PackedScene" uid="uid://bccskvumckg4m" path="res://Scenes/alchemy_puzzle.tscn" id="76_de5wk"]
 [ext_resource type="Texture2D" uid="uid://c1gtqp5fpdgsb" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece8_RingNormal.png" id="76_fv0bq"]
 [ext_resource type="PackedScene" uid="uid://cmrvisjp66iu7" path="res://resource/Floor2/Final/FIXED_StrangeLantern/strange_lantern_fixed.tscn" id="76_wex5w"]
+[ext_resource type="PackedScene" uid="uid://bw40xcleala1m" path="res://Scenes/research_notebook.tscn" id="77_mkebs"]
 [ext_resource type="Texture2D" uid="uid://4g18nc8bsbkr" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece9_RingBaseColor.png" id="77_nr0x8"]
 [ext_resource type="Texture2D" uid="uid://818kxarybsxy" path="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece9_RingRough.png" id="78_rly0l"]
 [ext_resource type="Texture2D" uid="uid://bkl2fl8b4g5po" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_OuterRing_Piece03_Fall_Crop.png" id="79_cwuo4"]
@@ -1343,6 +1345,12 @@ texture_normal = ExtResource("87_levo3")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.30494, 0.2598766, -13.621945)
+
+[node name="MortarPestle" parent="." instance=ExtResource("76_ctcri")]
+transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.419502, 1.2075727, -12.704869)
+
+[node name="ResearchNotebook" parent="." instance=ExtResource("77_mkebs")]
+transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -54.626774, 1.2075727, -11.593863)
 
 [node name="AlchemyPuzzle" parent="." instance=ExtResource("76_de5wk")]
 transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, -52.409748, 1.2075727, -12.704869)
