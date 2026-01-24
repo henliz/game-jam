@@ -1788,14 +1788,14 @@ mesh = SubResource("ArrayMesh_tut73")
 skeleton = NodePath("")
 
 [node name="GodRays2" type="MeshInstance3D" parent="FinalPuzzle"]
-transform = Transform3D(-6.556708e-08, 1.5, -7.1054274e-15, -1.5, -6.556708e-08, -2.1316308e-15, -2.1316306e-15, 7.1054274e-15, 1.5, -1.5346618, 0.1682167, -0.0016498491)
+transform = Transform3D(-6.556708e-08, 5, -7.1054274e-15, -1.5, -2.1855695e-07, -2.1316304e-15, -2.1316308e-15, 2.3684759e-14, 1.5, -1.5346618, 0.1682167, -0.0016498491)
 visible = false
 mesh = SubResource("ArrayMesh_8byqb")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("98_355yf")
 
 [node name="GodRays3" type="MeshInstance3D" parent="FinalPuzzle"]
-transform = Transform3D(-6.556708e-08, 1.5, 6.556708e-08, 0, -6.556708e-08, 1.5, 1.5, 6.556708e-08, 2.8660285e-15, -1.5346618, 0.1682167, -0.0016498491)
+transform = Transform3D(-6.556708e-08, 5, 6.556708e-08, 0, -2.1855695e-07, 1.5, 1.5, 2.1855695e-07, 2.8660283e-15, -1.5346618, 0.1682167, -0.0016498491)
 visible = false
 mesh = SubResource("ArrayMesh_8byqb")
 skeleton = NodePath("")
@@ -1831,10 +1831,10 @@ process_material = SubResource("ParticleProcessMaterial_pgid1")
 draw_pass_1 = SubResource("ArrayMesh_cmt5e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="FinalPuzzle/FireLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026568694, 0.47242603, -0.10010236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1198219, 0.538972, -0.005279433)
 light_color = Color(2, 1.2, 0, 1)
-light_energy = 1.3778638
-omni_range = 2.5670717
+light_energy = 1.1148713
+omni_range = 3.1842875
 script = ExtResource("92_d43ui")
 movement_radius = 0.05
 
