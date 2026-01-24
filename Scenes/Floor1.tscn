@@ -398,7 +398,6 @@ shape = SubResource("CylinderShape3D_mktx4")
 [node name="portal" type="Area3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.7727003, 1.0503978, -0.8574468)
 script = ExtResource("26_70lor")
-current_floor = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="portal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107910156, 0, -0.06378174)
