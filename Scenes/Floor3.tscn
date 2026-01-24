@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=52 format=4 uid="uid://bqmchw73r2wh5"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dtlihq27m4s5m" path="res://resource/Floor3/Final/art_f_3_plant_2_final.tscn" id="20_410h5"]
 [ext_resource type="PackedScene" uid="uid://bw1pg8aomjp5d" path="res://resource/Floor3/Final/art_f_3_plant_3_final.tscn" id="21_t0y2g"]
 [ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="22_410h5"]
+[ext_resource type="PackedScene" uid="uid://dvijb7qxoe07a" path="res://resource/Common/Final/art_global_pillow_radana.tscn" id="23_jhuwn"]
 [ext_resource type="PackedScene" uid="uid://d5c86c1sds20" path="res://resource/Common/Final/art_global_wooden_stool.tscn" id="25_qlqp2"]
 [ext_resource type="PackedScene" uid="uid://jldjag0a162o" path="res://resource/Common/Final/art_global_books_fallen.tscn" id="26_w2tr4"]
 [ext_resource type="PackedScene" uid="uid://6w863udk384w" path="res://resource/Common/Final/art_global_books_row_01.tscn" id="27_w2tr4"]
@@ -32,6 +33,13 @@
 [ext_resource type="PackedScene" uid="uid://cqn2cqmmgrx3a" path="res://resource/Common/Final/art_global_potion_bottle_01.tscn" id="30_a7x7m"]
 [ext_resource type="PackedScene" uid="uid://co7t78qj7o4kx" path="res://resource/Common/Final/art_global_potion_bottle_02.tscn" id="31_jhuwn"]
 [ext_resource type="PackedScene" uid="uid://c8vifk2arps2j" path="res://resource/Common/Final/art_global_potion_bottle_03.tscn" id="32_fjv4h"]
+[ext_resource type="PackedScene" uid="uid://dom4x32yxw2hq" path="res://resource/Common/Final/art_global_debris_papers_01.tscn" id="32_hyllc"]
+[ext_resource type="PackedScene" uid="uid://coqtok458b8lr" path="res://resource/Common/Final/art_global_rugs_star_model.tscn" id="33_5ptto"]
+[ext_resource type="PackedScene" uid="uid://chaijfyoxu51g" path="res://resource/Common/Final/art_global_lantern_post.tscn" id="34_xka1k"]
+[ext_resource type="PackedScene" uid="uid://d2ymdw2e7yyqf" path="res://resource/Common/Final/art_global_lantern_hanging.tscn" id="36_yrenx"]
+[ext_resource type="PackedScene" uid="uid://bomg5qgdsr0hd" path="res://resource/Common/Final/art_global_lantern_standing.tscn" id="37_om7v8"]
+[ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="38_eqym8"]
+[ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="39_aoigi"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pspkr"]
 _surfaces = [{
@@ -216,6 +224,66 @@ transform = Transform3D(-0.85937065, 0, 0.5113532, 0, 1, 0, -0.5113532, 0, -0.85
 [node name="ART_GLOBAL_Books_Stack2" parent="Props" instance=ExtResource("22_410h5")]
 transform = Transform3D(-0.04393324, 0, 0.99903446, 0, 1, 0, -0.99903446, 0, -0.04393324, 2.2184348, 1.3501438, 4.0999904)
 
+[node name="ART_GLOBAL_Pillow_Radana" parent="Props" instance=ExtResource("23_jhuwn")]
+transform = Transform3D(0.6264724, 0, -0.20768337, 0, 0.66, 0, 0.20768337, 0, 0.6264724, -2.834351, 0.91612077, 0.39053476)
+
+[node name="ART_GLOBAL_Books_Stack3" parent="Props" instance=ExtResource("22_410h5")]
+transform = Transform3D(0.90062237, 0, 0.43460244, 0, 1, 0, -0.43460244, 0, 0.90062237, -4.45933, 2.7015727, 0.9099344)
+
+[node name="ART_GLOBAL_Wooden_Stool" parent="Props" instance=ExtResource("25_qlqp2")]
+transform = Transform3D(1.1784257, 0, 0.22652377, 0, 1.2, 0, -0.22652377, 0, 1.1784257, -3.8131206, 0.5436003, 1.91241)
+
+[node name="ART_GLOBAL_Books_Fallen" parent="Props" instance=ExtResource("26_w2tr4")]
+transform = Transform3D(-0.019022882, 0, -0.9998191, 0, 1, 0, 0.9998191, 0, -0.019022882, -4.0481243, 0.54360056, 1.6586263)
+
+[node name="ART_GLOBAL_Books_Row_01" parent="Props" instance=ExtResource("27_w2tr4")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -3.6285658, 2.697382, 0.66500443)
+
+[node name="ART_GLOBAL_Books_Row_02" parent="Props" instance=ExtResource("27_w2tr4")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -2.0217962, 1.8040204, 0.23447178)
+
+[node name="ART_GLOBAL_Books_Row_04" parent="Props" instance=ExtResource("27_w2tr4")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -4.063549, 1.8040204, 0.78155774)
+
+[node name="ART_GLOBAL_Books_Row_03" parent="Props" instance=ExtResource("28_ftpne")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -3.5681481, 1.8026228, 0.59234935)
+
+[node name="ART_GLOBAL_Books_Single_01_model2" parent="Props" instance=ExtResource("29_chtv2")]
+transform = Transform3D(-0.25881904, 0.93582636, -0.23925245, -7.450581e-09, -0.24769235, -0.96883875, -0.96592593, -0.25075385, 0.06410747, -4.4647737, 2.008879, 0.90368587)
+
+[node name="ART_GLOBAL_Books_Single_01_model3" parent="Props" instance=ExtResource("29_chtv2")]
+transform = Transform3D(-0.7008843, 0, -0.71327496, 0, 1, 0, 0.71327496, 0, -0.7008843, 1.7762848, 1.4860538, 4.2106285)
+
+[node name="ART_GLOBAL_Books_Row_05" parent="Props" instance=ExtResource("28_ftpne")]
+transform = Transform3D(-0.76605564, 0, -0.6427743, 0, 1, 0, 0.6427743, 0, -0.76605564, 3.1984715, 1.4860536, 3.772359)
+
+[node name="ART_GLOBAL_Potion_Bottle_01" parent="Props" instance=ExtResource("30_a7x7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7876613, 1.4860538, 3.9034512)
+
+[node name="ART_GLOBAL_Potion_Bottle_02" parent="Props" instance=ExtResource("31_jhuwn")]
+transform = Transform3D(0.94630283, 0.29825917, -0.124709845, -0.30060592, 0.95374846, 0, 0.11894182, 0.037488516, 0.9921933, 2.6643565, 1.4767371, 3.9002013)
+
+[node name="ART_GLOBAL_Potion_Bottle_03" parent="Props" instance=ExtResource("32_fjv4h")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.7326496, 1.4866524, 3.7115593)
+
+[node name="ART_GLOBAL_Potion_Bottle_05" parent="Props" instance=ExtResource("32_fjv4h")]
+transform = Transform3D(0.9996043, -0.005160898, 0.027650928, 0.0018012079, 0.9927508, 0.12017745, -0.028070701, -0.12008007, 0.9923671, -0.42973253, 1.4866524, 4.9249063)
+
+[node name="ART_GLOBAL_Potion_Bottle_04" parent="Props" instance=ExtResource("30_a7x7m")]
+transform = Transform3D(0.9650531, 0.24974766, -0.07936379, -1.1232388e-08, 0.30285236, 0.9530375, 0.2620544, -0.91973174, 0.2922686, -0.53122234, 1.513062, 4.9135017)
+
+[node name="ART_GLOBAL_Debris_Papers_012" parent="Props" instance=ExtResource("32_hyllc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7523682, 0.38315058, 4.0652704)
+
+[node name="ART_GLOBAL_Debris_Papers_013" parent="Props" instance=ExtResource("32_hyllc")]
+transform = Transform3D(-0.9750177, 0, -0.22212712, 0, 1, 0, 0.22212712, 0, -0.9750177, -3.6566849, 1.1920929e-07, 0.010024548)
+
+[node name="ART_GLOBAL_Rugs_Star_Model" parent="Props" instance=ExtResource("33_5ptto")]
+transform = Transform3D(0.95275164, 0, 0.30375037, 0, 1, 0, -0.30375037, 0, 0.95275164, 0.8609925, 0.37416607, 3.076857)
+
+[node name="ART_GLOBAL_Lantern_Post3" parent="Props" instance=ExtResource("34_xka1k")]
+transform = Transform3D(-1.0000005, 0, -1.7881393e-07, 0, 1, 0, 1.7881393e-07, 0, -1.0000005, -0.5484575, 3.2836258, 5.0711107)
+
 [node name="Lighting" type="Node3D" parent="."]
 
 [node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
@@ -229,7 +297,7 @@ visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8819103, 0)
-light_color = Color(1, 1, 0.87058824, 1)
+light_color = Color(1, 0.93333334, 0.8, 1)
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_normal_bias = 1.25
@@ -237,19 +305,19 @@ shadow_opacity = 0.95
 shadow_blur = 2.0
 shadow_caster_mask = 4294967293
 omni_range = 8.0
-omni_attenuation = 0.5
+omni_attenuation = 1.2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.642458, 0)
-light_color = Color(1, 1, 0.87058824, 1)
+light_color = Color(1, 0.93333334, 0.8, 1)
 shadow_enabled = true
 shadow_bias = 0.05
 shadow_normal_bias = 1.25
 shadow_opacity = 0.95
 shadow_blur = 1.5
 shadow_caster_mask = 4294967293
-omni_range = 8.0
-omni_attenuation = 0.5
+omni_range = 6.0
+omni_attenuation = 1.2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.4796133, 1.7430544, -0.4836231)
@@ -291,7 +359,6 @@ transform = Transform3D(-0.99493444, -0.05985252, 0.08076607, -0.035114516, 0.95
 light_color = Color(0.7, 0.9, 1, 1)
 light_energy = 8.0
 light_indirect_energy = 8.0
-shadow_enabled = true
 shadow_bias = 0.01
 shadow_normal_bias = 1.5
 shadow_opacity = 0.5
@@ -309,7 +376,76 @@ transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 4.019125
 size = Vector3(9.848389, 8.139709, 11.090988)
 material = SubResource("FogMaterial_pspkr")
 
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -3.8935595, 3.8787208, 2.2126281)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_opacity = 0.9
+shadow_blur = 2.0
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+omni_attenuation = 1.2
+
+[node name="ART_GLOBAL_Lantern_Hanging2" parent="Lighting/OmniLight3D4" instance=ExtResource("36_yrenx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="ART_GLOBAL_Lantern_Post2" parent="Lighting/OmniLight3D4" instance=ExtResource("34_xka1k")]
+transform = Transform3D(0.5000001, 0, 0.8660259, 0, 1, 0, -0.8660259, 0, 0.5000001, -0.51718426, 0.5781908, -0.2940402)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(0.5, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.5, 0.020447612, 2.8388715, -4.4743323)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_opacity = 0.9
+shadow_blur = 2.0
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+omni_attenuation = 1.2
+
+[node name="ART_GLOBAL_Lantern_Hanging2" parent="Lighting/OmniLight3D6" instance=ExtResource("36_yrenx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="ART_GLOBAL_Lantern_Post2" parent="Lighting/OmniLight3D6" instance=ExtResource("34_xka1k")]
+transform = Transform3D(0.5000001, 0, 0.8660259, 0, 1, 0, -0.8660259, 0, 0.5000001, -0.51718426, 0.5781908, -0.2940402)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-0.1134634, 0, 0.9935422, 0, 1, 0, -0.9935422, 0, -0.1134634, 0.67876345, 1.6349574, 4.8131824)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_opacity = 0.98
+shadow_blur = 2.0
+shadow_caster_mask = 4294967293
+omni_range = 8.0
+omni_attenuation = 1.2
+
+[node name="ART_GLOBAL_Lantern_Standing2" parent="Lighting/OmniLight3D5" instance=ExtResource("37_om7v8")]
+transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, -0.14999998, 0)
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(0.49137506, 0, 0.87094814, 0, 1, 0, -0.87094814, 0, 0.49137506, 4.478298, 3.0562308, 2.065479)
+light_color = Color(1, 0.6, 0.19999999, 1)
+light_energy = 0.3
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_blur = 2.5
+omni_range = 4.0
+omni_attenuation = 1.2
+script = ExtResource("38_eqym8")
+
+[node name="ART_GLOBAL_Candle_022" parent="Lighting/OmniLight3D7" instance=ExtResource("39_aoigi")]
+transform = Transform3D(-0.45248148, 0, -0.8917738, 0, 1, 0, 0.8917738, 0, -0.45248148, 0.02174151, -0.36599994, -0.06492376)
+
 [node name="Collision" type="Node3D" parent="."]
+visible = false
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Collision"]
 transform = Transform3D(0.96592593, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.96592593, 0, 3, 0)
@@ -362,48 +498,3 @@ shape = SubResource("BoxShape3D_q8jc1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("17_lh6ih")
-
-[node name="ART_GLOBAL_Books_Stack" parent="." instance=ExtResource("22_410h5")]
-transform = Transform3D(0.90062237, 0, 0.43460244, 0, 1, 0, -0.43460244, 0, 0.90062237, -4.45933, 2.7015727, 0.9099344)
-
-[node name="ART_GLOBAL_Wooden_Stool" parent="." instance=ExtResource("25_qlqp2")]
-transform = Transform3D(1.1784257, 0, 0.22652377, 0, 1.2, 0, -0.22652377, 0, 1.1784257, -3.8131206, 0.5436003, 1.91241)
-
-[node name="ART_GLOBAL_Books_Fallen" parent="." instance=ExtResource("26_w2tr4")]
-transform = Transform3D(-0.019022882, 0, -0.9998191, 0, 1, 0, 0.9998191, 0, -0.019022882, -4.0481243, 0.54360056, 1.6586263)
-
-[node name="ART_GLOBAL_Books_Row_01" parent="." instance=ExtResource("27_w2tr4")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -3.6285658, 2.697382, 0.66500443)
-
-[node name="ART_GLOBAL_Books_Row_02" parent="." instance=ExtResource("27_w2tr4")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -2.0217962, 1.8040204, 0.23447178)
-
-[node name="ART_GLOBAL_Books_Row_04" parent="." instance=ExtResource("27_w2tr4")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -4.063549, 1.8040204, 0.78155774)
-
-[node name="ART_GLOBAL_Books_Row_03" parent="." instance=ExtResource("28_ftpne")]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -3.5681481, 1.8026228, 0.59234935)
-
-[node name="ART_GLOBAL_Books_Single_01_model2" parent="." instance=ExtResource("29_chtv2")]
-transform = Transform3D(-0.25881904, 0.93582636, -0.23925245, -7.450581e-09, -0.24769235, -0.96883875, -0.96592593, -0.25075385, 0.06410747, -4.4647737, 2.008879, 0.90368587)
-
-[node name="ART_GLOBAL_Books_Single_01_model3" parent="." instance=ExtResource("29_chtv2")]
-transform = Transform3D(-0.7008843, 0, -0.71327496, 0, 1, 0, 0.71327496, 0, -0.7008843, 1.7762848, 1.4860538, 4.2106285)
-
-[node name="ART_GLOBAL_Books_Row_05" parent="." instance=ExtResource("28_ftpne")]
-transform = Transform3D(-0.76605564, 0, -0.6427743, 0, 1, 0, 0.6427743, 0, -0.76605564, 3.1984715, 1.4860536, 3.772359)
-
-[node name="ART_GLOBAL_Potion_Bottle_01" parent="." instance=ExtResource("30_a7x7m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7876613, 1.4860538, 3.9034512)
-
-[node name="ART_GLOBAL_Potion_Bottle_02" parent="." instance=ExtResource("31_jhuwn")]
-transform = Transform3D(0.94630283, 0.29825917, -0.124709845, -0.30060592, 0.95374846, 0, 0.11894182, 0.037488516, 0.9921933, 2.6643565, 1.4767371, 3.9002013)
-
-[node name="ART_GLOBAL_Potion_Bottle_03" parent="." instance=ExtResource("32_fjv4h")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.7326496, 1.4866524, 3.7115593)
-
-[node name="ART_GLOBAL_Potion_Bottle_05" parent="." instance=ExtResource("32_fjv4h")]
-transform = Transform3D(0.9996043, -0.005160898, 0.027650928, 0.0018012079, 0.9927508, 0.12017745, -0.028070701, -0.12008007, 0.9923671, -0.42973253, 1.4866524, 4.9249063)
-
-[node name="ART_GLOBAL_Potion_Bottle_04" parent="." instance=ExtResource("30_a7x7m")]
-transform = Transform3D(0.9650531, 0.24974766, -0.07936379, -1.1232388e-08, 0.30285236, 0.9530375, 0.2620544, -0.91973174, 0.2922686, -0.53122234, 1.513062, 4.9135017)

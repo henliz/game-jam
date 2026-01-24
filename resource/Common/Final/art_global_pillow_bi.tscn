@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgaob001oakwi"]
+
+[ext_resource type="PackedScene" uid="uid://cv8c3ii362u30" path="res://resource/Common/ART_GLOBAL_Pillow_Bi.glb" id="1_0siqi"]
+[ext_resource type="Material" uid="uid://dy37acnwfkas0" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_PillowBase.material" id="2_bkq12"]
+
+[node name="ART_GLOBAL_Pillow_Bi" instance=ExtResource("1_0siqi")]
+
+[node name="ART_GLOBAL_Pillow_Bi_model" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bkq12")

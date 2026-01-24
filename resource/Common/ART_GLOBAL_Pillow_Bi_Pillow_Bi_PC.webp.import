@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2syk5h5lretn"
-path.s3tc="res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"
+uid="uid://dk36r4seff8oh"
+path.s3tc="res://.godot/imported/ART_GLOBAL_Pillow_Bi_Pillow_Bi_PC.webp-62c0e191093300fe75f884e7c4dfb5dd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "03f4d11f3e1559777e1989e6f19269bf"
+}
 
 [deps]
 
-source_file="res://resource/Common/ART_GLOBAL_Rugs_Star_Texture.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_Rugs_Star_Texture.png-6b1579a802fec390716319b4291ccb54.s3tc.ctex"]
+source_file="res://resource/Common/ART_GLOBAL_Pillow_Bi_Pillow_Bi_PC.webp"
+dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Bi_Pillow_Bi_PC.webp-62c0e191093300fe75f884e7c4dfb5dd.s3tc.ctex"]
 
 [params]
 
