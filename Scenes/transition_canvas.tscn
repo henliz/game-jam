@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb8dh8aenbald"]
+
+[ext_resource type="FontFile" uid="uid://do2plbqfli06l" path="res://resource/Fonts/SixHands.ttf" id="1_xh0cd"]
+
+[node name="TransitionCanvas" type="CanvasLayer"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -504.0
+offset_right = 504.0
+offset_bottom = 151.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_xh0cd")
+theme_override_font_sizes/font_size = 72
+text = "Floor 2 - The Library"
+horizontal_alignment = 1
+vertical_alignment = 1

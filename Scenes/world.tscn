@@ -963,7 +963,7 @@ item_name = "Item"
 script = ExtResource("29_qebug")
 
 [node name="Floor1" parent="." instance=ExtResource("29_opbav")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.005215, 0.011690855, -0.03609979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.00531, 0.012296557, -0.03598821)
 
 [node name="WizardJournal" parent="." instance=ExtResource("90_h46qv")]
 transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, 39.355, 0.682, -0.126)
