@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://q1xwd31d5qkc"]
+
+[ext_resource type="PackedScene" uid="uid://bbycbo05kmaeg" path="res://resource/Common/ART_GLOBAL_Pillow_Star.glb" id="1_oupgo"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_2ywi8"]
+[ext_resource type="Texture2D" uid="uid://do6wvsw803rwq" path="res://resource/Common/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp" id="3_rfi8f"]
+[ext_resource type="Texture2D" uid="uid://dkb1opk18v8xs" path="res://resource/Common/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp" id="4_fg33i"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="5_y5enl"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_1uov2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgwnc"]
+render_priority = 0
+shader = ExtResource("2_2ywi8")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_rfi8f")
+shader_parameter/texture_hue_shift = ExtResource("5_y5enl")
+shader_parameter/hue_shift_strength = 0.0
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("6_1uov2")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.65, 0.65, 0.65, 1)
+shader_parameter/texture_backlight = ExtResource("4_fg33i")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_GLOBAL_Pillow_Star" instance=ExtResource("1_oupgo")]
+
+[node name="ART_GLOBAL_Pillow_Star_model" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rgwnc")

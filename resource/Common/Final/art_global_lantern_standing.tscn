@@ -6,4 +6,5 @@
 [node name="ART_GLOBAL_Lantern_Standing2" instance=ExtResource("1_4hxtk")]
 
 [node name="ART_GLOBAL_Lantern_Standing" parent="." index="0"]
+layers = 2
 surface_material_override/0 = ExtResource("2_yanbo")

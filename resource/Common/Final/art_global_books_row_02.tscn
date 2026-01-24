@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://du1uuysoh0l12"]
+
+[ext_resource type="PackedScene" uid="uid://cpfsyql34twsl" path="res://resource/Common/ART_GLOBAL_Books_Row_02.glb" id="1_3koyv"]
+[ext_resource type="Material" uid="uid://df4x0cul8kkbn" path="res://resource/Common/Final/SharedMaterials/MAT_GLOBAL_Books.material" id="2_dftdi"]
+
+[node name="ART_GLOBAL_Books_Row_02" instance=ExtResource("1_3koyv")]
+
+[node name="ART_GLOBAL_Books_Row_02_model" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_dftdi")
