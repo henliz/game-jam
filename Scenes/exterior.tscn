@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdgebyn5agmi2"]
+
+[ext_resource type="PackedScene" uid="uid://cctgoi8ri02yh" path="res://resource/Exterior/art_f_4_terrain.tscn" id="1_rv14s"]
+[ext_resource type="PackedScene" uid="uid://hgshdtujt6nv" path="res://resource/Exterior/trees_scattered.tscn" id="2_rwoci"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="3_3xtfx"]
+[ext_resource type="PackedScene" uid="uid://bq65x6vgevod1" path="res://resource/Exterior/ART_F4_Terrain_Far.glb" id="3_cqfxj"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_cqfxj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dt1eb"]
+render_priority = 0
+shader = ExtResource("3_3xtfx")
+shader_parameter/basecolor = Color(0.8862357, 0.89911073, 0.93450695, 1)
+shader_parameter/texture_hue_shift = ExtResource("4_cqfxj")
+shader_parameter/hue_shift_strength = 0.0
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("4_cqfxj")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(0.01, 0.01, 0.01)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8putn"]
+material = SubResource("ShaderMaterial_dt1eb")
+size = Vector2(5000, 2000)
+
+[node name="Exterior" type="Node3D"]
+
+[node name="ART_F4_Terrain" parent="." instance=ExtResource("1_rv14s")]
+
+[node name="ART_F4_Terrain2" parent="." instance=ExtResource("1_rv14s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -512)
+
+[node name="trees_scattered" parent="." instance=ExtResource("2_rwoci")]
+
+[node name="ART_F4_Terrain_Far" parent="." instance=ExtResource("3_cqfxj")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.769745, 1064.3984)
+visible = false
+mesh = SubResource("PlaneMesh_8putn")
