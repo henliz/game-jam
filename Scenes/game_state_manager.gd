@@ -10,6 +10,8 @@ const SAVE_PATH := "user://savegame.json"
 const DEBUG_START_FLOOR_2 := false
 # Debug: Set to true to start with floor 3 unlocked and 6 puzzles complete
 const DEBUG_START_FLOOR_3 := false
+# Debug: Set to true to start with floor 4 unlocked and 9 puzzles complete
+const DEBUG_START_FLOOR_4 := true
 
 # Items that require BOTH repair AND clean to count as one complete puzzle
 # These items only emit 1 blueprint when both conditions are met
@@ -57,7 +59,9 @@ func _ready() -> void:
 
 func reset_to_default() -> void:
 	state = _default_state.duplicate(true)
-	if DEBUG_START_FLOOR_3:
+	if DEBUG_START_FLOOR_4:
+		_apply_debug_floor4_state()
+	elif DEBUG_START_FLOOR_3:
 		_apply_debug_floor3_state()
 	elif DEBUG_START_FLOOR_2:
 		_apply_debug_floor2_state()
@@ -144,6 +148,72 @@ func _apply_debug_floor3_state() -> void:
 	state.blueprint_count = 6
 	print("DEBUG: Applied floor 3 test state - Floor 3 unlocked, 6 puzzles complete")
 
+
+func _apply_debug_floor4_state() -> void:
+	# Unlock all floors (1-4)
+	state.unlocked_floors = [1, 2, 3, 4]
+
+	# Mark all floor 1, 2, and 3 items as cleaned
+	state.cleaned_items = {
+		# Floor 1
+		"Antique Tea Kettle": true,
+		"Magic Billy Bass": true,
+		"Wizard Bust": true,
+		# Floor 2
+		"Crystal Ball": true,
+		"Strange Lantern": true,
+		"Celestial Globe": true,
+		# Floor 3
+		"Mortar and Pestle": true,
+		"Research Notebook": true,
+		"AlchemyContainer": true,
+	}
+
+	# Mark all repair-required items as repaired
+	state.repaired_items = {
+		"Wizard Bust": true,
+		"Celestial Globe": true,
+		"AlchemyContainer": true,
+	}
+
+	# Mark all dialogues from floors 1, 2, and 3 as triggered
+	state.triggered_dialogues = {
+		# Floor 1 progression
+		"F1JournalPickup": true,
+		"F1PickupInteractableFirst": true,
+		"F1SeeInteractableFirst": true,
+		"F1FirstTimeCleaningDimension": true,
+		"F1FirstItemCleaned": true,
+		"F1FixBust": true,
+		"F1AllItemsComplete": true,
+		# Floor 1 diary pages
+		"F1Diary01": true,
+		"F1Diary02": true,
+		"F1Diary03": true,
+		# Floor 2 progression
+		"F2Entry": true,
+		"F2WindGust": true,
+		"F2FixGlobe": true,
+		"F2AllItemsComplete": true,
+		# Floor 2 diary pages
+		"F2Diary04": true,
+		"F2Diary05": true,
+		"F2Diary06": true,
+		# Floor 3 progression
+		"F3Entry": true,
+		"F3FixAlchemy": true,
+		"F3AllItemsComplete": true,
+		# Floor 3 diary pages
+		"F3Diary07": true,
+		"F3Diary08": true,
+		"F3Diary09": true
+	}
+
+	# Unlock puzzles (normally done by picking up journal)
+	state.flags["puzzles_unlocked"] = true
+	# Set blueprint count to match all 9 completed puzzles
+	state.blueprint_count = 9
+	print("DEBUG: Applied floor 4 test state - Floor 4 unlocked, 9 puzzles complete")
 
 
 # --- Getters with convenient shortcuts ---

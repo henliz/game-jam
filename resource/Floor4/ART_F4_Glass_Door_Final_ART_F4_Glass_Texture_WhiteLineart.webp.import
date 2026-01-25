@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3plhwoqj886e"
-path.s3tc="res://.godot/imported/ART_F4_Glass_Door_Final_ART_F4_Glass_Texture_WhiteLineart.webp-dfd78d1a04be5f4c60d24986e32e4d9c.s3tc.ctex"
+path="res://.godot/imported/ART_F4_Glass_Door_Final_ART_F4_Glass_Texture_WhiteLineart.webp-dfd78d1a04be5f4c60d24986e32e4d9c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "b76b7b577c0a0500f96cbc4b7b5a5f3f"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor4/ART_F4_Glass_Door_Final_ART_F4_Glass_Texture_WhiteLineart.webp"
-dest_files=["res://.godot/imported/ART_F4_Glass_Door_Final_ART_F4_Glass_Texture_WhiteLineart.webp-dfd78d1a04be5f4c60d24986e32e4d9c.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F4_Glass_Door_Final_ART_F4_Glass_Texture_WhiteLineart.webp-dfd78d1a04be5f4c60d24986e32e4d9c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
