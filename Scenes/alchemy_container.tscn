@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://c1jd664eh2hbb"]
+[gd_scene load_steps=14 format=4 uid="uid://c1jd664eh2hbb"]
 
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_mxkly"]
 [ext_resource type="Texture2D" uid="uid://ssfh1yq20mnr" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainer_ART_F3_DistillationApparatusFinalContainer_Texture.webp" id="2_f7ggp"]
 [ext_resource type="Texture2D" uid="uid://bx65ebmiskfp" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainer_DistillContainerNormal.webp" id="3_4xen4"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="4_8jpsd"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="4_ud3an"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="5_8jpsd"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="5_rukxm"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_m36qw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul7yc"]
 resource_name = "DistillContainer"
@@ -48,6 +51,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g50hq")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23gtp"]
+render_priority = 0
+shader = ExtResource("4_8jpsd")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_f7ggp")
+shader_parameter/texture_hue_shift = ExtResource("5_rukxm")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_m36qw")
+shader_parameter/texture_normal = ExtResource("3_4xen4")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_levo3"]
 height = 0.45
 radius = 0.11
@@ -62,6 +83,7 @@ item_description = "A magical singing fish mounted on a plaque. Its eyes seem to
 transform = Transform3D(0.7381373, 0, 0.67465025, 0, 1, 0, -0.67465025, 0, 0.7381373, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sgy3f")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_23gtp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.65408087, 0, 0.7564245, 0, 1, 0, -0.7564245, 0, 0.65408087, 0, 0, 0)

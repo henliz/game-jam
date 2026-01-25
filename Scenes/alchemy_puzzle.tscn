@@ -1,18 +1,29 @@
-[gd_scene load_steps=33 format=4 uid="uid://bccskvumckg4m"]
+[gd_scene load_steps=49 format=4 uid="uid://bccskvumckg4m"]
 
 [ext_resource type="Script" uid="uid://c1fs31bx1hxjf" path="res://Scenes/alchemy_puzzle.gd" id="1_xrmlt"]
 [ext_resource type="PackedScene" uid="uid://c1jd664eh2hbb" path="res://Scenes/alchemy_container.tscn" id="2_sytep"]
 [ext_resource type="Texture2D" uid="uid://blsmc7c3j1yht" path="res://resource/Puzzles/Level03/ART_F3_DistillationDial_ART_F3_DistillationApparatusCrystal_Texture512.webp" id="3_mbwdk"]
 [ext_resource type="Texture2D" uid="uid://fy4udhu36q4p" path="res://resource/Puzzles/Level03/ART_F3_DistillationDial_DistillDialNormal.webp" id="4_qjhvs"]
 [ext_resource type="Texture2D" uid="uid://dwkursnvvxchj" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillPotionsBaseColor.webp" id="5_duk4f"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="5_ub27j"]
 [ext_resource type="Texture2D" uid="uid://bmb7efwulyahs" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_brush_smear_01_256.webp" id="6_lfvy1"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="6_vjgj8"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="7_cucta"]
 [ext_resource type="Texture2D" uid="uid://e5cbdt4oc3hs" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillPotionsNormal.webp" id="7_nxyll"]
 [ext_resource type="Texture2D" uid="uid://dm0cf20y8jtbr" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_ART_F3_DistillationApparatusFinalContainer_Texture.webp" id="8_af5pv"]
 [ext_resource type="Texture2D" uid="uid://sko14iovpo1r" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillContainerNormal.webp" id="9_mnegw"]
 [ext_resource type="Texture2D" uid="uid://ddn6pdvhuj1db" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_ART_F3_DistillationApparatusBase_Texture.webp" id="10_7xoeh"]
 [ext_resource type="Texture2D" uid="uid://dxqwmj1x2kosn" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillBaseNormal.webp" id="11_d708m"]
+[ext_resource type="Texture2D" uid="uid://t4lx5kyu1yt1" path="res://resource/Puzzles/Level03/ART_F3_DistillationFlasks_DistillPotionsBaseColor.webp" id="11_ltjw3"]
+[ext_resource type="Texture2D" uid="uid://b4r23xkfs8cyf" path="res://resource/Puzzles/Level03/ART_F3_DistillationFlasks_DistillPotionsNormal.webp" id="12_o7txi"]
 [ext_resource type="Texture2D" uid="uid://ci5swtninwlqh" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillContainerBaseBaseColor.webp" id="12_ub27j"]
 [ext_resource type="Texture2D" uid="uid://bdt255jmnf5dc" path="res://resource/Puzzles/Level03/ART_F3_DistillationFullSet_DistillContainerBaseNormal.webp" id="13_vjgj8"]
+[ext_resource type="Texture2D" uid="uid://ssfh1yq20mnr" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainer_ART_F3_DistillationApparatusFinalContainer_Texture.webp" id="15_iv5ed"]
+[ext_resource type="Texture2D" uid="uid://bx65ebmiskfp" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainer_DistillContainerNormal.webp" id="16_stxlo"]
+[ext_resource type="Texture2D" uid="uid://7tslev4j4ovk" path="res://resource/Puzzles/Level03/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp" id="19_cfknq"]
+[ext_resource type="Texture2D" uid="uid://eesb8fb4lsnn" path="res://resource/Puzzles/Level03/ART_F3_DistillationBase_DistillBaseNormal.webp" id="20_bjylf"]
+[ext_resource type="Texture2D" uid="uid://dmvwvoohaskgf" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp" id="23_h8o5a"]
+[ext_resource type="Texture2D" uid="uid://fma3pypqrh45" path="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainerBase_DistillContainerBaseNormal.webp" id="24_ydfkb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_c5t2i"]
 height = 0.15
@@ -59,6 +70,24 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u6uky")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18rhk"]
+render_priority = 0
+shader = ExtResource("5_ub27j")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_mbwdk")
+shader_parameter/texture_hue_shift = ExtResource("6_vjgj8")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.30000001425
+shader_parameter/texture_roughness = ExtResource("7_cucta")
+shader_parameter/texture_normal = ExtResource("4_qjhvs")
+shader_parameter/normal_scale = 0.25000010687499996
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32dif"]
 resource_name = "Material.003"
@@ -145,6 +174,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_graf2")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_on2x6"]
+render_priority = 0
+shader = ExtResource("5_ub27j")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("11_ltjw3")
+shader_parameter/texture_hue_shift = ExtResource("6_vjgj8")
+shader_parameter/hue_shift_strength = 1.0000000149012
+shader_parameter/roughness = 0.50000002375
+shader_parameter/texture_roughness = ExtResource("7_cucta")
+shader_parameter/texture_normal = ExtResource("12_o7txi")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyvx7"]
 resource_name = "DistillContainer"
 cull_mode = 2
@@ -186,6 +233,24 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_db8ox")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vd4e"]
+render_priority = 0
+shader = ExtResource("5_ub27j")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("15_iv5ed")
+shader_parameter/texture_hue_shift = ExtResource("6_vjgj8")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("7_cucta")
+shader_parameter/texture_normal = ExtResource("16_stxlo")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pv5vq"]
 resource_name = "DistillBase"
@@ -229,6 +294,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3ffqj")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2lyl"]
+render_priority = 0
+shader = ExtResource("5_ub27j")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("19_cfknq")
+shader_parameter/texture_hue_shift = ExtResource("6_vjgj8")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("7_cucta")
+shader_parameter/texture_normal = ExtResource("20_bjylf")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ag5k"]
 resource_name = "DistillFinalBase"
 cull_mode = 2
@@ -271,6 +354,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0bily")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3mut"]
+render_priority = 0
+shader = ExtResource("5_ub27j")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("23_h8o5a")
+shader_parameter/texture_hue_shift = ExtResource("6_vjgj8")
+shader_parameter/hue_shift_strength = 0.40000000596048
+shader_parameter/roughness = 0.750000035625
+shader_parameter/texture_roughness = ExtResource("7_cucta")
+shader_parameter/texture_normal = ExtResource("24_ydfkb")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [node name="AlchemyPuzzle" type="Node3D" node_paths=PackedStringArray("pipe_1", "pipe_2", "pipe_3", "alchemy_container_completed", "alchemy_container_uncomplete")]
 transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, 0, 0, 0)
 script = ExtResource("1_xrmlt")
@@ -296,6 +397,7 @@ shape = SubResource("CylinderShape3D_c5t2i")
 [node name="Dial" type="MeshInstance3D" parent="Pipe1"]
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_18rhk")
 
 [node name="Pipe2" type="StaticBody3D" parent="." groups=["hideOnInspect", "puzzlepipe"]]
 transform = Transform3D(0.8660255, 0, 0.5, 0, 1.0000001, 0, -0.50000006, 0, 0.8660254, 0.38743234, 0.22316456, -0.9077549)
@@ -307,6 +409,7 @@ shape = SubResource("CylinderShape3D_c5t2i")
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_18rhk")
 
 [node name="Pipe3" type="StaticBody3D" parent="." groups=["hideOnInspect", "puzzlepipe"]]
 transform = Transform3D(0.8660254, -1.5142069e-07, 0.5, 1.7484555e-07, 1, 0, -0.5, 8.742278e-08, 0.8660254, 0.07927847, 0.22300005, -0.7305374)
@@ -317,6 +420,7 @@ shape = SubResource("CylinderShape3D_c5t2i")
 [node name="Dial" type="MeshInstance3D" parent="Pipe3"]
 mesh = SubResource("ArrayMesh_gcdr2")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_18rhk")
 
 [node name="ART_F3_DistillationFullSet" type="Node3D" parent="." groups=["hideOnInspect"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.131348, -1.3947718, -4.7457404)
@@ -329,15 +433,19 @@ skeleton = NodePath("")
 [node name="Flasks" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
 mesh = SubResource("ArrayMesh_vb7f4")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_on2x6")
 
 [node name="FinalContainer" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
 mesh = SubResource("ArrayMesh_vn8fa")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_4vd4e")
 
 [node name="Base" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
 mesh = SubResource("ArrayMesh_vawxe")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_q2lyl")
 
 [node name="BigBase" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
 mesh = SubResource("ArrayMesh_oiops")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_e3mut")
