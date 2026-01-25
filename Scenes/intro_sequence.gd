@@ -267,7 +267,7 @@ func _handle_skip_input(delta: float) -> void:
 	if skip_cooldown > 0:
 		return
 
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("skip"):
 		skip_hold_progress += delta / SKIP_HOLD_TIME
 		skip_gauge.set_value(skip_hold_progress)
 

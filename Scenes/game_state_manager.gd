@@ -13,7 +13,7 @@ const DEBUG_START_FLOOR_3 := false
 
 # Items that require BOTH repair AND clean to count as one complete puzzle
 # These items only emit 1 blueprint when both conditions are met
-const REPAIR_REQUIRED_ITEMS := ["Wizard Bust", "Celestial Globe"]
+const REPAIR_REQUIRED_ITEMS := ["Wizard Bust", "Celestial Globe", "AlchemyContainer"]
 
 var state: Dictionary = {}
 
@@ -55,6 +55,9 @@ var _default_state: Dictionary = {
 
 	# Dialogue triggers that have already fired (trigger_id -> true)
 	"triggered_dialogues": {},
+
+	# Blueprint progression count (0-9)
+	"blueprint_count": 0,
 }
 
 func _ready() -> void:
@@ -92,6 +95,8 @@ func _apply_debug_floor2_state() -> void:
 	}
 	# Unlock puzzles (normally done by picking up journal)
 	state.flags["puzzles_unlocked"] = true
+	# Set blueprint count to match completed puzzles
+	state.blueprint_count = 3
 	print("DEBUG: Applied floor 2 test state - Floor 2 unlocked, 3 puzzles complete, puzzles unlocked")
 
 
@@ -144,6 +149,8 @@ func _apply_debug_floor3_state() -> void:
 
 	# Unlock puzzles (normally done by picking up journal)
 	state.flags["puzzles_unlocked"] = true
+	# Set blueprint count to match completed puzzles
+	state.blueprint_count = 6
 	print("DEBUG: Applied floor 3 test state - Floor 3 unlocked, 6 puzzles complete")
 
 
@@ -270,13 +277,13 @@ func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 	# Blueprint logic: repair+clean items only get 1 blueprint when BOTH are done
 	if cleaned:
 		if item_id in REPAIR_REQUIRED_ITEMS:
-			# Only emit if both repaired AND cleaned
+			# Only increment if both repaired AND cleaned
 			if is_item_repaired(item_id):
-				unlock_blueprint.emit()
+				increment_blueprint_count()
 				print("GameState: Blueprint unlocked for ", item_id, " (repair+clean complete)")
 		else:
 			# Clean-only items get blueprint on clean
-			unlock_blueprint.emit()
+			increment_blueprint_count()
 			print("GameState: Blueprint unlocked for ", item_id, " (clean complete)")
 	if state.cleaned_items.size()>=9:
 		unlock_floor(4)
@@ -295,14 +302,11 @@ func set_item_repaired(item_id: String, repaired: bool = true) -> void:
 	# Blueprint logic: repair+clean items only get 1 blueprint when BOTH are done
 	if repaired:
 		if item_id in REPAIR_REQUIRED_ITEMS:
-			# Only emit if both repaired AND cleaned
+			# Only increment if both repaired AND cleaned
 			if is_item_cleaned(item_id):
-				unlock_blueprint.emit()
+				increment_blueprint_count()
 				print("GameState: Blueprint unlocked for ", item_id, " (repair+clean complete)")
-		else:
-			# Repair-only items (if any) get blueprint on repair
-			unlock_blueprint.emit()
-			print("GameState: Blueprint unlocked for ", item_id, " (repair complete)")
+		# Note: no else branch - repair-only items don't exist currently
 
 	_check_floor_progress()
 
@@ -316,6 +320,18 @@ func has_dialogue_triggered(trigger_id: String) -> bool:
 func mark_dialogue_triggered(trigger_id: String) -> void:
 	state.triggered_dialogues[trigger_id] = true
 	state_changed.emit("triggered_dialogues", state.triggered_dialogues)
+
+
+# --- Blueprint Count ---
+
+func get_blueprint_count() -> int:
+	return state.get("blueprint_count", 0)
+
+
+func increment_blueprint_count() -> void:
+	state.blueprint_count = state.get("blueprint_count", 0) + 1
+	state_changed.emit("blueprint_count", state.blueprint_count)
+	unlock_blueprint.emit()
 
 
 # --- Save/Load ---

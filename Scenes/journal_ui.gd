@@ -61,6 +61,11 @@ func _ready() -> void:
 	journal_container.modulate.a = 0.0
 	blueprint_list = [blueprints_1,blueprints_2,blueprints_3,blueprints_4,blueprints_5,blueprints_6,blueprints_7,blueprints_8,blueprints_9]
 
+	# Initialize blueprint display from persisted game state
+	curr_blueprint = game_state.get_blueprint_count()
+	if curr_blueprint > 0:
+		blueprints.texture = blueprint_list[curr_blueprint - 1]
+
 	add_to_group("journal_ui")
 	_collect_spreads()
 	_setup_audio()
