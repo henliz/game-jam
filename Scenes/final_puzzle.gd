@@ -27,21 +27,22 @@ var is_rotating = false
 @onready var inner_summer_piece: TextureButton = $CanvasLayer/Panel/InnerSummerPiece
 @onready var inner_spring_piece: TextureButton = $CanvasLayer/Panel/InnerSpringPiece
 
-@onready var telescope_big: MeshInstance3D = $TelescopeBig
-@onready var telescope_med: MeshInstance3D = $TelescopeMed
-@onready var telescope_small: MeshInstance3D = $TelescopeSmall
 @onready var fire_light: Node3D = $FireLight
 @onready var god_rays_2: MeshInstance3D = $GodRays2
 @onready var god_rays_3: MeshInstance3D = $GodRays3
 @onready var astrolabe_animation_big_ring: Node3D = $AstrolabeAnimationBigRing
 @onready var astrolabe_animation_med_ring: Node3D = $AstrolabeAnimationMedRing
 @onready var astrolabe_animation_small_ring: Node3D = $AstrolabeAnimationSmallRing
+@onready var astrolabe_animation_loop_big: Node3D = $AstrolabeAnimationLoopBig
+@onready var astrolabe_animation_loop_med: Node3D = $AstrolabeAnimationLoopMed
+@onready var astrolabe_animation_loop_small: Node3D = $AstrolabeAnimationLoopSmall
 @onready var animation_1: AnimationPlayer = $AstrolabeAnimationBigRing/AnimationPlayer
 @onready var animation_2: AnimationPlayer = $AstrolabeAnimationMedRing/AnimationPlayer
 @onready var animation_3: AnimationPlayer = $AstrolabeAnimationSmallRing/AnimationPlayer
-@onready var animation_1_loop: AnimationPlayer = $AstrolabeAnimationBigRing/AnimationPlayerLoop
-@onready var animation_2_loop: AnimationPlayer = $AstrolabeAnimationMedRing/AnimationPlayerLoop
-@onready var animation_3_loop: AnimationPlayer = $AstrolabeAnimationSmallRing/AnimationPlayerLoop
+@onready var animation_1_loop: AnimationPlayer = $AstrolabeAnimationLoopBig/AnimationPlayerLoop
+@onready var animation_2_loop: AnimationPlayer = $AstrolabeAnimationLoopMed/AnimationPlayerLoop
+@onready var animation_3_loop: AnimationPlayer = $AstrolabeAnimationLoopSmall/AnimationPlayerLoop
+
 
 var dragged_inscription : TextureButton = null
 var dragged_inscription_name : String = ""
@@ -74,6 +75,8 @@ var initial_inscription_position = {}
 @onready var ring_success: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingSuccess"
 @onready var ring_turning: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingTurning"
 @onready var fire_whoosh: AudioStreamPlayer3D = $"../AudioStreamPlayers/FireWhoosh"
+@onready var ring_animation_loop: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingAnimationLoop"
+@onready var ring_animation_start: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingAnimationStart"
 
 func _ready() -> void:
 	ring_rotation = {inner:0,mid:-150.0,outer:90.0}
@@ -262,18 +265,26 @@ func _final_sequence():
 	fire_whoosh.play()
 	fire_light.visible=true
 	await get_tree().create_timer(1).timeout
+	ring_animation_start.play()
 	animation_1.play("RingsAction")
 	animation_2.play("Rings_003Action")
 	animation_3.play("Rings_002Action")
-	await get_tree().create_timer(15).timeout
+	await get_tree().create_timer(18).timeout
+	astrolabe_animation_loop_big.visible=true
+	astrolabe_animation_loop_med.visible=true
+	astrolabe_animation_loop_small.visible=true
+	astrolabe_animation_big_ring.visible=false
+	astrolabe_animation_med_ring.visible=false
+	astrolabe_animation_small_ring.visible=false
 	var tween = get_tree().create_tween()
 	god_rays_2.visible=true
 	god_rays_3.visible=true
 	snow.visible=false
 	wind.stop()
-	tween.tween_property(world_environment.environment,"fog_sky_affect",0,4)
-	tween.tween_property(directional_light_3d,"light_energy",2.0,4)
+	tween.tween_property(world_environment.environment,"fog_sky_affect",0,5)
+	tween.tween_property(directional_light_3d,"light_energy",3.0,5)
 	await get_tree().create_timer(5).timeout
+	ring_animation_loop.play()
 	god_rays_2.visible=false
 	god_rays_3.visible=false
 	animation_1_loop.play("RingsAction")

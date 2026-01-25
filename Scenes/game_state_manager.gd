@@ -222,7 +222,8 @@ func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 			# Clean-only items get blueprint on clean
 			unlock_blueprint.emit()
 			print("GameState: Blueprint unlocked for ", item_id, " (clean complete)")
-
+	if state.cleaned_items.size()>=9:
+		unlock_floor(4)
 	_check_floor_progress()
 
 
