@@ -7,7 +7,7 @@ extends Area3D
 const WORLD_ENVIRONMENT_FLOOR_4_SKYBOX = preload("uid://c8nsgy46ehweg")
 
 @onready var portal_visual: Node3D = $PortalVisual
-@onready var music_player: AudioStreamPlayer = get_node_or_null("/root/World/AudioStreamPlayers/MusicStreamPlayer")
+@onready var music_player: AudioStreamPlayer = get_node_or_null("/root/Main/World/AudioStreamPlayers/MusicStreamPlayer")
 
 const FLOOR_MUSIC := {
 	1: "res://Audio/Music/Floor01_OST.mp3",
@@ -52,7 +52,7 @@ func _on_body_entered(body: Node3D) -> void:
 	for next_floor in range(current_floor + 1, 5):
 		if not game_state.is_floor_unlocked(next_floor):
 			continue
-		var arrival_path = "/root/World/Floor%d/arrival" % next_floor
+		var arrival_path = "/root/Main/World/Floor%d/arrival" % next_floor
 		var arrival_marker = get_node_or_null(arrival_path)
 
 		if arrival_marker:
@@ -195,8 +195,8 @@ func _start_floor2_gust_sequence() -> void:
 
 
 func _animate_floor2_sway() -> void:
-	var floor2 = get_node_or_null("/root/World/Floor2")
-	var floor2_interactables = get_node_or_null("/root/World/Floor2Interactables")
+	var floor2 = get_node_or_null("/root/Main/World/Floor2")
+	var floor2_interactables = get_node_or_null("/root/Main/World/Floor2Interactables")
 
 	if not floor2 and not floor2_interactables:
 		return
