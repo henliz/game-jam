@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Floor2_OST.mp3-3c40b1c6915be57d1f16ac289834f4
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
