@@ -34,6 +34,7 @@ var movement_enabled: bool = true
 var current_interactable: Interactable = null
 var current_rotatable: StaticBody3D = null
 var level_map_node: Node3D = null
+var current_cleanable: Cleanable = null
 
 signal rotate_plate(direction,plate)
 signal rotate_pipe(direction,pipe)
@@ -152,6 +153,22 @@ func _start_inspection(item: Interactable):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	workbench_animator.animate_in_with_fade()
 	item_inspector.open(item, camera, item.inspect_scale, workbench_animator.get_item_placement_node())
+	
+	# Connect to cleaning complete signal if item has Cleanable component
+	var cleanable = item.find_child("Cleanable", true, false) as Cleanable
+	if cleanable:
+		current_cleanable = cleanable
+		cleanable.cleaning_complete.connect(_on_item_cleaned, CONNECT_ONE_SHOT)
+
+func _on_item_cleaned() -> void:
+	# Wait for the celebration animation in Cleanable (6.5 seconds total)
+	await get_tree().create_timer(6.5).timeout  # Changed from 1.5 to 6.5
+	
+	# Auto-close inspection after cleaning completes
+	if item_inspector:
+		item_inspector.close()
+	
+	current_cleanable = null
 
 func _on_inspection_closed():
 	inspecting = false
