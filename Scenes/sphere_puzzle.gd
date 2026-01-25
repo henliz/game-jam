@@ -54,3 +54,4 @@ func _on_puzzle_solved():
 	solved_sphere.visible=true
 	solved_sphere_collision.disabled=false
 	GameState.set_item_repaired("Celestial Globe")
+	DialogueManager.try_trigger_dialogue("F2FixGlobe", "F2FixGlobe")

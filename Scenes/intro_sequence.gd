@@ -5,7 +5,7 @@ signal intro_complete
 const INTRO_SECTIONS := [
 	"Your story begins, as some stories do, in the winter.\nThough this is no ordinary winter - and yours is no ordinary task.",
 	"You play as an adventurer, hired by the people of a cursed land to investigate their local wizard's tower.\nThe isolated spire normally cuts through the cold with it's bright light, bringing forth spring.\nBut the beacon has not shone for some time now, it's keeper nowhere to be seen... \n\nThe world is locked into a seemingly limitless whiteout.",
-	"Cold and afraid, the local populace has hired you to investigate, lest they succumb to the elements.\nTired from a string of unfortunate misadadventures, you arrive at the doorstep..."
+	"Cold and afraid, the local populace has hired you to investigate, lest they succumb to the elements.\nTired from a string of unfortunate misadventures, you arrive at the doorstep..."
 ]
 
 const SECTION_FADE_TIMES := [0.0, 12.0, 28.0]
