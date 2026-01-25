@@ -3,7 +3,6 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 2.5
 const SPRINT_SPEED = 4.0
-const JUMP_VELOCITY = 5.0
 const SENSITIVITY = 0.003
 
 const BOB_FREQ = 2.4
@@ -16,8 +15,6 @@ const FOV_CHANGE = 1.5
 const WALK_STEP_INTERVAL = 0.5
 const SPRINT_STEP_INTERVAL = 0.35
 
-var jumping = false
-var last_floor : bool
 var vl : Vector3
 var footstep_timer: float = 0.0
 var camera_base_position: Vector3
@@ -31,8 +28,6 @@ var camera_base_position: Vector3
 @onready var interact_prompt: Label = $UI/InteractPrompt
 @onready var rotate_prompt: Label = $UI/RotatePrompt
 @onready var footstep_player: AudioStreamPlayer3D = $FootstepPlayer
-@onready var jump_player: AudioStreamPlayer3D = $JumpPlayer
-@onready var land_player: AudioStreamPlayer3D = $LandPlayer
 
 var inspecting: bool = false
 var movement_enabled: bool = true
@@ -48,8 +43,6 @@ signal finalpuzzle_camera_trigger
 var collider_is_finalpuzzle = false
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	last_floor = is_on_floor()
 	camera_base_position = camera.position
 	item_inspector.closed.connect(_on_inspection_closed)
 	# Find the Map node in the world scene for workbench level fade
@@ -62,7 +55,7 @@ func _unhandled_input(event):
 		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(75))
-		
+
 func _physics_process(delta: float) -> void:
 	if finalpuzzle_is_active: return
 	_check_interactable()
@@ -76,14 +69,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		jumping = true
-		jump_player.play()
-	if is_on_floor() and not last_floor:
-		jumping = false
-		land_player.play()
-	last_floor = is_on_floor()
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
 	else:

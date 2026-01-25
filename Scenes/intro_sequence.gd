@@ -111,7 +111,7 @@ func start_sequence() -> void:
 
 
 func _on_fade_to_black_complete() -> void:
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	_waiting_for_scene = true
 
 
