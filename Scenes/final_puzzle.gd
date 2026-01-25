@@ -297,3 +297,4 @@ func _final_sequence():
 	credits.visible=true
 	var credit_tween = get_tree().create_tween()
 	credit_tween.tween_property(credits,"position:y",40.0,80)
+	await credit_tween.finished
