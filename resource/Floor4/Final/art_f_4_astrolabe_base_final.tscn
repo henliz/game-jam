@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwfqnxqf48a6p"]
+[gd_scene load_steps=9 format=3 uid="uid://cwfqnxqf48a6p"]
 
 [ext_resource type="PackedScene" uid="uid://cdanoagygpr3v" path="res://resource/Floor4/ART_F4_Astrolabe_Base_Final.glb" id="1_43utm"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_7sy5b"]
@@ -25,7 +25,17 @@ shader_parameter/uv1_blend_sharpness = 2.0
 shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_43utm"]
+height = 0.4
+radius = 1.4
+
 [node name="ART_F4_Astrolabe_Base_Final" instance=ExtResource("1_43utm")]
 
 [node name="Circle_017" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_rnx2d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22623432, 0)
+shape = SubResource("CylinderShape3D_43utm")

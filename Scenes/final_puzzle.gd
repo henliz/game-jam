@@ -271,7 +271,7 @@ func _final_sequence():
 	outer.queue_free()
 	mid.queue_free()
 	inner.queue_free()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(6).timeout
 	fire_whoosh.play()
 	fire_light.visible=true
 	DialogueManager.try_trigger_dialogue("F4SpiritEncounter", "F4SpiritEncounter")
@@ -296,7 +296,7 @@ func _final_sequence():
 	tween.tween_property(world_environment.environment,"fog_height",-100.0,5)
 	DialogueManager.try_trigger_dialogue("F4SnowLiftsEndgame", "F4SnowLiftsEndgame")
 	tween.tween_property(world_environment.environment,"fog_sky_affect",0,5)
-	tween.tween_property(directional_light_3d,"light_energy",3.0,5)
+	tween.tween_property(directional_light_3d,"light_energy",5.0,5)
 	await get_tree().create_timer(5).timeout
 	ring_animation_loop.play()
 	god_rays_2.visible=false
