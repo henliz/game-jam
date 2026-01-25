@@ -32,7 +32,7 @@ var _default_state: Dictionary = {
 	},
 
 	# Floor/area progression
-	"unlocked_floors": [1, 2, 4],  # starts with floor 1 unlocked
+	"unlocked_floors": [1],  # starts with floor 1 unlocked
 
 	# First-time flags for dialogue triggers
 	"first_time": {
