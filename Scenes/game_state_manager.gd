@@ -20,15 +20,6 @@ var state: Dictionary = {}
 var _default_state: Dictionary = {
 	# Puzzle states (9 puzzles)
 	"puzzles": {
-		"puzzle_1": {"cleaned": false, "repaired": false},
-		"puzzle_2": {"cleaned": false, "repaired": false},
-		"puzzle_3": {"cleaned": false, "repaired": false},
-		"puzzle_4": {"cleaned": false, "repaired": false},
-		"puzzle_5": {"cleaned": false, "repaired": false},
-		"puzzle_6": {"cleaned": false, "repaired": false},
-		"puzzle_7": {"cleaned": false, "repaired": false},
-		"puzzle_8": {"cleaned": false, "repaired": false},
-		"puzzle_9": {"cleaned": false, "repaired": false},
 	},
 
 	# Floor/area progression
@@ -198,19 +189,32 @@ func _check_floor_progress() -> void:
 	var floor2_globe_complete = is_item_cleaned(floor2_repair_item) and is_item_repaired(floor2_repair_item)
 	var floor2_complete = floor2_clean_complete + (1 if floor2_globe_complete else 0)
 
+	# Floor 3 puzzles - Mortar and Pestle and Research Notebook need cleaning only
+	# AlchemyContainer needs both cleaning AND repair
+	var floor3_clean_only = ["Mortar and Pestle", "Research Notebook"]
+	var floor3_repair_item = "AlchemyContainer"
+	var floor3_clean_complete = _count_floor_items_complete(floor3_clean_only, false)
+	var floor3_alchemy_complete = is_item_cleaned(floor3_repair_item) and is_item_repaired(floor3_repair_item)
+	var floor3_complete = floor3_clean_complete + (1 if floor3_alchemy_complete else 0)
+
 	print("Floor 1 complete: ", floor1_complete, "/3")
 	print("Floor 2 complete: ", floor2_complete, "/3")
+	print("Floor 3 complete: ", floor3_complete, "/3")
 
 	# Unlock floors based on completion
 	if 2 not in state.unlocked_floors and floor1_complete >= 3:
 		unlock_floor(2)
 	if 3 not in state.unlocked_floors and floor2_complete >= 3:
 		unlock_floor(3)
+	if 4 not in state.unlocked_floors and floor3_complete >= 3:
+		unlock_floor(4)
 
 	# Queue diary dialogues based on puzzle completion
 	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
 	print("  journal_ui found: ", journal_ui != null)
 	print("  Wizard Bust - cleaned: ", is_item_cleaned("Wizard Bust"), ", repaired: ", is_item_repaired("Wizard Bust"))
+	print("  Celestial Globe - cleaned: ", is_item_cleaned("Celestial Globe"), ", repaired: ", is_item_repaired("Celestial Globe"))
+	print("  AlchemyContainer - cleaned: ", is_item_cleaned("AlchemyContainer"), ", repaired: ", is_item_repaired("AlchemyContainer"))
 
 	# Floor 1 diary pages
 	var floor1_diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
@@ -235,6 +239,17 @@ func _check_floor_progress() -> void:
 		var diary_id = floor2_diary_pages[i]
 		if not has_dialogue_triggered(diary_id):
 			print("QUEUEING F2: ", diary_id)
+			if journal_ui:
+				journal_ui.queue_diary_dialogue(diary_id)
+
+	# Floor 3 diary pages (numbering continues from F2: 07, 08, 09)
+	var floor3_diary_pages = ["F3Diary07", "F3Diary08", "F3Diary09"]
+	for i in range(floor3_complete):
+		if i >= floor3_diary_pages.size():
+			break
+		var diary_id = floor3_diary_pages[i]
+		if not has_dialogue_triggered(diary_id):
+			print("QUEUEING F3: ", diary_id)
 			if journal_ui:
 				journal_ui.queue_diary_dialogue(diary_id)
 
@@ -285,8 +300,6 @@ func set_item_cleaned(item_id: String, cleaned: bool = true) -> void:
 			# Clean-only items get blueprint on clean
 			increment_blueprint_count()
 			print("GameState: Blueprint unlocked for ", item_id, " (clean complete)")
-	if state.cleaned_items.size()>=9:
-		unlock_floor(4)
 	_check_floor_progress()
 
 

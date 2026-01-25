@@ -13,6 +13,7 @@ radius = 0.1
 transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, 0, 0, 0)
 script = ExtResource("1_b7ec7")
 inspect_scale = 5.0
+item_name = "Mortar and Pestle"
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"
 
 [node name="ART_F3_PaintedMortarPestle_Final" parent="." instance=ExtResource("2_dike2")]

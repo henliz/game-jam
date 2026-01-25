@@ -12,6 +12,7 @@ size = Vector3(0.31774902, 0.21533966, 0.11219978)
 transform = Transform3D(0.3412984, 0, -0.939955, 0, 1, 0, 0.939955, 0, 0.3412984, 0, 0, 0)
 script = ExtResource("1_f41ms")
 inspect_scale = 3.0
+item_name = "Research Notebook"
 metadata/_custom_type_script = "uid://dgku75f4jy8wp"
 
 [node name="ART_F3_Research_Notebook" parent="." instance=ExtResource("2_5pjlh")]
@@ -30,5 +31,5 @@ shape = SubResource("BoxShape3D_mkebs")
 script = ExtResource("4_0dpuk")
 glow_color = Color(0.96, 0.66, 0.19, 1)
 interaction_range = 2.5
-target_node = NodePath("..")
+target_node = NodePath("../ART_F3_Research_Notebook")
 requires_unlock = true

@@ -195,9 +195,9 @@ func _start_floor2_gust_sequence() -> void:
 
 
 func _animate_floor2_sway() -> void:
-	var floor2 = get_node_or_null("/root/World/Floor2")
-	var floor2_interactables = get_node_or_null("/root/World/Floor2Interactables")
-	var sphere_puzzle = get_node_or_null("/root/World/SpherePuzzle")
+	var floor2 = get_node_or_null("/root/Main/World/Floor2")
+	var floor2_interactables = get_node_or_null("/root/Main/World/Floor2Interactables")
+	var sphere_puzzle = get_node_or_null("/root/Main/World/SpherePuzzle")
 
 	if not floor2 and not floor2_interactables:
 		return
