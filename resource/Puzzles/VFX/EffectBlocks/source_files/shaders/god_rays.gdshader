@@ -1,6 +1,6 @@
 //god_rays.gdshader
 shader_type spatial;
-render_mode cull_disabled;
+render_mode blend_mix, depth_prepass_alpha, cull_disabled;
 
 uniform float speed : hint_range(0.5, 10.0);
 uniform sampler2D windNoise;

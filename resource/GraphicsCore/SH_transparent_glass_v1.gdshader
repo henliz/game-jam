@@ -89,8 +89,8 @@ void fragment() {
 	//ALBEDO = vec3(adjusted);
 
 	//SPECULAR = specular;
-	
-	ALPHA = 1.0 - texture_albedo_uv.r;
+
+	ALPHA = 1.0 - texture_albedo_uv.b;
 
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
 	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);

@@ -51,26 +51,12 @@ surface_material_override/0 = ExtResource("8_7738j")
 
 [node name="Lighting" type="Node3D" parent="."]
 
-[node name="DEV_DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
-visible = false
-
-[node name="DEV_OmniLight3D" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-visible = false
-light_energy = 1.5
-omni_range = 48.102
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-visible = false
-shadow_enabled = true
-shadow_bias = 0.05
-omni_range = 8.0
-
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4, 0)
-light_indirect_energy = 6.0
+light_color = Color(1, 0.8833333, 0.8, 1)
+light_indirect_energy = 4.0
 shadow_enabled = true
+shadow_opacity = 0.8
 shadow_blur = 0.5
 spot_range = 8.0
 spot_attenuation = 0.25
