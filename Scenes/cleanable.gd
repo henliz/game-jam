@@ -25,8 +25,13 @@ var is_complete: bool = false
 var item_id: String = ""
 var _initialized: bool = false
 var _waiting_for_visible: bool = false
+var initial_inspection_transform: Transform3D
+
 
 const FIRST_CLEAN_DIALOGUE_ID := "F1FirstItemCleaned"
+
+func set_initial_transform(t: Transform3D) -> void:
+	initial_inspection_transform = t
 
 func _ready() -> void:
 	_resolve_item_id()
@@ -240,8 +245,13 @@ func clean_at_uv(uv: Vector2) -> void:
 
 	if progress >= 0.95 and not is_complete:
 		is_complete = true
+		
+		# Start celebration animation (non-blocking)
+		_play_completion_celebration()
+		
+		# Emit signal immediately so player script can handle exit timing
 		cleaning_complete.emit()
-		dirt_mesh.queue_free()
+		
 		DialogueManager.try_trigger_dialogue("item_first_clean", FIRST_CLEAN_DIALOGUE_ID)
 
 func _point_in_triangle(p: Vector2, a: Vector2, b: Vector2, c: Vector2) -> bool:
@@ -304,6 +314,38 @@ func _resolve_item_id() -> void:
 		item_id = parent.name
 	print("Cleanable: Resolved item_id = ", item_id, " (fallback to parent name)")
 
+func _play_completion_celebration() -> void:
+	# Find the inspected item (Interactable parent)
+	var interactable = get_parent()
+	while interactable and not interactable is Interactable:
+		interactable = interactable.get_parent()
+	
+	# Rotate item back to initial inspection position
+	if interactable and initial_inspection_transform != Transform3D():
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_CUBIC)
+		
+		# Return to the "proper viewing angle" from when inspection started
+		tween.tween_property(interactable, "transform", initial_inspection_transform, 2.0)
+	
+	# Fade out dirt overlay
+	if dirt_mesh:
+		var fade_tween = create_tween()
+		fade_tween.tween_interval(1.0)
+		fade_tween.tween_property(dirt_mesh, "modulate:a", 0.0, 0.5)
+	
+	# Wait for celebration moment
+	await get_tree().create_timer(6.5).timeout
+	
+	# Clean up dirt mesh
+	if dirt_mesh:
+		dirt_mesh.queue_free()
+
+func _exit_minigame() -> void:
+	# Signal to whoever is controlling the minigame view to exit
+	# You'll need to connect this in your interaction/minigame controller
+	pass  # Replace with your actual exit logic
 
 func mark_cleaned_in_save() -> void:
 	if item_id:
