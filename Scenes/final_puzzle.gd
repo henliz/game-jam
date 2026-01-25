@@ -281,6 +281,8 @@ func _final_sequence():
 	god_rays_3.visible=true
 	snow.visible=false
 	wind.stop()
+	tween.tween_property(world_environment.environment,"fog_aerial_perspective",1.0,5)
+	tween.tween_property(world_environment.environment,"fog_height",-100.0,5)
 	tween.tween_property(world_environment.environment,"fog_sky_affect",0,5)
 	tween.tween_property(directional_light_3d,"light_energy",3.0,5)
 	await get_tree().create_timer(5).timeout
