@@ -7,7 +7,7 @@ signal unlock_blueprint
 const SAVE_PATH := "user://savegame.json"
 
 # Debug: Set to true to start with floor 2 unlocked and 3 puzzles complete
-const DEBUG_START_FLOOR_2 := true
+const DEBUG_START_FLOOR_2 := false
 
 # Items that require BOTH repair AND clean to count as one complete puzzle
 # These items only emit 1 blueprint when both conditions are met
@@ -61,8 +61,8 @@ func _ready() -> void:
 
 func reset_to_default() -> void:
 	state = _default_state.duplicate(true)
-	#if DEBUG_START_FLOOR_2:
-	#	_apply_debug_floor2_state()
+		#if DEBUG_START_FLOOR_2:
+		#	_apply_debug_floor2_state()
 
 
 func _apply_debug_floor2_state() -> void:

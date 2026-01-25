@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=4 uid="uid://bm48vayfgjkp"]
+[gd_scene load_steps=196 format=4 uid="uid://bm48vayfgjkp"]
 
 [ext_resource type="PackedScene" uid="uid://cuqr7erdlouqh" path="res://Scenes/Player.tscn" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://nx8lxwh8pjct" path="res://Scenes/world.gd" id="1_world"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dx26tcbssl5a5" path="res://resource/Pine Tree with Snow.glb" id="6_hmc15"]
 [ext_resource type="PackedScene" uid="uid://dytiikcup4pnp" path="res://resource/Tree - with snow.glb" id="7_dt0r1"]
 [ext_resource type="PackedScene" uid="uid://c7g7m6l3veno3" path="res://resource/Dead Trees With Snow.glb" id="8_qebug"]
+[ext_resource type="AudioStream" uid="uid://ba3lkk56nm1xd" path="res://Audio/WindBlowing.wav" id="9_4ke1i"]
 [ext_resource type="PackedScene" uid="uid://ineivc0o1klp" path="res://Scenes/Floor2.tscn" id="9_tutfb"]
 [ext_resource type="PackedScene" uid="uid://d0grwopg7hs7q" path="res://Scenes/sphere_puzzle.tscn" id="21_6c0jt"]
-[ext_resource type="AudioStream" uid="uid://dou6mhqkngllq" path="res://resource/wind-blowing-sfx-01-423673.mp3" id="21_yq1aw"]
 [ext_resource type="AudioStream" uid="uid://bevmmrm41mpvv" path="res://resource/Bust/Stone_click_together05.wav" id="23_no8kt"]
 [ext_resource type="PackedScene" uid="uid://c26sxuhed8dhy" path="res://resource/Floor2/Final/art_f_2_crystal_ball_stand_final.tscn" id="24_ctcri"]
 [ext_resource type="PackedScene" uid="uid://cfhhmv35hymii" path="res://Scenes/wizard_bust.tscn" id="28_1vso6"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://60s3vuw8l7si" path="res://resource/Puzzles/Level04/AstrolabeTelescope/HalfTelesmall_TelescopeBaseColor.png" id="35_355yf"]
 [ext_resource type="Texture2D" uid="uid://n62n0bswe4oo" path="res://resource/Puzzles/Level04/AstrolabeTelescope/HalfTelesmall_TelescopeRough.png" id="36_4ke1i"]
 [ext_resource type="Texture2D" uid="uid://dre084hp0klp1" path="res://resource/Puzzles/Level04/AstrolabeTelescope/HalfTelesmall_TelescopeNormal.png" id="37_p22x6"]
-[ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="38_h46qv"]
 [ext_resource type="AudioStream" uid="uid://bn7tkai4qk314" path="res://resource/Puzzles/Level04/sound/final_puzzle_rings_turning_short.wav" id="41_svj78"]
 [ext_resource type="AudioStream" uid="uid://dmbcy7aalx8cd" path="res://resource/Puzzles/Level04/sound/ring_success.wav" id="42_qrg23"]
 [ext_resource type="Script" uid="uid://caam7nhtc55vv" path="res://Scenes/final_puzzle.gd" id="42_w5giw"]
@@ -93,7 +92,6 @@
 [ext_resource type="Texture2D" uid="uid://cgqjg5ulcyn8k" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_MiddleRing_Piece02_Summer_Crop.png" id="83_d5ow5"]
 [ext_resource type="Texture2D" uid="uid://bgercqlsm0k0i" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_MiddleRing_Piece01_Spring_Crop.png" id="84_s0myj"]
 [ext_resource type="Texture2D" uid="uid://brplx30v18iyy" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece03_Fall_Crop.png" id="85_0ip2a"]
-[ext_resource type="PackedScene" uid="uid://bu1i34ulk2akp" path="res://resource/Puzzles/Level02/ART_F2_CrystalBallStand_Final.glb" id="85_cwuo4"]
 [ext_resource type="Texture2D" uid="uid://dv7wqdjvsns0s" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece02_Summer_Crop.png" id="86_i7fxq"]
 [ext_resource type="Texture2D" uid="uid://dlj4hinchkmr6" path="res://resource/Puzzles/Level04/png/ART_F4_Final_Puzzle_Assets_InnerRing_Piece01_Spring_Crop.png" id="87_levo3"]
 [ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://resource/Puzzles/VFX/EffectBlocks/source_files/materials/fire_billboard.material" id="90_3p0mr"]
@@ -1388,7 +1386,8 @@ bus = &"Music"
 
 [node name="wind" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
 process_mode = 1
-stream = ExtResource("21_yq1aw")
+stream = ExtResource("9_4ke1i")
+volume_db = 3.0
 autoplay = true
 
 [node name="BustClick" type="AudioStreamPlayer3D" parent="AudioStreamPlayers"]
@@ -1438,8 +1437,8 @@ trigger_id = "F1SeeInteractableFirst"
 dialogue_id = "F1SeeInteractableFirst"
 
 [node name="Teakettle" parent="." instance=ExtResource("30_o2rbt")]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -5.1187468, -26.518856, -0.5145346)
-inspect_scale = 2.0
+transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, -4.9579573, -26.47894, -0.6325498)
+inspect_scale = 3.0
 inspect_offset = Vector3(0, 0.25, 0)
 
 [node name="MagicBillyBass" parent="." instance=ExtResource("51_uqdn7")]
@@ -1454,28 +1453,20 @@ inspect_offset = Vector3(0, 0.15, 0)
 [node name="Floor2" parent="." instance=ExtResource("9_tutfb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45610785, -8.606278, -0.0022952557)
 
-[node name="CrystalBall_Final" parent="." instance=ExtResource("24_ctcri")]
+[node name="Floor2Interactables" type="Node3D" parent="."]
+
+[node name="CrystalBall_Final" parent="Floor2Interactables" instance=ExtResource("24_ctcri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24379706, -7.5838175, 0.2567761)
+inspect_scale = 2.0
 inspect_offset = Vector3(0, 0, 0)
 
-[node name="StrangeLantern_FIXED" parent="." instance=ExtResource("76_wex5w")]
+[node name="StrangeLantern_FIXED" parent="Floor2Interactables" instance=ExtResource("76_wex5w")]
 transform = Transform3D(0.8838636, 0, 0.4677447, 0, 1, 0, -0.4677447, 0, 0.8838636, -3.590668, -7.634721, 1.8649867)
 inspect_scale = 2.0
 inspect_offset = Vector3(0, 0.2, 0)
 
 [node name="SpherePuzzle" parent="." groups=["hideOnInspect"] instance=ExtResource("21_6c0jt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6060789, -8.454411, -2.737645)
-
-[node name="CrystalBall_offset" type="StaticBody3D" parent="." groups=["teakettle"]]
-transform = Transform3D(0.27384165, 0, -0.9617749, 0, 1, 0, 0.9617749, 0, 0.27384165, 0.8098676, -7.4529457, 0.8791106)
-visible = false
-script = ExtResource("38_h46qv")
-inspect_scale = 2.0
-inspect_offset = Vector3(0, -1, 0)
-item_name = "Crystal Ball"
-
-[node name="ART_F2_CrystalBallStand_Final" parent="CrystalBall_offset" instance=ExtResource("85_cwuo4")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6060789, -8.454411, -2.714155)
 
 [node name="Floor3" parent="." instance=ExtResource("79_mkebs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06245315, 5.4710407, -0.1037426)
@@ -1831,10 +1822,10 @@ process_material = SubResource("ParticleProcessMaterial_pgid1")
 draw_pass_1 = SubResource("ArrayMesh_cmt5e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="FinalPuzzle/FireLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1198219, 0.538972, -0.005279433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11134104, 0.65339583, 0.14053644)
 light_color = Color(2, 1.2, 0, 1)
-light_energy = 1.1148713
-omni_range = 3.1842875
+light_energy = 0.6307091
+omni_range = 3.1457887
 script = ExtResource("92_d43ui")
 movement_radius = 0.05
 

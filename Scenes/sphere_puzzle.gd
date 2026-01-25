@@ -53,3 +53,4 @@ func _on_puzzle_solved():
 	globe_sphere.queue_free()
 	solved_sphere.visible=true
 	solved_sphere_collision.disabled=false
+	GameState.set_item_repaired("Celestial Globe")

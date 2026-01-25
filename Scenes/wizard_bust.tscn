@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2e35raowtf7" path="res://resource/Floor1/wizard_bust_fracture_wizard_bust_color_1k.webp" id="2_0ueb0"]
 [ext_resource type="Texture2D" uid="uid://diq7a7k33c4ar" path="res://resource/Floor1/wizard_bust_wizard_bust_color_1k.webp" id="2_1ytx6"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
-[ext_resource type="Script" uid="uid://cetfwslesspli" path="res://Scenes/static_dirt.gd" id="5_static_dirt"]
+[ext_resource type="Script" path="res://Scenes/static_dirt.gd" id="5_static_dirt"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="6_glow"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwx4r"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://c54o67tient15"]
+[gd_scene load_steps=28 format=4 uid="uid://c01sruf6xwd44"]
 
 [ext_resource type="Material" uid="uid://cjgoj12p3pb0g" path="res://PolyBlocks/EffectBlocks/source_files/materials/fire_billboard.material" id="1_jot52"]
 [ext_resource type="Material" uid="uid://ks1kly3dfqvc" path="res://PolyBlocks/EffectBlocks/source_files/materials/smoke_billboard.material" id="2_k5gwd"]
