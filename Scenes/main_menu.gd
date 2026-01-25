@@ -1,7 +1,7 @@
 extends Node2D
 
 const IntroSequence = preload("res://Scenes/intro_sequence.tscn")
-@onready var world : PackedScene = preload("res://Scenes/world.tscn")
+@onready var world: Node3D = $"../World"
 
 @export_group("Parallax Settings")
 @export var tower_max_offset: float = 18.0
@@ -33,6 +33,7 @@ func _ready() -> void:
 
 	_setup_menu_buttons()
 	quit_button.pressed.connect(_on_quit_pressed)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _setup_menu_buttons() -> void:
 	var has_save = GameState.has_save_file()
@@ -72,7 +73,9 @@ func _process(delta: float) -> void:
 
 func _on_resume_pressed() -> void:
 	GameState.load_game()
-	get_tree().change_scene_to_packed(world)
+	world.visible=true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	queue_free()
 
 
 func _on_new_game_pressed() -> void:
@@ -81,10 +84,13 @@ func _on_new_game_pressed() -> void:
 	#Debug: Hold Shift to skip intro sequence entirely
 	if Input.is_key_pressed(KEY_SHIFT):
 		print("MainMenu: Shift held - skipping intro sequence")
-		get_tree().change_scene_to_packed(world)
+		world.visible=true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		queue_free()
 		return
-
+	world.visible=true
 	_start_intro_sequence()
+	queue_free()
 
 
 func _start_intro_sequence() -> void:
