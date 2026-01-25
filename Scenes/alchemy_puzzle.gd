@@ -64,3 +64,4 @@ func _on_puzzle_completion():
 	pipe_3.find_child("CollisionShape3D", false, false).disabled = true
 	ring_success.play()
 	GameState.set_item_repaired("AlchemyContainer")
+	DialogueManager.try_trigger_dialogue("F3FixPotion", "F3FixPotion")

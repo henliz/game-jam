@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://c1fuj4mqxqaxj"]
+[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://ctcc5238yhi76"]
 
 [ext_resource type="Texture2D" uid="uid://b6o3epiwq0pqb" path="res://resource/Floor3/ART_F3_StairsInterior_Final_2_F3RailingBaseCOlor.webp" id="1_dqr4u"]
 [ext_resource type="Texture2D" uid="uid://db8c4tdj3m5x5" path="res://resource/Floor3/ART_F3_StairsInterior_Final_2_F3RailingNormal.webp" id="2_dgcyf"]

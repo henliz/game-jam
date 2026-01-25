@@ -209,49 +209,11 @@ func _check_floor_progress() -> void:
 	if 4 not in state.unlocked_floors and floor3_complete >= 3:
 		unlock_floor(4)
 
-	# Queue diary dialogues based on puzzle completion
-	var journal_ui = get_tree().get_first_node_in_group("journal_ui") as JournalUI
-	print("  journal_ui found: ", journal_ui != null)
+	# Debug prints for repair-required items
 	print("  Wizard Bust - cleaned: ", is_item_cleaned("Wizard Bust"), ", repaired: ", is_item_repaired("Wizard Bust"))
 	print("  Celestial Globe - cleaned: ", is_item_cleaned("Celestial Globe"), ", repaired: ", is_item_repaired("Celestial Globe"))
 	print("  AlchemyContainer - cleaned: ", is_item_cleaned("AlchemyContainer"), ", repaired: ", is_item_repaired("AlchemyContainer"))
-
-	# Floor 1 diary pages
-	var floor1_diary_pages = ["F1Diary01", "F1Diary02", "F1Diary03"]
-	for i in range(floor1_complete):
-		if i >= floor1_diary_pages.size():
-			break
-		var diary_id = floor1_diary_pages[i]
-		var already_triggered = has_dialogue_triggered(diary_id)
-		print("  Checking ", diary_id, " - already triggered: ", already_triggered)
-		if not already_triggered:
-			print("QUEUEING F1: ", diary_id)
-			if journal_ui:
-				journal_ui.queue_diary_dialogue(diary_id)
-			else:
-				print("  ERROR: journal_ui is null, cannot queue diary!")
-
-	# Floor 2 diary pages (numbering continues from F1: 04, 05, 06)
-	var floor2_diary_pages = ["F2Diary04", "F2Diary05", "F2Diary06"]
-	for i in range(floor2_complete):
-		if i >= floor2_diary_pages.size():
-			break
-		var diary_id = floor2_diary_pages[i]
-		if not has_dialogue_triggered(diary_id):
-			print("QUEUEING F2: ", diary_id)
-			if journal_ui:
-				journal_ui.queue_diary_dialogue(diary_id)
-
-	# Floor 3 diary pages (numbering continues from F2: 07, 08, 09)
-	var floor3_diary_pages = ["F3Diary07", "F3Diary08", "F3Diary09"]
-	for i in range(floor3_complete):
-		if i >= floor3_diary_pages.size():
-			break
-		var diary_id = floor3_diary_pages[i]
-		if not has_dialogue_triggered(diary_id):
-			print("QUEUEING F3: ", diary_id)
-			if journal_ui:
-				journal_ui.queue_diary_dialogue(diary_id)
+	# Note: Diary dialogues are now handled by the puzzle completion sequence in journal_ui.gd
 
 
 func _count_floor_items_complete(items: Array, require_repair: bool) -> int:

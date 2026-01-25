@@ -53,6 +53,7 @@ var slide_duration: float = 0.4
 var slide_progress: float = 0.0
 var animating_in: bool = false
 var animating_out: bool = false
+var last_cleaned_item_id: String = ""
 
 func _ready():
 	visible = false
@@ -120,7 +121,6 @@ func _set_cursor_mode(mode: int) -> void:
 
 	_apply_cursor_scale()
 
-
 func _show_custom_cursor() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	cursor_sprite.visible = true
@@ -185,6 +185,12 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 		cleaning_ui.visible = true
 		_update_fill_texture(cleanable.get_cleaning_progress())
 		_update_progress_label(cleanable.get_cleaning_progress())
+		
+		var item_offset = Vector3.ZERO
+		if item is Interactable:
+			item_offset = item.inspect_offset
+		var target_basis = Basis.from_euler(Vector3(0, 0, 0)).scaled(Vector3.ONE * scale_factor)
+		cleanable.set_initial_transform(Transform3D(target_basis, item_offset))
 	else:
 		cleaning_ui.visible = false
 
@@ -202,15 +208,12 @@ func open(item: Node3D, cam: Camera3D, scale_factor: float = 1.0, placement: Nod
 		var target_basis = Basis.from_euler(Vector3(0, current_y_rotation, 0)).scaled(Vector3.ONE * scale_factor)
 
 		# Apply inspect_offset if the item is an Interactable
-		var offset = Vector3.ZERO
+		# Apply inspect_offset if the item is an Interactable
+		# Apply inspect_offset if the item is an Interactable
+		var item_offset = Vector3.ZERO
 		if item is Interactable:
-			offset = item.inspect_offset
-		target_transform = Transform3D(target_basis, offset)
-	else:
-		camera.add_child(item)
-		var inspect_distance = 0.6
-		target_transform = Transform3D(Basis().scaled(Vector3.ONE * scale_factor), Vector3(0, 0, -inspect_distance))
-		item.transform = camera.global_transform.inverse() * original_transform
+			item_offset = item.inspect_offset
+		target_transform = Transform3D(target_basis, item_offset)
 
 	visible = true
 	is_active = true
@@ -626,6 +629,7 @@ func _on_cleaning_complete() -> void:
 	if success_audio_player:
 		success_audio_player.play()
 	if cleanable:
+		last_cleaned_item_id = cleanable.item_id
 		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit(cleanable)
 	_update_cursor_from_state()

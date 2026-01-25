@@ -34,6 +34,7 @@ var movement_enabled: bool = true
 var current_interactable: Interactable = null
 var current_rotatable: StaticBody3D = null
 var level_map_node: Node3D = null
+var current_cleanable: Cleanable = null
 
 signal rotate_plate(direction,plate)
 signal rotate_pipe(direction,pipe)
@@ -41,10 +42,13 @@ signal rotate_pipe(direction,pipe)
 var finalpuzzle_is_active = false
 signal finalpuzzle_camera_trigger
 var collider_is_finalpuzzle = false
+var pending_journal_sequence_item: String = ""
 
 func _ready() -> void:
 	camera_base_position = camera.position
 	item_inspector.closed.connect(_on_inspection_closed)
+	item_inspector.item_cleaned.connect(_on_item_cleaned_for_journal)
+	workbench_animator.workbench_fully_exited.connect(_on_workbench_fully_exited)
 	# Find the Map node in the world scene for workbench level fade
 	call_deferred("_find_level_map")
 
@@ -152,6 +156,22 @@ func _start_inspection(item: Interactable):
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	workbench_animator.animate_in_with_fade()
 	item_inspector.open(item, camera, item.inspect_scale, workbench_animator.get_item_placement_node())
+	
+	# Connect to cleaning complete signal if item has Cleanable component
+	var cleanable = item.find_child("Cleanable", true, false) as Cleanable
+	if cleanable:
+		current_cleanable = cleanable
+		cleanable.cleaning_complete.connect(_on_item_cleaned, CONNECT_ONE_SHOT)
+
+func _on_item_cleaned() -> void:
+	# Wait for the celebration animation in Cleanable (6.5 seconds total)
+	await get_tree().create_timer(6.5).timeout  # Changed from 1.5 to 6.5
+	
+	# Auto-close inspection after cleaning completes
+	if item_inspector:
+		item_inspector.close()
+	
+	current_cleanable = null
 
 func _on_inspection_closed():
 	inspecting = false
@@ -200,3 +220,16 @@ func _on_finalpuzzle_closed() -> void:
 	camera.current=true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalpuzzle_is_active = false
+
+
+func _on_item_cleaned_for_journal(_cleanable: Cleanable) -> void:
+	pending_journal_sequence_item = item_inspector.last_cleaned_item_id
+
+
+func _on_workbench_fully_exited() -> void:
+	if pending_journal_sequence_item.is_empty():
+		return
+	var journal_ui = get_tree().get_first_node_in_group("journal_ui")
+	if journal_ui:
+		journal_ui.start_puzzle_completion_sequence(pending_journal_sequence_item)
+	pending_journal_sequence_item = ""
