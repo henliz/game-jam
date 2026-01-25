@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://8ybm0ib8virp"]
+
+[ext_resource type="PackedScene" uid="uid://iqlv42dhodpy" path="res://resource/Floor1/ART_F1_Ceiling_Lamp.glb" id="1_gpj02"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_dkkd2"]
+[ext_resource type="Texture2D" uid="uid://whltiee87232" path="res://resource/Floor1/ART_F1_Ceiling_Lamp_CeilingCapBaseColor.webp" id="3_dkcwk"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_0xlu0"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="5_1wdhj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yomj"]
+render_priority = 0
+shader = ExtResource("2_dkkd2")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_dkcwk")
+shader_parameter/texture_hue_shift = ExtResource("4_0xlu0")
+shader_parameter/hue_shift_strength = 1.20000001788144
+shader_parameter/roughness = 0.400000019
+shader_parameter/texture_roughness = ExtResource("5_1wdhj")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(3, 3, 3)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npe12"]
+render_priority = 0
+shader = ExtResource("2_dkkd2")
+shader_parameter/basecolor = Color(1, 0.8, 0.6, 1)
+shader_parameter/texture_hue_shift = ExtResource("4_0xlu0")
+shader_parameter/hue_shift_strength = 0.80000001192096
+shader_parameter/roughness = 0.70000003325
+shader_parameter/texture_roughness = ExtResource("5_1wdhj")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(1, 0.75, 0.5, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[node name="ART_F1_Ceiling_Lamp" instance=ExtResource("1_gpj02")]
+
+[node name="ART_F1_Ceiling_Lamp_model" parent="." index="0"]
+layers = 2
+surface_material_override/0 = SubResource("ShaderMaterial_1yomj")
+surface_material_override/1 = SubResource("ShaderMaterial_npe12")

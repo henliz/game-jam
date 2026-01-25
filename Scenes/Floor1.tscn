@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=60 format=4 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2231fa3ath8" path="res://resource/Common/Final/art_global_bottles_02.tscn" id="35_r3png"]
 [ext_resource type="PackedScene" uid="uid://dnm4u45g4jshb" path="res://resource/Common/Final/art_global_fruit_basket.tscn" id="36_nncji"]
 [ext_resource type="PackedScene" uid="uid://dxft285cx6i1y" path="res://resource/Common/Final/art_global_bottles_03.tscn" id="37_uehp7"]
+[ext_resource type="PackedScene" uid="uid://8ybm0ib8virp" path="res://resource/Floor1/Final/art_f_1_ceiling_lamp.tscn" id="38_mwbf6"]
 [ext_resource type="PackedScene" uid="uid://ckoaj2gtk077j" path="res://resource/Common/Final/art_global_fruit_bowl.tscn" id="40_b548n"]
 [ext_resource type="PackedScene" uid="uid://cqn2cqmmgrx3a" path="res://resource/Common/Final/art_global_potion_bottle_01.tscn" id="41_uehp7"]
 
@@ -412,22 +413,15 @@ script = ExtResource("21_bgo40")
 [node name="ART_GLOBAL_Candle_022" parent="Lighting/OmniLight3D7" instance=ExtResource("21_mktx4")]
 transform = Transform3D(-0.45248148, 0, -0.8917738, 0, 1, 0, 0.8917738, 0, -0.45248148, 0.022, -0.366, -0.065)
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(-0.8567716, 0, -0.51569617, 0, 1, 0, 0.51569617, 0, -0.8567716, 0.8324697, 4.6169534, 0)
-light_color = Color(1, 0.6, 0.19999999, 1)
-light_energy = 0.41
-shadow_bias = 0.05
-shadow_blur = 2.5
-omni_range = 4.0
-omni_attenuation = 1.2
-
 [node name="OmniLight3D9" type="OmniLight3D" parent="Lighting"]
-transform = Transform3D(-0.8567716, 0, -0.51569617, 0, 1, 0, 0.51569617, 0, -0.8567716, -0.7393353, 4.6169534, 0)
+transform = Transform3D(-0.8567716, 0, -0.51569617, 0, 1, 0, 0.51569617, 0, -0.8567716, 0, 5.087, 0)
 light_color = Color(1, 0.6, 0.19999999, 1)
 light_energy = 0.41
+shadow_enabled = true
 shadow_bias = 0.05
 shadow_blur = 2.5
-omni_range = 4.0
+shadow_caster_mask = 4294967293
+omni_range = 8.0
 omni_attenuation = 1.2
 
 [node name="OmniLight3D10" type="OmniLight3D" parent="Lighting"]
@@ -490,9 +484,6 @@ transform = Transform3D(0.14048895, -0.085482165, 0.98638517, -0.6052906, 0.7809
 [node name="ART_GLOBAL_Wooden_Log5" parent="Props" instance=ExtResource("27_bgo40")]
 transform = Transform3D(-0.58754313, 0.07369143, -0.80583054, -0.63336134, 0.5779239, 0.514643, 0.5036335, 0.8127568, -0.29288173, 0.40363654, 0.19454849, 1.8736479)
 
-[node name="ART_F1_Chandelier" parent="Props" instance=ExtResource("27_oo3qt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
-
 [node name="ART_GLOBAL_Coffee_Table" parent="Props" instance=ExtResource("31_23slo")]
 transform = Transform3D(-0.990548, 0, -0.3483023, 0, 1.05, 0, 0.3483023, 0, -0.990548, -2.0698276, 0, -2.7716053)
 
@@ -516,6 +507,13 @@ transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1, -5.505004, 0.088899925, -1.
 
 [node name="ART_GLOBAL_Bottles_03" parent="Props" instance=ExtResource("37_uehp7")]
 transform = Transform3D(0.8537235, 0, -0.52072656, 0, 1, 0, 0.52072656, 0, 0.8537235, -5.53541, 1.0380096, -0.19758013)
+
+[node name="ART_F1_Chandelier" parent="Props" instance=ExtResource("27_oo3qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
+visible = false
+
+[node name="ART_F1_Ceiling_Lamp" parent="Props" instance=ExtResource("38_mwbf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 
 [node name="Collision" type="Node3D" parent="."]
 visible = false
