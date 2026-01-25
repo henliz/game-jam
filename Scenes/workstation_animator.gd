@@ -5,6 +5,7 @@ signal animation_started
 signal animation_completed
 signal level_fade_started
 signal level_fade_completed
+signal workbench_fully_exited
 
 @export var walls_node: Node3D
 @export var rug_node: Node3D
@@ -381,9 +382,14 @@ func _on_animate_out_complete() -> void:
 	if workbench_root is Node3D:
 		workbench_root.visible = false
 
-	# Fade the level back in
+	# Fade the level back in, then emit exit signal
 	if level_nodes.size() > 0:
 		_fade_level_in()
+		get_tree().create_timer(level_fade_duration).timeout.connect(
+			func(): workbench_fully_exited.emit(), CONNECT_ONE_SHOT
+		)
+	else:
+		workbench_fully_exited.emit()
 
 
 func reset() -> void:

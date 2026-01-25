@@ -20,6 +20,10 @@ signal page_changed(spread_index: int)
 @export var after_pickup_dialogue_id: String = "F1PickupInteractableFirst"
 @export var diary_dialogue_delay: float = 2.0  # Delay between diary dialogues
 
+@export_group("Puzzle Completion Sequence")
+@export var blueprint_view_duration: float = 3.0  # Time to view blueprint before auto-turning
+@export var unlock_fade_duration: float = 1.0  # Crossfade duration for diary unlock
+
 @export_group("Notification")
 @export var notification_icon_texture: Texture2D
 
@@ -42,11 +46,31 @@ var is_open: bool = false
 var was_first_pickup: bool = false  # Track if this open was the first journal pickup
 var current_spread: int = 0
 var spreads: Array[Control] = []
-var pending_diary_dialogues: Array[String] = []  # Diary dialogues to play on next open
 var notification_icon: TextureRect  # Journal notification icon
 var notification_layer: CanvasLayer  # Separate layer so notification stays visible when journal is closed
-var is_playing_diary_sequence: bool = false  # Guard against re-entrant diary sequence calls
-var current_diary_callback: Callable  # Track current callback for proper cleanup
+
+# Puzzle completion sequence state
+var input_locked: bool = false  # Lock J key and page turning during sequence
+var deferred_diary_id: String = ""  # Diary dialogue to play after journal closes
+var pending_unlock_spread: int = -1  # Spread to show unlock animation on
+
+# Direct mapping from puzzle completion index (0-8) to page location
+# Diary entries unlock in ORDER of completion, not tied to specific items
+# Spread indices: 0=Blueprint, 1=Diary1, 2=Diary2, 3=Diary3, 4=Diary4, 5=Diary5
+const PUZZLE_COMPLETION_PAGES := [
+	# Floor 1 (puzzles 1-3)
+	{"spread": 1, "side": "left", "diary_id": "F1Diary01"},     # 1st puzzle completed
+	{"spread": 1, "side": "right", "diary_id": "F1Diary02"},    # 2nd puzzle completed
+	{"spread": 2, "side": "left", "diary_id": "F1Diary03"},     # 3rd puzzle completed
+	# Floor 2 (puzzles 4-6)
+	{"spread": 2, "side": "right", "diary_id": "F2Diary04"},    # 4th puzzle completed
+	{"spread": 3, "side": "left", "diary_id": "F2Diary05"},     # 5th puzzle completed
+	{"spread": 3, "side": "right", "diary_id": "F2Diary06"},    # 6th puzzle completed
+	# Floor 3 (puzzles 7-9)
+	{"spread": 4, "side": "left", "diary_id": "F3Diary07"},     # 7th puzzle completed
+	{"spread": 4, "side": "right", "diary_id": "F3Diary08"},    # 8th puzzle completed
+	{"spread": 5, "side": "left", "diary_id": "F3Diary09"},     # 9th puzzle completed
+]
 
 @onready var background: ColorRect = $Background
 @onready var journal_container: Control = $JournalContainer
@@ -157,86 +181,24 @@ func hide_notification() -> void:
 		print("JournalUI: Hiding notification icon")
 
 
-func queue_diary_dialogue(dialogue_id: String) -> void:
-	if dialogue_id not in pending_diary_dialogues:
-		pending_diary_dialogues.append(dialogue_id)
-		show_notification()
-		print("JournalUI: Queued diary dialogue: ", dialogue_id)
-
-
-func _play_pending_diary_dialogues() -> void:
-	if pending_diary_dialogues.is_empty():
-		return
-
-	if is_playing_diary_sequence:
-		print("JournalUI: Already playing diary sequence, skipping")
-		return
-
-	print("JournalUI: Playing ", pending_diary_dialogues.size(), " pending diary dialogues")
-
-	# Copy and clear pending list
-	var dialogues_to_play = pending_diary_dialogues.duplicate()
-	pending_diary_dialogues.clear()
-
-	is_playing_diary_sequence = true
-	_play_diary_dialogue_sequence(dialogues_to_play, 0)
-
-
-func _play_diary_dialogue_sequence(dialogues: Array, index: int) -> void:
-	if index >= dialogues.size():
-		print("JournalUI: Finished playing all diary dialogues")
-		is_playing_diary_sequence = false
-		return
-
-	var dialogue_id = dialogues[index]
-
-	# Skip if already triggered (prevents infinite loops)
-	if GameState.has_dialogue_triggered(dialogue_id):
-		print("JournalUI: Skipping already triggered dialogue: ", dialogue_id)
-		_play_diary_dialogue_sequence(dialogues, index + 1)
-		return
-
-	print("JournalUI: Playing diary dialogue ", index + 1, "/", dialogues.size(), ": ", dialogue_id)
-
-	# Play this dialogue
-	if DialogueManager.play(dialogue_id):
-		# Mark as triggered FIRST to prevent re-queuing
-		GameState.mark_dialogue_triggered(dialogue_id)
-		GameState.save_game()
-
-		# Disconnect any previous callback first
-		if current_diary_callback.is_valid():
-			if DialogueManager.dialogue_finished.is_connected(current_diary_callback):
-				DialogueManager.dialogue_finished.disconnect(current_diary_callback)
-
-		# Connect to dialogue_finished to play next one
-		current_diary_callback = func(_entry: Dictionary):
-			if current_diary_callback.is_valid() and DialogueManager.dialogue_finished.is_connected(current_diary_callback):
-				DialogueManager.dialogue_finished.disconnect(current_diary_callback)
-			# Wait diary_dialogue_delay seconds before playing next
-			if index + 1 < dialogues.size():
-				get_tree().create_timer(diary_dialogue_delay).timeout.connect(
-					func(): _play_diary_dialogue_sequence(dialogues, index + 1),
-					CONNECT_ONE_SHOT
-				)
-			else:
-				is_playing_diary_sequence = false
-
-		DialogueManager.dialogue_finished.connect(current_diary_callback, CONNECT_ONE_SHOT)
-	else:
-		# If dialogue failed to play, try next one immediately
-		_play_diary_dialogue_sequence(dialogues, index + 1)
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("journal"):
 		if not is_open and _is_player_inspecting():
+			return
+		# Block closing when input is locked during puzzle completion sequence
+		if is_open and input_locked:
+			get_viewport().set_input_as_handled()
 			return
 		toggle_journal()
 		get_viewport().set_input_as_handled()
 		return
 
 	if not is_open:
+		return
+
+	# Block all navigation when input is locked
+	if input_locked:
+		get_viewport().set_input_as_handled()
 		return
 
 	if event.is_action_pressed("left") or (event is InputEventKey and event.pressed and event.keycode == KEY_LEFT):
@@ -300,10 +262,6 @@ func open_journal() -> void:
 
 	_on_first_open()
 
-	# Play pending diary dialogues after a short delay (let other dialogues finish first)
-	if not pending_diary_dialogues.is_empty() and not is_first_pickup:
-		_play_pending_diary_dialogues()
-
 	journal_opened.emit()
 
 
@@ -342,6 +300,14 @@ func _on_close_complete() -> void:
 	if was_first_pickup:
 		was_first_pickup = false
 		_on_first_pickup_close()
+
+	# Play deferred diary dialogue after journal closes (from puzzle completion sequence)
+	if not deferred_diary_id.is_empty():
+		var diary_to_play = deferred_diary_id
+		deferred_diary_id = ""
+		get_tree().create_timer(0.3).timeout.connect(
+			func(): _play_deferred_dialogue(diary_to_play), CONNECT_ONE_SHOT
+		)
 
 	journal_closed.emit()
 
@@ -428,21 +394,11 @@ func _on_game_state_changed(key: String, _value: Variant) -> void:
 
 func _update_page_visibility() -> void:
 	print("UPDATE PAGE VISIBILITY")
-	# Maps diary IDs to their spread index, side, and optional custom node names
-	# For custom nodes: "locked" hides when unlocked, "unlocked" shows when unlocked (optional)
-	# Note: Diary numbering is sequential across floors (F1: 01-03, F2: 04-06, F3: 07-09)
-	var diary_to_page = {
-		"F1Diary01": {"spread": 1, "side": "left"},
-		"F1Diary02": {"spread": 1, "side": "right"},
-		"F1Diary03": {"spread": 2, "side": "left"},
-		"F2Diary04": {"spread": 2, "side": "right"},
-		"F2Diary05": {"spread": 3, "locked": "Day05_Locked"},
-		"F2Diary06": {"spread": 3, "locked": "Day06_Locked"},
-	}
+	# Uses the shared PUZZLE_COMPLETION_PAGES constant for all 9 diary entries
 
 	# Check which diary entries are unlocked and update ONLY those pages
-	for diary_id in diary_to_page:
-		var page_info = diary_to_page[diary_id]
+	for page_info in PUZZLE_COMPLETION_PAGES:
+		var diary_id = page_info.diary_id
 		var spread_index = page_info.spread
 
 		# Make sure the spread exists
@@ -453,6 +409,7 @@ func _update_page_visibility() -> void:
 		var is_unlocked = game_state.has_dialogue_triggered(diary_id)
 
 		# Handle custom node names (for spreads with different naming conventions)
+		var side = page_info.get("side", "")
 		if page_info.has("locked"):
 			var locked_node = spread.get_node_or_null(page_info.locked)
 			if locked_node:
@@ -462,16 +419,192 @@ func _update_page_visibility() -> void:
 				var unlocked_node = spread.get_node_or_null(page_info.unlocked)
 				if unlocked_node:
 					unlocked_node.visible = is_unlocked
-		elif page_info.side == "left":
+		elif side == "left":
 			var left_locked = spread.get_node_or_null("LeftPage_Locked")
 			var left_unlocked = spread.get_node_or_null("LeftPage_Unlocked")
 			if left_locked and left_unlocked:
 				left_locked.visible = not is_unlocked
 				left_unlocked.visible = is_unlocked
-
-		elif page_info.side == "right":
+		elif side == "right":
 			var right_locked = spread.get_node_or_null("RightPage_Locked")
 			var right_unlocked = spread.get_node_or_null("RightPage_Unlocked")
 			if right_locked and right_unlocked:
 				right_locked.visible = not is_unlocked
 				right_unlocked.visible = is_unlocked
+
+
+# --- Puzzle Completion Sequence ---
+# Called when a cleaning puzzle is complete - auto-opens journal to blueprint,
+# then turns to diary page and plays unlock animation
+
+func start_puzzle_completion_sequence(item_id: String) -> void:
+	print("JournalUI: Starting puzzle completion sequence for: ", item_id)
+
+	# Get puzzle index from blueprint count (count was already incremented)
+	var puzzle_index = GameState.get_blueprint_count() - 1
+	if puzzle_index < 0 or puzzle_index >= PUZZLE_COMPLETION_PAGES.size():
+		print("JournalUI: Invalid puzzle index: ", puzzle_index)
+		return
+
+	var page_info = PUZZLE_COMPLETION_PAGES[puzzle_index]
+	var diary_id = page_info.diary_id
+
+	print("JournalUI: Puzzle ", puzzle_index + 1, " -> diary ", diary_id, " -> spread ", page_info.spread)
+
+	deferred_diary_id = diary_id
+	pending_unlock_spread = page_info.spread
+
+	# Open to blueprint page (spread 0) with input locked
+	_open_journal_for_sequence(0)
+
+	# After viewing blueprint, turn to diary page
+	get_tree().create_timer(blueprint_view_duration).timeout.connect(
+		_on_blueprint_view_complete, CONNECT_ONE_SHOT
+	)
+
+
+func _open_journal_for_sequence(spread_index: int) -> void:
+	if is_open:
+		return
+
+	is_open = true
+	visible = true
+	input_locked = true  # Lock input during sequence
+
+	hide_notification()
+	current_spread = spread_index
+	_show_spread(current_spread)
+	_play_sound(open_sound)
+
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(background, "modulate:a", 0.7, fade_duration)
+	tween.tween_property(journal_container, "modulate:a", 1.0, fade_duration)
+
+	_set_player_enabled(false)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	journal_opened.emit()
+
+
+func _on_blueprint_view_complete() -> void:
+	if pending_unlock_spread < 0:
+		input_locked = false
+		return
+
+	print("JournalUI: Blueprint view complete, turning to spread ", pending_unlock_spread)
+
+	# Turn to diary spread
+	go_to_spread(pending_unlock_spread)
+
+	# After page turn animation completes, do unlock transition
+	get_tree().create_timer(fade_duration + 0.1).timeout.connect(
+		_animate_diary_unlock, CONNECT_ONE_SHOT
+	)
+
+
+func _animate_diary_unlock() -> void:
+	if deferred_diary_id.is_empty():
+		input_locked = false
+		pending_unlock_spread = -1
+		return
+
+	# Find the page info for this diary entry
+	var page_info = {}
+	for entry in PUZZLE_COMPLETION_PAGES:
+		if entry.diary_id == deferred_diary_id:
+			page_info = entry
+			break
+
+	if page_info.is_empty() or pending_unlock_spread >= spreads.size():
+		input_locked = false
+		pending_unlock_spread = -1
+		return
+
+	var spread = spreads[pending_unlock_spread]
+	var side = page_info.get("side", "")
+
+	# Handle custom node names (for spreads with different naming)
+	var locked_node: Control = null
+	var unlocked_node: Control = null
+
+	if page_info.has("locked"):
+		locked_node = spread.get_node_or_null(page_info.locked)
+		if page_info.has("unlocked"):
+			unlocked_node = spread.get_node_or_null(page_info.unlocked)
+	elif side == "left":
+		locked_node = spread.get_node_or_null("LeftPage_Locked")
+		unlocked_node = spread.get_node_or_null("LeftPage_Unlocked")
+	elif side == "right":
+		locked_node = spread.get_node_or_null("RightPage_Locked")
+		unlocked_node = spread.get_node_or_null("RightPage_Unlocked")
+
+	print("JournalUI: Animating unlock - locked: ", locked_node, ", unlocked: ", unlocked_node)
+
+	if locked_node and unlocked_node:
+		# Crossfade from locked to unlocked
+		unlocked_node.modulate.a = 0.0
+		unlocked_node.visible = true
+
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(locked_node, "modulate:a", 0.0, unlock_fade_duration)
+		tween.tween_property(unlocked_node, "modulate:a", 1.0, unlock_fade_duration)
+		tween.set_parallel(false)
+		tween.tween_callback(func():
+			locked_node.visible = false
+			locked_node.modulate.a = 1.0  # Reset for next time
+			input_locked = false
+			pending_unlock_spread = -1
+			print("JournalUI: Unlock animation complete, input unlocked")
+		)
+	elif locked_node:
+		# Only locked node exists (overlay style) - just fade it out
+		var tween = create_tween()
+		tween.tween_property(locked_node, "modulate:a", 0.0, unlock_fade_duration)
+		tween.tween_callback(func():
+			locked_node.visible = false
+			locked_node.modulate.a = 1.0
+			input_locked = false
+			pending_unlock_spread = -1
+		)
+	else:
+		# No animation needed
+		input_locked = false
+		pending_unlock_spread = -1
+
+
+func _play_deferred_dialogue(diary_id: String) -> void:
+	if GameState.has_dialogue_triggered(diary_id):
+		print("JournalUI: Deferred dialogue already triggered: ", diary_id)
+		return
+
+	print("JournalUI: Playing deferred diary dialogue: ", diary_id)
+	if DialogueManager.play(diary_id):
+		GameState.mark_dialogue_triggered(diary_id)
+		GameState.save_game()
+
+		# Check if this is the 3rd diary on a floor - play floor completion dialogue after
+		var floor_completion_id = _get_floor_completion_dialogue(diary_id)
+		if not floor_completion_id.is_empty():
+			DialogueManager.dialogue_finished.connect(
+				func(_entry): _play_floor_completion(floor_completion_id),
+				CONNECT_ONE_SHOT
+			)
+
+
+func _get_floor_completion_dialogue(diary_id: String) -> String:
+	# 3rd diary on each floor triggers floor completion dialogue
+	match diary_id:
+		"F1Diary03": return "F1AllItemsComplete"
+		"F2Diary06": return "F2AllItemsComplete"
+		"F3Diary09": return "F3AllItemsComplete"
+	return ""
+
+
+func _play_floor_completion(dialogue_id: String) -> void:
+	if GameState.has_dialogue_triggered(dialogue_id):
+		return
+	print("JournalUI: Playing floor completion dialogue: ", dialogue_id)
+	if DialogueManager.play(dialogue_id):
+		GameState.mark_dialogue_triggered(dialogue_id)
+		GameState.save_game()

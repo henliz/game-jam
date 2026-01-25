@@ -53,6 +53,7 @@ var slide_duration: float = 0.4
 var slide_progress: float = 0.0
 var animating_in: bool = false
 var animating_out: bool = false
+var last_cleaned_item_id: String = ""
 
 func _ready():
 	visible = false
@@ -628,6 +629,7 @@ func _on_cleaning_complete() -> void:
 	if success_audio_player:
 		success_audio_player.play()
 	if cleanable:
+		last_cleaned_item_id = cleanable.item_id
 		cleanable.mark_cleaned_in_save()
 	item_cleaned.emit(cleanable)
 	_update_cursor_from_state()

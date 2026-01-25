@@ -42,10 +42,13 @@ signal rotate_pipe(direction,pipe)
 var finalpuzzle_is_active = false
 signal finalpuzzle_camera_trigger
 var collider_is_finalpuzzle = false
+var pending_journal_sequence_item: String = ""
 
 func _ready() -> void:
 	camera_base_position = camera.position
 	item_inspector.closed.connect(_on_inspection_closed)
+	item_inspector.item_cleaned.connect(_on_item_cleaned_for_journal)
+	workbench_animator.workbench_fully_exited.connect(_on_workbench_fully_exited)
 	# Find the Map node in the world scene for workbench level fade
 	call_deferred("_find_level_map")
 
@@ -217,3 +220,16 @@ func _on_finalpuzzle_closed() -> void:
 	camera.current=true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	finalpuzzle_is_active = false
+
+
+func _on_item_cleaned_for_journal(_cleanable: Cleanable) -> void:
+	pending_journal_sequence_item = item_inspector.last_cleaned_item_id
+
+
+func _on_workbench_fully_exited() -> void:
+	if pending_journal_sequence_item.is_empty():
+		return
+	var journal_ui = get_tree().get_first_node_in_group("journal_ui")
+	if journal_ui:
+		journal_ui.start_puzzle_completion_sequence(pending_journal_sequence_item)
+	pending_journal_sequence_item = ""
