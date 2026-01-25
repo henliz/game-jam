@@ -77,7 +77,7 @@ func _ready() -> void:
 
 
 func _increment_blueprint_page():
-	if curr_blueprint>=8: return
+	if curr_blueprint>=9: return
 	print("increment blueprint")
 	blueprints.texture = blueprint_list[curr_blueprint]
 	curr_blueprint = curr_blueprint+1
