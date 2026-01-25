@@ -1,11 +1,15 @@
-[gd_scene load_steps=33 format=4 uid="uid://cfhhmv35hymii"]
+[gd_scene load_steps=46 format=4 uid="uid://cfhhmv35hymii"]
 
 [ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_wvo40"]
 [ext_resource type="Texture2D" uid="uid://dp2e35raowtf7" path="res://resource/Floor1/wizard_bust_fracture_wizard_bust_color_1k.webp" id="2_0ueb0"]
 [ext_resource type="Texture2D" uid="uid://diq7a7k33c4ar" path="res://resource/Floor1/wizard_bust_wizard_bust_color_1k.webp" id="2_1ytx6"]
 [ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
-[ext_resource type="Script" path="res://Scenes/static_dirt.gd" id="5_static_dirt"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="4_mkyww"]
+[ext_resource type="Texture2D" uid="uid://dxksrgh46w5vh" path="res://resource/Floor1/wizard_bust_fracture_wizard_bust_color_1k.png" id="5_0egjk"]
+[ext_resource type="Script" uid="uid://cetfwslesspli" path="res://Scenes/static_dirt.gd" id="5_static_dirt"]
 [ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="6_glow"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="6_iyksp"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="7_f8giw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwx4r"]
 resource_name = "Material"
@@ -46,6 +50,23 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0ai2m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7si26"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5spb"]
 resource_name = "Material"
@@ -115,6 +136,38 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uqyop")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm1el"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cs6hs"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(0.9786646, 0.9314085, 0.88629824, 1)
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gx6u8"]
 height = 0.3
 radius = 0.16
@@ -174,6 +227,23 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_i60c8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1sd4"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_no8kt"]
 height = 0.16
@@ -235,6 +305,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7ooo8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j04sj"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r0ikl"]
 height = 0.16
 radius = 0.12
@@ -294,6 +381,23 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0g8aw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2m56p"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.30000000447036
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3ua1v"]
 height = 0.22
@@ -355,6 +459,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n28tn")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iydkh"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xbk3s"]
 height = 0.2
 radius = 0.12
@@ -414,6 +535,23 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sg370")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4085w"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i4fjy"]
 height = 0.2
@@ -475,6 +613,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h0c50")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu0g"]
+render_priority = 0
+shader = ExtResource("4_mkyww")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("5_0egjk")
+shader_parameter/texture_hue_shift = ExtResource("6_iyksp")
+shader_parameter/hue_shift_strength = 0.70000001043084
+shader_parameter/roughness = 0.800000038
+shader_parameter/texture_roughness = ExtResource("7_f8giw")
+shader_parameter/normal_scale = 1.0000001424999998
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 4.00000019
+shader_parameter/uv1_scale = Vector3(1.5, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t5chl"]
 height = 0.6
 radius = 0.19
@@ -498,6 +653,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.1, 0)
 visible = false
 mesh = SubResource("ArrayMesh_60mct")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_7si26")
 
 [node name="Cleanable" type="Node" parent="complete_bust"]
 script = ExtResource("3_cleanable")
@@ -518,6 +674,8 @@ dirt_strength = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 mesh = SubResource("ArrayMesh_n64ww")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_bm1el")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="face" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61764526, 0, 9.536743e-07)
@@ -529,6 +687,8 @@ shape = SubResource("CylinderShape3D_gx6u8")
 transform = Transform3D(1, -8.742276e-08, -8.7422784e-08, 8.742277e-08, 1, 0, 8.742277e-08, -7.642741e-15, 1.0000001, 0, -0.45500004, 0)
 mesh = SubResource("ArrayMesh_0lo3g")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_n1sd4")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="shoulder" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6417755, 0, 0)
@@ -540,6 +700,8 @@ shape = SubResource("CylinderShape3D_no8kt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.139, -0.255, 0)
 mesh = SubResource("ArrayMesh_luahr")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_j04sj")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="hat_front" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9590962, 0.3838725, 1.9073486e-06)
@@ -551,6 +713,8 @@ shape = SubResource("CylinderShape3D_r0ikl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.24898958, -0.4937842, 0)
 mesh = SubResource("ArrayMesh_rkqmh")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_2m56p")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="head_back" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016836, 0.3180126, 0)
@@ -562,6 +726,8 @@ shape = SubResource("CylinderShape3D_3ua1v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -0.04795909, -0.43870914, 0)
 mesh = SubResource("ArrayMesh_1nj3p")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_iydkh")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="hat_point" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.536216, 0.41526604, 9.536743e-07)
@@ -573,6 +739,8 @@ shape = SubResource("CylinderShape3D_xbk3s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, -0.696, 0)
 mesh = SubResource("ArrayMesh_wr8x0")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_4085w")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="head_side" type="StaticBody3D" parent="wizard_bust_fractured" groups=["moveable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48477364, 0.4439695, 0)
@@ -585,6 +753,8 @@ shape = SubResource("CylinderShape3D_i4fjy")
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.1, -0.506, 0)
 mesh = SubResource("ArrayMesh_sdccs")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_seu0g")
+surface_material_override/1 = SubResource("ShaderMaterial_cs6hs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29014826, 0)
