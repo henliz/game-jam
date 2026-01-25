@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b130vqwiyxnn0"]
 
 [ext_resource type="Script" uid="uid://cxxy6hncg3cid" path="res://Scenes/main_menu.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://resource/UI/Menu/Art_Title_Background.PNG" id="2_bg"]
-[ext_resource type="Texture2D" path="res://resource/UI/Menu/Art_Title_Tower.PNG" id="3_tower"]
-[ext_resource type="Texture2D" path="res://resource/UI/Menu/Art_Title_Foreground.PNG" id="4_fg"]
+[ext_resource type="Texture2D" uid="uid://lgvb3dm3x71t" path="res://resource/UI/Menu/Art_Title_Background.PNG" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://c0u0p4jb8r5vo" path="res://resource/UI/Menu/Art_Title_Tower.PNG" id="3_tower"]
+[ext_resource type="Texture2D" uid="uid://bkuhaush377gw" path="res://resource/UI/Menu/Art_Title_Foreground.PNG" id="4_fg"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_script")

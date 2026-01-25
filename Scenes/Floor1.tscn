@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dk3ac3f26vyt1"]
+[gd_scene load_steps=59 format=4 uid="uid://dk3ac3f26vyt1"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_6hkfx"]
 [ext_resource type="ArrayMesh" uid="uid://ckljxb7cxwcv6" path="res://resource/Floor1/f1_wall_door.res" id="2_hui2q"]
@@ -32,8 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://cufxmq25fs0sc" path="res://resource/Floor1/Final/art_f_1_chandelier.tscn" id="27_oo3qt"]
 [ext_resource type="Environment" uid="uid://dd2h2vwpawbis" path="res://resource/Common/world_environment_floor1.tres" id="29_mktx4"]
 [ext_resource type="PackedScene" uid="uid://bnrglyg68vnt1" path="res://resource/Common/Final/art_global_coffee_table.tscn" id="31_23slo"]
-[ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="32_23slo"]
 [ext_resource type="Material" uid="uid://b7frshhg5cqxq" path="res://resource/Puzzles/VFX/EffectBlocks/source_files/materials/portal.material" id="31_v2nrj"]
+[ext_resource type="PackedScene" uid="uid://hvvk7qav2lt2" path="res://resource/Common/Final/art_global_books_stack.tscn" id="32_23slo"]
 [ext_resource type="PackedScene" uid="uid://bgdqnoja5augn" path="res://resource/Common/Final/art_global_table_round_small.tscn" id="32_mktx4"]
 [ext_resource type="PackedScene" uid="uid://n2dgmq6063yd" path="res://resource/Common/Final/art_global_bottles_05.tscn" id="33_oucq8"]
 [ext_resource type="PackedScene" uid="uid://d1sjcgvl47idu" path="res://resource/Common/Final/art_global_bottles_04.tscn" id="34_hv8sr"]
@@ -54,7 +54,7 @@ height = 4.6690674
 radius = 1.3339844
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edy72"]
-size = Vector3(0.7519531, 0.6879883, 0.4906006)
+size = Vector3(0.7519531, 0.6986084, 0.4906006)
 
 [sub_resource type="Curve" id="Curve_7227o"]
 _data = [Vector2(0.102612, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -558,7 +558,7 @@ script = ExtResource("26_70lor")
 current_floor = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="portal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107910156, 0, -0.06378174)
+transform = Transform3D(0.8632459, 0, -0.50478387, 0, 1, 0, 0.50478387, 0, 0.8632459, -0.11536932, 0.36895788, 1.1511877)
 shape = SubResource("BoxShape3D_edy72")
 
 [node name="PortalVisual" type="Node3D" parent="portal"]

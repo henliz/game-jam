@@ -50,12 +50,9 @@ offset_bottom = 583.0
 texture = ExtResource("2_fyv72")
 
 [node name="FillFrame" type="TextureRect" parent="CleaningUI/ProgressContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 texture = ExtResource("3_shu6k")
 expand_mode = 1
 stretch_mode = 5

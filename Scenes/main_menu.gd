@@ -1,6 +1,7 @@
 extends Node2D
 
 const IntroSequence = preload("res://Scenes/intro_sequence.tscn")
+@onready var world : PackedScene = preload("res://Scenes/world.tscn")
 
 @export_group("Parallax Settings")
 @export var tower_max_offset: float = 18.0
@@ -32,7 +33,6 @@ func _ready() -> void:
 
 	_setup_menu_buttons()
 	quit_button.pressed.connect(_on_quit_pressed)
-
 
 func _setup_menu_buttons() -> void:
 	var has_save = GameState.has_save_file()
@@ -72,16 +72,16 @@ func _process(delta: float) -> void:
 
 func _on_resume_pressed() -> void:
 	GameState.load_game()
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	get_tree().change_scene_to_packed(world)
 
 
 func _on_new_game_pressed() -> void:
 	GameState.delete_save()
 
-	# Debug: Hold Shift to skip intro sequence entirely
+	#Debug: Hold Shift to skip intro sequence entirely
 	if Input.is_key_pressed(KEY_SHIFT):
 		print("MainMenu: Shift held - skipping intro sequence")
-		get_tree().change_scene_to_file("res://Scenes/world.tscn")
+		get_tree().change_scene_to_packed(world)
 		return
 
 	_start_intro_sequence()

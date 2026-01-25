@@ -43,7 +43,6 @@ func _process(_delta: float) -> void:
 		portal_visual.visible=false
 
 func _on_body_entered(body: Node3D) -> void:
-	print("ent2")
 	if body.name != "Player" or is_transitioning:
 		return
 
@@ -53,7 +52,6 @@ func _on_body_entered(body: Node3D) -> void:
 	for next_floor in range(current_floor + 1, 5):
 		if not game_state.is_floor_unlocked(next_floor):
 			continue
-		print("ent")
 		var arrival_path = "/root/World/Floor%d/arrival" % next_floor
 		var arrival_marker = get_node_or_null(arrival_path)
 
