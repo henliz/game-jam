@@ -51,7 +51,7 @@ func _ready() -> void:
 func _unhandled_input(event):
 	if inspecting or finalpuzzle_is_active:
 		return
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.mouse_mode==Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(75))
