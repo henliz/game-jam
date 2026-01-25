@@ -178,10 +178,16 @@ func _handle_footsteps(delta: float) -> void:
 
 
 func _find_level_map() -> void:
-	# Look for level geometry nodes in the current scene (world)
-	var world = get_tree().current_scene
-	if not world:
+	# Look for level geometry nodes in the world scene
+	# With new hierarchy, World is a child of Main (current_scene)
+	var root = get_tree().current_scene
+	if not root:
 		return
+
+	# Find World node - could be current_scene itself or a child
+	var world = root.get_node_or_null("World") if root.name != "World" else root
+	if not world:
+		world = root  # Fallback to current_scene if World not found
 
 	# Find floor nodes to hide during workbench inspection
 	var level_node_names = ["Floor1", "Floor2", "Floor3"]

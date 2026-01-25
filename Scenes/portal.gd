@@ -197,6 +197,7 @@ func _start_floor2_gust_sequence() -> void:
 func _animate_floor2_sway() -> void:
 	var floor2 = get_node_or_null("/root/World/Floor2")
 	var floor2_interactables = get_node_or_null("/root/World/Floor2Interactables")
+	var sphere_puzzle = get_node_or_null("/root/World/SpherePuzzle")
 
 	if not floor2 and not floor2_interactables:
 		return
@@ -205,6 +206,7 @@ func _animate_floor2_sway() -> void:
 	var floor2_orig_pos = floor2.position if floor2 else Vector3.ZERO
 	var floor2_orig_rot = floor2.rotation if floor2 else Vector3.ZERO
 	var interactables_orig_pos = floor2_interactables.position if floor2_interactables else Vector3.ZERO
+	var sphere_puzzle_orig_pos = sphere_puzzle.position if sphere_puzzle else Vector3.ZERO
 
 	# Sway parameters
 	var sway_duration := 9.0  # 3s to 12s = 9 seconds of movement
@@ -254,6 +256,9 @@ func _animate_floor2_sway() -> void:
 		if floor2_interactables:
 			floor2_interactables.position = interactables_orig_pos + pos_offset * 1.2
 
+		if sphere_puzzle:
+			sphere_puzzle.position = sphere_puzzle_orig_pos + pos_offset * 1.2
+
 		await get_tree().process_frame
 
 	# Restore original transforms
@@ -262,6 +267,8 @@ func _animate_floor2_sway() -> void:
 		floor2.rotation = floor2_orig_rot
 	if floor2_interactables:
 		floor2_interactables.position = interactables_orig_pos
+	if sphere_puzzle:
+		sphere_puzzle.position = sphere_puzzle_orig_pos
 
 
 func _switch_floor_music(floor_num: int) -> void:
