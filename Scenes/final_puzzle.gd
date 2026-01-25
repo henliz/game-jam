@@ -42,6 +42,7 @@ var is_rotating = false
 @onready var animation_1_loop: AnimationPlayer = $AstrolabeAnimationLoopBig/AnimationPlayerLoop
 @onready var animation_2_loop: AnimationPlayer = $AstrolabeAnimationLoopMed/AnimationPlayerLoop
 @onready var animation_3_loop: AnimationPlayer = $AstrolabeAnimationLoopSmall/AnimationPlayerLoop
+@onready var credits: MeshInstance3D = $Credits
 
 
 var dragged_inscription : TextureButton = null
@@ -258,9 +259,9 @@ func _final_sequence():
 	astrolabe_animation_big_ring.visible=true
 	astrolabe_animation_med_ring.visible=true
 	astrolabe_animation_small_ring.visible=true
-	outer.visible=false
-	mid.visible=false
-	inner.visible=false
+	outer.queue_free()
+	mid.queue_free()
+	inner.queue_free()
 	await get_tree().create_timer(2).timeout
 	fire_whoosh.play()
 	fire_light.visible=true
@@ -292,4 +293,7 @@ func _final_sequence():
 	animation_1_loop.play("RingsAction")
 	animation_2_loop.play("Rings_003Action")
 	animation_3_loop.play("Rings_002Action")
-	
+	await get_tree().create_timer(5).timeout
+	credits.visible=true
+	var credit_tween = get_tree().create_tween()
+	credit_tween.tween_property(credits,"position:y",40.0,80)
