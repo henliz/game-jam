@@ -360,7 +360,7 @@ transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.965
 transform = Transform3D(-0.25881904, 0.93582636, -0.23925245, -7.450581e-09, -0.24769235, -0.96883875, -0.96592593, -0.25075385, 0.06410747, -4.4647737, 2.008879, 0.90368587)
 
 [node name="ART_GLOBAL_Books_Single_01_model3" parent="Props" instance=ExtResource("29_chtv2")]
-transform = Transform3D(-0.7008843, 0, -0.71327496, 0, 1, 0, 0.71327496, 0, -0.7008843, 1.7762848, 1.4860538, 4.2106285)
+transform = Transform3D(-0.7008843, 0, -0.71327496, 0, 1, 0, 0.71327496, 0, -0.7008843, 1.2178726, 1.4860538, 4.606273)
 
 [node name="ART_GLOBAL_Books_Row_05" parent="Props" instance=ExtResource("28_ftpne")]
 transform = Transform3D(-0.76605564, 0, -0.6427743, 0, 1, 0, 0.6427743, 0, -0.76605564, 3.1984715, 1.4860536, 3.772359)

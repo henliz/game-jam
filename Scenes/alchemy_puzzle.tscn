@@ -322,6 +322,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.131348, -1.3947718, -4.7457404)
 
 [node name="Chalk" type="MeshInstance3D" parent="ART_F3_DistillationFullSet"]
+transform = Transform3D(0.8452992, 0, -0.53429335, 0, 1, 0, 0.53429335, 0, 0.8452992, 2.6963353, -2.3841858e-07, -0.3990307)
 mesh = SubResource("ArrayMesh_k3oxu")
 skeleton = NodePath("")
 
