@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://wrhhfku6bsbw"]
+
+[ext_resource type="PackedScene" uid="uid://qvctn84wjcct" path="res://resource/Floor3/ART_F3_StairsInterior_Final_2.glb" id="1_uji0g"]
+
+[node name="ART_F3_StairsInterior_Final_2" instance=ExtResource("1_uji0g")]

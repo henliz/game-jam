@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctmp0maggx8au"]
+[gd_scene load_steps=19 format=3 uid="uid://ctmp0maggx8au"]
 
 [ext_resource type="PackedScene" uid="uid://beuc1pi6u877r" path="res://resource/Floor3/ART_F3_StairsInterior_Final.glb" id="1_36hjd"]
 [ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_3pauf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="7_e4fvf"]
 [ext_resource type="Texture2D" uid="uid://cl6bvda6uuruw" path="res://resource/Floor3/ART_F3_StairsInterior_Final_CenterPoleBaseColor.webp" id="8_cyt41"]
 [ext_resource type="Texture2D" uid="uid://dd26asnxr463s" path="res://resource/Floor3/ART_F3_StairsInterior_Final_CenterPoleNormal.webp" id="9_xga5o"]
+[ext_resource type="ArrayMesh" uid="uid://c1fuj4mqxqaxj" path="res://resource/Floor3/Final/ART_F3_StairsInterior_Final_2_FloorBorder.tres" id="10_w5qti"]
 [ext_resource type="Texture2D" uid="uid://xxrqsfrebep2" path="res://resource/Floor3/ART_F3_StairsInterior_Final_F3RailingBaseCOlor.webp" id="10_wgunb"]
 [ext_resource type="Texture2D" uid="uid://7qeiquyqeufy" path="res://resource/Floor3/ART_F3_StairsInterior_Final_F3RailingNormal.webp" id="11_544ip"]
 [ext_resource type="Texture2D" uid="uid://b6dc7fbrv5vyj" path="res://resource/Floor3/ART_F3_StairsInterior_Final_F3InteriorStairBaseColor.webp" id="12_e4fvf"]
@@ -97,6 +98,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_w5qti")
 surface_material_override/0 = SubResource("ShaderMaterial_wgunb")
 
 [node name="FloorBorder" parent="." index="2"]
+mesh = ExtResource("10_w5qti")
 surface_material_override/0 = SubResource("ShaderMaterial_e4fvf")
 
 [node name="InteriorStairs" parent="." index="3"]

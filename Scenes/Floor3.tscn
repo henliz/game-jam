@@ -284,6 +284,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 transform = Transform3D(0.8660254, 0, -0.4375, 0, 1, 0, 0.5, 0, 0.7577722, 0, 0, 0)
 
 [node name="ART_F3_StairsInterior_Final" parent="Props_Environment" instance=ExtResource("6_oaajg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044814587, 0, -0.14388257)
 
 [node name="ART_F3_TablesShelves_Final" parent="Props_Environment" instance=ExtResource("8_ytof5")]
 

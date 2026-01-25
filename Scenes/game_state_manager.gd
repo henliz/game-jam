@@ -8,6 +8,8 @@ const SAVE_PATH := "user://savegame.json"
 
 # Debug: Set to true to start with floor 2 unlocked and 3 puzzles complete
 const DEBUG_START_FLOOR_2 := false
+# Debug: Set to true to start with floor 3 unlocked and 6 puzzles complete
+const DEBUG_START_FLOOR_3 := false
 
 # Items that require BOTH repair AND clean to count as one complete puzzle
 # These items only emit 1 blueprint when both conditions are met
@@ -30,7 +32,7 @@ var _default_state: Dictionary = {
 	},
 
 	# Floor/area progression
-	"unlocked_floors": [1],  # starts with floor 1 unlocked
+	"unlocked_floors": [1, 2, 4],  # starts with floor 1 unlocked
 
 	# First-time flags for dialogue triggers
 	"first_time": {
@@ -61,13 +63,15 @@ func _ready() -> void:
 
 func reset_to_default() -> void:
 	state = _default_state.duplicate(true)
-		#if DEBUG_START_FLOOR_2:
-		#	_apply_debug_floor2_state()
+	if DEBUG_START_FLOOR_3:
+		_apply_debug_floor3_state()
+	elif DEBUG_START_FLOOR_2:
+		_apply_debug_floor2_state()
 
 
 func _apply_debug_floor2_state() -> void:
 	# Unlock floors 2 and 4 for playtesting
-	state.unlocked_floors = [1, 2, 3, 4]
+	state.unlocked_floors = [1, 2]
 	# Mark first 3 puzzles as complete (floor 1 items cleaned)
 	state.cleaned_items = {
 		"Antique Tea Kettle": true,
@@ -89,6 +93,58 @@ func _apply_debug_floor2_state() -> void:
 	# Unlock puzzles (normally done by picking up journal)
 	state.flags["puzzles_unlocked"] = true
 	print("DEBUG: Applied floor 2 test state - Floor 2 unlocked, 3 puzzles complete, puzzles unlocked")
+
+
+func _apply_debug_floor3_state() -> void:
+	# Unlock floors 1-3 (and 4 for testing forward)
+	state.unlocked_floors = [1, 2, 3]
+
+	# Mark all floor 1 and floor 2 items as cleaned
+	state.cleaned_items = {
+		# Floor 1
+		"Antique Tea Kettle": true,
+		"Magic Billy Bass": true,
+		"Wizard Bust": true,
+		# Floor 2
+		"Crystal Ball": true,
+		"Strange Lantern": true,
+		"Celestial Globe": true,
+	}
+
+	# Mark repair-required items as repaired
+	state.repaired_items = {
+		"Wizard Bust": true,
+		"Celestial Globe": true,
+	}
+
+	# Mark all dialogues from floors 1 and 2 as triggered
+	state.triggered_dialogues = {
+		# Floor 1 progression
+		"F1JournalPickup": true,
+		"F1PickupInteractableFirst": true,
+		"F1SeeInteractableFirst": true,
+		"F1FirstTimeCleaningDimension": true,
+		"F1FirstItemCleaned": true,
+		"F1FixBust": true,
+		"F1AllItemsComplete": true,
+		# Floor 1 diary pages
+		"F1Diary01": true,
+		"F1Diary02": true,
+		"F1Diary03": true,
+		# Floor 2 progression
+		"F2Entry": true,
+		"F2WindGust": true,
+		"F2FixGlobe": true,
+		"F2AllItemsComplete": true,
+		# Floor 2 diary pages
+		"F2Diary04": true,
+		"F2Diary05": true,
+		"F2Diary06": true,
+	}
+
+	# Unlock puzzles (normally done by picking up journal)
+	state.flags["puzzles_unlocked"] = true
+	print("DEBUG: Applied floor 3 test state - Floor 3 unlocked, 6 puzzles complete")
 
 
 
