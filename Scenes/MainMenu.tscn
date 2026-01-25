@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b130vqwiyxnn0"]
+[gd_scene load_steps=7 format=3 uid="uid://b130vqwiyxnn0"]
 
 [ext_resource type="Script" uid="uid://cxxy6hncg3cid" path="res://Scenes/main_menu.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://lgvb3dm3x71t" path="res://resource/UI/Menu/Art_Title_Background.PNG" id="2_bg"]
 [ext_resource type="Texture2D" uid="uid://c0u0p4jb8r5vo" path="res://resource/UI/Menu/Art_Title_Tower.PNG" id="3_tower"]
 [ext_resource type="Texture2D" uid="uid://bkuhaush377gw" path="res://resource/UI/Menu/Art_Title_Foreground.PNG" id="4_fg"]
+[ext_resource type="Texture2D" uid="uid://tiwwt5rojcf4" path="res://resource/UI/MenuButtons/Art_Title_FINAL_BUTTONS_ISOLATED_QUIT.png" id="5_8um5k"]
+[ext_resource type="Texture2D" uid="uid://cohho1dbeiuoc" path="res://resource/UI/MenuButtons/Art_Title_FINAL_BUTTONS_ISOLATED_START.png" id="6_xim88"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_script")
@@ -77,15 +79,24 @@ texture = ExtResource("4_fg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MenuContainer" type="VBoxContainer" parent="."]
-offset_left = 122.0
-offset_top = 815.0
-offset_right = 496.0
-offset_bottom = 969.0
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="QuitButton" type="Button" parent="MenuContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Quit to Desktop"
-flat = true
-alignment = 0
+[node name="Quit" type="TextureRect" parent="MenuButtons"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 949.0
+offset_right = 351.0
+offset_bottom = 1036.0
+texture = ExtResource("5_8um5k")
+
+[node name="Start" type="TextureRect" parent="MenuButtons"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 846.0
+offset_right = 351.0
+offset_bottom = 941.0
+texture = ExtResource("6_xim88")
