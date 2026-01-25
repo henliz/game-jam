@@ -84,6 +84,9 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 		_play_floor_entry_dialogue(next_floor)
 		return
 
+	# Disable player input during transition
+	_set_player_input_enabled(player, false)
+
 	var floor_name = floor_names.get(next_floor, "Floor %d" % next_floor)
 	var video_path: String
 
@@ -127,6 +130,9 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 	
 	# Hide canvas
 	transition_canvas.hide()
+
+	# Re-enable player input after transition
+	_set_player_input_enabled(player, true)
 
 	# Play floor entry dialogue (first time only)
 	_play_floor_entry_dialogue(next_floor)
@@ -294,3 +300,14 @@ func _switch_floor_music(floor_num: int) -> void:
 
 	var fade_in = create_tween()
 	fade_in.tween_property(music_player, "volume_db", original_volume, 1.5)
+
+
+func _set_player_input_enabled(player: Node3D, enabled: bool) -> void:
+	if not player:
+		return
+	# Disable/enable movement
+	if "movement_enabled" in player:
+		player.movement_enabled = enabled
+	# Disable/enable camera look by setting inspecting (inspecting=true blocks camera input)
+	if "inspecting" in player:
+		player.inspecting = not enabled

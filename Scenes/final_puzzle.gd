@@ -16,6 +16,8 @@ var dragging = false
 var is_rotating = false
 
 @onready var panel: Panel = $CanvasLayer/Panel
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+var control_hint_label: Label
 
 @onready var outer_fall_piece: TextureButton = $CanvasLayer/Panel/OuterFallPiece
 @onready var outer_summer_piece: TextureButton = $CanvasLayer/Panel/OuterSummerPiece
@@ -80,6 +82,7 @@ var initial_inscription_position = {}
 @onready var ring_animation_start: AudioStreamPlayer3D = $"../AudioStreamPlayers/RingAnimationStart"
 
 func _ready() -> void:
+	_setup_control_hint()
 	ring_rotation = {inner:0,mid:-150.0,outer:90.0}
 	completed_rings = {inner:false,mid:false,outer:false}
 	initial_inscription_position = {
@@ -126,6 +129,7 @@ func _process(_delta: float) -> void:
 		finalpuzzle_closed.emit()
 		is_active = false
 		panel.visible = false
+		_hide_control_hint()
 		hovered_ring = null
 	if !is_rotating and hovered_ring and hovered_ring!=inner and Input.is_action_just_pressed("rotate_right"):
 		if completed_rings.get(hovered_ring):
@@ -241,9 +245,11 @@ func check_puzzle_complete():
 		if fmod(r,360.0) != 0.0: return false
 	ring_success.play()
 	print("final puzzle is complete")
+	DialogueManager.try_trigger_dialogue("F4FinalPuzzleComplete", "F4FinalPuzzleComplete")
 	finalpuzzle_closed.emit()
 	is_active = false
 	panel.visible = false
+	_hide_control_hint()
 	hovered_ring = null
 	_final_sequence()
 	return true
@@ -253,7 +259,10 @@ func _on_player_finalpuzzle_camera_trigger() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	is_active = true
 	panel.visible = true
+	_show_control_hint()
 	hovered_ring = null
+	# Play dialogue when player first interacts with the final puzzle
+	DialogueManager.try_trigger_dialogue("F4FinalPuzzleStart", "F4FinalPuzzleStart")
 	
 func _final_sequence():
 	astrolabe_animation_big_ring.visible=true
@@ -265,6 +274,7 @@ func _final_sequence():
 	await get_tree().create_timer(2).timeout
 	fire_whoosh.play()
 	fire_light.visible=true
+	DialogueManager.try_trigger_dialogue("F4SpiritEncounter", "F4SpiritEncounter")
 	await get_tree().create_timer(1).timeout
 	ring_animation_start.play()
 	animation_1.play("RingsAction")
@@ -284,6 +294,7 @@ func _final_sequence():
 	wind.stop()
 	tween.tween_property(world_environment.environment,"fog_aerial_perspective",1.0,5)
 	tween.tween_property(world_environment.environment,"fog_height",-100.0,5)
+	DialogueManager.try_trigger_dialogue("F4SnowLiftsEndgame", "F4SnowLiftsEndgame")
 	tween.tween_property(world_environment.environment,"fog_sky_affect",0,5)
 	tween.tween_property(directional_light_3d,"light_energy",3.0,5)
 	await get_tree().create_timer(5).timeout
@@ -298,3 +309,27 @@ func _final_sequence():
 	var credit_tween = get_tree().create_tween()
 	credit_tween.tween_property(credits,"position:y",40.0,80)
 	await credit_tween.finished
+
+func _setup_control_hint() -> void:
+	control_hint_label = Label.new()
+	control_hint_label.text = "Left Click: Pick up/place pieces | Right Click: Drop pieces | Q/E: Rotate rings"
+	control_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	control_hint_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 0.8))
+	control_hint_label.add_theme_font_size_override("font_size", 14)
+	control_hint_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	control_hint_label.offset_left = 0
+	control_hint_label.offset_right = 0
+	control_hint_label.offset_top = 20
+	control_hint_label.offset_bottom = 50
+	control_hint_label.visible = false
+	canvas_layer.add_child(control_hint_label)
+
+
+func _show_control_hint() -> void:
+	if control_hint_label:
+		control_hint_label.visible = true
+
+
+func _hide_control_hint() -> void:
+	if control_hint_label:
+		control_hint_label.visible = false
