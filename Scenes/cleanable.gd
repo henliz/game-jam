@@ -265,7 +265,7 @@ func _calculate_clean_progress() -> float:
 				total_dirt += mask_image.get_pixel(x, y).r
 	if covered_pixels == 0:
 		return 0.0
-	return 1.0 - (total_dirt / float(covered_pixels))
+	return (1.0 - (total_dirt / float(covered_pixels)))*(1.0/0.9)
 
 func get_cleaning_progress() -> float:
 	return _calculate_clean_progress()
