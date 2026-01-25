@@ -1,35 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0pe6en7cubua"]
+[gd_scene load_steps=9 format=3 uid="uid://b0pe6en7cubua"]
 
-[ext_resource type="Script" uid="uid://dgku75f4jy8wp" path="res://Scenes/interactable.gd" id="1_interactable"]
-[ext_resource type="PackedScene" uid="uid://bpk5jpdssowu" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Final.glb" id="2_glb"]
-[ext_resource type="Script" uid="uid://yxfdy8u6cq1w" path="res://Scenes/cleanable.gd" id="3_cleanable"]
-[ext_resource type="Script" uid="uid://c71wl0pt8jphu" path="res://Scenes/glow_outline.gd" id="4_glow"]
+[ext_resource type="PackedScene" uid="uid://bpk5jpdssowu" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Final.glb" id="1_ihg5b"]
+[ext_resource type="Shader" uid="uid://b0c2kmjibdk28" path="res://resource/GraphicsCore/SH_universal_v1.gdshader" id="2_jswoj"]
+[ext_resource type="Texture2D" uid="uid://dytowgiswvq1a" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Final_ART_F2_StrangeLightLantern_Texture.webp" id="3_2mmql"]
+[ext_resource type="Texture2D" uid="uid://dtr2pmm8qben" path="res://resource/GraphicsCore/brush_strokes_01_hue_strength1_512.png" id="4_gxore"]
+[ext_resource type="Texture2D" uid="uid://clo8cl6f1l5px" path="res://resource/Floor2/ART_F2_StrangeLightLantern_Final_LanternNormal.webp" id="5_lvn6h"]
+[ext_resource type="Texture2D" uid="uid://bv5bkjr03wmg4" path="res://resource/GraphicsCore/brush_smear_01_256.png" id="6_difbe"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lantern"]
-height = 0.4
-radius = 0.15
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_62ngh"]
+render_priority = 0
+shader = ExtResource("2_jswoj")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_2mmql")
+shader_parameter/texture_hue_shift = ExtResource("4_gxore")
+shader_parameter/hue_shift_strength = 0.80000001192096
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_difbe")
+shader_parameter/texture_normal = ExtResource("5_lvn6h")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(0, 0, 0, 1)
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 4, 4)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
-[node name="StrangeLantern" type="StaticBody3D"]
-script = ExtResource("1_interactable")
-inspect_scale = 1.5
-inspect_offset = Vector3(0, -0.2, 0)
-item_name = "Strange Lantern"
-item_description = "An unusual lantern that seems to flicker with an otherworldly light."
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yos02"]
+render_priority = 0
+shader = ExtResource("2_jswoj")
+shader_parameter/basecolor = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_2mmql")
+shader_parameter/texture_hue_shift = ExtResource("4_gxore")
+shader_parameter/hue_shift_strength = 0.80000001192096
+shader_parameter/roughness = 0.6000000285
+shader_parameter/texture_roughness = ExtResource("6_difbe")
+shader_parameter/texture_normal = ExtResource("5_lvn6h")
+shader_parameter/normal_scale = 0.5000001187500001
+shader_parameter/ao_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/texture_backlight = ExtResource("3_2mmql")
+shader_parameter/uv1_blend_sharpness = 2.0
+shader_parameter/uv1_scale = Vector3(3, 4, 4)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
-[node name="lantern_mesh" parent="." instance=ExtResource("2_glb")]
+[node name="ART_F2_StrangeLightLantern_Final" instance=ExtResource("1_ihg5b")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("CylinderShape3D_lantern")
-
-[node name="Cleanable" type="Node" parent="."]
-script = ExtResource("3_cleanable")
-brush_size = 48.0
-brush_softness = 0.6
-
-[node name="GlowOutline" type="Node3D" parent="." node_paths=PackedStringArray("target_node")]
-script = ExtResource("4_glow")
-glow_color = Color(0.96, 0.66, 0.19, 1)
-interaction_range = 2.5
-target_node = NodePath("../lantern_mesh/Cylinder_004")
-requires_unlock = true
+[node name="ART_F2_StrangeLightLantern_model" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_62ngh")
+surface_material_override/1 = SubResource("ShaderMaterial_yos02")
