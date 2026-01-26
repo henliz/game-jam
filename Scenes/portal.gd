@@ -16,6 +16,9 @@ const FLOOR_MUSIC := {
 	4: "res://Audio/Music/Floor4_OST.mp3",
 }
 
+const TRANSITION_SOUND := preload("res://Audio/SFX/stairs_transition_10s.wav")
+var transition_audio_player: AudioStreamPlayer
+
 var transition_canvas: CanvasLayer
 var video_player: VideoStreamPlayer
 var title_label: Label
@@ -37,6 +40,12 @@ func _ready() -> void:
 		title_label = transition_canvas.get_node_or_null("Title")
 	else:
 		push_warning("Portal: TransitionCanvas autoload not found")
+
+	# Create audio player for transition sound
+	transition_audio_player = AudioStreamPlayer.new()
+	transition_audio_player.stream = TRANSITION_SOUND
+	transition_audio_player.bus = "SFX"
+	add_child(transition_audio_player)
 
 func _process(_delta: float) -> void:
 	if portal_visual.visible and game_state.is_floor_unlocked(current_floor+1):
@@ -103,10 +112,14 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 
 	# Show transition canvas
 	transition_canvas.show()
-	
+
 	# Set up and play video
 	video_player.stream = load(video_path)
 	video_player.play()
+
+	# Play transition sound effect (synced with video)
+	if transition_audio_player:
+		transition_audio_player.play()
 	
 	# Set title but keep invisible
 	title_label.text = floor_name
@@ -128,8 +141,10 @@ func _play_transition(next_floor: int, player: Node3D, destination: Vector3) -> 
 	fade_out.tween_property(title_label, "modulate:a", 0.0, 0.5)
 	await fade_out.finished
 	
-	# Hide canvas
+	# Hide canvas and stop transition sound
 	transition_canvas.hide()
+	if transition_audio_player and transition_audio_player.playing:
+		transition_audio_player.stop()
 
 	# Re-enable player input after transition
 	_set_player_input_enabled(player, true)
