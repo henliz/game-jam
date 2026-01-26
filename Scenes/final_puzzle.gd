@@ -45,6 +45,7 @@ var control_hint_label: Label
 @onready var animation_2_loop: AnimationPlayer = $AstrolabeAnimationLoopMed/AnimationPlayerLoop
 @onready var animation_3_loop: AnimationPlayer = $AstrolabeAnimationLoopSmall/AnimationPlayerLoop
 @onready var credits: MeshInstance3D = $Credits
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 
 var dragged_inscription : TextureButton = null
@@ -309,6 +310,11 @@ func _final_sequence():
 	var credit_tween = get_tree().create_tween()
 	credit_tween.tween_property(credits,"position:y",40.0,80)
 	await credit_tween.finished
+	var fade_tween: Tween = create_tween()
+	fade_tween.tween_property(color_rect, "modulate:a", 1.0, 2)
+	await fade_tween.finished
+	await get_tree().create_timer(2).timeout
+	get_tree().quit()
 
 func _setup_control_hint() -> void:
 	control_hint_label = Label.new()
