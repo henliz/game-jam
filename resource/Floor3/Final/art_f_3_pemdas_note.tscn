@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://w7ysac0ra4qs"]
+
+[ext_resource type="Texture2D" uid="uid://cb372tkxwskm0" path="res://resource/Floor3/ART_F3_WizardNotes_PEMDAS.png" id="1_texture"]
+
+[node name="PemdasNote" type="Sprite3D"]
+pixel_size = 0.001
+texture = ExtResource("1_texture")

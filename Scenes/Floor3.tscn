@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bqmchw73r2wh5"]
+[gd_scene load_steps=68 format=4 uid="uid://bqmchw73r2wh5"]
 
 [ext_resource type="Material" uid="uid://dyydde4c8mdnp" path="res://resource/Common/MAT_walls_01_triplanar.material" id="1_5m7pv"]
 [ext_resource type="ArrayMesh" uid="uid://buob6naa08ux8" path="res://resource/Floor1/f1_wall_clear.res" id="2_elm7w"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://bjgev1t52r3ev" path="res://Scenes/candle_flicker.gd" id="38_eqym8"]
 [ext_resource type="PackedScene" uid="uid://d08pnfbgk88f3" path="res://resource/Common/Final/art_global_candle_02.tscn" id="39_aoigi"]
 [ext_resource type="Material" uid="uid://b7frshhg5cqxq" path="res://resource/Puzzles/VFX/EffectBlocks/source_files/materials/portal.material" id="42_om7v8"]
+[ext_resource type="PackedScene" uid="uid://w7ysac0ra4qs" path="res://resource/Floor3/Final/art_f_3_pemdas_note.tscn" id="43_eqym8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pspkr"]
 _surfaces = [{
@@ -714,5 +715,8 @@ omni_range = 1.3
 transform = Transform3D(-0.25530732, -0.0014681611, -0.21430624, 0.0022941637, -0.33332512, -0.0004495426, -0.21429896, -0.0018192786, 0.25531113, -0.771775, 1.3314526, 1.545966)
 mesh = SubResource("ArrayMesh_etndq")
 skeleton = NodePath("")
+
+[node name="PemdasNote" parent="." instance=ExtResource("43_eqym8")]
+transform = Transform3D(-0.96088487, 0.27523786, 0.030730337, 0.27642256, 0.9599716, 0.045221336, -0.017053634, 0.051947065, -0.99850416, 1.0331694, 2.070148, 5.051487)
 
 [connection signal="body_entered" from="portal" to="portal" method="_on_body_entered"]

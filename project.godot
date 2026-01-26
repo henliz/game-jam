@@ -14,7 +14,7 @@ config/name="Equinox"
 config/description="The wheel turns, and order returns...
 
 The wind howls, ice cracks beneath your feet. Spring isn’t coming. The local wizard’s tower is meant to banish the winter and herald a new season, but the light atop has stayed dark. You have been tasked with investigating why.  Hired by the local townsfolk, you are sent to investigate the tower and put an end to the eternal winter. Read the wizard’s own notes and sift through the mess he left behind as you try and discover how to get the tower working again. "
-config/version="1.0.0"
+config/version="1.0.1"
 run/main_scene="uid://7p7v173aa0dj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
