@@ -11,7 +11,7 @@ const DEBUG_START_FLOOR_2 := false
 # Debug: Set to true to start with floor 3 unlocked and 6 puzzles complete
 const DEBUG_START_FLOOR_3 := false
 # Debug: Set to true to start with floor 4 unlocked and 9 puzzles complete
-const DEBUG_START_FLOOR_4 := true
+const DEBUG_START_FLOOR_4 := false
 
 # Items that require BOTH repair AND clean to count as one complete puzzle
 # These items only emit 1 blueprint when both conditions are met
