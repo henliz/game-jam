@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2rhgh153b667"
 path.s3tc="res://.godot/imported/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp-71d32edd9eb10d958b65a9ef6c4f162b.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp-71d32edd9eb10d958b65a9ef6c4f162b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp"
-dest_files=["res://.godot/imported/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp-71d32edd9eb10d958b65a9ef6c4f162b.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp-71d32edd9eb10d958b65a9ef6c4f162b.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_Debris_Papers_01_ART_GLOBAL_Debris_Papers_01_Texture.webp-71d32edd9eb10d958b65a9ef6c4f162b.etc2.ctex"]
 
 [params]
 

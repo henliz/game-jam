@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc01i7dvgcnj0"
 path.s3tc="res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png-737d0c86436274af52456f38e7048888.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png-737d0c86436274af52456f38e7048888.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png-737d0c86436274af52456f38e7048888.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png-737d0c86436274af52456f38e7048888.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_brush_smear_01_256.png-737d0c86436274af52456f38e7048888.etc2.ctex"]
 
 [params]
 

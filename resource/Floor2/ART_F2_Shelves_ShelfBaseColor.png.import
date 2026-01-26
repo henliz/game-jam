@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1plhxyuc80c2"
 path.s3tc="res://.godot/imported/ART_F2_Shelves_ShelfBaseColor.png-e573684fd0be18ab0ac2d9acac39535f.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_Shelves_ShelfBaseColor.png-e573684fd0be18ab0ac2d9acac39535f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_Shelves_ShelfBaseColor.png"
-dest_files=["res://.godot/imported/ART_F2_Shelves_ShelfBaseColor.png-e573684fd0be18ab0ac2d9acac39535f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_Shelves_ShelfBaseColor.png-e573684fd0be18ab0ac2d9acac39535f.s3tc.ctex", "res://.godot/imported/ART_F2_Shelves_ShelfBaseColor.png-e573684fd0be18ab0ac2d9acac39535f.etc2.ctex"]
 
 [params]
 

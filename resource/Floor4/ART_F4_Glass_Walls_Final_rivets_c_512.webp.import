@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp7gjkhl8xo7w"
 path.s3tc="res://.godot/imported/ART_F4_Glass_Walls_Final_rivets_c_512.webp-61bf26f6a03ce2f7d9c2ec5f34cc22b2.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F4_Glass_Walls_Final_rivets_c_512.webp-61bf26f6a03ce2f7d9c2ec5f34cc22b2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor4/ART_F4_Glass_Walls_Final_rivets_c_512.webp"
-dest_files=["res://.godot/imported/ART_F4_Glass_Walls_Final_rivets_c_512.webp-61bf26f6a03ce2f7d9c2ec5f34cc22b2.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F4_Glass_Walls_Final_rivets_c_512.webp-61bf26f6a03ce2f7d9c2ec5f34cc22b2.s3tc.ctex", "res://.godot/imported/ART_F4_Glass_Walls_Final_rivets_c_512.webp-61bf26f6a03ce2f7d9c2ec5f34cc22b2.etc2.ctex"]
 
 [params]
 

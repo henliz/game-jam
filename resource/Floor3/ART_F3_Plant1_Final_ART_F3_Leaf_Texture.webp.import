@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfqd8a5xlriet"
 path.s3tc="res://.godot/imported/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp-f1ec321f87ef87355df9c4c456b15c7f.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp-f1ec321f87ef87355df9c4c456b15c7f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp"
-dest_files=["res://.godot/imported/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp-f1ec321f87ef87355df9c4c456b15c7f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp-f1ec321f87ef87355df9c4c456b15c7f.s3tc.ctex", "res://.godot/imported/ART_F3_Plant1_Final_ART_F3_Leaf_Texture.webp-f1ec321f87ef87355df9c4c456b15c7f.etc2.ctex"]
 
 [params]
 

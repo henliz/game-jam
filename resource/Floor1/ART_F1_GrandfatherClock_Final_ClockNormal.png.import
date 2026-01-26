@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bn1h1gdl4hhn4"
 path.s3tc="res://.godot/imported/ART_F1_GrandfatherClock_Final_ClockNormal.png-4a59089332859ce6ff195a260538e64c.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F1_GrandfatherClock_Final_ClockNormal.png-4a59089332859ce6ff195a260538e64c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_F1_GrandfatherClock_Final_ClockNormal.png"
-dest_files=["res://.godot/imported/ART_F1_GrandfatherClock_Final_ClockNormal.png-4a59089332859ce6ff195a260538e64c.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F1_GrandfatherClock_Final_ClockNormal.png-4a59089332859ce6ff195a260538e64c.s3tc.ctex", "res://.godot/imported/ART_F1_GrandfatherClock_Final_ClockNormal.png-4a59089332859ce6ff195a260538e64c.etc2.ctex"]
 
 [params]
 

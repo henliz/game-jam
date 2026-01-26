@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chfhr7ucgwb2j"
 path.s3tc="res://.godot/imported/pickaxe.png-c5af6bfb8d19e279143be30f5a2cbf4a.s3tc.ctex"
+path.etc2="res://.godot/imported/pickaxe.png-c5af6bfb8d19e279143be30f5a2cbf4a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/icons/pickaxe.png"
-dest_files=["res://.godot/imported/pickaxe.png-c5af6bfb8d19e279143be30f5a2cbf4a.s3tc.ctex"]
+dest_files=["res://.godot/imported/pickaxe.png-c5af6bfb8d19e279143be30f5a2cbf4a.s3tc.ctex", "res://.godot/imported/pickaxe.png-c5af6bfb8d19e279143be30f5a2cbf4a.etc2.ctex"]
 
 [params]
 

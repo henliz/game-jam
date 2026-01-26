@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cba3a62f6sodf"
 path.s3tc="res://.godot/imported/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp-b5197f5cc207cb1b3b4336ef791753a8.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp-b5197f5cc207cb1b3b4336ef791753a8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp"
-dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp-b5197f5cc207cb1b3b4336ef791753a8.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp-b5197f5cc207cb1b3b4336ef791753a8.s3tc.ctex", "res://.godot/imported/ART_F3_StairsInterior_Final_F3InteriorStairNormal.webp-b5197f5cc207cb1b3b4336ef791753a8.etc2.ctex"]
 
 [params]
 

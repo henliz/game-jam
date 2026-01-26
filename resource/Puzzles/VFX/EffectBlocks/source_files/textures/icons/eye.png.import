@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b23i7qg4c0qxm"
 path.s3tc="res://.godot/imported/eye.png-ba4e1f1b58550a97d75ad38e60039b12.s3tc.ctex"
+path.etc2="res://.godot/imported/eye.png-ba4e1f1b58550a97d75ad38e60039b12.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/icons/eye.png"
-dest_files=["res://.godot/imported/eye.png-ba4e1f1b58550a97d75ad38e60039b12.s3tc.ctex"]
+dest_files=["res://.godot/imported/eye.png-ba4e1f1b58550a97d75ad38e60039b12.s3tc.ctex", "res://.godot/imported/eye.png-ba4e1f1b58550a97d75ad38e60039b12.etc2.ctex"]
 
 [params]
 

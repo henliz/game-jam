@@ -310,11 +310,37 @@ func _final_sequence():
 	var credit_tween = get_tree().create_tween()
 	credit_tween.tween_property(credits,"position:y",40.0,80)
 	await credit_tween.finished
-	var fade_tween: Tween = create_tween()
-	fade_tween.tween_property(color_rect, "modulate:a", 1.0, 2)
+
+	# Fade to black and return to title screen
+	_fade_to_title_screen()
+
+
+func _fade_to_title_screen() -> void:
+	# Get music player for fade out
+	var music_player = get_node_or_null("/root/Main/World/AudioStreamPlayers/MusicStreamPlayer")
+
+	# Fade in the black overlay and fade out audio
+	var fade_tween = create_tween()
+	fade_tween.set_parallel(true)
+	fade_tween.tween_property(color_rect, "modulate:a", 1.0, 3.0)
+	if music_player:
+		fade_tween.tween_property(music_player, "volume_db", -40.0, 3.0)
+	if ring_animation_loop:
+		fade_tween.tween_property(ring_animation_loop, "volume_db", -40.0, 3.0)
+	fade_tween.set_parallel(false)
 	await fade_tween.finished
-	await get_tree().create_timer(2).timeout
-	get_tree().quit()
+
+	# Stop audio
+	if music_player:
+		music_player.stop()
+	if ring_animation_loop:
+		ring_animation_loop.stop()
+
+	# Brief pause at full black
+	await get_tree().create_timer(1.0).timeout
+
+	# Return to the main scene (title screen)
+	get_tree().change_scene_to_file("res://main.tscn")
 
 func _setup_control_hint() -> void:
 	control_hint_label = Label.new()

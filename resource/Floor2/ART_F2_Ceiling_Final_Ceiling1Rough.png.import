@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chbmni8hsk5xv"
 path.s3tc="res://.godot/imported/ART_F2_Ceiling_Final_Ceiling1Rough.png-84dc31c0ff7875ea1a69e6d9ac6b0b85.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_Ceiling_Final_Ceiling1Rough.png-84dc31c0ff7875ea1a69e6d9ac6b0b85.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_Ceiling_Final_Ceiling1Rough.png"
-dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_Ceiling1Rough.png-84dc31c0ff7875ea1a69e6d9ac6b0b85.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_Ceiling1Rough.png-84dc31c0ff7875ea1a69e6d9ac6b0b85.s3tc.ctex", "res://.godot/imported/ART_F2_Ceiling_Final_Ceiling1Rough.png-84dc31c0ff7875ea1a69e6d9ac6b0b85.etc2.ctex"]
 
 [params]
 

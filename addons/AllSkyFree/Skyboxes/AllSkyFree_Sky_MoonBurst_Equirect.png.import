@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbf2ilxxm3jng"
 path.s3tc="res://.godot/imported/AllSkyFree_Sky_MoonBurst_Equirect.png-0f59f1138b870fb7acf8731274d15256.s3tc.ctex"
+path.etc2="res://.godot/imported/AllSkyFree_Sky_MoonBurst_Equirect.png-0f59f1138b870fb7acf8731274d15256.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/AllSkyFree/Skyboxes/AllSkyFree_Sky_MoonBurst_Equirect.png"
-dest_files=["res://.godot/imported/AllSkyFree_Sky_MoonBurst_Equirect.png-0f59f1138b870fb7acf8731274d15256.s3tc.ctex"]
+dest_files=["res://.godot/imported/AllSkyFree_Sky_MoonBurst_Equirect.png-0f59f1138b870fb7acf8731274d15256.s3tc.ctex", "res://.godot/imported/AllSkyFree_Sky_MoonBurst_Equirect.png-0f59f1138b870fb7acf8731274d15256.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmjb2i2eu3hpq"
 path.s3tc="res://.godot/imported/brush_strokes_01_hue_strength0_512.png-0b4b1482fd4a2851e0d6ae668c288831.s3tc.ctex"
+path.etc2="res://.godot/imported/brush_strokes_01_hue_strength0_512.png-0b4b1482fd4a2851e0d6ae668c288831.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/GraphicsCore/brush_strokes_01_hue_strength0_512.png"
-dest_files=["res://.godot/imported/brush_strokes_01_hue_strength0_512.png-0b4b1482fd4a2851e0d6ae668c288831.s3tc.ctex"]
+dest_files=["res://.godot/imported/brush_strokes_01_hue_strength0_512.png-0b4b1482fd4a2851e0d6ae668c288831.s3tc.ctex", "res://.godot/imported/brush_strokes_01_hue_strength0_512.png-0b4b1482fd4a2851e0d6ae668c288831.etc2.ctex"]
 
 [params]
 

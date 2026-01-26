@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhrm4x6k0f1of"
 path.s3tc="res://.godot/imported/ART_F3_Cauldron_Final_CauldronNormal.png-ba43f8a5475607845a4244687c956461.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Cauldron_Final_CauldronNormal.png-ba43f8a5475607845a4244687c956461.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Cauldron_Final_CauldronNormal.png"
-dest_files=["res://.godot/imported/ART_F3_Cauldron_Final_CauldronNormal.png-ba43f8a5475607845a4244687c956461.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Cauldron_Final_CauldronNormal.png-ba43f8a5475607845a4244687c956461.s3tc.ctex", "res://.godot/imported/ART_F3_Cauldron_Final_CauldronNormal.png-ba43f8a5475607845a4244687c956461.etc2.ctex"]
 
 [params]
 

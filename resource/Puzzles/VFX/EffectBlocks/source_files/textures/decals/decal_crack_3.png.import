@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b01163xmgmypi"
 path.s3tc="res://.godot/imported/decal_crack_3.png-98fd0b3b36fc75f587d3c6f513eafbaa.s3tc.ctex"
+path.etc2="res://.godot/imported/decal_crack_3.png-98fd0b3b36fc75f587d3c6f513eafbaa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/decals/decal_crack_3.png"
-dest_files=["res://.godot/imported/decal_crack_3.png-98fd0b3b36fc75f587d3c6f513eafbaa.s3tc.ctex"]
+dest_files=["res://.godot/imported/decal_crack_3.png-98fd0b3b36fc75f587d3c6f513eafbaa.s3tc.ctex", "res://.godot/imported/decal_crack_3.png-98fd0b3b36fc75f587d3c6f513eafbaa.etc2.ctex"]
 
 [params]
 

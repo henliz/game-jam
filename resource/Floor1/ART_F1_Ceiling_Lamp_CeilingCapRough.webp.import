@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c07q5irlienfl"
 path.s3tc="res://.godot/imported/ART_F1_Ceiling_Lamp_CeilingCapRough.webp-059c7d79c80afb6562be9da15032a1c6.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F1_Ceiling_Lamp_CeilingCapRough.webp-059c7d79c80afb6562be9da15032a1c6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_F1_Ceiling_Lamp_CeilingCapRough.webp"
-dest_files=["res://.godot/imported/ART_F1_Ceiling_Lamp_CeilingCapRough.webp-059c7d79c80afb6562be9da15032a1c6.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F1_Ceiling_Lamp_CeilingCapRough.webp-059c7d79c80afb6562be9da15032a1c6.s3tc.ctex", "res://.godot/imported/ART_F1_Ceiling_Lamp_CeilingCapRough.webp-059c7d79c80afb6562be9da15032a1c6.etc2.ctex"]
 
 [params]
 

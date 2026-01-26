@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://baulrjk4lhtyp"
 path.s3tc="res://.godot/imported/ART_GLOBAL_Rugs_Oval_Texture.png-ac2ac5e02944442e23c30f5fa35d3f38.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_Rugs_Oval_Texture.png-ac2ac5e02944442e23c30f5fa35d3f38.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_Rugs_Oval_Texture.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_Rugs_Oval_Texture.png-ac2ac5e02944442e23c30f5fa35d3f38.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_Rugs_Oval_Texture.png-ac2ac5e02944442e23c30f5fa35d3f38.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_Rugs_Oval_Texture.png-ac2ac5e02944442e23c30f5fa35d3f38.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkb1opk18v8xs"
 path.s3tc="res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp"
-dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_Pillow_Aroace_Pillow_AroAce_BC.webp-2eae1e9decfaa7db1dfb280457ea520c.etc2.ctex"]
 
 [params]
 

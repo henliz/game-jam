@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://7tslev4j4ovk"
 path.s3tc="res://.godot/imported/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp-a89c65a6f382d34299fff6417fdadc06.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp-a89c65a6f382d34299fff6417fdadc06.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level03/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp"
-dest_files=["res://.godot/imported/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp-a89c65a6f382d34299fff6417fdadc06.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp-a89c65a6f382d34299fff6417fdadc06.s3tc.ctex", "res://.godot/imported/ART_F3_DistillationBase_ART_F3_DistillationApparatusBase_Texture.webp-a89c65a6f382d34299fff6417fdadc06.etc2.ctex"]
 
 [params]
 

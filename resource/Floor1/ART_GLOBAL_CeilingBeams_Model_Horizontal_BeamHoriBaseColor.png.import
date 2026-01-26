@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2midmcs7by8p"
 path.s3tc="res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png-5f5fd21d66ec7d750c08c2b7e79d0941.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png-5f5fd21d66ec7d750c08c2b7e79d0941.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png"
-dest_files=["res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png-5f5fd21d66ec7d750c08c2b7e79d0941.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png-5f5fd21d66ec7d750c08c2b7e79d0941.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_CeilingBeams_Model_Horizontal_BeamHoriBaseColor.png-5f5fd21d66ec7d750c08c2b7e79d0941.etc2.ctex"]
 
 [params]
 

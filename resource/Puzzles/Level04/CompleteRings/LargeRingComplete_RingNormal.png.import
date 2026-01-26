@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://chpy87lsuth5a"
 path.s3tc="res://.godot/imported/LargeRingComplete_RingNormal.png-1a1ef100315ff99d29559d7228ff7931.s3tc.ctex"
+path.etc2="res://.godot/imported/LargeRingComplete_RingNormal.png-1a1ef100315ff99d29559d7228ff7931.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/CompleteRings/LargeRingComplete_RingNormal.png"
-dest_files=["res://.godot/imported/LargeRingComplete_RingNormal.png-1a1ef100315ff99d29559d7228ff7931.s3tc.ctex"]
+dest_files=["res://.godot/imported/LargeRingComplete_RingNormal.png-1a1ef100315ff99d29559d7228ff7931.s3tc.ctex", "res://.godot/imported/LargeRingComplete_RingNormal.png-1a1ef100315ff99d29559d7228ff7931.etc2.ctex"]
 
 [params]
 

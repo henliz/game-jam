@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://n62n0bswe4oo"
 path.s3tc="res://.godot/imported/HalfTelesmall_TelescopeRough.png-50e1ea448d76283694ddcf7f028f33df.s3tc.ctex"
+path.etc2="res://.godot/imported/HalfTelesmall_TelescopeRough.png-50e1ea448d76283694ddcf7f028f33df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/AstrolabeTelescope/HalfTelesmall_TelescopeRough.png"
-dest_files=["res://.godot/imported/HalfTelesmall_TelescopeRough.png-50e1ea448d76283694ddcf7f028f33df.s3tc.ctex"]
+dest_files=["res://.godot/imported/HalfTelesmall_TelescopeRough.png-50e1ea448d76283694ddcf7f028f33df.s3tc.ctex", "res://.godot/imported/HalfTelesmall_TelescopeRough.png-50e1ea448d76283694ddcf7f028f33df.etc2.ctex"]
 
 [params]
 

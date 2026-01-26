@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd4yy6ssrhk54"
 path.s3tc="res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorNormal.webp-30507ba6512cbff4bef1bdd8cc6168bb.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorNormal.webp-30507ba6512cbff4bef1bdd8cc6168bb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_WoodenFloor_Model_F2FloorNormal.webp"
-dest_files=["res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorNormal.webp-30507ba6512cbff4bef1bdd8cc6168bb.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorNormal.webp-30507ba6512cbff4bef1bdd8cc6168bb.s3tc.ctex", "res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorNormal.webp-30507ba6512cbff4bef1bdd8cc6168bb.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cn6fi33ayfqq1"
 path.s3tc="res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png-bad0a1e7d86fec6fc5ce7a8838214069.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png-bad0a1e7d86fec6fc5ce7a8838214069.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level02/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png"
-dest_files=["res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png-bad0a1e7d86fec6fc5ce7a8838214069.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png-bad0a1e7d86fec6fc5ce7a8838214069.s3tc.ctex", "res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallNormal.png-bad0a1e7d86fec6fc5ce7a8838214069.etc2.ctex"]
 
 [params]
 

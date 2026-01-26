@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3f0dw6qcds60"
 path.s3tc="res://.godot/imported/Skull Candle_halloweenbits_texture.png-c692a1f31bb962a377fd3edfafd85188.s3tc.ctex"
+path.etc2="res://.godot/imported/Skull Candle_halloweenbits_texture.png-c692a1f31bb962a377fd3edfafd85188.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Workstation/Skull Candle_halloweenbits_texture.png"
-dest_files=["res://.godot/imported/Skull Candle_halloweenbits_texture.png-c692a1f31bb962a377fd3edfafd85188.s3tc.ctex"]
+dest_files=["res://.godot/imported/Skull Candle_halloweenbits_texture.png-c692a1f31bb962a377fd3edfafd85188.s3tc.ctex", "res://.godot/imported/Skull Candle_halloweenbits_texture.png-c692a1f31bb962a377fd3edfafd85188.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://do6wvsw803rwq"
 path.s3tc="res://.godot/imported/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp-f1ce737abb418dce5083c6b483655d89.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp-f1ce737abb418dce5083c6b483655d89.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp"
-dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp-f1ce737abb418dce5083c6b483655d89.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp-f1ce737abb418dce5083c6b483655d89.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_Pillow_Star_Pillow_Star_BC.webp-f1ce737abb418dce5083c6b483655d89.etc2.ctex"]
 
 [params]
 

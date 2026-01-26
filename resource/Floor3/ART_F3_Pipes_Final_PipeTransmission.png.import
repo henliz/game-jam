@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2e6ayfdnir1y"
 path.s3tc="res://.godot/imported/ART_F3_Pipes_Final_PipeTransmission.png-d537ba2af6c580b9aa15095e36433d53.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Pipes_Final_PipeTransmission.png-d537ba2af6c580b9aa15095e36433d53.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Pipes_Final_PipeTransmission.png"
-dest_files=["res://.godot/imported/ART_F3_Pipes_Final_PipeTransmission.png-d537ba2af6c580b9aa15095e36433d53.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Pipes_Final_PipeTransmission.png-d537ba2af6c580b9aa15095e36433d53.s3tc.ctex", "res://.godot/imported/ART_F3_Pipes_Final_PipeTransmission.png-d537ba2af6c580b9aa15095e36433d53.etc2.ctex"]
 
 [params]
 

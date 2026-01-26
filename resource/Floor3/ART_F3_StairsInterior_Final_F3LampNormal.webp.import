@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://g2611wpa4gdw"
 path.s3tc="res://.godot/imported/ART_F3_StairsInterior_Final_F3LampNormal.webp-4594560209894a8842043bd705635115.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_StairsInterior_Final_F3LampNormal.webp-4594560209894a8842043bd705635115.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_StairsInterior_Final_F3LampNormal.webp"
-dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_F3LampNormal.webp-4594560209894a8842043bd705635115.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_F3LampNormal.webp-4594560209894a8842043bd705635115.s3tc.ctex", "res://.godot/imported/ART_F3_StairsInterior_Final_F3LampNormal.webp-4594560209894a8842043bd705635115.etc2.ctex"]
 
 [params]
 

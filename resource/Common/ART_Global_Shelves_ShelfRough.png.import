@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://77srkhso781p"
 path.s3tc="res://.godot/imported/ART_Global_Shelves_ShelfRough.png-c1276a1f4e5652d7daa56abc59328903.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_Global_Shelves_ShelfRough.png-c1276a1f4e5652d7daa56abc59328903.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_Global_Shelves_ShelfRough.png"
-dest_files=["res://.godot/imported/ART_Global_Shelves_ShelfRough.png-c1276a1f4e5652d7daa56abc59328903.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_Global_Shelves_ShelfRough.png-c1276a1f4e5652d7daa56abc59328903.s3tc.ctex", "res://.godot/imported/ART_Global_Shelves_ShelfRough.png-c1276a1f4e5652d7daa56abc59328903.etc2.ctex"]
 
 [params]
 

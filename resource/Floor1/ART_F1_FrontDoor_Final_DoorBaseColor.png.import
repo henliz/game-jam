@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcpl3pgiij3f2"
 path.s3tc="res://.godot/imported/ART_F1_FrontDoor_Final_DoorBaseColor.png-b9b2d3cd3e74bf3d2c80f9bd9b57dcb2.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F1_FrontDoor_Final_DoorBaseColor.png-b9b2d3cd3e74bf3d2c80f9bd9b57dcb2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_F1_FrontDoor_Final_DoorBaseColor.png"
-dest_files=["res://.godot/imported/ART_F1_FrontDoor_Final_DoorBaseColor.png-b9b2d3cd3e74bf3d2c80f9bd9b57dcb2.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F1_FrontDoor_Final_DoorBaseColor.png-b9b2d3cd3e74bf3d2c80f9bd9b57dcb2.s3tc.ctex", "res://.godot/imported/ART_F1_FrontDoor_Final_DoorBaseColor.png-b9b2d3cd3e74bf3d2c80f9bd9b57dcb2.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca78u8lw742r7"
 path.s3tc="res://.godot/imported/ART_F3_Plant2_Final_TreeBaseColor.webp-630567f939f39bb3aa3fb5675f51315f.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Plant2_Final_TreeBaseColor.webp-630567f939f39bb3aa3fb5675f51315f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Plant2_Final_TreeBaseColor.webp"
-dest_files=["res://.godot/imported/ART_F3_Plant2_Final_TreeBaseColor.webp-630567f939f39bb3aa3fb5675f51315f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Plant2_Final_TreeBaseColor.webp-630567f939f39bb3aa3fb5675f51315f.s3tc.ctex", "res://.godot/imported/ART_F3_Plant2_Final_TreeBaseColor.webp-630567f939f39bb3aa3fb5675f51315f.etc2.ctex"]
 
 [params]
 

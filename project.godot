@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Equinox"
+config/description="The wheel turns, and order returns...
+
+The wind howls, ice cracks beneath your feet. Spring isn’t coming. The local wizard’s tower is meant to banish the winter and herald a new season, but the light atop has stayed dark. You have been tasked with investigating why.  Hired by the local townsfolk, you are sent to investigate the tower and put an end to the eternal winter. Read the wizard’s own notes and sift through the mess he left behind as you try and discover how to get the tower working again. "
+config/version="1.0.0"
 run/main_scene="uid://7p7v173aa0dj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+run/max_fps=60
+config/icon="uid://bh3l761po2upn"
+config/macos_native_icon="res://resource/UI/Equinox.icns"
 config/windows_native_icon="res://resource/UI/Equinox.ico"
 
 [autoload]
@@ -115,6 +121,7 @@ skip={
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
 textures/default_filters/anisotropic_filtering_level=4
 environment/ssao/quality=3

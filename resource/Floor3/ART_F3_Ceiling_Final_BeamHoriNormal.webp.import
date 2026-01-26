@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://duv1iamftytjy"
 path.s3tc="res://.godot/imported/ART_F3_Ceiling_Final_BeamHoriNormal.webp-d2636ddb8702ed6aecd4f53ee014e3ff.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Ceiling_Final_BeamHoriNormal.webp-d2636ddb8702ed6aecd4f53ee014e3ff.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Ceiling_Final_BeamHoriNormal.webp"
-dest_files=["res://.godot/imported/ART_F3_Ceiling_Final_BeamHoriNormal.webp-d2636ddb8702ed6aecd4f53ee014e3ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Ceiling_Final_BeamHoriNormal.webp-d2636ddb8702ed6aecd4f53ee014e3ff.s3tc.ctex", "res://.godot/imported/ART_F3_Ceiling_Final_BeamHoriNormal.webp-d2636ddb8702ed6aecd4f53ee014e3ff.etc2.ctex"]
 
 [params]
 

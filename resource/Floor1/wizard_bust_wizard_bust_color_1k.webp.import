@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://diq7a7k33c4ar"
 path.s3tc="res://.godot/imported/wizard_bust_wizard_bust_color_1k.webp-1f94ec629aff9ae08d422feef613ec33.s3tc.ctex"
+path.etc2="res://.godot/imported/wizard_bust_wizard_bust_color_1k.webp-1f94ec629aff9ae08d422feef613ec33.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/wizard_bust_wizard_bust_color_1k.webp"
-dest_files=["res://.godot/imported/wizard_bust_wizard_bust_color_1k.webp-1f94ec629aff9ae08d422feef613ec33.s3tc.ctex"]
+dest_files=["res://.godot/imported/wizard_bust_wizard_bust_color_1k.webp-1f94ec629aff9ae08d422feef613ec33.s3tc.ctex", "res://.godot/imported/wizard_bust_wizard_bust_color_1k.webp-1f94ec629aff9ae08d422feef613ec33.etc2.ctex"]
 
 [params]
 

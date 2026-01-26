@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://egixe0owj8e6"
 path.s3tc="res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp-4de6a234f96ca6dd010d8a063fa909e8.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp-4de6a234f96ca6dd010d8a063fa909e8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp"
-dest_files=["res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp-4de6a234f96ca6dd010d8a063fa909e8.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp-4de6a234f96ca6dd010d8a063fa909e8.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_WindowFrame_Model_ART_GLOBAL_Window_a_emission_512.webp-4de6a234f96ca6dd010d8a063fa909e8.etc2.ctex"]
 
 [params]
 

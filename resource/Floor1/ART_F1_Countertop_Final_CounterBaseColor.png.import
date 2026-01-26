@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca5h3f4c57r6i"
 path.s3tc="res://.godot/imported/ART_F1_Countertop_Final_CounterBaseColor.png-d79c022dc5653560b5ca2e136f1e11df.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F1_Countertop_Final_CounterBaseColor.png-d79c022dc5653560b5ca2e136f1e11df.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_F1_Countertop_Final_CounterBaseColor.png"
-dest_files=["res://.godot/imported/ART_F1_Countertop_Final_CounterBaseColor.png-d79c022dc5653560b5ca2e136f1e11df.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F1_Countertop_Final_CounterBaseColor.png-d79c022dc5653560b5ca2e136f1e11df.s3tc.ctex", "res://.godot/imported/ART_F1_Countertop_Final_CounterBaseColor.png-d79c022dc5653560b5ca2e136f1e11df.etc2.ctex"]
 
 [params]
 

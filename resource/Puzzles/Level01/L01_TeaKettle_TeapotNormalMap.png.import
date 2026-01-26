@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://723igrohbubt"
 path.s3tc="res://.godot/imported/L01_TeaKettle_TeapotNormalMap.png-352501471d79941d4239bae5d7a6b880.s3tc.ctex"
+path.etc2="res://.godot/imported/L01_TeaKettle_TeapotNormalMap.png-352501471d79941d4239bae5d7a6b880.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level01/L01_TeaKettle_TeapotNormalMap.png"
-dest_files=["res://.godot/imported/L01_TeaKettle_TeapotNormalMap.png-352501471d79941d4239bae5d7a6b880.s3tc.ctex"]
+dest_files=["res://.godot/imported/L01_TeaKettle_TeapotNormalMap.png-352501471d79941d4239bae5d7a6b880.s3tc.ctex", "res://.godot/imported/L01_TeaKettle_TeapotNormalMap.png-352501471d79941d4239bae5d7a6b880.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://27s6ey0y16ax"
 path.s3tc="res://.godot/imported/BrokenPiece2_RingBaseColor.png-e16e31531a6d2e59568c50808a96df04.s3tc.ctex"
+path.etc2="res://.godot/imported/BrokenPiece2_RingBaseColor.png-e16e31531a6d2e59568c50808a96df04.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/BrokenPiecesGLB/BrokenPiece2_RingBaseColor.png"
-dest_files=["res://.godot/imported/BrokenPiece2_RingBaseColor.png-e16e31531a6d2e59568c50808a96df04.s3tc.ctex"]
+dest_files=["res://.godot/imported/BrokenPiece2_RingBaseColor.png-e16e31531a6d2e59568c50808a96df04.s3tc.ctex", "res://.godot/imported/BrokenPiece2_RingBaseColor.png-e16e31531a6d2e59568c50808a96df04.etc2.ctex"]
 
 [params]
 

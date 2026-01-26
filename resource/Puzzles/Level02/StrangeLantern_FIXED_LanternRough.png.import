@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca2jkqmitsrm8"
 path.s3tc="res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.s3tc.ctex"
+path.etc2="res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level02/StrangeLantern_FIXED_LanternRough.png"
-dest_files=["res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.s3tc.ctex"]
+dest_files=["res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.s3tc.ctex", "res://.godot/imported/StrangeLantern_FIXED_LanternRough.png-789b5fcf8e5cb2933bff7c8fbcfe9462.etc2.ctex"]
 
 [params]
 

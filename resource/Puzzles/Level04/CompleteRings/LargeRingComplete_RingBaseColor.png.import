@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct7e2i0nphfjl"
 path.s3tc="res://.godot/imported/LargeRingComplete_RingBaseColor.png-417146e058723dc337006d15d15f8fa5.s3tc.ctex"
+path.etc2="res://.godot/imported/LargeRingComplete_RingBaseColor.png-417146e058723dc337006d15d15f8fa5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/CompleteRings/LargeRingComplete_RingBaseColor.png"
-dest_files=["res://.godot/imported/LargeRingComplete_RingBaseColor.png-417146e058723dc337006d15d15f8fa5.s3tc.ctex"]
+dest_files=["res://.godot/imported/LargeRingComplete_RingBaseColor.png-417146e058723dc337006d15d15f8fa5.s3tc.ctex", "res://.godot/imported/LargeRingComplete_RingBaseColor.png-417146e058723dc337006d15d15f8fa5.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckohnl3hci28x"
 path.s3tc="res://.godot/imported/ART_F1_Stove_Model_stove_pipe_01_color_512.webp-1c42f03d168ef0dfd8cd26e879d1177d.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F1_Stove_Model_stove_pipe_01_color_512.webp-1c42f03d168ef0dfd8cd26e879d1177d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor1/ART_F1_Stove_Model_stove_pipe_01_color_512.webp"
-dest_files=["res://.godot/imported/ART_F1_Stove_Model_stove_pipe_01_color_512.webp-1c42f03d168ef0dfd8cd26e879d1177d.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F1_Stove_Model_stove_pipe_01_color_512.webp-1c42f03d168ef0dfd8cd26e879d1177d.s3tc.ctex", "res://.godot/imported/ART_F1_Stove_Model_stove_pipe_01_color_512.webp-1c42f03d168ef0dfd8cd26e879d1177d.etc2.ctex"]
 
 [params]
 

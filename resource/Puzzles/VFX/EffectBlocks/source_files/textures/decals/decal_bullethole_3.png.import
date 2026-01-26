@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://defgyqse04p6h"
 path.s3tc="res://.godot/imported/decal_bullethole_3.png-eb8781b6c9d7f1ac2c4ea8c55592ab36.s3tc.ctex"
+path.etc2="res://.godot/imported/decal_bullethole_3.png-eb8781b6c9d7f1ac2c4ea8c55592ab36.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/decals/decal_bullethole_3.png"
-dest_files=["res://.godot/imported/decal_bullethole_3.png-eb8781b6c9d7f1ac2c4ea8c55592ab36.s3tc.ctex"]
+dest_files=["res://.godot/imported/decal_bullethole_3.png-eb8781b6c9d7f1ac2c4ea8c55592ab36.s3tc.ctex", "res://.godot/imported/decal_bullethole_3.png-eb8781b6c9d7f1ac2c4ea8c55592ab36.etc2.ctex"]
 
 [params]
 

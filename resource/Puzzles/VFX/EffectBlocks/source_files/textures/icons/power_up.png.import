@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwxu5gm6qg8a4"
 path.s3tc="res://.godot/imported/power_up.png-f1583e0e08350db328015d710b1c0ebd.s3tc.ctex"
+path.etc2="res://.godot/imported/power_up.png-f1583e0e08350db328015d710b1c0ebd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/icons/power_up.png"
-dest_files=["res://.godot/imported/power_up.png-f1583e0e08350db328015d710b1c0ebd.s3tc.ctex"]
+dest_files=["res://.godot/imported/power_up.png-f1583e0e08350db328015d710b1c0ebd.s3tc.ctex", "res://.godot/imported/power_up.png-f1583e0e08350db328015d710b1c0ebd.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://o2qm2ux8rfqa"
 path.s3tc="res://.godot/imported/ART_F2_Ceiling_Final_CeilingCapBaseColor.png-419a4870e4c48570fa7dab71932730fc.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_Ceiling_Final_CeilingCapBaseColor.png-419a4870e4c48570fa7dab71932730fc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_Ceiling_Final_CeilingCapBaseColor.png"
-dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_CeilingCapBaseColor.png-419a4870e4c48570fa7dab71932730fc.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_CeilingCapBaseColor.png-419a4870e4c48570fa7dab71932730fc.s3tc.ctex", "res://.godot/imported/ART_F2_Ceiling_Final_CeilingCapBaseColor.png-419a4870e4c48570fa7dab71932730fc.etc2.ctex"]
 
 [params]
 

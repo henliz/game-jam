@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhw6xkcceu5t4"
 path.s3tc="res://.godot/imported/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png-bbf109403d88cf629cabc078a2a9119b.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png-bbf109403d88cf629cabc078a2a9119b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor4/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png"
-dest_files=["res://.godot/imported/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png-bbf109403d88cf629cabc078a2a9119b.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png-bbf109403d88cf629cabc078a2a9119b.s3tc.ctex", "res://.godot/imported/ART_F4_Astrolabe_Base_Final_AstrolabeBaseBaseColor.png-bbf109403d88cf629cabc078a2a9119b.etc2.ctex"]
 
 [params]
 

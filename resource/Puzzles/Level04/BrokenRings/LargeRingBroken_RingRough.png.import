@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://duqtggbud3d4s"
 path.s3tc="res://.godot/imported/LargeRingBroken_RingRough.png-cd4c110bd24cf55a6f4eb5d57b97e3b7.s3tc.ctex"
+path.etc2="res://.godot/imported/LargeRingBroken_RingRough.png-cd4c110bd24cf55a6f4eb5d57b97e3b7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/BrokenRings/LargeRingBroken_RingRough.png"
-dest_files=["res://.godot/imported/LargeRingBroken_RingRough.png-cd4c110bd24cf55a6f4eb5d57b97e3b7.s3tc.ctex"]
+dest_files=["res://.godot/imported/LargeRingBroken_RingRough.png-cd4c110bd24cf55a6f4eb5d57b97e3b7.s3tc.ctex", "res://.godot/imported/LargeRingBroken_RingRough.png-cd4c110bd24cf55a6f4eb5d57b97e3b7.etc2.ctex"]
 
 [params]
 

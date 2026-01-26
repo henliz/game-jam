@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b776ujt23hf3j"
 path.s3tc="res://.godot/imported/GlobeMiddleRing_GlobeSphereBaseColor.png-3ec0a961d1daee64fb135ef9ca27ae16.s3tc.ctex"
+path.etc2="res://.godot/imported/GlobeMiddleRing_GlobeSphereBaseColor.png-3ec0a961d1daee64fb135ef9ca27ae16.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level02/GlobeMiddleRing_GlobeSphereBaseColor.png"
-dest_files=["res://.godot/imported/GlobeMiddleRing_GlobeSphereBaseColor.png-3ec0a961d1daee64fb135ef9ca27ae16.s3tc.ctex"]
+dest_files=["res://.godot/imported/GlobeMiddleRing_GlobeSphereBaseColor.png-3ec0a961d1daee64fb135ef9ca27ae16.s3tc.ctex", "res://.godot/imported/GlobeMiddleRing_GlobeSphereBaseColor.png-3ec0a961d1daee64fb135ef9ca27ae16.etc2.ctex"]
 
 [params]
 

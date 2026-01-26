@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d10s53r4dhkd3"
 path.s3tc="res://.godot/imported/decal_footprint_2.png-78cea659025abf9a40e587f9f8fa77cf.s3tc.ctex"
+path.etc2="res://.godot/imported/decal_footprint_2.png-78cea659025abf9a40e587f9f8fa77cf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/decals/decal_footprint_2.png"
-dest_files=["res://.godot/imported/decal_footprint_2.png-78cea659025abf9a40e587f9f8fa77cf.s3tc.ctex"]
+dest_files=["res://.godot/imported/decal_footprint_2.png-78cea659025abf9a40e587f9f8fa77cf.s3tc.ctex", "res://.godot/imported/decal_footprint_2.png-78cea659025abf9a40e587f9f8fa77cf.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4o73d8ojx83k"
 path.s3tc="res://.godot/imported/MedRingComplete_RingNormal.png-671da43248274c0c8632fcab404b4896.s3tc.ctex"
+path.etc2="res://.godot/imported/MedRingComplete_RingNormal.png-671da43248274c0c8632fcab404b4896.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/CompleteRings/MedRingComplete_RingNormal.png"
-dest_files=["res://.godot/imported/MedRingComplete_RingNormal.png-671da43248274c0c8632fcab404b4896.s3tc.ctex"]
+dest_files=["res://.godot/imported/MedRingComplete_RingNormal.png-671da43248274c0c8632fcab404b4896.s3tc.ctex", "res://.godot/imported/MedRingComplete_RingNormal.png-671da43248274c0c8632fcab404b4896.etc2.ctex"]
 
 [params]
 

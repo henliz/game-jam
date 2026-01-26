@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkj7hbqkxxh2j"
 path.s3tc="res://.godot/imported/SmallRingComplete_RingRough.png-c6de81af76cf5e891fe51c59fa1ebb61.s3tc.ctex"
+path.etc2="res://.godot/imported/SmallRingComplete_RingRough.png-c6de81af76cf5e891fe51c59fa1ebb61.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/CompleteRings/SmallRingComplete_RingRough.png"
-dest_files=["res://.godot/imported/SmallRingComplete_RingRough.png-c6de81af76cf5e891fe51c59fa1ebb61.s3tc.ctex"]
+dest_files=["res://.godot/imported/SmallRingComplete_RingRough.png-c6de81af76cf5e891fe51c59fa1ebb61.s3tc.ctex", "res://.godot/imported/SmallRingComplete_RingRough.png-c6de81af76cf5e891fe51c59fa1ebb61.etc2.ctex"]
 
 [params]
 

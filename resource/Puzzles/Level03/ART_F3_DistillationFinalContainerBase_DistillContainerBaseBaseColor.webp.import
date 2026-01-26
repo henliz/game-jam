@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmvwvoohaskgf"
 path.s3tc="res://.godot/imported/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp-d9c4a5dc3b2e1c9cd80e8dcffb54e422.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp-d9c4a5dc3b2e1c9cd80e8dcffb54e422.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level03/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp"
-dest_files=["res://.godot/imported/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp-d9c4a5dc3b2e1c9cd80e8dcffb54e422.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp-d9c4a5dc3b2e1c9cd80e8dcffb54e422.s3tc.ctex", "res://.godot/imported/ART_F3_DistillationFinalContainerBase_DistillContainerBaseBaseColor.webp-d9c4a5dc3b2e1c9cd80e8dcffb54e422.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://y8hntt1gyr0a"
 path.s3tc="res://.godot/imported/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp-8edd346467dff7ebac1afd5f6d6193a4.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp-8edd346467dff7ebac1afd5f6d6193a4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor4/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp"
-dest_files=["res://.godot/imported/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp-8edd346467dff7ebac1afd5f6d6193a4.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp-8edd346467dff7ebac1afd5f6d6193a4.s3tc.ctex", "res://.godot/imported/ART_F4_Glass_Model_ART_F4_glass_n_1k.webp-8edd346467dff7ebac1afd5f6d6193a4.etc2.ctex"]
 
 [params]
 

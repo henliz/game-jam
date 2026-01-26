@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dppqg3lrbmke0"
 path.s3tc="res://.godot/imported/AstrolabeAnimationSmallRing_RingNormal.webp-b4352715386fd175d32faeefa55c7cb6.s3tc.ctex"
+path.etc2="res://.godot/imported/AstrolabeAnimationSmallRing_RingNormal.webp-b4352715386fd175d32faeefa55c7cb6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/animation/AstrolabeAnimationSmallRing_RingNormal.webp"
-dest_files=["res://.godot/imported/AstrolabeAnimationSmallRing_RingNormal.webp-b4352715386fd175d32faeefa55c7cb6.s3tc.ctex"]
+dest_files=["res://.godot/imported/AstrolabeAnimationSmallRing_RingNormal.webp-b4352715386fd175d32faeefa55c7cb6.s3tc.ctex", "res://.godot/imported/AstrolabeAnimationSmallRing_RingNormal.webp-b4352715386fd175d32faeefa55c7cb6.etc2.ctex"]
 
 [params]
 

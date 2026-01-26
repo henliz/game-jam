@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://67jjklcuuf2k"
 path.s3tc="res://.godot/imported/ART_F2_Table_F2TableRough.png-5f70dce2d31723668da3bb2a0631f68b.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_Table_F2TableRough.png-5f70dce2d31723668da3bb2a0631f68b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_Table_F2TableRough.png"
-dest_files=["res://.godot/imported/ART_F2_Table_F2TableRough.png-5f70dce2d31723668da3bb2a0631f68b.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_Table_F2TableRough.png-5f70dce2d31723668da3bb2a0631f68b.s3tc.ctex", "res://.godot/imported/ART_F2_Table_F2TableRough.png-5f70dce2d31723668da3bb2a0631f68b.etc2.ctex"]
 
 [params]
 

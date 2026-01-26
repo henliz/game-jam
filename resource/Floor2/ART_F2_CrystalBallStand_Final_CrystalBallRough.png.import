@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6n21kxa480s"
 path.s3tc="res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallRough.png-be811dc278846f731b2c3d650aaf4db7.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallRough.png-be811dc278846f731b2c3d650aaf4db7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_CrystalBallStand_Final_CrystalBallRough.png"
-dest_files=["res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallRough.png-be811dc278846f731b2c3d650aaf4db7.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallRough.png-be811dc278846f731b2c3d650aaf4db7.s3tc.ctex", "res://.godot/imported/ART_F2_CrystalBallStand_Final_CrystalBallRough.png-be811dc278846f731b2c3d650aaf4db7.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl32qvijg0woa"
 path.s3tc="res://.godot/imported/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp-7678503c6e9c7054624ffa5e64fe50d2.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp-7678503c6e9c7054624ffa5e64fe50d2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp"
-dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp-7678503c6e9c7054624ffa5e64fe50d2.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp-7678503c6e9c7054624ffa5e64fe50d2.s3tc.ctex", "res://.godot/imported/ART_F3_StairsInterior_Final_2_F3InteriorStairBaseColor.webp-7678503c6e9c7054624ffa5e64fe50d2.etc2.ctex"]
 
 [params]
 

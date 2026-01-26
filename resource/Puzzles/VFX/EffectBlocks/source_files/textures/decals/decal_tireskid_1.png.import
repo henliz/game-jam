@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cglh6nu7c0r4c"
 path.s3tc="res://.godot/imported/decal_tireskid_1.png-74e7898d7a51b6b9af02bdc22b3848c3.s3tc.ctex"
+path.etc2="res://.godot/imported/decal_tireskid_1.png-74e7898d7a51b6b9af02bdc22b3848c3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/decals/decal_tireskid_1.png"
-dest_files=["res://.godot/imported/decal_tireskid_1.png-74e7898d7a51b6b9af02bdc22b3848c3.s3tc.ctex"]
+dest_files=["res://.godot/imported/decal_tireskid_1.png-74e7898d7a51b6b9af02bdc22b3848c3.s3tc.ctex", "res://.godot/imported/decal_tireskid_1.png-74e7898d7a51b6b9af02bdc22b3848c3.etc2.ctex"]
 
 [params]
 

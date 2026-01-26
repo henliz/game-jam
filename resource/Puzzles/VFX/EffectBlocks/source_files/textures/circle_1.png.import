@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1e7hll0hnmad"
 path.s3tc="res://.godot/imported/circle_1.png-8e22bfe9eb7c8b17b5a9e2d44ab72677.s3tc.ctex"
+path.etc2="res://.godot/imported/circle_1.png-8e22bfe9eb7c8b17b5a9e2d44ab72677.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/circle_1.png"
-dest_files=["res://.godot/imported/circle_1.png-8e22bfe9eb7c8b17b5a9e2d44ab72677.s3tc.ctex"]
+dest_files=["res://.godot/imported/circle_1.png-8e22bfe9eb7c8b17b5a9e2d44ab72677.s3tc.ctex", "res://.godot/imported/circle_1.png-8e22bfe9eb7c8b17b5a9e2d44ab72677.etc2.ctex"]
 
 [params]
 

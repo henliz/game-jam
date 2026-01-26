@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0eq6wxref7ig"
 path.s3tc="res://.godot/imported/AstrolabeAnimationLoopSmall_TelescopeNormal.webp-c64aa7850e956307ba2898a6c225affe.s3tc.ctex"
+path.etc2="res://.godot/imported/AstrolabeAnimationLoopSmall_TelescopeNormal.webp-c64aa7850e956307ba2898a6c225affe.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/animation/AstrolabeAnimationLoopSmall_TelescopeNormal.webp"
-dest_files=["res://.godot/imported/AstrolabeAnimationLoopSmall_TelescopeNormal.webp-c64aa7850e956307ba2898a6c225affe.s3tc.ctex"]
+dest_files=["res://.godot/imported/AstrolabeAnimationLoopSmall_TelescopeNormal.webp-c64aa7850e956307ba2898a6c225affe.s3tc.ctex", "res://.godot/imported/AstrolabeAnimationLoopSmall_TelescopeNormal.webp-c64aa7850e956307ba2898a6c225affe.etc2.ctex"]
 
 [params]
 

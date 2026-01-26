@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgamrxl3wmjw3"
 path.s3tc="res://.godot/imported/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp-fdf4f4bda8f1b3a5066250c465a73a37.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp-fdf4f4bda8f1b3a5066250c465a73a37.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Common/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp"
-dest_files=["res://.godot/imported/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp-fdf4f4bda8f1b3a5066250c465a73a37.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp-fdf4f4bda8f1b3a5066250c465a73a37.s3tc.ctex", "res://.godot/imported/ART_GLOBAL_Bottles_04_ART_GLOBAL_TEXTURE_Labels.webp-fdf4f4bda8f1b3a5066250c465a73a37.etc2.ctex"]
 
 [params]
 

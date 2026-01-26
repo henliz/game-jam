@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://nav5kevm0v5b"
 path.s3tc="res://.godot/imported/TeleMed_TelescopeBaseColor.png-81efa82f5007401f5036cba07607a21d.s3tc.ctex"
+path.etc2="res://.godot/imported/TeleMed_TelescopeBaseColor.png-81efa82f5007401f5036cba07607a21d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level04/AstrolabeTelescope/TeleMed_TelescopeBaseColor.png"
-dest_files=["res://.godot/imported/TeleMed_TelescopeBaseColor.png-81efa82f5007401f5036cba07607a21d.s3tc.ctex"]
+dest_files=["res://.godot/imported/TeleMed_TelescopeBaseColor.png-81efa82f5007401f5036cba07607a21d.s3tc.ctex", "res://.godot/imported/TeleMed_TelescopeBaseColor.png-81efa82f5007401f5036cba07607a21d.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1poghguxi8an"
 path.s3tc="res://.godot/imported/explosion_1.png-6abdbdf7b8529873662150a34b90913b.s3tc.ctex"
+path.etc2="res://.godot/imported/explosion_1.png-6abdbdf7b8529873662150a34b90913b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/explosion_1.png"
-dest_files=["res://.godot/imported/explosion_1.png-6abdbdf7b8529873662150a34b90913b.s3tc.ctex"]
+dest_files=["res://.godot/imported/explosion_1.png-6abdbdf7b8529873662150a34b90913b.s3tc.ctex", "res://.godot/imported/explosion_1.png-6abdbdf7b8529873662150a34b90913b.etc2.ctex"]
 
 [params]
 

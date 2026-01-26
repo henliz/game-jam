@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djj3vanma3twv"
 path.s3tc="res://.godot/imported/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png-cb2dd014fb9c3a59fb15f707018b10f7.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png-cb2dd014fb9c3a59fb15f707018b10f7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png"
-dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png-cb2dd014fb9c3a59fb15f707018b10f7.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png-cb2dd014fb9c3a59fb15f707018b10f7.s3tc.ctex", "res://.godot/imported/ART_F2_Ceiling_Final_ART_F2_Ceiling_texture_4.png-cb2dd014fb9c3a59fb15f707018b10f7.etc2.ctex"]
 
 [params]
 

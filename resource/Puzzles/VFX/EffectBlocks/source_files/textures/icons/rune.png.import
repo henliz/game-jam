@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ca2fvci3f1ul5"
 path.s3tc="res://.godot/imported/rune.png-fd4329d39ab5411ee7e6c3d11e2fdcde.s3tc.ctex"
+path.etc2="res://.godot/imported/rune.png-fd4329d39ab5411ee7e6c3d11e2fdcde.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/Puzzles/VFX/EffectBlocks/source_files/textures/icons/rune.png"
-dest_files=["res://.godot/imported/rune.png-fd4329d39ab5411ee7e6c3d11e2fdcde.s3tc.ctex"]
+dest_files=["res://.godot/imported/rune.png-fd4329d39ab5411ee7e6c3d11e2fdcde.s3tc.ctex", "res://.godot/imported/rune.png-fd4329d39ab5411ee7e6c3d11e2fdcde.etc2.ctex"]
 
 [params]
 

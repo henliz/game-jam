@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl0aq2lyc3w3q"
 path.s3tc="res://.godot/imported/GlobeBottomRing_GlobeNormal.png-1487c5fea10cc111d2be126a91e3ce29.s3tc.ctex"
+path.etc2="res://.godot/imported/GlobeBottomRing_GlobeNormal.png-1487c5fea10cc111d2be126a91e3ce29.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level02/GlobeBottomRing_GlobeNormal.png"
-dest_files=["res://.godot/imported/GlobeBottomRing_GlobeNormal.png-1487c5fea10cc111d2be126a91e3ce29.s3tc.ctex"]
+dest_files=["res://.godot/imported/GlobeBottomRing_GlobeNormal.png-1487c5fea10cc111d2be126a91e3ce29.s3tc.ctex", "res://.godot/imported/GlobeBottomRing_GlobeNormal.png-1487c5fea10cc111d2be126a91e3ce29.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wvut8v7mceq3"
 path.s3tc="res://.godot/imported/Wall with Shelves_Sushi_Atlas.png-1a5a73776d7112f013fc7a24a904051e.s3tc.ctex"
+path.etc2="res://.godot/imported/Wall with Shelves_Sushi_Atlas.png-1a5a73776d7112f013fc7a24a904051e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Workstation/Wall with Shelves_Sushi_Atlas.png"
-dest_files=["res://.godot/imported/Wall with Shelves_Sushi_Atlas.png-1a5a73776d7112f013fc7a24a904051e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Wall with Shelves_Sushi_Atlas.png-1a5a73776d7112f013fc7a24a904051e.s3tc.ctex", "res://.godot/imported/Wall with Shelves_Sushi_Atlas.png-1a5a73776d7112f013fc7a24a904051e.etc2.ctex"]
 
 [params]
 

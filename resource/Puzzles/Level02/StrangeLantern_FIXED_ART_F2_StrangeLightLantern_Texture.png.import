@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce5rx6ud5et10"
 path.s3tc="res://.godot/imported/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png-cef3fedc8e6da890f63297a0d5811d26.s3tc.ctex"
+path.etc2="res://.godot/imported/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png-cef3fedc8e6da890f63297a0d5811d26.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level02/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png"
-dest_files=["res://.godot/imported/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png-cef3fedc8e6da890f63297a0d5811d26.s3tc.ctex"]
+dest_files=["res://.godot/imported/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png-cef3fedc8e6da890f63297a0d5811d26.s3tc.ctex", "res://.godot/imported/StrangeLantern_FIXED_ART_F2_StrangeLightLantern_Texture.png-cef3fedc8e6da890f63297a0d5811d26.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8wovv2m02hsi"
 path.s3tc="res://.godot/imported/ART_F3_Door_Final_F3DoorFrameBaseColor.webp-2454b66c4aff00ba17fc2e53be646639.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_Door_Final_F3DoorFrameBaseColor.webp-2454b66c4aff00ba17fc2e53be646639.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor3/ART_F3_Door_Final_F3DoorFrameBaseColor.webp"
-dest_files=["res://.godot/imported/ART_F3_Door_Final_F3DoorFrameBaseColor.webp-2454b66c4aff00ba17fc2e53be646639.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_Door_Final_F3DoorFrameBaseColor.webp-2454b66c4aff00ba17fc2e53be646639.s3tc.ctex", "res://.godot/imported/ART_F3_Door_Final_F3DoorFrameBaseColor.webp-2454b66c4aff00ba17fc2e53be646639.etc2.ctex"]
 
 [params]
 

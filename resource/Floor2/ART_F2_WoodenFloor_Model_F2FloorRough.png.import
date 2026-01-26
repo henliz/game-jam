@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnwcl6xdfgm3d"
 path.s3tc="res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorRough.png-bd7ec3ffee27e3fc8e1d2c4d5b307dde.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorRough.png-bd7ec3ffee27e3fc8e1d2c4d5b307dde.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Floor2/ART_F2_WoodenFloor_Model_F2FloorRough.png"
-dest_files=["res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorRough.png-bd7ec3ffee27e3fc8e1d2c4d5b307dde.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorRough.png-bd7ec3ffee27e3fc8e1d2c4d5b307dde.s3tc.ctex", "res://.godot/imported/ART_F2_WoodenFloor_Model_F2FloorRough.png-bd7ec3ffee27e3fc8e1d2c4d5b307dde.etc2.ctex"]
 
 [params]
 

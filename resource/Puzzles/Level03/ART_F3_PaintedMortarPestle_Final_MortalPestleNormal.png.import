@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cx06mq87o5y67"
 path.s3tc="res://.godot/imported/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png-4b1c1b4c5dec8437d95c2186dc60a1d9.s3tc.ctex"
+path.etc2="res://.godot/imported/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png-4b1c1b4c5dec8437d95c2186dc60a1d9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://resource/Puzzles/Level03/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png"
-dest_files=["res://.godot/imported/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png-4b1c1b4c5dec8437d95c2186dc60a1d9.s3tc.ctex"]
+dest_files=["res://.godot/imported/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png-4b1c1b4c5dec8437d95c2186dc60a1d9.s3tc.ctex", "res://.godot/imported/ART_F3_PaintedMortarPestle_Final_MortalPestleNormal.png-4b1c1b4c5dec8437d95c2186dc60a1d9.etc2.ctex"]
 
 [params]
 

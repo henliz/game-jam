@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv5bkjr03wmg4"
 path.s3tc="res://.godot/imported/brush_smear_01_256.png-5aafa94eb9ce4b6a2dabe52d72d5b12e.s3tc.ctex"
+path.etc2="res://.godot/imported/brush_smear_01_256.png-5aafa94eb9ce4b6a2dabe52d72d5b12e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://resource/GraphicsCore/brush_smear_01_256.png"
-dest_files=["res://.godot/imported/brush_smear_01_256.png-5aafa94eb9ce4b6a2dabe52d72d5b12e.s3tc.ctex"]
+dest_files=["res://.godot/imported/brush_smear_01_256.png-5aafa94eb9ce4b6a2dabe52d72d5b12e.s3tc.ctex", "res://.godot/imported/brush_smear_01_256.png-5aafa94eb9ce4b6a2dabe52d72d5b12e.etc2.ctex"]
 
 [params]
 
