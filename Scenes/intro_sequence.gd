@@ -31,6 +31,11 @@ var video_playing := false
 var _waiting_for_scene := false
 var skip_hold_progress := 0.0
 var can_click := false  # Prevent immediate click-through
+var music_player: AudioStreamPlayer = null
+var music_fade_started := false
+const MUSIC_FADE_START_TIME := 62.0  # 1:02 into video
+const MUSIC_FADE_END_TIME := 68.0    # 1:08 into video
+const MUSIC_DEFAULT_VOLUME := 0.0    # Default volume in dB
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -90,11 +95,14 @@ func _try_find_player() -> bool:
 
 func _on_scene_loaded() -> void:
 	_waiting_for_scene = false
-	
+
 	if player:
 		player.movement_enabled = false
 		player.inspecting = true
-	
+
+	# Get reference to the music player
+	music_player = get_node_or_null("/root/Main/World/AudioStreamPlayers/MusicStreamPlayer")
+
 	# Fade in the intro text
 	var fade_tween = create_tween()
 	fade_tween.tween_property(intro_text, "modulate:a", 1.0, 1.0)
@@ -123,18 +131,36 @@ func _process(delta: float) -> void:
 	# Handle skip input during video
 	if video_playing:
 		_handle_skip_input(delta)
+		_handle_music_fade()
 
 var _mouse_was_pressed := false
+
+
+func _handle_music_fade() -> void:
+	if not music_player or music_fade_started:
+		return
+
+	var playback_time = video_player.stream_position
+	if playback_time >= MUSIC_FADE_START_TIME:
+		music_fade_started = true
+		var fade_duration = MUSIC_FADE_END_TIME - MUSIC_FADE_START_TIME
+		var tween = create_tween()
+		tween.tween_property(music_player, "volume_db", MUSIC_DEFAULT_VOLUME, fade_duration)
 
 func _start_video() -> void:
 	if video_playing or not can_click:
 		return
-		
+
 	showing_text = false
 	video_playing = true
 	can_click = false
+	music_fade_started = false
 	click_sound.play()
-	
+
+	# Mute the background music when video starts
+	if music_player:
+		music_player.volume_db = -80.0
+
 	# Fade out text
 	var fade_tween = create_tween()
 	fade_tween.tween_property(intro_text, "modulate:a", 0.0, 0.5)
@@ -170,11 +196,15 @@ func _skip_video() -> void:
 
 func _on_video_finished() -> void:
 	skip_container.visible = false
-	
+
+	# Ensure music is restored to default volume (in case video was skipped)
+	if music_player:
+		music_player.volume_db = MUSIC_DEFAULT_VOLUME
+
 	if player:
 		player.inspecting = false
 		player.movement_enabled = true
-	
+
 	GameState.mark_dialogue_triggered("VO_F1_ENTRY")
 	intro_complete.emit()
 	queue_free()

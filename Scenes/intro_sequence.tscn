@@ -32,6 +32,23 @@ func set_value(v: float) -> void:
 layer = 100
 script = ExtResource("1_script")
 
+[node name="VideoBackground" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="OpeningCredits" type="VideoStreamPlayer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_ik8tj")
+expand = true
+
 [node name="SkipContainer" type="HBoxContainer" parent="."]
 visible = false
 anchors_preset = 7
@@ -58,12 +75,6 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 4
 script = SubResource("GDScript_skip_gauge")
-
-[node name="OpeningCredits" type="VideoStreamPlayer" parent="."]
-offset_right = 1918.0
-offset_bottom = 1078.0
-stream = ExtResource("2_ik8tj")
-expand = true
 
 [node name="BlackOverlay" type="ColorRect" parent="."]
 anchors_preset = 15
