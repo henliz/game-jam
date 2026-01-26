@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://b3yv8v4gq7mx7"]
 
-[ext_resource type="Script" path="res://Scenes/intro_sequence.gd" id="1_script"]
-[ext_resource type="AudioStream" path="res://Audio/SFX/UI/click_new_game.wav" id="2_click"]
-[ext_resource type="AudioStream" path="res://Audio/INTRO.mp3" id="3_intro"]
+[ext_resource type="Script" uid="uid://b8pf6sicuo86n" path="res://Scenes/intro_sequence.gd" id="1_script"]
+[ext_resource type="AudioStream" uid="uid://dpikpts3fxtw4" path="res://Audio/SFX/UI/click_new_game.wav" id="2_click"]
+[ext_resource type="VideoStream" uid="uid://dwh6akqdvtqin" path="res://Video/FinalFinalFinalFinal.ogv" id="2_ik8tj"]
+[ext_resource type="AudioStream" uid="uid://df0ys8148hlxa" path="res://Audio/INTRO.mp3" id="3_intro"]
 
 [sub_resource type="GDScript" id="GDScript_skip_gauge"]
 script/source = "extends Control
@@ -31,6 +32,39 @@ func set_value(v: float) -> void:
 layer = 100
 script = ExtResource("1_script")
 
+[node name="SkipContainer" type="HBoxContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="SkipLabel" type="Label" parent="SkipContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 16
+text = "Hold [SPACE] to skip"
+
+[node name="SkipGauge" type="Control" parent="SkipContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+script = SubResource("GDScript_skip_gauge")
+
+[node name="OpeningCredits" type="VideoStreamPlayer" parent="."]
+offset_right = 1918.0
+offset_bottom = 1078.0
+stream = ExtResource("2_ik8tj")
+expand = true
+
 [node name="BlackOverlay" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +74,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="IntroText" type="Label" parent="BlackOverlay"]
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -58,31 +92,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="SkipContainer" type="HBoxContainer" parent="BlackOverlay"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -60.0
-offset_right = 100.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="SkipLabel" type="Label" parent="BlackOverlay/SkipContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
-theme_override_font_sizes/font_size = 16
-text = "Hold [SPACE] to skip"
-
-[node name="SkipGauge" type="Control" parent="BlackOverlay/SkipContainer"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-size_flags_vertical = 4
-script = SubResource("GDScript_skip_gauge")
+[node name="ClickToContinue" type="Label" parent="BlackOverlay"]
+layout_mode = 0
+offset_left = 726.0
+offset_top = 902.0
+offset_right = 1178.0
+offset_bottom = 1011.0
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_click")
@@ -90,4 +105,3 @@ volume_db = -5.0
 
 [node name="IntroAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_intro")
-volume_db = 0.0
