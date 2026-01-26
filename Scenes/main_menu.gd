@@ -58,14 +58,18 @@ func _on_start_pressed() -> void:
 	# Debug: Hold Shift to skip intro sequence entirely
 	if Input.is_key_pressed(KEY_SHIFT):
 		print("MainMenu: Shift held - skipping intro sequence")
-		world.visible = true
+		if world:
+			world.visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		queue_free()
+		PauseManager.enable_pause()
 		return
 	
-	world.visible = true
+	if world:
+		world.visible = true
 	_start_intro_sequence()
 	queue_free()
+	PauseManager.enable_pause()
 
 func _start_intro_sequence() -> void:
 	intro_instance = IntroSequence.instantiate()
